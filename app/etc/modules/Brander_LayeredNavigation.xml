@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_LayeredNavigation>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Brander_LayeredNavigation>
+    </modules>
+</config>

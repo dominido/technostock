@@ -1,0 +1,53 @@
+#header-nav {
+  .nav {
+	.inner-container {
+	  padding: 0;
+	}
+  }
+}
+
+.homepage-hotcategories-container {
+  margin-bottom: 50px;
+
+  .hotcategory {
+	> a {
+	  position: relative;
+	  display: block;
+	  color: $white;
+	  text-shadow: 1px 1px 1px #000;
+
+	  .hotcategories-title {
+		position: absolute;
+		bottom: 34px;
+		left: 13%;
+		font-size: 1.14em;
+		text-transform: uppercase;
+		font-weight: bold;
+		padding-top: 18px;
+
+		&:after {
+		  position: absolute;
+		  content: '';
+		  width: 29px;
+		  height: 4px;
+		  //background: $link-hover;
+		  top: 0;
+		  left: 0;
+		  @include trs(width .3s ease);
+		}
+	  }
+
+	  &:hover {
+		.hotcategories-title {
+		  &:after {
+			width: 100%;
+		  }
+		}
+	  }
+	}
+
+	img {
+	  width: 100%;
+	}
+  }
+}

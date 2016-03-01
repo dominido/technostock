@@ -1,0 +1,98 @@
+
+<?php $_shippingRateGroups = $this->getShippingRates();
+/** @var Brander_Opcheckout_Helper_Data $opcheckoutHelper */
+$opcheckoutHelper = Mage::helper('brander_opcheckout');
+?>
+<?php if (!$_shippingRateGroups): ?>
+    <p class="shipping-note"><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
+<?php else: ?>
+
+    <div class="field">
+        <label for="shipping_method_select"><?php echo $this->__('Shipping Methods:')?></label>
+        <div class="input-box">
+            <select name="shipping_method" class="validate-select" id="shipping_method_select">
+                <?php foreach ($_shippingRateGroups as $code => $_rates) { ?>
+                    <?php foreach ($_rates as $_rate) {?>
+                        <option value="<?php echo $_rate->getCode() ?>"
+                            <?php if ($this->getAddressShippingMethod() == $_rate->getCode()) echo 'selected="selected"' ?>>
+                            <?php echo $_rate->getMethodTitle() ?>
+                        </option>
+                    <?php } ?>
+                <?php } ?>
+            </select>
+        </div>
+    </div>
+
+
+    <?php foreach ($_shippingRateGroups as $code => $_rates) { ?>
+        <?php foreach ($_rates as $_rate) {?>
+            <?php $carrier = Mage::getModel('shipping/config')->getCarrierInstance($code);
+            if($carrier->getFormBlock()){
+                $block = $this->getLayout()->createBlock($carrier->getFormBlock());
+                $block->setMethodCode($code);
+                $block->setRate($_rate);
+                $block->setMethodInstance($carrier);
+                echo $block->toHtml();
+            }
+            ?>
+        <?php } ?>
+    <?php } ?>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+        <?php if (!empty($shippingCodePrice)): ?>
+        var shippingCodePrice = {<?php echo implode(',',$shippingCodePrice); ?>};
+        <?php endif; ?>
+
+        jQuery('select[name="shipping_method"]').change(function() {
+            shippingMethodStep.save();
+            updateShippingFormsList();
+        });
+
+        jQuery(function() {
+            shippingMethodStep.save();
+            updateShippingFormsList();
+        });
+
+        function updateShippingFormsList() {
+            var code = jQuery('select[name="shipping_method"]').find('option:selected').val();
+            showShipping(code);
+            showShippingAddressByCode(code);
+        }
+
+        function showShippingAddressByCode(code) {
+            var streetDiv = jQuery('div.street1');
+            var addressCodes = new Array(
+                'flatrate2_flatrate2'
+            );
+            if (jQuery.inArray(code, addressCodes) >= 0 && streetDiv !== null) {
+                streetDiv.show();
+            } else {
+                streetDiv.hide();
+            }
+        }
+
+        function showShipping(code) {
+            jQuery('select[name="shipping_method"] option').each(function() {
+                var current_code = jQuery(this).val();
+                if (current_code != code) {
+                    jQuery('#shipping_form_' + current_code).slideUp();
+                    jQuery('#shipping_form_').hide();
+                    jQuery(this).find('.required-entry').attr('disabled','true');
+                    jQuery('#shipping_method_description div#' + current_code).hide();
+                } else {
+                    var form = jQuery('#shipping_form_' + current_code);
+                    if(jQuery(form).length != 0) {
+                        jQuery(form).show();
+                        jQuery(this).find('.required-entry').attr('disabled','false');
+                        jQuery('#shipping_method_description div#' + current_code).show();
+                    }
+                }
+            });
+        }
+
+        //]]>
+    </script>
+
+<?php endif; ?>

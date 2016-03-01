@@ -1,0 +1,10 @@
+<?php $_product = $this->getProduct(); ?>
+<div itemscope itemtype="http://data-vocabulary.org/Product" class="micrform-section">
+	<strong itemprop="name"><?php echo $_product->getName(); ?></strong>
+	<img itemprop="image" src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(200); ?>" alt="image description" />
+	<span itemprop="description"><?php echo $_product->getDescription(); ?></span>
+	<span itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer">
+		<span itemprop="price"><?php echo ($_product->getData('special_price')) ? $_product->getData('special_price') : $_product->getData('price')?></span>
+		<meta itemprop="currency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode()?>" />
+	</span>
+</div>

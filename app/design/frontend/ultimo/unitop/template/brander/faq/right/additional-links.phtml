@@ -1,0 +1,16 @@
+<?php $pageVideoConsult = $this->getVideoConsultationPage()?>
+
+<ul class="faq-links">
+    <?php if($pageVideoConsult) { ?>
+        <li>
+            <a href="<?php echo $pageVideoConsult->getUrl(); ?>">
+                <span class="ico-webcam"></span>
+                <span class="text"><?php echo Mage::helper('brander_shop')->__('Free videos of consultation')?></span>
+            </a>
+        </li>
+    <?php } ?>
+    <li>
+        <?php echo $this->getChildHtml('faq.right.callback.link')?>
+    </li>
+</ul>
+

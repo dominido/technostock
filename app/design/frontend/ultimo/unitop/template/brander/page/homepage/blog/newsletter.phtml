@@ -1,0 +1,35 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<div id="subscribe-form" class="clearer">
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+        <div>
+            <label for="newsletter"><?php echo $this->__('Newsletter') ?></label>
+            <div class="input-box">
+                <input type="text" name="email" id="newsletter" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" class="input-text required-entry validate-email" />
+            </div>
+            <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>" class="button btn-inline"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    new Varien.searchForm('newsletter-validate-detail', 'newsletter', '<?php echo Mage::helper('core')->jsQuoteEscape($this->helper('newsletter')->__('Enter your email address')) ?>');
+    //]]>
+</script>

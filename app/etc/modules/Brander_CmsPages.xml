@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_CmsPages>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Brander_AdminForms/>
+                <Brander_Cms/>
+            </depends>
+        </Brander_CmsPages>
+    </modules>
+</config>

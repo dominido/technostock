@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_SocialLogin
+ * @copyright  Copyright (c) 2013 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-commercial-v1/   ETWS Commercial License (ECL1)
+ */
+ -->
+<layout version="0.1.0">
+
+    <accounts_adminhtml_grid_index>
+        <reference name="content">
+            <block type="et_sociallogin/adminhtml_socialAccountGrid" name="social.account.grid.container">
+            </block>
+        </reference>
+    </accounts_adminhtml_grid_index>
+
+    <adminhtml_customer_edit>
+        <reference name="customer_edit_tabs">
+            <action method="addTab">
+                <name>customer_edit_tab_social</name>
+                <block>et_sociallogin/adminhtml_social</block>
+            </action>
+        </reference>
+    </adminhtml_customer_edit>
+
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>et_sociallogin/social.css</stylesheet>
+            </action>
+        </reference>
+    </default>
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addJs">
+                <script>et/sociallogin/jquery-1.10.2.js</script>
+            </action>
+            <action method="addJs">
+                <script>et/sociallogin/noconflict.js</script>
+            </action>
+            <action method="addJs">
+                <script>et/sociallogin/admin_socicons.js</script>
+            </action>
+        </reference>
+    </adminhtml_system_config_edit>
+
+    <accounts_adminhtml_socialreport_index>
+        <reference name="content">
+            <block type="et_sociallogin/adminhtml_socialReport" template="report/grid/container.phtml"
+                   name="adminhtml_social.grid.container">
+                <block type="et_sociallogin/adminhtml_socialReport_filter" name="grid.filter.form">
+                </block>
+            </block>
+        </reference>
+    </accounts_adminhtml_socialreport_index>
+</layout>

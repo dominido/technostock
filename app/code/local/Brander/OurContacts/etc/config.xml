@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_OurContacts extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_OurContacts
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <Brander_OurContacts>
+            <version>0.1.1</version>
+        </Brander_OurContacts>
+    </modules>
+    <global>
+        <resources>
+            <brander_ourcontacts_setup>
+                <setup>
+                    <module>Brander_OurContacts</module>
+                    <class>Brander_OurContacts_Model_Resource_Setup</class>
+                </setup>
+            </brander_ourcontacts_setup>
+        </resources>
+        <blocks>
+            <brander_ourcontacts>
+                <class>Brander_OurContacts_Block</class>
+            </brander_ourcontacts>
+        </blocks>
+        <helpers>
+            <brander_ourcontacts>
+                <class>Brander_OurContacts_Helper</class>
+            </brander_ourcontacts>
+        </helpers>
+        <models>
+            <brander_ourcontacts>
+                <class>Brander_OurContacts_Model</class>
+                <resourceModel>brander_ourcontacts_resource</resourceModel>
+            </brander_ourcontacts>
+            <brander_ourcontacts_resource>
+                <class>Brander_OurContacts_Model_Resource</class>
+                <entities>
+                    <contact>
+                        <table>brander_ourcontacts_contact</table>
+                    </contact>
+                    <eav_attribute>
+                        <table>brander_ourcontacts_eav_attribute</table>
+                    </eav_attribute>
+                </entities>
+            </brander_ourcontacts_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <brander_ourcontacts>
+                    <file>brander_ourcontacts.xml</file>
+                </brander_ourcontacts>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_OurContacts>
+                    <files>
+                        <default>Brander_OurContacts.csv</default>
+                    </files>
+                </Brander_OurContacts>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Brander_OurContacts before="Mage_Adminhtml">Brander_OurContacts_Adminhtml</Brander_OurContacts>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <frontend>
+        <layout>
+            <updates>
+                <brander_ourcontacts>
+                    <file>brander_ourcontacts.xml</file>
+                </brander_ourcontacts>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_OurContacts>
+                    <files>
+                        <default>Brander_OurContacts.csv</default>
+                    </files>
+                </Brander_OurContacts>
+            </modules>
+        </translate>
+    </frontend>
+
+    <default>
+        <customercallbacks>
+            <settings>
+                <header_position>5</header_position>
+            </settings>
+        </customercallbacks>
+    </default>
+</config>

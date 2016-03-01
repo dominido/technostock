@@ -1,0 +1,27 @@
+<?php
+/**
+ * Brander CustomerCallback extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        CustomerCallbacks
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         AlexVegas (Alexandr Belyaev) <alexandr.belyaev.only@gmail.com>
+ */
+?>
+<?php $_callbackCount = $this->checkForNewCallbacks()?>
+<?php if($_callbackCount):?>
+<div class="notification-global">
+    <strong><?php echo $this->helper('brander_customercallbacks')->__('NEW CALLBACK !!!') ?></strong>.
+    <strong><?php echo $this->helper('brander_customercallbacks')->__('You have new %s callback(s) request(s) from customers.', $_callbackCount) ?></strong>
+    <?php echo $this->helper('brander_customercallbacks')->__('Click here to go to <a href="%s">Customer Callbacks Manager</a>.', $this->getManageUrl());?>
+    <?php //$this->setNotifiedStatus(); ?>
+</div>
+<?php endif;?>

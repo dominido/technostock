@@ -1,0 +1,59 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php
+$helper = Mage::helper('brander_unitopblog');
+$tabs = Mage::helper('brander_unitopblog/category')->getTabsList(); //If tabs disabled - returns false
+$limit = intval(Mage::helper('brander_shop')->getCfg('brander_unitopblog/product_category/tab_posts_limit'));
+$descriptionTab = $helper->getDescriptionTab();
+$tabsHtml = array();
+?>
+<?php if (Mage::helper('brander_shop')->getCfg('brander_unitopblog/product_category/show_category_tabs')): ?>
+    <?php if ($descriptionTab): // show category description in tab view ?>
+
+        <?php $tabsHtml[] = array(
+            'alias' => 'information',
+            'name'  => $helper->__('Information'),
+            'html'  => $descriptionTab
+        )?>
+    <?php endif; ?>
+    <?php if ($tabs): ?>
+        <?php foreach ($tabs as $_tab): ?>
+            <?php $posts = $this->getTabPostCollection($_tab);?>
+            <?php $postsHtml = $this->getChild('post_list')->setPosts($posts)->toHtml(); ?>
+
+            <?php if ($postsHtml): ?>
+                <?php if ($posts->getSize() > $limit): ?>
+                    <?php $postsHtml .= '<div class="show-all-wrap"><a class="show-all-link" href="'.$this->getAllPostsUrl($_tab->getUrlKey()).'">'.$this->__('Show all posts').'</a></div>'; ?>
+                <?php endif; ?>
+                <?php $tabsHtml[] = array(
+                    'alias' => $_tab->getUrlKey(),
+                    'name'  => $_tab->getTitle(),
+                    'html'  => $postsHtml
+                )?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    <?php if ($tabsHtml): ?>
+        <div class="box-additional grid-full no-gutter">
+            <div class="box-collateral collateral-container box-tabs">
+                <?php echo $this->getChild('blog.tabs')->setBlogTabs($tabsHtml)->toHtml();  ?>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

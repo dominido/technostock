@@ -1,0 +1,215 @@
+<?php $slides = $this->getSlideIds();
+
+    $mode = Mage::helper('brander_shop')->getCfg('brander_homepage/slideshow_config/mode');
+    // 2    = Regular and Mobile(Phone and Pad)
+    // 1    = Regular and Mobile(Pad)
+    // 0    = Regular only?>
+<?php if ($slides): ?>
+
+    <?php
+    $h = $this->helper('ultraslideshow');
+    $sliderId = "slideshow-{$this->getFrontendHash()}";
+
+    //Slider parameters
+    //--------------------------------------------------------------
+
+    //Slider timeout. Set to enable automatic scrolling.
+    $timeout = $this->getTimeout(); //param: timeout
+    if ($timeout === NULL) //Param not set
+    {
+        $timeout = intval($h->getCfg('general/timeout'));
+    }
+    else
+    {
+        $timeout = intval($timeout);
+    }
+
+    //If set, slider will loop.
+    $loop = $this->getLoop(); //param: loop
+    if ($loop === NULL) //Param not set
+    {
+        $loop = $h->getCfg('general/loop');
+    }
+
+    //Speed (arrows / touch swipe)
+    $speed = intval($h->getCfg('general/speed'));
+
+    //Speed (automatic scrolling / pagination)
+    $autoSpeed = intval($h->getCfg('general/auto_speed'));
+
+    //Pause slider on mouse hover
+    $pause = $h->getCfg('general/pause');
+
+    //Auto height
+    $smoothHeight = $h->getCfg('general/smooth_height');
+
+    //Transition effect
+    $fx = $h->getCfg('general/effect');
+
+    //Other settings
+    //--------------------------------------------------------------
+
+    //Determin width (grid units) and position (left or right) of the slideshow and banners
+    $banners = '';
+    //$banners = $this->getBannersHtml();
+    $slideshowPositionClass = '';
+    $slideshowGridClass = '';
+    $bannersGridClass = '';
+    $bannersMode = Mage::helper('ultraslideshow')->getCfg('banners/banners_or_menu');
+
+    if ($bannersMode == Brander_CmsMenu_Model_Model_Config_Source_Slidertype::SLIDER_TYPE_VIEW_SLIDER_AND_CATEGORIES) {
+        $bannersPosition = 'navigation-menu';
+
+        //$slideshowPositionClass = 'right';
+        $slideshowGridClass = 'grid12-9 no-gutter';
+        $bannersGridClass = 'grid12-3 no-gutter';
+        $banners = 1;
+    }
+
+    if ($bannersMode == Brander_CmsMenu_Model_Model_Config_Source_Slidertype::SLIDER_TYPE_VIEW_SLIDER_AND_BANNERS)
+    {
+        $banners = $this->getBannersHtml();
+        $bannersPosition = $h->getCfg('banners/position');
+        if ($bannersPosition == 'left') //Banners at the left, slideshow at the right
+        {
+            $slideshowPositionClass = 'right';
+            $slideshowGridClass = 'grid12-9 no-right-gutter';
+            $bannersGridClass = 'grid12-3 no-left-gutter';
+        } else {
+            $slideshowGridClass = 'grid12-9 no-left-gutter';
+            $bannersGridClass = 'grid12-3 no-right-gutter';
+        }
+    }
+
+    //Hide slides (not including banners) on mobile devices
+    $hideSlideshowClass = '';
+    if ($h->getCfg('general/hide'))
+    {
+        $hideSlideshowClass = 'hide-below-768';
+    }
+
+    //Slideshow strucural classes
+    $sliderClasses[] = $slideshowGridClass;
+    $sliderClasses[] = $slideshowPositionClass;
+    $sliderClasses[] = $hideSlideshowClass;
+
+    //Additional classes
+    $sliderClasses[] = 'slider-arrows2';
+    $paginationClass = $h->getCfg('navigation/pagination');
+    if ($paginationClass)
+    {
+        $sliderClasses[] = $paginationClass;
+        $sliderClasses[] = $h->getCfg('navigation/pagination_position');
+    }
+    ?>
+
+    <?php if($this->isPredefined()): ?>
+        <div class="the-slideshow-wrapper-outer" <?php echo $this->getMarginStyles(); ?>>
+    <?php endif; ?>
+
+            <div class="the-slideshow-wrapper">
+
+                <?php if ($banners): ?>
+                    <?php //Hide banners on mobile devices? "Yes" is default.
+                    $hideBannersClass = 'hide-below-768';
+                    if ($h->getCfg('banners/hide') == false)
+                        $hideBannersClass = '';
+                    /*the-slideshow-banners slideshow-banners*/
+                    ?>
+                    <div class="vert-nav the-slideshow-banners slideshow-banners <?php echo $bannersGridClass . ' ' . $hideBannersClass; ?>">
+                        <?php if ($bannersMode == Brander_CmsMenu_Model_Model_Config_Source_Slidertype::SLIDER_TYPE_VIEW_SLIDER_AND_BANNERS):?>
+                            <?php echo $banners; ?>
+                        <?php elseif ($bannersMode == Brander_CmsMenu_Model_Model_Config_Source_Slidertype::SLIDER_TYPE_VIEW_SLIDER_AND_CATEGORIES): ?>
+                            <?php echo $this->getChildHtml('homepage.leftnav.menu'); ?>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php $sliders = $this->getChild('homepage.ultraslideshow.slide'); ?>
+                <script>
+                    var slideshowSrc = <?php echo $sliders->getSliderSrc(); ?>;
+                </script>
+                <div class="the-slideshow <?php echo implode(' ', $sliderClasses); ?>">
+                    <div id="<?php echo $sliderId; ?>" class="slides">
+                        <?php echo $sliders->toHtml();?>
+                    </div> <!-- end: slides -->
+                </div> <!-- end: the-slideshow -->
+            </div> <!-- end: the-slideshow-wrapper -->
+
+    <?php if($this->isPredefined()): ?>
+        </div> <!-- end: the-slideshow-wrapper-outer -->
+    <?php endif; ?>
+
+<script type="text/javascript">
+//<![CDATA[
+    jQuery(function($) {
+        slideshowSwitchSrc();
+        var owl = $('#<?php echo $sliderId; ?>');
+        owl.owlCarousel({
+
+            singleItem: true,
+
+        <?php if ($speed): ?>
+            slideSpeed: <?php echo $speed; ?>,
+        <?php endif; ?>
+
+        <?php if ($autoSpeed): ?>
+            paginationSpeed: <?php echo $autoSpeed; ?>,
+        <?php endif; ?>
+
+        <?php if ($timeout): ?>
+            autoPlay: <?php echo $timeout; ?>,
+        <?php endif; ?>
+
+        <?php if ($pause): ?>
+            stopOnHover: true,
+        <?php endif; ?>
+
+        <?php if ($loop): ?>
+            rewindNav: true,
+            rewindSpeed: 600,
+        <?php else: ?>
+            rewindNav: false,
+        <?php endif; ?>
+
+        <?php if ($smoothHeight): ?>
+            autoHeight: true,
+        <?php endif; ?>
+
+        <?php if ($fx): ?>
+            transitionStyle: '<?php echo $fx; ?>',
+        <?php endif; ?>
+
+            navigation: true,
+            navigationText: false
+
+        }); //end: owl
+
+    });
+
+//]]>
+</script>
+<?php endif; //end: if slides ?>
+
+<script>
+    function slideshowSwitchSrc()
+    {
+        if (slideshowSrc.pad || slideshowSrc.phon || slideshowSrc.regular) {
+        } else {
+            return;
+        }
+        var slideshowSlidesSrc;
+
+        if (MegaMenu.state == 'mobile-pad' && slideshowSrc.pad) {
+            slideshowSlidesSrc = slideshowSrc.pad;
+        } else if (MegaMenu.state == 'mobile-phone' && slideshowSrc.phone) {
+            slideshowSlidesSrc = slideshowSrc.phone;
+        } else {
+            slideshowSlidesSrc = slideshowSrc.regular;
+        }
+
+        jQuery.each(slideshowSlidesSrc, function (index, value) {
+            jQuery('#slideshow-slide-' + index).attr("src", value);
+        });
+    }
+</script>

@@ -1,0 +1,56 @@
+<?php $helperImage = $this->helper('brander_ourcontacts/contact_image'); ?>
+<?php $collection = $this->getCollection(); ?>
+
+<?php if ($collection->getSize()): ?>
+
+    <div class="<?php echo $this->getParentBlock()->getParentBlock()->getElementClass(); ?>">
+        <?php $firstItem = $collection->getFirstItem(); ?>
+
+        <?php if ($collection->getSize() == 1): ?>
+            <div class="header-contacts">
+                <span class=""><?php echo $firstItem->getPhone();?></span>
+            </div>
+        <?php else: ?>
+
+            <div class="dropdown header-contacts">
+                <a href="#" class="dropdown-heading cover">
+                    <span>
+                        <span class="value">
+                            <?php $first = true; ?>
+                            <span class="">&nbsp;&nbsp;<?php echo $firstItem->getPhone(); ?></span>
+                        </span>
+                        <span class="caret">&nbsp;</span>
+                    </span>
+                </a>
+
+                <ul class="dropdown-content left-hand" style="display: none;">
+                    <?php foreach ($collection as $_phoneItem): ?>
+                        <?php if ($first) {
+                            $first = false;
+                            continue;
+                        } ?>
+                        <li>
+                            <a class="no-click" href="#">
+                                <span class="operator-icon">
+                                    <img src="<?php echo $helperImage->init($_phoneItem, 'operator_icon')->resize(20,20); ?>" alt="<?php echo $_phoneItem->getTitle(); ?>"/>
+                                </span>
+                                <span class="content">
+                                    <span><?php echo $_phoneItem->getPhone();?></span>
+                                    <?php if ($_phoneItem->getPhoneDetails()): ?>
+                                        <span><?php echo $_phoneItem->getPhoneDetails();?></span>
+                                    <?php endif; ?>
+                                    <?php if ($_phoneItem->getAdditionalText()): ?>
+                                        <div class="contact-detail-header">
+                                            <span class="">*</span>
+                                            <?php echo $_phoneItem->getAdditionalText();?>
+                                        </div>
+                                    <?php endif; ?>
+                                </span>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

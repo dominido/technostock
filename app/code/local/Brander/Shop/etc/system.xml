@@ -1,0 +1,901 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <design>
+            <groups>
+                <footer>
+                    <fields>
+                        <logo_alt translate="label" module="brander_shop">
+                            <label>Logo Image Alt</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </logo_alt>
+                    </fields>
+                </footer>
+            </groups>
+        </design>
+        <unitop_settings translate="label" module="brander_shop">
+            <label>Site Settings</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>15</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <products_sliders translate="label comment" module="brander_shop">
+                    <label>Products Sliders</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <product_count translate="label comment" module="brander_shop">
+                            <label>Number of Products in Slider</label>
+                            <comment>Value in etc. From 1 to 100</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-100</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product_count>
+                        <breakpoints translate="label comment" module="brander_unitopblog">
+                            <label>Breakpoints</label>
+                            <comment>Assign number of items in a row to specific viewport width. in default: '[0, 1], [320, 2], [480, 3], [768, 4], [960, 5], [1280, 6]'</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </breakpoints>
+                        <responsive translate="label comment" module="brander_shop">
+                            <label>Responsive</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </responsive>
+                        <show_items translate="label comment" module="brander_unitopblog">
+                            <label>Show Items Number</label>
+                            <comment>Number of items in a row displayed if responsive mode is off. Value in etc. from 1 to 100</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-100</validate>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <responsive>0</responsive>
+                            </depends>
+                        </show_items>
+                        <aspect_ratio translate="label comment" module="brander_unitopblog">
+                            <label>Keep Aspect Ratio</label>
+                            <comment>if Yes, you may set Width image only</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </aspect_ratio>
+                        <img_width translate="label comment" module="brander_unitopblog">
+                            <label>Image Width</label>
+                            <comment>Value in pixels</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-1000</validate>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </img_width>
+                        <img_height translate="label comment" module="brander_unitopblog">
+                            <label>Image Height</label>
+                            <comment>Value in pixels</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-1000</validate>
+                            <sort_order>46</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <aspect_ratio>0</aspect_ratio>
+                            </depends>
+                        </img_height>
+                        <init_delay translate="label comment" module="brander_unitopblog">
+                            <label>Init Delay</label>
+                            <comment>Value in milliseconds. From 1 to 100000</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-100000</validate>
+                            <sort_order>47</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </init_delay>
+                        <pagination translate="label comment" module="brander_shop">
+                            <label>Pagination</label>
+                            <comment>Pagination on/off</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pagination>
+                        <random translate="label comment" module="brander_shop">
+                            <label>Random Output</label>
+                            <comment>show in random order</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>60</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </random>
+                        <hide_button translate="label comment" module="brander_shop">
+                            <label>Hide Buttons</label>
+                            <comment>Hide 'buy'/'details'</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </hide_button>
+                        <move translate="label comment" module="brander_shop">
+                            <label>Move</label>
+                            <comment>Number of items that should move on scrolling. From 1 to 10</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-10</validate>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </move>
+                        <loop translate="label comment" module="brander_shop">
+                            <label>Loop</label>
+                            <comment>If set, slider will loop</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </loop>
+                        <timeout translate="label comment" module="brander_unitopblog">
+                            <label>Timeout</label>
+                            <comment>Slider timeout. Set to enable automatic scrolling. Value in milliseconds.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-1000000</validate>
+                            <sort_order>95</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </timeout>
+                        <speed translate="label comment" module="brander_shop">
+                            <label>Scrolling Speed</label>
+                            <comment>Speed (arrows / touch swipe). in milliseconds from 0 to 100000</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100000</validate>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </speed>
+                        <auto_speed translate="label comment" module="brander_shop">
+                            <label>Auto Scrolling Speed</label>
+                            <comment>Speed (automatic scrolling / pagination). in milliseconds from 0 to 100000</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100000</validate>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_speed>
+                        <pause translate="label comment" module="brander_shop">
+                            <label>Pause</label>
+                            <comment>Pause slider on mouse hover</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pause>
+                        <lazy translate="label comment" module="brander_shop">
+                            <label>Lazy Image Loading</label>
+                            <comment>Load image only if need to show it to user</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lazy>
+                        <centered translate="label comment" module="brander_shop">
+                            <label>Centered</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </centered>
+                        <equal_height translate="label comment" module="brander_shop">
+                            <label>Equal Height</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </equal_height>
+                    </fields>
+                </products_sliders>
+            </groups>
+        </unitop_settings>
+        <social_accounts translate="label comment" module="brander_shop">
+            <label>Social Accounts</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>40</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <social_settings translate="label comment" module="brander_shop">
+                    <label>Social Account Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <icons_type translate="label comment" module="brander_shop">
+                            <label>View Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>brander_shop/config_source_socialIconsType</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </icons_type>
+                        <icons_position translate="label comment" module="brander_shop">
+                            <label>Position</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>brander_shop/config_source_socialIconsPosition</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </icons_position>
+                    </fields>
+                </social_settings>
+
+                <social_links translate="label comment" module="brander_shop">
+                    <label>Social Account Links</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <vk translate="label comment" module="brander_shop">
+                            <label>VKontakte</label>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </vk>
+                        <facebook translate="label comment" module="brander_shop">
+                            <label>Facebook</label>
+                            <comment>for example: "http://facebook.com/myaccountlink"</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </facebook>
+                        <googleplus translate="label comment" module="brander_shop">
+                            <label>Google Plus</label>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </googleplus>
+                        <twitter translate="label comment" module="brander_shop">
+                            <label>Twitter</label>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </twitter>
+                        <youtube translate="label comment" module="brander_shop">
+                            <label>Youtube</label>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </youtube>
+                        <mailru translate="label comment" module="brander_shop">
+                            <label>Mail.ru</label>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </mailru>
+                        <odnoklasniki translate="label comment" module="brander_shop">
+                            <label>Odnoklasniki</label>
+                            <sort_order>44</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </odnoklasniki>
+                        <yandex translate="label comment" module="brander_shop">
+                            <label>Yandex</label>
+                            <sort_order>46</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </yandex>
+                        <moikrug translate="label comment" module="brander_shop">
+                            <label>Moi Krug</label>
+                            <sort_order>46</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </moikrug>
+                        <vimeo translate="label comment" module="brander_shop">
+                            <label>Vimeo</label>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </vimeo>
+                        <instagram translate="label comment" module="brander_shop">
+                            <label>Instagram</label>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram>
+                        <pinterest translate="label comment" module="brander_shop">
+                            <label>Pinterest</label>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </pinterest>
+                        <linkedin translate="label comment" module="brander_shop">
+                            <label>LinkedIn</label>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </linkedin>
+                        <renren translate="label comment" module="brander_shop">
+                            <label>RenRen</label>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </renren>
+                        <flickr translate="label comment" module="brander_shop">
+                            <label>Flickr</label>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </flickr>
+                        <tumblr translate="label comment" module="brander_shop">
+                            <label>Tumblr</label>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </tumblr>
+                        <blogger translate="label comment" module="brander_shop">
+                            <label>Blogger</label>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </blogger>
+                    </fields>
+                </social_links>
+            </groups>
+        </social_accounts>
+        <ultimo_design>
+            <groups>
+                <font>
+                    <fields>
+                        <custom_acc_icons_pack translate="label comment" module="brander_shop">
+                            <label>Select Icon Pack</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>brander_shop/config_source_iconsPacksList</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </custom_acc_icons_pack>
+                    </fields>
+                </font>
+                <main>
+                    <fields>
+                        <heading_hotcategories translate="label">
+                            <label>Hot Categories</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_hotcategories>
+
+                        <hotcategories_outer_bg_color translate="label">
+                            <label>Outer Background Color</label>
+                            <comment><![CDATA[Background color of the web browser viewport (applied for HTML <code>body</code> element). Set the same color as for footer background to avoid blank space below the footer on large screens.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </hotcategories_outer_bg_color>
+                        <hotcategories_outer_bg_image translate="label">
+                            <label>Outer Background Image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">wysiwyg/infortis/ultimo/_backgrounds</upload_dir>
+                            <base_url type="media" scope_info="1">wysiwyg/infortis/ultimo/_backgrounds</base_url>
+                            <sort_order>430</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </hotcategories_outer_bg_image>
+                        <hotcategories_inner_bg_color translate="label">
+                            <label>Inner Background Color</label>
+                            <comment><![CDATA[Background color of the web browser viewport (applied for HTML <code>body</code> element). Set the same color as for footer background to avoid blank space below the footer on large screens.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>460</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </hotcategories_inner_bg_color>
+                        <hotcategories_inner_bg_image translate="label">
+                            <label>Inner Background Image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">wysiwyg/infortis/ultimo/_backgrounds</upload_dir>
+                            <base_url type="media" scope_info="1">wysiwyg/infortis/ultimo/_backgrounds</base_url>
+                            <sort_order>480</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </hotcategories_inner_bg_image>
+
+
+                        <heading_blog translate="label">
+                            <label>Blog</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>500</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_blog>
+
+                        <blog_outer_bg_color translate="label">
+                            <label>Outer Background Color</label>
+                            <comment><![CDATA[Background color of the web browser viewport (applied for HTML <code>body</code> element). Set the same color as for footer background to avoid blank space below the footer on large screens.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>510</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_outer_bg_color>
+                        <blog_outer_bg_image translate="label">
+                            <label>Outer Background Image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">wysiwyg/infortis/ultimo/_backgrounds</upload_dir>
+                            <base_url type="media" scope_info="1">wysiwyg/infortis/ultimo/_backgrounds</base_url>
+                            <sort_order>530</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_outer_bg_image>
+                        <blog_inner_bg_color translate="label">
+                            <label>Inner Background Color</label>
+                            <comment><![CDATA[Background color of the web browser viewport (applied for HTML <code>body</code> element). Set the same color as for footer background to avoid blank space below the footer on large screens.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>560</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_inner_bg_color>
+                        <blog_inner_bg_image translate="label">
+                            <label>Inner Background Image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">wysiwyg/infortis/ultimo/_backgrounds</upload_dir>
+                            <base_url type="media" scope_info="1">wysiwyg/infortis/ultimo/_backgrounds</base_url>
+                            <sort_order>580</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_inner_bg_image>
+
+                    </fields>
+                </main>
+                <colors>
+                    <fields>
+                        <social_icon_border_value translate="label comment" module="brander_shop">
+                            <label>Social Icon Border</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-5</validate>
+                            <sort_order>382</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </social_icon_border_value>
+
+                        <label_bestseller_bg_color translate="label comment" module="brander_shop">
+                            <label>Label "Bestseller" Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>525</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </label_bestseller_bg_color>
+                        <label_bestseller_color translate="label comment" module="brander_shop">
+                            <label>Label "Bestseller" Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>526</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </label_bestseller_color>
+                        <labels_font_size translate="label comment" module="brander_shop">
+                            <label>Labels Font Size on Product Sliders</label>
+                            <comment>Value in pixels. From 1 to 50 px</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-50</validate>
+                            <sort_order>527</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </labels_font_size>
+                    </fields>
+                </colors>
+                <category>
+                    <fields>
+                        <grid_item_image_border translate="label comment" module="brander_shop">
+                            <label>Product Image Border</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </grid_item_image_border>
+                        <grid_item_image_border_color translate="label comment" module="brander_shop">
+                            <label>Product Image Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </grid_item_image_border_color>
+
+                        <heading_category_price_slider translate="label comment" module="brander_shop">
+                            <label>Price Slider on Layered Navigation</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_category_price_slider>
+                        <price_slider_color_background translate="label comment" module="brander_shop">
+                            <label>Price Slider Element Outer Selection Line Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </price_slider_color_background>
+                        <price_slider_color_active translate="label comment" module="brander_shop">
+                            <label>Price Slider Element Inner Selection Line Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </price_slider_color_active>
+
+                        <price_slider_color_handle translate="label comment" module="brander_shop">
+                            <label>Price Slider Handle Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </price_slider_color_handle>
+                        <price_slider_color_handle_background translate="label comment" module="brander_shop">
+                            <label>Price Slider Handle Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </price_slider_color_handle_background>
+
+                        <heading_category_labels translate="label comment" module="brander_shop">
+                            <label>Labels</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_category_labels>
+                        <labels_font_size_grid translate="label comment" module="brander_shop">
+                            <label>Labels Font Size (Grid View)</label>
+                            <comment>Value in pixels. From 1 to 50 px</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-50</validate>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </labels_font_size_grid>
+                        <labels_font_size_list translate="label comment" module="brander_shop">
+                            <label>Labels Font Size (List View)</label>
+                            <comment>Value in pixels. From 1 to 50 px</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-50</validate>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </labels_font_size_list>
+                    </fields>
+                </category>
+                <product_page>
+                    <heading_category_labels translate="label comment" module="brander_shop">
+                        <label>Labels</label>
+                        <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                        <sort_order>350</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </heading_category_labels>
+                    <labels_font_size translate="label comment" module="brander_shop">
+                        <label>Labels Font Size</label>
+                        <comment>Value in pixels. From 1 to 50 px</comment>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-number validate-number-range number-range-1-50</validate>
+                        <sort_order>360</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </labels_font_size>
+                </product_page>
+            </groups>
+        </ultimo_design>
+        <ultimo>
+            <groups>
+                <header>
+                    <fields>
+                        <other_general translate="label">
+                            <label>Other Settings</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>2400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </other_general>
+                        <national_flag_switchers translate="label">
+                            <label>Show National Flags on Switchers</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </national_flag_switchers>
+                        <locale_code_switchers translate="label">
+                            <label>Show Language Code (ISO 3166-1)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2420</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </locale_code_switchers>
+                    </fields>
+                </header>
+                <product_page>
+                    <fields>
+                        <heading_reviews translate="label comment" module="brander_shop">
+                            <label>Reviews</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>995</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_reviews>
+
+                        <review_use_star translate="label comment" module="brander_shop">
+                            <label>Use Stars For Reviews Values</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>997</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </review_use_star>
+                        <heading_viewed translate="label comment" module="brander_shop">
+                            <label>Recently Viewed Products</label>
+                            <comment><![CDATA[see also: catalog/recently_products/viewed_count]]></comment>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>444</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_viewed>
+                        <viewed_breakpoints translate="label comment" module="brander_shop">
+                            <label>Breakpoints</label>
+                            <comment><![CDATA[With this parameter you can specify the number of products in a row visible with a particular browser viewport width. Use the following format (this is the default value):<br/>
+							<em>[0, 1], [320, 2], [480, 3], [960, 4], [1280, 5]</em><br/>More details about this parameter can be found in the user guide.<br/>Leave empty to use the default value.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>445</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </viewed_breakpoints>
+                        <viewed_timeout translate="label comment" module="brander_shop">
+                            <label>Timeout</label>
+                            <comment>To enable automatic scrolling of the slider, specify time (in milliseconds) between transitions. Leave empty to disable automatic scrolling. Note that 1000 miliseconds = 1 second.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>446</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </viewed_timeout>
+                    </fields>
+                </product_page>
+                <product_labels>
+                    <fields>
+                        <new_text translate="label comment" module="brander_shop">
+                            <label>"New" Label Text</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </new_text>
+                        <sale_text translate="label comment" module="brander_shop">
+                            <label>"Sale" Label Text</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sale_text>
+                        <bestsellers_text translate="label comment" module="brander_shop">
+                            <label>"Bestseller" Label Text</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>41</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bestsellers_text>
+                        <bestsellers translate="label comment" module="brander_shop">
+                            <label>Show "Bestseller" Label</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bestsellers>
+                        <bestsellers_text translate="label comment" module="brander_shop">
+                            <label>"Bestseller" Label Text</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>41</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bestsellers_text>
+                    </fields>
+                </product_labels>
+            </groups>
+        </ultimo>
+<!--        <cloudzoom>
+            <groups>
+                <general>
+                    <fields>
+                        <use_cloud_zoom_mobile translate="label">
+                            <label>Use Cloud Zoom on Mobile Devices</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_cloud_zoom_mobile>
+                        <use_cloud_zoom_after_width translate="label">
+                            <label>Use Cloud Zoom after window width</label>
+                            <validate>validate-number validate-number-range number-range-1-2000</validate>
+                            <comment>Value in pixels. From 1 to 2000 px</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_cloud_zoom_after_width>
+                    </fields>
+                </general>
+            </groups>
+        </cloudzoom>-->
+<!--        <ultraslideshow>
+            <groups>
+                <general>
+                    <fields>
+                        <enable translate="label comment" module="brander_cmshome">
+                            <label>Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>brander_cmshome/config_source_slideshow_mode</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                    </fields>
+                </general>
+            </groups>
+        </ultraslideshow>-->
+    </sections>
+</config>

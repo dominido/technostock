@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_ProductBanners extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_ProductBanners
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<config>
+    <tabs>
+        <brander translate="label" module="brander_productbanners">
+            <label>brander</label>
+            <sort_order>2000</sort_order>
+        </brander>
+    </tabs>
+    <sections>
+        <brander_productbanners translate="label" module="brander_productbanners">
+            <class>separator-top</class>
+            <label>Product Banners</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <banner translate="label" module="brander_productbanners">
+                    <label>Banner</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <breadcrumbs translate="label">
+                            <label>Use Breadcrumbs</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </breadcrumbs>
+                    </fields>
+                </banner>
+            </groups>
+        </brander_productbanners>
+    </sections>
+</config>

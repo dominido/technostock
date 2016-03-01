@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_SearchAutocomplete>
+            <active>true</active>
+            <codePool>local</codePool>
+            <extension_name>Search Autocomplete</extension_name>
+        </Brander_SearchAutocomplete>
+    </modules>
+</config>

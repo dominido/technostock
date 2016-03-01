@@ -1,0 +1,122 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $_posts = $this->getPosts(); ?>
+<?php if ($_posts->getSize() > 0) :?>
+
+    <?php
+    $_helper = $this->helper('catalog/output');
+    $theme = $this->helper('ultimo');
+    $helpLabels = $this->helper('brander_unitopblog/labels');
+    $helpTemplate = $this->helper('ultimo/template');
+    $helpImg = $this->helper('brander_unitopblog/post_image');
+
+    //Image size
+    $imgWidth = intval($theme->getCfg('category/image_width'));
+    $imgHeight = $imgWidth;
+
+    //If image width is not specified, use default values
+    if ($imgWidth <= 0)
+    {
+        $imgWidth = 295;
+        $imgHeight = 295;
+    }
+
+    //Image aspect ratio settings
+    $keepAspectRatio = $theme->getCfg('category/aspect_ratio');
+    if ($keepAspectRatio)
+    {
+        $imgHeight = 0; //Height will be calculated automatically (based on width) to keep the aspect ratio
+        $catViewKeepFrame = FALSE;
+    }
+    else
+    {
+        $catViewKeepFrame = TRUE;
+    }
+
+    if (Mage::registry('catViewKeepFrame') === NULL)
+    {
+        Mage::register('catViewKeepFrame', $catViewKeepFrame);
+    }
+
+    //Hide toolbar
+    $hideToolbar = false;
+    if ($this->getHideToolbar())
+    {
+        $hideToolbar = true;
+    }
+    ?>
+
+    <div class="category-blog">
+        <?php
+        //Get list configuration array
+        $lc = $theme->getCfgGroup('category_list');
+
+        //List classes
+        $listClasses = '';
+        if ($lc['hover_effect'])
+            $listClasses = ' hover-effect';
+        ?>
+
+        <?php $_iterator = 0; ?>
+        <ul class="post-list<?php if($listClasses) echo $listClasses; ?>" id="post-list">
+            <?php foreach ($_posts as $_post) : ?>
+                <?php $archived = ''; if ($_post->getArchived()): ?>
+                    <?php $archived = ' archived'; ?>
+                <?php endif; ?>
+                <li class="item<?php if( ++$_iterator == sizeof($_posts) ): ?> last<?php endif; ?><?php echo $archived ?>">
+
+                    <?php //Post Image ?>
+                    <div class="product-image-wrapper grid12-4 mobile-grid-half">
+
+                        <a href="<?php echo $_post->getPostUrl() ?>" title="<?php //echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image" style="max-width:<?php echo $imgWidth; ?>px;">
+                            <img id="product-collection-image-<?php echo $_post->getEntityId(); ?>"
+                                 src="<?php echo $helpImg->init($_post, 'preview_image'); ?>"
+                                 alt="<?php //echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+
+                            <?php if ($theme->getCfg('category/alt_image')): ?>
+                                <?php //echo $theme->getAltImgHtml($_product, $imgWidth, $imgHeight); ?>
+                            <?php endif; ?>
+
+                            <?php echo $helpLabels->getLabels($_post); //labels ?>
+                        </a>
+
+                    </div> <!-- end: product-image-wrapper -->
+
+                    <?php //Product description ?>
+                    <div class="post-shop grid12-5 mobile-grid-half">
+                        <div class="post-shop-inner">
+                            <h2 class="post-name"><a href="<?php echo $_post->getPostUrl() ?>" title=""><?php echo $_post->getTitle(); ?></a></h2>
+                            <div class="above-heading"><?php echo $_post->getNote() ?></div>
+                            <?php echo Mage::helper('brander_unitopblog/post')->getAdditionInformation($_post); ?>
+                            <div class="desc std">
+                                <?php echo $_post->getPreviewContent() ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-column grid12-3 mobile-grid-half">
+                        <p><button type="button" title="" class="button btn-cart" onclick="setLocation('<?php echo $_post->getPostUrl() ?>')"><span><span><?php echo $this->__('Learn More') ?></span></span></button></p>
+                    </div>
+                </li>
+            <?php endforeach;?>
+        </ul>
+        <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+        <?php //echo $this->getPagerHtml(); ?>
+    </div>
+<?php endif;?>

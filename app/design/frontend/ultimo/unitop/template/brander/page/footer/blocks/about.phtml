@@ -1,0 +1,28 @@
+<div class="grid12-3">
+    <div>
+    <?php
+/*        <div class="collapsible mobile-collapsible">
+        <h6 class="block-title heading">About Us</h6>*/
+    ?>
+        <div class="block-content">
+            <?php $logoObj = $this->getLogo(); ?>
+            <a href="<?php echo $this->getUrl('') ?>" class="footer-logo">
+                <img src="<?php echo $logoObj->getLogoSrc(); ?>"
+                     alt="<?php echo $logoObj->getLogoAlt(); ?>"
+                     style="padding-bottom:10px;" />
+            </a>
+            <?php if ($address = Mage::helper('brander_cmshome')->getSiteCfg('general/store_information/address')): ?>
+                <h6 class="block-title heading"><?php echo $this->__('Shop Address:') ?></h6>
+                <div class="feature first last">
+                    <p><?php echo $address ?></p>
+                </div>
+            <?php endif; ?>
+            <?php if ($hours = Mage::helper('brander_cmshome')->getSiteCfg('general/store_information/hours')): ?>
+                <h6 class="block-title heading"><?php echo $this->__('Hours of Operations:') ?></h6>
+                <div class="feature first last">
+                    <p><?php echo $hours ?></p>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<?php $helperImage = $this->helper('brander_ourcontacts/contact_image'); ?>
+<?php $collection = $this->getCollection(); ?>
+
+<?php if ($collection): ?>
+    <?php foreach ($collection as $_phoneItem): ?>
+        <div class="no-margin block-footer-contacts">
+            <?php if ($_phoneItem->getOperatorIcon()): ?>
+                <span class="operator-icon">
+                    <img src="<?php echo $helperImage->init($_phoneItem, 'operator_icon')->resize(20,20); ?>" alt="<?php echo $_phoneItem->getTitle(); ?>"/>
+                </span>
+            <?php endif; ?>
+            <div class="content">
+                <span class="phone"><?php echo $_phoneItem->getPhone();?></span>
+                <span class="details"><?php echo $_phoneItem->getPhoneDetails();?></span>
+                <?php if ($_phoneItem->getAdditionalText()): ?>
+                    <div class="additional"><?php echo $_phoneItem->getAdditionalText();?></div>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

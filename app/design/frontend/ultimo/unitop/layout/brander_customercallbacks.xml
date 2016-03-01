@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/brander/customercallbacks/callback.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/brander/custom.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/brander/customercallbacks/style.css</name>
+            </action>
+        </reference>
+        <reference name="footer">
+            <reference name="footer_blocks.contacts">
+					<block type="core/text_list" name="footer.callbacks" as="footer.callbacks">
+						<block type="core/template" name="callback_link" template="brander/customercallbacks/callback_link.phtml"/>
+						<block type="core/template" name="callback_form" template="brander/customercallbacks/callback_form.phtml"/>
+					</block>
+            </reference>
+        </reference>
+
+        <reference name="header">
+            <block type="core/template" name="callback_link_top" template="brander/customercallbacks/callback_header_link.phtml"/>
+        </reference>
+    </default>
+</layout>

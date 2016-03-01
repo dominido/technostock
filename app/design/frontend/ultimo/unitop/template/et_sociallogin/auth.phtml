@@ -1,0 +1,50 @@
+<?php
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_SocialLogin
+ * @copyright  Copyright (c) 2015 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-commercial-v1/   ETWS Commercial License (ECL1)
+ */
+
+
+/** @var $helper ET_SocialLogin_Helper_Data */
+/** @var $this ET_SocialLogin_Block_Auth */
+$helper = Mage::helper('et_sociallogin');
+$_helper = $this->helper('brander_shop');
+$accs = $this->getSocialProviders();
+$storeId = Mage::app()->getStore()->getId();
+$sizeClass = $helper->getSocialIconsSizeClass($storeId);
+$iconsClass = $helper->getSocialIconsClass($storeId);
+$socialSettings = $this->helper('brander_shop')->getCfg('social_accounts/social_settings');
+?>
+<?php if(count($accs)):?>
+    <div class="socibutton social-auth <?php echo $this->getSize(); ?> social-links ib-wrapper--<?php echo $socialSettings->getIconsType()?>">
+        <h4><?php echo $this->getLabelText(); ?></h4>
+        <ul class="social-list">
+            <?php foreach ($accs as $provider => $item): ?>
+                <li>
+                    <a href="<?php echo Mage::getUrl('social/auth/login', array('provider' => $provider, 'responsetype' => $this->getResponseType())) ?>"
+                       title="<?php echo $item['auth_title'] ?>">
+                        <span class="ib ib-hover ic ic-lg ic-<?php echo $provider; ?>"></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+
+        <div class="clear"></div>
+    </div>
+
+<?php endif; ?>
+
+

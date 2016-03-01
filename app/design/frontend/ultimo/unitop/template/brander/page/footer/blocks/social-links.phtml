@@ -1,0 +1,15 @@
+<?php
+/** @var Brander_Shop_Helper_Data $helper */
+$helper = $this->helper('brander_shop');
+$socialLinks = $helper->getCfg('social_accounts/social_links');
+$socialSettings = $helper->getCfg('social_accounts/social_settings');
+?>
+<div class="social-links ib-wrapper--<?php echo $socialSettings->getIconsType()?>">
+    <?php foreach ($socialLinks->getData() as $key => $link): ?>
+        <?php if ($link): ?>
+            <a href="<?php echo $link; ?>" title="<?php echo $this->__('Join us on %s', $this->__($key)); ?>" target="_blank">
+                <span class="ib ib-hover ic ic-lg ic-<?php echo $key; ?>"></span>
+            </a>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</div>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <PAGE_TYPE_CONTACTTYPE>
+        <remove name="cms.page.title" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/brander/contacts/map.js</name>
+            </action>
+        </reference>
+        <reference name="cmsadvanced.page">
+            <block type="brander_contacts/maps" name="contacts.map" template="brander/contacts/maps.phtml"/>
+            <block type="brander_ourcontacts/headerContacts" name="blocks.contacts" as="blocks.contacts" template="brander/contacts/contacts.phtml"/>
+        </reference>
+    </PAGE_TYPE_CONTACTTYPE>
+</layout>

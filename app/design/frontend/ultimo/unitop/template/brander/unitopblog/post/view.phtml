@@ -1,0 +1,48 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php $_post = $this->getCurrentPost();?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<?php if ($_post->getPostImage()) :?>
+    <div class="post-post_image">
+        <img src="<?php echo Mage::helper('brander_unitopblog/post_image')->init($_post, 'post_image');?>" alt="<?php echo $this->escapeHtml($_post->getTitle());?>" />
+    </div>
+<?php elseif ($_post->getPreviewImage() && !$_post->getTypeVideo()): ?>
+    <div class="post-preview_image">
+        <img src="<?php echo Mage::helper('brander_unitopblog/post_image')->init($_post, 'preview_image');?>" alt="<?php echo $this->escapeHtml($_post->getTitle());?>" />
+    </div>
+<?php endif; ?>
+<div class="page-title post-title">
+    <h1><?php echo $_post->getTitle(); ?></h1>
+</div>
+<div class="post-info">
+    <div class="post-post_date">
+        <?php echo Mage::helper('brander_unitopblog')->__("Post Date");?>: <?php echo Mage::helper('core')->formatDate($_post->getPostDate(), 'full');?>
+    </div>
+    <?php if ($_post->getManualAuthorName()) :?>
+        <div class="author_name">
+            <?php echo Mage::helper('brander_unitopblog')->__('Author');?>: <?php echo $_post->getManualAuthorName();?>
+        </div>
+    <?php endif;?>
+</div>
+<div class="post-post_content">
+    <?php echo $_post->getPostContent();?>
+</div>
+<div class="clearer"></div>
+

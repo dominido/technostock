@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout>
+    <catalog_product_view>
+        <reference name="content">
+            <reference name="product.info">
+                <block type="brander_seo/catalog_product_microformats" name="product.microformats" template="brander/seo/microformats.phtml" />
+            </reference>
+        </reference>
+    </catalog_product_view>
+</layout>

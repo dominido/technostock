@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_UnitopBlog extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<widgets>
+    <unitopblog_postscategory_view type="brander_unitopblog/postscategory_widget_view" translate="name description" module="brander_unitopblog">
+        <name>Post Category view</name>
+        <description>Post Category view widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <postscategory_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Post Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>brander_unitopblog/adminhtml_postscategory_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Post Category</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>120</sort_order>
+            </postscategory_id>
+        </parameters>
+    </unitopblog_postscategory_view>
+    <unitopblog_postscategory_link type="brander_unitopblog/postscategory_widget_link" translate="name description" module="brander_unitopblog">
+        <name>Post Category link</name>
+        <description>Post Category link widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <postscategory_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Post Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>brander_unitopblog/adminhtml_postscategory_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Post Category</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>130</sort_order>
+            </postscategory_id>
+        </parameters>
+    </unitopblog_postscategory_link>
+    <unitopblog_post_view type="brander_unitopblog/post_widget_view" translate="name description" module="brander_unitopblog">
+        <name>Post view</name>
+        <description>Post view widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <post_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Post</label>
+                <type>label</type>
+                <helper_block>
+                    <type>brander_unitopblog/adminhtml_post_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Post</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>120</sort_order>
+            </post_id>
+        </parameters>
+    </unitopblog_post_view>
+    <unitopblog_post_link type="brander_unitopblog/post_widget_link" translate="name description" module="brander_unitopblog">
+        <name>Post link</name>
+        <description>Post link widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <post_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Post</label>
+                <type>label</type>
+                <helper_block>
+                    <type>brander_unitopblog/adminhtml_post_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Post</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>130</sort_order>
+            </post_id>
+        </parameters>
+    </unitopblog_post_link>
+    <unitopblog_postscategory_subtree type="brander_unitopblog/postscategory_widget_subtree" translate="name description" module="brander_unitopblog">
+        <name>Post Category subtree</name>
+        <description>Post Category subtree widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <postscategory_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Post Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>brander_unitopblog/adminhtml_postscategory_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Post Category</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </postscategory_id>
+            <recursion type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <value>0</value>
+                <label>Levels to show (0 for all)</label>
+                <type>text</type>
+                <sort_order>20</sort_order>
+            </recursion>
+        </parameters>
+    </unitopblog_postscategory_subtree>
+</widgets>

@@ -1,0 +1,67 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php $_post = $this->getCurrentPost();?>
+<?php if ($_post) :?>
+    <div class="post-widget-view">
+        <h3><?php echo $_post->getTitle()?></h3>
+        <div>
+            <div class="title-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__('Title');?>:<?php echo $_post->getTitle();?>
+            </div>
+            <div class="post_date-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__("Post Date");?>: <?php echo Mage::helper('core')->formatDate($_post->getPostDate(), 'full');?>
+            </div>
+            <div class="author-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__("Author");?>:<?php echo $_post->getAttributeText('author');?>
+            </div>
+            <div class="manual_author_name-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__('Manual Author Name');?>:<?php echo $_post->getManualAuthorName();?>
+            </div>
+            <div class="preview_image-widget">
+                <?php if ($_post->getPreviewImage()) :?>
+    <img src="<?php echo Mage::helper('brander_unitopblog/post_image')->init($_post, 'preview_image')->resize(75);?>" alt="<?php echo $this->escapeHtml($_post->getTitle());?>" />
+<?php endif;?>
+            </div>
+            <div class="post_image-widget">
+                <?php if ($_post->getPostImage()) :?>
+    <img src="<?php echo Mage::helper('brander_unitopblog/post_image')->init($_post, 'post_image')->resize(75);?>" alt="<?php echo $this->escapeHtml($_post->getTitle());?>" />
+<?php endif;?>
+            </div>
+            <div class="preview_content-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__('Preview Content');?>:<?php echo $_post->getPreviewContent();?>
+            </div>
+            <div class="post_content-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__('Post Content');?>:<?php echo $_post->getPostContent();?>
+            </div>
+            <div class="show_on_homepage-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__("Show on Homepage");?>:<?php echo ($_post->getShowOnHomepage() == 1) ? Mage::helper('brander_unitopblog')->__('Yes') : Mage::helper('brander_unitopblog')->__('No') ?>
+            </div>
+            <div class="new_from-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__("New From");?>: <?php echo Mage::helper('core')->formatDate($_post->getNewFrom(), 'full');?>
+            </div>
+            <div class="new_before-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__("New Before");?>: <?php echo Mage::helper('core')->formatDate($_post->getNewBefore(), 'full');?>
+            </div>
+            <div class="archived-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__("Archived");?>:<?php echo ($_post->getArchived() == 1) ? Mage::helper('brander_unitopblog')->__('Yes') : Mage::helper('brander_unitopblog')->__('No') ?>
+            </div>
+
+        </div>
+    </div>
+<?php endif;?>

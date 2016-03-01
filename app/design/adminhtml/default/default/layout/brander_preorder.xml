@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_Preorder extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_Preorder
+ * @copyright  	Copyright (c) 2015
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+	<!-- Pre Order grid action -->
+	<adminhtml_preorder_preorder_index>
+		<reference name="menu">
+			<action method="setActive">
+				<menupath>preorder/preorder</menupath>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="preorder/adminhtml_preorder" name="preorder" />
+		</reference>
+	</adminhtml_preorder_preorder_index>
+	<adminhtml_preorder_preorder_grid>
+		<block type="core/text_list" name="root" output="toHtml">
+			<block type="preorder/adminhtml_preorder_grid" name="preorder_grid"/>
+		</block>
+	</adminhtml_preorder_preorder_grid>
+	<!-- Preorder add/edit action -->
+	<adminhtml_preorder_preorder_edit>
+		<update handle="editor"/>
+		<reference name="menu">
+			<action method="setActive">
+				<menupath>preorder/preorder</menupath>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="preorder/adminhtml_preorder_edit" name="preorder_edit"></block>
+		</reference>
+		<reference name="left">
+			<block type="preorder/adminhtml_preorder_edit_tabs" name="preorder_tabs"></block>
+		</reference> 
+	</adminhtml_preorder_preorder_edit>
+</layout>

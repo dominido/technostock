@@ -1,0 +1,212 @@
+<?php
+$helper = Mage::helper('brander_shop');
+?>
+<?php /** @var Brander_Opcheckout_Block_Onepage $this */ ?>
+<div id="uni-wrapper-billing-div" class="uni-wrapper-billing" >
+    <form id="co-billing-form" action="">
+        <input type="hidden" id="hidden_opcheckout_order_comment" name="order_comment" value=""/>
+        <input type="hidden" id="hidden_newsletter_subscription" name="subscription_newsletter" value=""/>
+
+        <?php if($this->customerHasAddresses() && $this->getCustomer()->getPrimaryBillingAddress()) { ?>
+            <?php
+                $billData = $this->getCustomer()->getPrimaryBillingAddress()->getData();
+                if(is_array($billData) && count($billData)>0) {
+                    $firstname  = $billData['firstname'];
+                    $lastname   = $billData['lastname'];
+                    $city       = $billData['city'];
+                    $region     = $billData['region_id'];
+                    $postcode   = $billData['postcode'];
+                    $country_id = $billData['country_id'];
+                    $telephone  = $billData['telephone'];
+                    $street1    = $billData['street'];
+                    $region_id  = $billData['region_id'];
+                }
+            ?>
+        <?php } else { ?>
+            <?php
+                $firstname  = $this->htmlEscape($this->getAddressBilling()->getFirstname());
+                if (!$firstname) {
+                    $firstname   = $this->htmlEscape($this->getCustomer()->getFirstname());
+                }
+                $lastname   = $this->htmlEscape($this->getAddressBilling()->getLastname());
+                if (!$lastname) {
+                    $lastname   = $this->htmlEscape($this->getCustomer()->getLastname());
+                }
+                $city       = $this->htmlEscape($this->getAddressBilling()->getCity());
+                $region     = $this->htmlEscape($this->getAddressBilling()->getRegionId());
+                $postcode   = $this->htmlEscape($this->getAddressBilling()->getPostcode());
+                $telephone  = $this->htmlEscape($this->getAddressBilling()->getTelephone());
+                if (!$telephone) {
+                    $telephone   = $this->htmlEscape($this->getCustomer()->getTelephone());
+                }
+                $street1    = $this->htmlEscape($this->getAddressBilling()->getStreet(1));
+                $email      = $this->htmlEscape($this->getAddressBilling()->getEmail());
+                //$street2  = $this->htmlEscape($this->getAddressBilling()->getStreet(2));
+                $region_id  = $this->getAddressBilling()->getRegionId();
+                $createAccount    = $this->getCreateAccount();
+                $country_id       = $this->htmlEscape($this->getAddressBilling()->getCountryId());
+           ?>
+        <?php } ?>
+
+        <div id="billing-imformation-fields">
+            <input type="hidden" name="submitCustomCheckout" value="save"/>
+            <input type="hidden" name="billing[address_id]" value="<?php echo $this->getQuote()->getBillingAddress()->getId() ?>" id="billing:address_id"/>
+            <input type="hidden" name="billing[postcode]" id="billing:postcode" value="<?php echo ($postcode) ? $postcode : '--- ---'; ?>"/>
+
+            <div class="field">
+                <label for="billing:firstname" class="required"><?php echo $this->__('First Name') ?></label>
+                <div class="input-box">
+                    <input name="billing[firstname]" type="text" id="billing:firstname"
+                       class="required-entry input-text normal-box" onblur="javascript: syncShipping(false)" value="<?php echo $firstname; ?>">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="billing:lastname" class="required"><?php echo $this->__('Last Name') ?></label>
+                <div class="input-box">
+                    <input name="billing[lastname]" type="text" id="billing:lastname"
+                           class="required-entry input-text normal-box" onblur="javascript: syncShipping(false)" value="<?php echo $lastname; ?>"/>
+                </div>
+            </div>
+
+            <?php if(!$this->isCustomerLoggedIn()): ?>
+                <div class="field">
+                    <label for="billing:email">
+                        <?php echo $this->__('Email Address') ?><span class="required">*</span>
+                    </label>
+                    <div class="input-box">
+                        <input name="billing[email]" type="text" id="billing:email" class="validate-email required-entry input-text normal-box"
+                               value="<?php echo $email; ?>" onblur="javascript: syncShipping(false)" />
+                    </div>
+                </div>
+            <?php endif;?>
+
+            <div class="field">
+                <label for="billing:telephone" class="masked-telephone">
+                    <?php echo $this->__('Telephone') ?><span class="required">*</span>
+                </label>
+                <div class="input-box">
+                    <?php if ($helper->getCfg('customer/telephone_settings')->getEnablePhoneMask()): ?>
+                        <?php $mask = $helper->getCfg('customer/telephone_settings')->getPhoneMask(); ?>
+                        <input name="billing[telephone]" data-format="<?php echo $mask; ?>" type="text" id="billing:telephone" class="required-entry input-text normal-box form-control bfh-phone validate-phone-no-empty" value="<?php echo $telephone; ?>" onblur="javascript: syncShipping(false)"/>
+                    <?php else: ?>
+                        <input name="billing[telephone]" type="text" id="billing:telephone" class="required-entry input-text normal-box bfh-phone validate-phone-no-empty" value="<?php echo $telephone; ?>" onblur="javascript: syncShipping(false)"/>
+                    <?php endif;?>
+                </div>
+            </div>
+
+            <?php if(Mage::helper('brander_opcheckout')->showCountries()) { ?>
+                <div class="field">
+                    <label for="billing:country_id"><?php echo $this->__('Country') ?></label><span class="required">*</span>
+                </div>
+                <?php echo $this->getCountryHtmlSelectOPcheckout('billing',$country_id) ?>
+            <?php } else { ?>
+                <div class="input-box">
+                    <input type="hidden" id="billing:country_id" name="billing[country_id]" value="<?php echo Mage::helper('brander_opcheckout')->getDefaultCountryId()?>"/>
+                </div>
+            <?php } ?>
+
+            <?php if(Mage::helper('brander_opcheckout')->showStates()): ?>
+                <div class="field">
+                    <label for="billing:region"><?php echo $this->__('Region') ?></label><span class="required">*</span>
+                    <div class="input-box">
+                        <select <?php echo (!Mage::helper('brander_opcheckout')->showStates()) ? 'style="display:none"' : ''?> id="billing:region_id" name="billing[region_id]"
+                                                                                                                               title="<?php echo $this->__('State/Province') ?>" class="validate-select com-box" onchange="javascript: syncShipping(false)">
+                            <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                        </select>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $('billing:region_id').setAttribute('defaultValue',  "<?php echo $region_id; ?>");
+                </script>
+            <?php else: ?>
+            <div style="display: none;">
+                <select style="display: none; visibility: hidden;" id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('Region') ?>" class="validate-select com-box" onchange="javascript: syncShipping(false)">
+                    <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                </select>
+            </div>
+            <?php endif; ?>
+
+            <?php if(Mage::helper('brander_opcheckout')->showStates()): ?>
+                <div class="field" style="display: none">
+                    <label for="billing:region"><?php echo $this->__('Region') ?></label><span class="required">*</span>
+                    <div class="input-box">
+                        <input type="text" id="billing:region"
+                               name="billing[region]" value="<?php echo $region; ?>"
+                               title="<?php echo $this->__('Region') ?>" style="display:none"
+                               class="required-entry input-text com-box" onblur="javascript: syncShipping(false)"/>
+                    </div>
+                </div>
+            <?php else: ?>
+                <input type="hidden" id="billing:region" name="billing[region]"
+                       value="<?php echo Mage::helper('brander_opcheckout')->getDefaultState()?>"
+                       class="required-entry input-text com-box"/>
+            <?php endif; ?>
+
+            <div class="field">
+                <label for="billing:city">
+                    <?php echo $this->__('City') ?><span class="required">*</span>
+                </label>
+                <div class="input-box">
+                    <input type="text" name="billing[city]"  class="required-entry input-text normal-box" id="billing:city" value="<?php echo $city; ?>" onBlur="javascript: syncShipping(false)"/>
+                </div>
+            </div>
+            <div class="field street1" style="display: none">
+                <label for="billing:street1">
+                    <?php echo $this->__('Address') ?>
+                </label>
+                <div class="input-box">
+                    <input type="text" name="billing[street][0]" id="billing:street1"  class="required-entry input-text com-box" value="<?php echo ($street1) ? $street1 : '--- ---' ; ?>" onBlur="javascript: syncShipping(false)"/>
+                </div>
+            </div>
+
+            <?php if(!$this->isCustomerLoggedIn()): ?>
+                <?php if( $this->getQuote()->isAllowedGuestCheckout() && Mage::helper('brander_opcheckout')->enableCreateAccountCheckbox()){ ?>
+                    <div class="field account-creation" style="display: none">
+                        <input id="id_create_account" type="checkbox" name="create_account" value="1" checked="checked" />
+                    </div>
+                    <div class="field account-pswd-field" style="display:none">
+                        <div class="input-box">
+                             <?php $password = Mage::helper('core')->getRandomString(7) ?>
+                            <input type="hidden" class="required-entry validate-password input-text normal-box"
+                                value="<?php echo $password; ?>" id="billing:customer_password" name="billing[customer_password]"/>
+                            <input type="hidden" class="required-entry validate-password input-text normal-box"
+                                value="<?php echo $password; ?>" id="billing:confirm_password" name="billing[confirm_password]"/>
+                        </div>
+                    </div>
+                <?php } else { ?>
+                    <input type="hidden" name="create_account" value="0" />
+                <?php } ?>
+            <?php endif; ?>
+
+            <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
+                <?php /*
+                    <input type="checkbox" name="billing[save_in_address_book]" value="1" title="<?php echo $this->__('Save in address book') ?>" id="billing:save_in_address_book" onchange="if(window.shipping){ shipping.setSameAsBilling(false);}" <?php if ($this->getAddress()->getSaveInAddressBook()): ?> checked="checked"<?php endif;?> class="checkbox" /><label for="billing:save_in_address_book"><?php echo $this->__('Save in address book'); ?></label>
+                 */ ?>
+            <?php else: ?>
+                <input type="hidden" name="billing[save_in_address_book]" value="1" />
+            <?php endif; ?>
+        </div>
+        <?php if ($this->canShip() && Mage::helper('brander_opcheckout')->showShippingAsBilling()) { ?>
+            <input type="checkbox" value ="1" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" onclick="javascript: syncWithShipping(this.checked)" <?php echo (($this->isCustomerLoggedIn()==1)?'checked="checked"':'checked="checked"');?>/>
+            <label for="billing:use_for_shipping_yes"><?php echo $this->__('Ship to the same address') ?></label>
+        <?php } else { ?>
+            <input type="hidden" value ="1" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" />
+        <?php } ?>
+    </form>
+    <script type="text/javascript">
+        var billingForm = new VarienForm('co-billing-form');
+        var billingRegionUpdater = new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', countryRegions);
+    </script>
+    <script type="text/javascript">
+        //<![CDATA[
+        Validation.add('validate-phone-no-empty','<?php echo $this->__('You failed to enter phone.')?>',function(the_field_value){
+            if(the_field_value == '+380 ')
+            {
+                return false;
+            }
+            return true;
+        });
+        //]]>
+    </script>
+</div>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <siteheart translate="label" module="siteheart">
+            <label>SiteHeart Chat</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>25</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <options translate="label" module="siteheart">
+                    <label>SiteHeart Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <siteheart_enabled translate="label" module="siteheart">
+                            <label>Enable SiteHeart</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </siteheart_enabled>
+                        <siteheart_widgetid translate="label" module="siteheart">
+                            <label>Widget ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </siteheart_widgetid>
+                    </fields>
+                </options>
+            </groups>
+        </siteheart>
+    </sections>
+</config>

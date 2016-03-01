@@ -1,0 +1,62 @@
+<?php
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_SocialLogin
+ * @copyright  Copyright (c) 2015 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-commercial-v1/   ETWS Commercial License (ECL1)
+ */
+?>
+
+<?php
+/** @var Brander_Shop_Helper_Data $_helper */
+$_helper = $this->helper('brander_shop');
+$socialSettings = $_helper->getCfg('social_accounts/social_settings');
+?>
+
+<?php
+$socialNetworks = array(
+    '1' => 'vk',
+    '2' => 'facebook',
+    '3' => 'mailru',
+    '4' => 'odnoklassniki',
+    '5' => 'twitter',
+    '6' => 'google',
+);
+ksort($socialNetworks);
+/** @var  $helper ET_SocialLogin_Helper_Data*/
+$helper = Mage::helper('et_sociallogin');
+$storeId = Mage::app()->getStore()->getId();
+$sizeClass = $helper->getSocialIconsSizeClass($storeId, 'share');
+$iconsClass = $helper->getSocialIconsClass($storeId, 'share');
+
+ if ($helper->isSharingEnabled()): ?>
+    <?php $item = $this->getShareData();?>
+     <div class="social-links ib-wrapper--<?php echo $socialSettings->getIconsType()?>">
+<?php /*
+        <b><?php echo $this->getData('label_text'); ?></b><br>
+ */ ?>
+        <ul class="social-list">
+        <?php foreach ($socialNetworks as $socialNetwork): ?>
+             <?php if ($helper->isProviderEnabled($socialNetwork)): ?>
+                <li>
+                    <a onclick="Share.<?php echo $socialNetwork ?>('<?php echo $item['url'] ?>', '<?php echo $item['title'] ?>', '<?php echo $item['image'] ?>', '<?php echo $item['description'] ?>')"
+                         title="<?php echo $helper->getShareIconTitle($socialNetwork);?>">
+                         <span class="ib ib-hover <?php echo $socialNetwork ?> ic-lg ic-<?php echo $socialNetwork; ?>"></span>
+                     </a>
+                </li>
+            <?php endif; ?>
+         <?php endforeach; ?>
+        </ul>
+     </div>
+<?php endif; ?>

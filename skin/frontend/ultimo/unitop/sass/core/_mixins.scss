@@ -1,0 +1,33 @@
+@mixin bp($feature, $value) {
+  // Set global device param
+  $media: only screen;
+
+  @media #{$media} and ($feature: $value) {
+	@content;
+  }
+}
+
+@mixin trs($transition...) {
+  -webkit-transition: $transition;
+  transition:         $transition;
+}
+
+@mixin mq($mq) {
+  @if $mq == retina {
+    @media
+    (-webkit-min-device-pixel-ratio: 1.5),
+    (min-resolution: 120dpi) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $mqpx) { @content; }
+  }
+}
+
+@mixin cleaner {
+  &:after {
+	content: '';
+    display: block;
+	clear: both;
+  }
+}

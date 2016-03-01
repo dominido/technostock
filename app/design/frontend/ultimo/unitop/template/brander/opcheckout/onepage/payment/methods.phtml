@@ -1,0 +1,29 @@
+<?php
+/** @var Mage_Checkout_Block_Onepage_Payment_Methods $this */
+/** @var Brander_Opcheckout_Helper_Data $opcheckoutHelper */
+$opcheckoutHelper = Mage::helper('brander_opcheckout');
+?>
+<div class="field">
+    <label for="payment-method"><?php echo $this->__('Payment Methods:') ?></label>
+    <div class="input-box">
+        <select id="payment-method" class="validate-select" name="payment[method]"
+                onchange="payment.loadPaymentMethods();">
+            <?php if(sizeof($this->getMethods()) > 0): ?>
+                <?php foreach ($this->getMethods() as $_method): $_code = $_method->getCode() ?>
+                    <option value="<?php echo $_code ?>"
+                        <?php if($this->getSelectedMethodCode()==$_code) { ?> selected="selected"<?php } ?>>
+                        <?php echo $_method->getTitle() ?>
+                    </option>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </select>
+    </div>
+</div>
+
+<?php foreach ($this->getMethods() as $_method):
+    $_code = $_method->getCode();
+    ?>
+    <?php if($html = $this->getChildHtml('payment.method.'.$_code)): ?>
+        <?php echo $html; ?>
+    <?php endif; ?>
+<?php endforeach; ?>

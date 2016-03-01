@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_SocialLogin
+ * @copyright  Copyright (c) 2013 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-commercial-v1/   ETWS Commercial License (ECL1)
+ */
+ -->
+<layout>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" modules="social_login/general/" options="active_sociallogin, active" conditions="1, 1">
+                <name>Social Accounts</name>
+                <path>social/auth/linkcustomer</path>
+                <label>Social accounts</label>
+            </action>
+        </reference>
+    </customer_account>
+
+    <social_auth_linkcustomer>
+        <label>Customer Social Accounts</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="et_sociallogin/Customer_Account" name="customer.social.account" as="customer_social_account"/>
+        </reference>
+    </social_auth_linkcustomer>
+
+    <!-- Ask users what they want to do when they enter an existing customer email address -->
+    <social_auth_register>
+        <label>Customer Account Registration Form</label>
+        <!-- Mage_Customer -->
+        <remove name="right"/>
+        <remove name="left"/>
+
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/popup.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="customer/form_register" name="customer_form_register" template="et_sociallogin/register.phtml">
+                <block type="page/html_wrapper" name="customer.form.register.fields.before" as="form_fields_before"
+                       translate="label">
+                    <label>Form Fields Before</label>
+                </block>
+            </block>
+        </reference>
+    </social_auth_register>
+    <catalog_product_view>
+        <reference name="content">
+            <remove name="product.info.sharing"/>
+        </reference>
+
+        <reference name="product.info">
+            <block type="core/text_list" name="product.info.sharing.social" as="sharing_social" />
+        </reference>
+
+        <reference name="product.info.sharing.social">
+            <block type="et_sociallogin/share" name="et.share">
+                <action method="setData" block="et.share">
+                    <name>item</name>
+                    <value helper="et_sociallogin/share/getProductShareData"/>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view>
+    <clnews_newsitem_view>
+        <reference name="newsitem">
+            <action method="setTemplate">
+                <template>et_sociallogin/news/clnews/newsitem.phtml</template>
+            </action>
+        </reference>
+    </clnews_newsitem_view>
+
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>et_sociallogin/social.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>et_sociallogin/social.js</name>
+                <params/>
+            </action>
+            <action method="addJs" ifconfig="social_login/general/enable_jquery">
+                <script>et/sociallogin/jquery-1.10.2.js</script>
+            </action>
+            <action method="addJs">
+                <script>et/sociallogin/noconflict.js</script>
+            </action>
+            <action method="addJs">
+                <script>et/sociallogin/share.js</script>
+            </action>
+            <block type="et_sociallogin/meta" template="et_sociallogin/meta.phtml" name="social.meta-tags"/>
+        </reference>
+    </default>
+
+
+    <!-- Login page, captcha disabled. Need to insert in template getChildHtml('social_auth')-->
+
+    <!--    <customer_account_login>
+        <reference name="customer_form_login">
+            <block type="et_sociallogin/auth" name="customer.account.login.auth" as="social_auth">
+                <action method="setData">
+                    <key>size</key>
+                    <value>small</value>
+                </action>
+                <action method="setData">
+                    <key>response_type</key>
+                    <value>popup</value>
+                </action>
+                <action method="setData">
+                    <key>label_text</key>
+                    <value>Log in with:</value>
+                </action>
+            </block>
+        </reference>
+    </customer_account_login>-->
+
+    <!-- Login page, captcha enabled.-->
+
+<!--        <customer_account_login>
+            <reference name="customer_form_login">
+                <reference name="form.additional.info">
+                    <block type="et_sociallogin/auth" name="customer.account.login.auth" as="social_auth" />
+                </reference>
+            </reference>
+        </customer_account_login>-->
+
+    <!-- Checkout page, captcha disabled. Need to insert in template getChildHtml('social_auth')-->
+        <checkout_onepage_index>
+            <reference name="checkout.onepage.login">
+                <block type="et_sociallogin/auth" name="checkout.onepage.auth" as="social_auth" />
+            </reference>
+        </checkout_onepage_index>
+
+</layout>

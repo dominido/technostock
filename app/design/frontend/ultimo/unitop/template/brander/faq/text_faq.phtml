@@ -1,0 +1,33 @@
+<?php
+/** @var Brander_Faq_Block_Faq  $this */
+/** @var Brander_Faq_Helper_Data $helper */
+$helper = Mage::helper('brander_faq');
+$limit = $helper->getFaqLimit();
+$collectionSize = $this->getCollectionSize();
+$questionCollection = $this->getFaqCollection(); ?>
+<?php if ($questionCollection): ?>
+    <?php if($questionCollection->getSize()): ?>
+        <div id="faq-items">
+            <ul class="faq-list">
+                <?php $i = 1; foreach ($questionCollection as $question): ?>
+                    <li class="faq-item">
+                        <div class="faq-number"><?php echo $i++; ?></div>
+                        <div class="faq-question"><span><?php echo $question->getQuestion()?></span>&nbsp;<span><i class="ico-down-arrow"></i></span></div>
+                        <div class="faq-answer"><?php echo $question->getAnswer()?></div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php if($count = $this->getButtonMore()): ?>
+            <div class="btn-set">
+                <a href="#" id="show-more-faq" class="btn-show-more-faq">
+                    <?php echo $helper->__('Show more') ?>
+                    (<span id="faq-more-qty"><?php echo $count; ?></span>)
+                </a>
+            </div>
+        <?php endif; ?>
+        <script type="text/javascript">
+            var doMoreFaq = new Morefaq.Config(<?php echo $this->getFaqConfig(); ?>);
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

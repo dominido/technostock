@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <adminhtml_marketexport_index>
+        <reference name="content">
+            <block type="marketexport/adminhtml_export" name="export" />
+        </reference>
+    </adminhtml_marketexport_index>
+    <adminhtml_marketexport_new>
+        <!-- <reference name="head">
+            <action method="addJs"><script>oggetto/marketexport.js</script></action>
+        </reference> -->
+        <reference name="content">
+            <block type="marketexport/adminhtml_edit" name="export_edit" />
+        </reference>
+    </adminhtml_marketexport_new>
+</layout>

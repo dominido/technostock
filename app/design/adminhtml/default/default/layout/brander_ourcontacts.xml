@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_OurContacts extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_OurContacts
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_ourcontacts_contact_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_shop/shop_content/brander_ourcontacts/contact</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_ourcontacts/adminhtml_contact" name="contact">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+
+        </reference>
+    </adminhtml_ourcontacts_contact_index>
+    <adminhtml_ourcontacts_contact_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_ourcontacts/adminhtml_contact_grid" name="contact_grid"/>
+        </block>
+    </adminhtml_ourcontacts_contact_grid>
+    <!-- Contact add/edit action -->
+    <adminhtml_ourcontacts_contact_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_shop/shop_content/brander_ourcontacts/contact</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_ourcontacts/adminhtml_contact_edit" name="contact_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-"></block>
+            <block type="brander_ourcontacts/adminhtml_contact_edit_tabs" name="contact_tabs"></block>
+        </reference>
+        <reference name="head">
+            <action method="setCanLoadTinyMce"><load>1</load></action>
+        </reference>
+        <reference name="js">
+            <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
+        </reference>
+    </adminhtml_ourcontacts_contact_edit>
+
+    <adminhtml_ourcontacts_contact_attribute_index>
+        <reference name="content">
+            <block type="brander_ourcontacts/adminhtml_contact_attribute" name="attribute_grid"></block>
+        </reference>
+    </adminhtml_ourcontacts_contact_attribute_index>
+    <adminhtml_ourcontacts_contact_attribute_edit>
+        <reference name="left">
+            <block type="brander_ourcontacts/adminhtml_contact_attribute_edit_tabs" name="attribute_edit_tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="brander_ourcontacts/adminhtml_contact_attribute_edit" name="attribute_edit_content"></block>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" name="attribute_edit_js" template="brander_ourcontacts/attribute/js.phtml">
+                <action method="setMainEntityName"><name>contact</name></action>
+            </block>
+        </reference>
+    </adminhtml_ourcontacts_contact_attribute_edit>
+</layout>

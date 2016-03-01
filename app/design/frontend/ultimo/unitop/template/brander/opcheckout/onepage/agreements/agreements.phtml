@@ -1,0 +1,57 @@
+<?php
+/** @var Brander_Opcheckout_Helper_Data $helperCheckout */
+$helperCheckout= Mage::helper('brander_opcheckout');
+?>
+
+<?php if(Mage::helper('brander_opcheckout')->showAgreements()): ?>
+    <?php $agreements = $this->getAgreements(); ?>
+    <?php if(count($agreements)) { ?>
+        <form action="" class="opcheckout-agreement-info" id="checkout-agreements" onsubmit="return false;">
+            <?php if(Mage::helper('brander_opcheckout')->isAgreementsCheckedByDefault()) { ?>
+                <?php foreach ($this->getAgreements() as $_a): ?>
+                    <div class="agree-wrap">
+                        <?php echo $helperCheckout->__('<a class="agree-link" href="#agreement-content-%s"><span class="text">Placing an order you agree to the terms of %s.</span></a>',$_a->getId(),
+                                             $_a->getCheckboxText())?>
+                        <input type="hidden" id="agreement-<?php echo $_a->getId() ?>" name="agreement[<?php echo $_a->getId() ?>]" value="1" />
+                    </div>
+                    <div class="agreement-content vlasa-scroll" id="agreement-content-<?php echo $_a->getId() ?>" style="display: none;">
+                        <h2 class="page-title">
+                            <?php echo $helperCheckout->__("User agreement"); ?>
+                        </h2>
+                        <div class="std">
+                            <?php if ($_a->getIsHtml()): ?>
+                                <?php echo $_a->getContent() ?>
+                            <?php else: ?>
+                                <?php echo nl2br($this->htmlEscape($_a->getContent())) ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            <?php } else { ?>
+                <?php foreach ($this->getAgreements() as $_a): ?>
+                        <div class="agree-checkbox">
+                            <div class="agree-wrap">
+                                <?php $linkAgree = '<a class="agree-link" href="#agreement-content-'. $_a->getId() .'"><span class="text">'.$_a->getCheckboxText().'</span></a>'; ?>
+                            </div>
+                            <input type="checkbox" id="agreement-<?php echo $_a->getId() ?>" name="agreement[<?php echo $_a->getId() ?>]" value="1" />&nbsp;
+                            <label for="agreement-<?php echo $_a->getId() ?>">
+                                <?php echo $this->__('Do you agree with %s?', $linkAgree)?>
+                            </label>
+                        </div>
+                        <div class="agreement-content vlasa-scroll" id="agreement-content-<?php echo $_a->getId() ?>" style="display: none;">
+                            <h2 class="page-title">
+                                <?php echo $helperCheckout->__("User agreement"); ?>
+                            </h2>
+                            <div class="std">
+                                <?php if ($_a->getIsHtml()): ?>
+                                    <?php echo $_a->getContent() ?>
+                                <?php else: ?>
+                                    <?php echo nl2br($this->htmlEscape($_a->getContent())) ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                <?php endforeach ?>
+            <?php } ?>
+        </form>
+    <?php } ?>
+<?php endif;?>

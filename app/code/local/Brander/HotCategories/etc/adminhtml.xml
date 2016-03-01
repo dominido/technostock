@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_HotCategories extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_HotCategories
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <brander_hotcategories translate="title" module="brander_hotcategories">
+                                        <title>HotCategories</title>
+                                    </brander_hotcategories>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <brander_shop>
+                        <children>
+                            <shop_content>
+                                <children>
+                                    <hotcategory translate="title" module="brander_hotcategories">
+                                        <title>Hot Category</title>
+                                        <sort_order>0</sort_order>
+                                    </hotcategory>
+<!--                                    <hotcategory_attributes translate="title" module="brander_hotcategories">
+                                        <title>Manage Hot Category attributes</title>
+                                        <sort_order>7</sort_order>
+                                    </hotcategory_attributes>-->
+                                </children>
+                            </shop_content>
+                        </children>
+                    </brander_shop>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <brander_shop>
+            <children>
+                <shop_content>
+                    <children>
+                        <hotcategory translate="title" module="brander_hotcategories">
+                            <title>Hot Categories</title>
+                            <action>adminhtml/hotcategories_hotcategory</action>
+                            <sort_order>20</sort_order>
+                        </hotcategory>
+<!--                        <hotcategory_attributes translate="title" module="brander_hotcategories">
+                            <title>Manage Hot Category Attributes</title>
+                            <action>adminhtml/hotcategories_hotcategory_attribute</action>
+                            <sort_order>7</sort_order>
+                        </hotcategory_attributes>-->
+                    </children>
+                </shop_content>
+            </children>
+        </brander_shop>
+    </menu>
+</config>

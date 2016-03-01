@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_ProductBanners extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_ProductBanners
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_productbanners_banner_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_shop/shop_content/brander_productbanners/banner</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_productbanners/adminhtml_banner" name="banner">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+
+        </reference>
+    </adminhtml_productbanners_banner_index>
+    <adminhtml_productbanners_banner_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_productbanners/adminhtml_banner_grid" name="banner_grid"/>
+        </block>
+    </adminhtml_productbanners_banner_grid>
+    <!-- Banner add/edit action -->
+    <adminhtml_productbanners_banner_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_shop/shop_content/brander_productbanners/banner</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_productbanners/adminhtml_banner_edit" name="banner_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-"></block>
+            <block type="brander_productbanners/adminhtml_banner_edit_tabs" name="banner_tabs"></block>
+        </reference>
+        <reference name="head">
+            <action method="setCanLoadTinyMce"><load>1</load></action>
+        </reference>
+        <reference name="js">
+            <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
+        </reference>
+    </adminhtml_productbanners_banner_edit>
+
+    <adminhtml_productbanners_banner_catalog_product_banners>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_productbanners/adminhtml_catalog_product_edit_tab_banner" name="product.edit.tab.banner"/>
+            <block type="adminhtml/widget_grid_serializer" name="banner_grid_serializer">
+                <reference name="banner_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>product.edit.tab.banner</grid_block_name>
+                        <data_callback>getSelectedBanners</data_callback>
+                        <hidden_input_name>banners</hidden_input_name>
+                        <reload_param_name>product_banners</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_productbanners_banner_catalog_product_banners>
+    <adminhtml_productbanners_banner_catalog_product_bannersgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_productbanners/adminhtml_catalog_product_edit_tab_banner" name="product.edit.tab.banner"/>
+        </block>
+    </adminhtml_productbanners_banner_catalog_product_bannersgrid>
+    <adminhtml_productbanners_banner_products>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_productbanners/adminhtml_banner_edit_tab_product" name="banner.edit.tab.product"/>
+            <block type="adminhtml/widget_grid_serializer" name="product_grid_serializer">
+                <reference name="product_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>banner.edit.tab.product</grid_block_name>
+                            <data_callback>getSelectedProducts</data_callback>
+                            <hidden_input_name>products</hidden_input_name>
+                            <reload_param_name>banner_products</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_productbanners_banner_products>
+    <adminhtml_productbanners_banner_productsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_productbanners/adminhtml_banner_edit_tab_product" name="banner.edit.tab.product"/>
+        </block>
+    </adminhtml_productbanners_banner_productsgrid>
+    <adminhtml_productbanners_banner_attribute_index>
+        <reference name="content">
+            <block type="brander_productbanners/adminhtml_banner_attribute" name="attribute_grid"></block>
+        </reference>
+    </adminhtml_productbanners_banner_attribute_index>
+    <adminhtml_productbanners_banner_attribute_edit>
+        <reference name="left">
+            <block type="brander_productbanners/adminhtml_banner_attribute_edit_tabs" name="attribute_edit_tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="brander_productbanners/adminhtml_banner_attribute_edit" name="attribute_edit_content"></block>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" name="attribute_edit_js" template="brander_productbanners/attribute/js.phtml">
+                <action method="setMainEntityName"><name>banner</name></action>
+            </block>
+        </reference>
+    </adminhtml_productbanners_banner_attribute_edit>
+</layout>

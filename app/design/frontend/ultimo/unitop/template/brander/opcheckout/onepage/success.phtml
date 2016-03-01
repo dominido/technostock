@@ -1,0 +1,120 @@
+<?php
+    /** @var Brander_Opcheckout_Block_Onepage_Success $this */
+    /** @var Brander_Opcheckout_Helper_Data  $helper */
+    /** @var Mage_Core_Helper_Data $helperCore */
+
+    $helper = Mage::helper('brander_opcheckout');
+    $helperCore = Mage::helper('core');
+    $order = $this->getOrderInfoById($this->getOrderId());
+    $shipping = $order->getShippingAddress();
+    if ($shipping->getTelephone() == '+380 ' || empty($shipping->getTelephone())) {
+        $telephone = $order->getBillingAddress()->getTelephone();
+    } else {
+        $telephone = $shipping->getTelephone();
+    }
+?>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<div class="checkout-onepage-success">
+    <div class="success-top grey">
+        <h1 class="page-title">
+            <?php echo $helper->__('Thank you for your purchase!') ?>
+        </h1>
+        <div class="notes-wrap">
+            <p class="note"><?php echo $helper->__('You have made an excellent choice.'); ?></p>
+            <p class="note"><?php echo $helper->__('The manager will contact you by phone <strong>%s</strong>.', $telephone); ?></p>
+        </div>
+        <div class="order-num-wrap">
+            <p class="num-label"><?php echo $helper->__('Your order number'); ?></p>
+            <p class="order-num"><?php echo $this->escapeHtml($this->getOrderId()); ?></p>
+        </div>
+    </div>
+
+    <div class="success-bottom">
+        <div class="about-order">
+            <div class="title-wrap">
+                <h3 class="title"><?php echo $helper->__('About order'); ?></h3>
+
+                <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) : ?>
+                    <a href="<?php echo $this->getPrintUrl() ?>" onclick="this.target=\'_blank\'" class="print-link">
+                        <span class="text">
+                            <?php echo $helperCore->__('Print') ?>
+                        </span>
+                    </a>
+                <?php endif; ?>
+            </div>
+
+            <?php $shippingMethodTitle = $order->getShippingDescription();
+                  $paymentMethodTitle = $order->getPayment()->getMethodInstance()->getTitle();
+                  $streets = $shipping->getStreet();
+            ?>
+
+            <p class="about-line">
+                <span class="about-label">
+                    <?php echo $helper->__('Shipping method:') ?>
+                </span>
+                <strong class="about-val">
+                    <?php echo $shippingMethodTitle ?>
+                </strong>
+            </p>
+            <p class="about-line">
+                <span class="about-label">
+                    <?php echo $helper->__('Shipping by address:') ?>
+                </span>
+                <strong class="about-val">
+                    <?php foreach($streets as $street) echo $street; ?>
+                </strong>
+            </p>
+            <p class="about-line">
+                <span class="about-label">
+                    <?php echo $helper->__('Payment method:') ?>
+                </span>
+                <strong class="about-val">
+                    <?php echo $paymentMethodTitle  ?>
+                </strong>
+            </p>
+        </div>
+
+        <div class="checkout-shopping-bag">
+            <h2 class="bag-title"><?php echo $helper->__('Products in order')?></h2>
+
+            <?php $ordered_items = $order->getAllVisibleItems(); ?>
+
+            <div class="products-list">
+                <?php foreach ($ordered_items as $_item): ?>
+                    <?php echo $this->getItemHtml($_item); ?>
+                <?php endforeach; ?>
+            </div>
+
+            <ul class="totals-wrap">
+                <?php if (($shippingCost = $order->getShippingAmount()) > 0): ?>
+                    <li class="totals-item">
+                        <div class="totals-label">
+                            <?php echo $helper->__('Shipping cost:') ?>
+                        </div>
+                        <div class="totals-price">
+                            <?php echo $helperCore->formatPrice($order->getShippingAmount()); ?>
+                        </div>
+                    </li>
+                <?php endif; ?>
+                <?php if (($discount = $order->getDiscountAmount()) < 0): ?>
+                    <li class="totals-item">
+                        <div class="totals-label">
+                            <?php echo $helper->__('Discount (%s):', $order->getDiscountDescription()) ?>
+                        </div>
+                        <div class="totals-price">
+                            <?php echo $helperCore->formatPrice($discount); ?>
+                        </div>
+                    </li>
+                <?php endif; ?>
+                <li class="totals-item">
+                    <div class="totals-label">
+                        <?php echo $helper->__('Total:') ?>
+                    </div>
+                    <div class="totals-price">
+                        <?php echo $helperCore->formatPrice($order->getGrandTotal()); ?>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

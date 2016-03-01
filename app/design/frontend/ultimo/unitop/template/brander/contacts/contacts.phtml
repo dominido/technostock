@@ -1,0 +1,19 @@
+<?php $helperImage = $this->helper('brander_ourcontacts/contact_image'); ?>
+<?php $collection = $this->getCollection(); ?>
+
+<?php if ($collection): ?>
+<div class="feature phones">
+    <h6 class="block-title heading"><?php echo $this->__('Contacts telephone'); ?></h6>
+    <ul>
+        <?php foreach ($collection as $_phoneItem): ?>
+            <li>
+                <a class="no-click" href="#">
+                    <span class="content">
+                        <span><?php echo $_phoneItem->getPhone(); ?></span>
+                    </span>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>

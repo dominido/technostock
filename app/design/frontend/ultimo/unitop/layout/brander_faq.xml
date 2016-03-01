@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <PAGE_TYPE_BRANDERFAQTYPE>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/brander/faq/morefaq.js</name>
+            </action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+
+		<reference name="cmsadvanced.page">
+
+			<block type="brander_faq/faq" name="faq.text.answers" template="brander/faq/text_faq.phtml" />
+			<block type="brander_faq/videoFaq" name="faq.video.answers" template="brander/faq/video_faq.phtml" />
+			<block type="core/template" name="faq.question.form" template="brander/faq/askform.phtml" />
+
+			<block type="brander_shop/page_html_footer_storeInfo" name="faq.right.timetocall"
+			   template="brander/faq/right/timetocall.phtml"/>
+			<block type="brander_shop/page_html_footer_additionalLinks" name="faq.right.additional.links"
+				template="brander/faq/right/additional-links.phtml">
+				<block type="core/template" name="faq.right.callback.link" template="brander/customercallbacks/callback_link.phtml"/>
+			</block>
+			<block type="reports/product_viewed" name="faq.viewed.products" template="brander/shop/reports/product_viewed.phtml"/>
+		</reference>
+    </PAGE_TYPE_BRANDERFAQTYPE>
+
+</layout>

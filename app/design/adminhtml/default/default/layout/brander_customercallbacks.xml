@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>brander/customercallbacks/style.css</name>
+            </action>
+        </reference>
+        <reference name="notifications">
+            <block type="brander_customercallbacks/adminhtml_notification" name="callback_notifications" template="brander_customercallback/notification.phtml"></block>
+        </reference>
+    </default>
+
+    <adminhtml_callbacks_index>
+        <reference name="content">
+            <block type="brander_customercallbacks/adminhtml_callbacks" name="callbacks"/>
+        </reference>
+    </adminhtml_callbacks_index>
+    <adminhtml_callbacks_edit>
+        <reference name="content">
+            <block type="brander_customercallbacks/adminhtml_callbacks_edit" name="callbacks_edit"/>
+        </reference>
+    </adminhtml_callbacks_edit>
+    <adminhtml_callbacks_new>
+        <update handle="adminhtml_callbacks_edit"/>
+    </adminhtml_callbacks_new>
+</layout>

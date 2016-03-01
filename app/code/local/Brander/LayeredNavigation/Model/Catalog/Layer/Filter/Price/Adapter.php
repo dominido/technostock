@@ -1,0 +1,4 @@
+<?php
+
+    class Brander_LayeredNavigation_Model_Catalog_Layer_Filter_Price_Price17ce_Parent extends Mage_Catalog_Model_Layer_Filter_Price {};
+    class Brander_LayeredNavigation_Model_Catalog_Layer_Filter_Price_Adapter extends Brander_LayeredNavigation_Model_Catalog_Layer_Filter_Price_Price17ce{}

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<brander translate="label" module="brander_core">
+			<label>Brander</label>
+			<sort_order>2000</sort_order>
+		</brander>
+	</tabs>
+    <sections>
+        <brander_core translate="label comment" module="brander_core">
+            <label>Core</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>15</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <extended_ifconfig translate="label comment" module="brander_core">
+                    <label>Extended Ifconfig</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <info translate="label comment" module="brander_core">
+                            <label>User Guide</label>
+                            <frontend_model>brander_core/adminhtml_form_renderer_config_ifconfig</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </info>
+                    </fields>
+                </extended_ifconfig>
+                <extended_system_fields translate="label comment" module="brander_core">
+                    <label>Extended System Fields</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <info translate="label comment" module="brander_core">
+                            <label>User Guide</label>
+                            <frontend_model>brander_core/adminhtml_form_renderer_config_fields</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </info>
+                    </fields>
+                </extended_system_fields>
+            </groups>
+        </brander_core>
+        <design>
+            <groups>
+                <header>
+                    <fields>
+                        <custom_header_logo translate="label comment">
+                            <label>Custom Header Logo</label>
+                            <comment>Allowed file types: PNG, JPG, JPEG, GIF.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>brander_core/system_config_backend_image_logo</backend_model>
+                            <base_url type="media" scope_info="1">logo</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </custom_header_logo>
+                        <custom_header_logo_small translate="label comment">
+                            <label>Custom Header Mobile Logo</label>
+                            <comment>Allowed file types: PNG, JPG, JPEG, GIF.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>brander_core/system_config_backend_image_logo</backend_model>
+                            <base_url type="media" scope_info="1">logo</base_url>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </custom_header_logo_small>
+                    </fields>
+                </header>
+                <footer>
+                    <fields>
+                        <custom_footer_logo translate="label comment">
+                            <label>Custom Footer Logo</label>
+                            <comment>Allowed file types: PNG, JPG, JPEG, GIF.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>brander_core/system_config_backend_image_logo</backend_model>
+                            <base_url type="media" scope_info="1">logo</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </custom_footer_logo>
+                    </fields>
+                </footer>
+            </groups>
+        </design>
+    </sections>
+</config> 

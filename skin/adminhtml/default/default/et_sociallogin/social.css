@@ -1,0 +1,121 @@
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_SocialLogin
+ * @copyright  Copyright (c) 2015 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-commercial-v1/   ETWS Commercial License (ECL1)
+ */
+
+
+.linkedAccounts  .accountname {
+    font-weight: bold;
+}
+
+.linkedAccounts  img {
+    vertical-align:top;
+}
+
+
+.admin-social-icons-view{
+    padding:5px 0 0 0;
+}
+
+span.socicons-small {
+    background: url('icons/socbuttons-24px.png') no-repeat;
+    width: 266px;
+    height: 24px;
+    display:inline-block;
+}
+
+span.socicons-large {
+    background: url('icons/socbuttons-32px.png') no-repeat;
+    width: 348px;
+    height: 33px;
+    display:inline-block;
+}
+
+.socicons-small.circle-colored{
+    background-position:-2px -2px;
+}
+
+.socicons-small.circle-black{
+    background-position:-2px -52px;
+}
+
+.socicons-small.square-colored{
+    background-position:-2px -27px;
+}
+
+.socicons-small.square-black{
+    background-position:-2px -77px;
+}
+
+.socicons-large.circle-colored{
+    background-position:-2px 0;
+}
+
+.socicons-large.circle-black{
+    background-position:-2px -68px;
+}
+
+.socicons-large.square-colored{
+     background-position:-2px -33px;
+ }
+
+.socicons-large.square-black{
+    background-position:-2px -100px;
+}
+
+.link-to-social-config{
+    margin-bottom:10px;
+}
+
+.social-list li{
+    float: left;
+    margin-right: 5px;
+}
+a.socicons-small {
+    background: url('icons/socbuttons-24px.png') no-repeat;
+    width: 24px;
+    height: 24px;
+    display:inline-block;
+}
+
+/* Icons 24x24px square colored */
+.socibutton.small .socicons-small.square-colored.vk {
+    background-position: -4px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.facebook {
+    background-position: -160px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.google {
+    background-position: -82px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.odnoklassniki {
+    background-position: -134px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.yandex {
+    background-position: -108px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.mailru {
+    background-position: -238px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.twitter {
+    background-position: -30px -27px;
+}

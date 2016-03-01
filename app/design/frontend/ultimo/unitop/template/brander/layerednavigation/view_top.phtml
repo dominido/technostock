@@ -1,0 +1,31 @@
+<?php if($this->canShowBlock()): ?>
+    <div class="block block-layered-nav">
+        <div class="block-title">
+            <strong><span><?php echo $this->__('Shop By') ?></span></strong>
+        </div>
+        <div class="block-content">
+            <?php echo $this->getStateHtml() ?>
+            <?php if($this->canShowOptions()): ?>
+                    <div class="layerednavigation-container-top block-layered-nav">
+                        <?php foreach ($this->getFilters() as $_filter): ?>
+                            <?php if($_filter->getItemsCount()): ?>
+                                <?php  $position = Mage::helper('brander_layerednavigation')->getAttributePosition($_filter); ?>
+                                <div class="layerednavigation-item-top block-content am-toggle-content">
+                                    <dl id="narrow-by-list" class="layerednavigation-narrow-by-list" data-position="<?php echo $position;?>">
+                                        <?php if ($_filter->getAttributeCode() == 'price') : ?>
+                                            <?php $_filter->addData(array('lnprice-position' => 'top')); ?>
+                                        <?php endif; ?>
+                                        <dt><?php echo $this->__($_filter->getName()) ?></dt>
+                                        <dd style="background:none"><?php echo $_filter->getHtml() ?></dd>
+                                    </dl>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php else: ?>
+    <div style="display:none" class="<?php echo $this->getBlockId()?>"></div>
+<?php endif; ?>

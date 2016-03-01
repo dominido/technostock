@@ -1,0 +1,19 @@
+<?php
+$collection = $this->getCollection();
+$_helper = Mage::helper('brander_cmshome/image');
+?>
+<?php if ($collection->getSize()): ?>
+    <div class="homepage-banners-container container clearer">
+        <div class="homepage-banners inner-container nested-container <?php echo Mage::helper('brander_cmshome')->getHomePageBannerCssMode(); ?>">
+            <div class="page-banners grid-container">
+                <?php foreach ($collection as $_banner): ?>
+                    <div class="grid-full banner">
+                        <a href="<?php echo $_banner->getRedirectUrl() ?>">
+                            <img class="fade-on-hover" src="<?php echo $_helper->getImageSrc('homepage_banners', $_banner->getData('image')); ?>" alt="<?php echo $_banner->getAlt() ?>" style="opacity: 1;">
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

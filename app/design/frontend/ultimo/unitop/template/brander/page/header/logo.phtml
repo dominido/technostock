@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+<?php $logoObj = Mage::helper('brander_shop')->getLogoObj('header'); ?>
+<div class="logo-wrapper logo-wrapper--regular">
+	<?php if ($this->getIsHomePage()): ?>
+		<h1 class="logo logo--regular"><strong><?php echo $logoObj->getLogoAlt(); ?></strong><a href="<?php echo $this->getUrl('') ?>" title=""><img src="<?php echo $logoObj->getLogoSrc(); ?>" alt="<?php echo $logoObj->getLogoAlt() ?>" /></a></h1>
+	<?php else: ?>
+		<a class="logo logo--regular" href="<?php echo $this->getUrl('') ?>" title=""><strong><?php echo $logoObj->getLogoAlt() ?></strong><img src="<?php echo $logoObj->getLogoSrc(); ?>" alt="<?php echo $logoObj->getLogoAlt() ?>" /></a>
+	<?php endif; ?>
+</div>

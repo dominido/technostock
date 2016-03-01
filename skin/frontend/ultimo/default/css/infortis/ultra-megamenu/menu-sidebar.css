@@ -1,0 +1,30 @@
+/**
+ * Simple vertical menu (sidebar menu)
+ */
+.vertnav {
+  float: left;
+  width: 100%; }
+
+/* Number of products in category */
+.vertnav .number {
+  color: #aaa;
+  margin-left: 3px; }
+
+/* Category labels inside vertical menu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* All levels */
+.vertnav li > a > span > .cat-label {
+  position: static;
+  display: inline-block !important;
+  padding: 0 4px;
+  margin-left: 3px;
+  /* Label size */
+  font-size: inherit;
+  line-height: inherit; }
+
+/* Hide pin */
+.vertnav li > a > span > .pin-bottom:before {
+  display: none; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lbnUtc2lkZWJhci5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0dBRUc7QUFDSDtFQUNFLFlBQVk7RUFDWixZQUFZLEVBQUU7O0FBRWhCLG9DQUFvQztBQUNwQztFQUNFLFlBQVk7RUFDWixpQkFBaUIsRUFBRTs7QUFFckI7O0VBRUU7QUFDRixnQkFBZ0I7QUFDaEI7RUFDRSxpQkFBaUI7RUFDakIsaUNBQWlDO0VBQ2pDLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsZ0JBQWdCO0VBQ2hCLG1CQUFtQjtFQUNuQixxQkFBcUIsRUFBRTs7QUFFekIsY0FBYztBQUNkO0VBQ0UsY0FBYyxFQUFFIiwiZmlsZSI6ImluZm9ydGlzL3VsdHJhLW1lZ2FtZW51L21lbnUtc2lkZWJhci5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIFNpbXBsZSB2ZXJ0aWNhbCBtZW51IChzaWRlYmFyIG1lbnUpXG4gKi9cbi52ZXJ0bmF2IHtcbiAgZmxvYXQ6IGxlZnQ7XG4gIHdpZHRoOiAxMDAlOyB9XG5cbi8qIE51bWJlciBvZiBwcm9kdWN0cyBpbiBjYXRlZ29yeSAqL1xuLnZlcnRuYXYgLm51bWJlciB7XG4gIGNvbG9yOiAjYWFhO1xuICBtYXJnaW4tbGVmdDogM3B4OyB9XG5cbi8qIENhdGVnb3J5IGxhYmVscyBpbnNpZGUgdmVydGljYWwgbWVudVxuJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSVcbiovXG4vKiBBbGwgbGV2ZWxzICovXG4udmVydG5hdiBsaSA+IGEgPiBzcGFuID4gLmNhdC1sYWJlbCB7XG4gIHBvc2l0aW9uOiBzdGF0aWM7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jayAhaW1wb3J0YW50O1xuICBwYWRkaW5nOiAwIDRweDtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbiAgLyogTGFiZWwgc2l6ZSAqL1xuICBmb250LXNpemU6IGluaGVyaXQ7XG4gIGxpbmUtaGVpZ2h0OiBpbmhlcml0OyB9XG5cbi8qIEhpZGUgcGluICovXG4udmVydG5hdiBsaSA+IGEgPiBzcGFuID4gLnBpbi1ib3R0b206YmVmb3JlIHtcbiAgZGlzcGxheTogbm9uZTsgfVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */

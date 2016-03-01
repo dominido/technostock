@@ -1,0 +1,35 @@
+<?php
+/**
+ * Brander_Benefits extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_Benefits
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Benefit list template on product page
+ *
+ * @category    Brander
+ * @package     Brander_Benefits
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $benefits = $this->getBenefitCollection();?>
+<?php if ($benefits && $benefits->count() > 0) :?>
+<div class="box-collateral box-benefits box-up-sell">
+    <h2><?php $this->__('Benefits'); ?></h2>
+    <?php foreach ($benefits as $_benefit) : ?>
+        <div class="item">
+            <?php echo $_benefit->getTitle();?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php endif;?>

@@ -1,0 +1,70 @@
+<?php $helper = Mage::helper('et_sociallogin') ?>
+
+<?php /* @var $this ET_SocialLogin_Block_Customer_Account */ ?>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+
+<div class="social_customer_account">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <div class="link-to-social-config">
+        <h2><?php echo $helper->__('Extension information:') ?></h2>
+    </div>
+    <p><?php echo $helper->__('ET Social Login extension allows your customers to log <br> in and register an account on your website via social networks.') ?></p>
+    <?php if (count($this->getLinkedAccounts()) > 0) : ?>
+        <br><br><br>
+        <div class="page-title">
+            <h2><?php echo $helper->__('Linked accounts:') ?></h2>
+        </div>
+        <div style="display: block; overflow: auto; background: lightgray; padding: 10px">
+            <?php foreach ($this->getLinkedAccounts() as $linkedAccount) : ?>
+                <div style="float: left; margin-right: 20px;">
+
+                    <div class="accountname"><?php echo strtoupper($linkedAccount->getSocialProvider()) ?></div>
+                    <div style="">
+                        <?php if ($linkedAccount->getSocialPhoto()) : ?>
+                            <img width="50" src="<?php echo $linkedAccount->getSocialPhoto() ?>"/>
+                        <?php else : ?>
+                            <img width="50"
+                                 src="<?php echo $this->getSkinUrl() . 'et_sociallogin' . DS . 'images' . DS . 'no-photo.png' ?>"/>
+                        <?php endif; ?>
+
+                        <?php if ($linkedAccount->getSocialName()) : ?>
+                        <br><a target="_blank"
+                               href="<?php echo $linkedAccount->getSocialProfileLink() ?>"><span><?php echo $linkedAccount->getSocialName() ?></span></a>
+                    </div>
+                    <?php endif; ?>
+
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div style="clear: both"></div>
+    <?php else : ?>
+        <?php echo $helper->__('<b>Current customer did not link his account with any social network.</b>');
+    endif; ?><br><br>
+
+    <h2><?php echo $helper->__('Available social networks for integration'); ?></h2>
+
+
+    <div class="socibutton social-auth small" style="padding: 0">
+        <div style="background: lightgray; display: block; padding: 8px; overflow: auto">
+            <ul class="social-list" style="padding: 0; ">
+
+                <?php foreach (Mage::helper('et_sociallogin')->getActiveSocialAccounts() as $key => $icon): ?>
+                    <li>
+                        <a class="soclogin socicon <?php echo $key ?> socicons-small square-colored"
+                           title="<?php echo $icon['title'] ?>"></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <br><br><br><br>
+
+        <h5><?php echo $helper->__('If required social network is not in the list,<br> please go to extension configuration settings'); ?></h5>
+        <br><br> <a target="_blank"
+                    href="<?php echo $this->getUrl('adminhtml/system_config/edit/section/social_login'); ?>"><?php echo $helper->__('Go to ET Social Login configuration settings'); ?></a>
+    </div>
+
+
+</div>

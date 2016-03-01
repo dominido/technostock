@@ -1,0 +1,116 @@
+Index: app/code/local/Brander/Benefits/Block/Adminhtml/Benefit/Grid.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/code/local/Brander/Benefits/Block/Adminhtml/Benefit/Grid.php	(date 1447074104000)
++++ app/code/local/Brander/Benefits/Block/Adminhtml/Benefit/Grid.php	(date 1447152495000)
+@@ -75,7 +75,7 @@
+                 'brander_benefits_benefit/image',
+                 'entity_id',
+                 null,
+-                'inner',
++                'left',
+                 $store->getId()
+             );
+         } else {
+@@ -84,7 +84,7 @@
+                 'brander_benefits_benefit/image',
+                 'entity_id',
+                 null,
+-                'inner',
++                'left',
+                 $adminStore
+             );
+         }
+Index: app/design/frontend/ultimo/unitop/template/brander/benefits/catalog/product/list/benefit.phtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/design/frontend/ultimo/unitop/template/brander/benefits/catalog/product/list/benefit.phtml	(date 1447074104000)
++++ app/design/frontend/ultimo/unitop/template/brander/benefits/catalog/product/list/benefit.phtml	(date 1447152495000)
+@@ -9,18 +9,22 @@
+     <ul class="benefits-grid<?php echo $rowLimit ? ' benefits-per-row-'.$rowLimit: ''; ?>">
+         <?php foreach ($benefits as $_benefit) : ?>
+             <?php $tooltip = null; ?>
++            <?php $noImage = empty($_benefit->getImage()); ?>
+             <?php if ($_benefit->getTooltipEnable() && $_benefit->getTooltip()): ?>
+                 <?php $tooltip = $_benefit->getTooltip(); ?>
+             <?php endif; ?>
+-
+-            <li class="benefit">
++            <li class="benefit<?php echo $noImage ? ' no-image' : ''; ?>">
+                 <a href="<?php echo $_benefit->getRedirectUrl(); ?>" title="<?php echo $tooltip ?>" alt="<?php echo $tooltip ?>">
++                    <?php if ($_benefit->getImage()): ?>
+-                    <span class="img-wrap">
+-                        <img src="<?php echo $helperImg->init($_benefit, 'image') ?>" />
+-                    </span>
++                        <span class="img-wrap">
++                            <img src="<?php echo $helperImg->init($_benefit, 'image') ?>" />
++                        </span>
++                    <?php endif; ?>
++                    <?php if ($_benefit->getTitleOnFront()): ?>
+-                    <span class="benefit-title">
++                        <span class="benefit-title ">
+-                        <b><?php echo $_benefit->getTitle();?></b>
+-                    </span>
++                            <b><?php echo $_benefit->getTitle();?></b>
++                        </span>
++                    <?php endif; ?>
+                     <?php if ($_benefit->getBenefitText()): ?>
+                         <span class="benefit-text"><?php echo $_benefit->getBenefitText();?></span>
+                     <?php endif; ?>
+Index: app/design/frontend/ultimo/unitop/template/brander/page/homepage/benefits/benefits.phtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/design/frontend/ultimo/unitop/template/brander/page/homepage/benefits/benefits.phtml	(date 1447074104000)
++++ app/design/frontend/ultimo/unitop/template/brander/page/homepage/benefits/benefits.phtml	(date 1447152495000)
+@@ -9,17 +9,22 @@
+     <ul class="benefits-grid<?php echo $rowLimit ? ' benefits-per-row-'.$rowLimit: ''; ?>">
+         <?php foreach ($benefits as $_benefit) : ?>
+             <?php $tooltip = ''; ?>
+-            <li class="benefit">
++            <?php $noImage = empty($_benefit->getImage()); ?>
++            <li class="benefit<?php echo $noImage ? ' no-image' : ''; ?>">
+                 <?php if ($_benefit->getTooltipEnable() && $_benefit->getTooltip()): ?>
+                     <?php $tooltip = $_benefit->getTooltip(); ?>
+                 <?php endif; ?>
+                 <a href="<?php echo $_benefit->getRedirectUrl(); ?>" title="<?php echo $tooltip ?>" alt="<?php echo $tooltip ?>">
++                    <?php if ($_benefit->getImage()): ?>
+-                    <span class="img-wrap">
+-                        <img src="<?php echo $helperImg->init($_benefit, 'image') ?>" />
+-                    </span>
++                        <span class="img-wrap">
++                            <img src="<?php echo $helperImg->init($_benefit, 'image') ?>" />
++                        </span>
++                    <?php endif; ?>
++                    <?php if ($_benefit->getTitleOnFront()): ?>
+-                    <span class="benefit-title">
++                        <span class="benefit-title ">
+-                        <b><?php echo $_benefit->getTitle();?></b>
+-                    </span>
++                            <b><?php echo $_benefit->getTitle();?></b>
++                        </span>
++                    <?php endif; ?>
+                     <?php if ($_benefit->getBenefitText()): ?>
+                         <span class="benefit-text"><?php echo $_benefit->getBenefitText();?></span>
+                     <?php endif; ?>
+Index: js/ru.tiny_mce.settings.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- js/ru.tiny_mce.settings.js	(date 1447152495000)
++++ js/ru.tiny_mce.settings.js	(date 1447157958000)
+@@ -4,7 +4,7 @@
+     tinyMceWysiwygSetup.prototype.getSettings = function(mode)
+     {
+         var settings = this.originalGetSettings(mode);
+-        settings.language = 'ru';
++        settings.language = 'en';
+         return settings;
+     }        
+ }

@@ -1,0 +1,16 @@
+<?php
+/** @var Vlasa_Shop_Block_Page_Html_Header_Phones $this */
+$_phones = $this->getPhones(); ?>
+<?php if(count($_phones)) { ?>
+    <div class="header-contacts">
+        <div class="header-phones-wrap ico-phone">
+            <ul class="phones-list">
+                <?php foreach($_phones as $_phone) { ?>
+                    <?php if(!empty($_phone['phone'])) { ?>
+                        <li class="phone-item"><?php echo $_phone['phone']?></li>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+<?php } ?>

@@ -1,0 +1,52 @@
+.brander-unitopblog-post-view {
+  .post-post_image {
+	padding: 20px 0;
+
+	img {
+	  width: 100%;
+	  height: auto;
+	}
+  }
+
+  .post-preview_image {
+	float: left;
+	margin: 0 20px 20px 0;
+
+	@include bp(max-width, $bp-tiny) {
+	  float: none;
+	  margin: 0;
+	  text-align: center;
+	}
+  }
+
+  .post-title {
+	margin-bottom: 0;
+	overflow: hidden;
+
+	h1 {
+	  min-height: 0;
+	}
+  }
+
+  .post-info {
+	margin-bottom: 24px;
+  }
+
+  .post-post_content {
+	margin-bottom: 60px;
+	line-height: $lh-small;
+  }
+
+  .box-collateral {
+	margin-bottom: 60px;
+  }
+
+  .form-add {
+	margin-bottom: 60px;
+	text-align: center;
+  }
+
+  h2 {
+	text-align: center;
+  }
+}

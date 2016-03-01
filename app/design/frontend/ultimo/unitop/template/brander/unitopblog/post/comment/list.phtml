@@ -1,0 +1,38 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php $_post = $this->getPost()?>
+<?php if ($_post->getAllowComments()) : ?>
+    <?php $_comments = $this->getComments(); ?>
+    <?php if (count($_comments)) : ?>
+        <div class="box-collateral box-reviews" id="post-reviews">
+            <h2><?php echo $this->__('Comments'); ?></h2>
+            <dl>
+                <?php foreach ($_comments as $_comment):?>
+                <dd>
+                    <?php echo nl2br($this->escapeHtml($_comment->getComment())) ?>
+                </dd>
+                <dt>
+                    <div class="author"><?php echo $this->__('%s by %s', $this->formatDate($_comment->getCreatedAt(), 'long'), $this->escapeHtml($_comment->getName()))?></div>
+                </dt>
+                <?php endforeach; ?>
+            </dl>
+        </div>
+    <?php endif;?>
+    <?php echo $this->getChildHtml('comment_form') ?>
+<?php endif;?>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <customercallbacks translate="label comment" module="brander_customercallbacks">
+            <label>Customer Callbacks</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>22</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label comment" module="brander_customercallbacks">
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <request_message translate="label comment" module="brander_customercallbacks">
+                            <label>Callback Request Message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </request_message>
+                        <confirm_message translate="label comment" module="brander_customercallbacks">
+                            <label>Callback Confirm Message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </confirm_message>
+                        <show_comment_field translate="label comment" module="brander_customercallbacks">
+                            <label>Show User Comment Field in Form</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>7</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_comment_field>
+                        <show_in_header translate="label comment" module="brander_customercallbacks">
+                            <label>Show CallBack Link in Header</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </show_in_header>
+                        <show_in_footer translate="label comment" module="brander_customercallbacks">
+                            <label>Show CallBack Link in Footer</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </show_in_footer>
+                    </fields>
+                </settings>
+            </groups>
+        </customercallbacks>
+    </sections>
+</config> 

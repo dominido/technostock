@@ -1,0 +1,55 @@
+.faq-item {
+  position: relative;
+  padding: 0 0 15px;
+  margin: 0 0 15px;
+  border-bottom: 2px solid #d8d8d8;
+
+  .faq-number {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 3em;
+    color: #e83232;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .faq-question {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-indent: 40px;
+    margin: 10px 0 20px;
+  }
+
+  .faq-answer {
+    font-style: italic;
+    line-height: 1.2;
+    text-indent: 30px;
+  }
+}
+
+.form-container {
+  text-align: center;
+}
+
+#comment-form,
+#faqForm {
+  display: inline-block;
+  vertical-align: top;
+  width: 360px;
+
+  input,
+  textarea {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  textarea {
+    max-width: 100%;
+    min-height: 150px;
+    max-height: 150px;
+    resize: none;
+  }
+}

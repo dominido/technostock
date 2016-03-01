@@ -1,0 +1,19 @@
+.products-grid {
+  .item {
+	&:hover {
+	  .sticker-wrapper {
+		.sticker {
+		  width: auto;
+		  height: auto;
+		  padding: 8px;
+		}
+	  }
+	}
+  }
+}
+
+.products-list {
+  .item-inner {
+	@include cleaner;
+  }
+}

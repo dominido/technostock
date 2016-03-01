@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_Benefits extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_Benefits
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<config>
+    <sections>
+        <brander_benefits translate="label" module="brander_benefits">
+            <class>separator-top</class>
+            <label>Benefits</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>32</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <benefits_config translate="label comment" module="brander_benefits">
+                    <label>Banners Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label comment" module="brander_benefits">
+                            <label>Enable View</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+
+                        <benefits_homepage translate="label">
+                            <label>Benefits on Homepage</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </benefits_homepage>
+                        <enable_homepage translate="label comment" module="brander_benefits">
+                            <label>Enable on Homepage</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_homepage>
+                        <homepage_benefit_limit translate="label comment" module="brander_benefits">
+                            <label>Max Amount of Benefits</label>
+                            <comment>integer value 1-100</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_homepage>1</enable_homepage>
+                            </depends>
+                        </homepage_benefit_limit>
+                        <homepage_benefit_row_limit translate="label comment" module="brander_benefits">
+                            <label>Max Benefits in Row</label>
+                            <comment>integer value 1-100</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>32</sort_order>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_homepage>1</enable_homepage>
+                            </depends>
+                        </homepage_benefit_row_limit>
+                        <homepage_show_title translate="label comment" module="brander_benefits">
+                            <label>Show Benefits Title</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>34</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_homepage>1</enable_homepage>
+                            </depends>
+                        </homepage_show_title>
+                        <homepage_show_description translate="label comment" module="brander_benefits">
+                            <label>Show Benefits Description</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>35</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_homepage>1</enable_homepage>
+                            </depends>
+                        </homepage_show_description>
+
+                        <benefits_productpage translate="label">
+                            <label>Benefits on Product Page</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>39</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </benefits_productpage>
+                        <enable_productpage translate="label comment" module="brander_benefits">
+                            <label>Enable on Product Page</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>40</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_productpage>
+                        <productpage_benefit_limit translate="label comment" module="brander_benefits">
+                            <label>Max Amount of Benefits</label>
+                            <comment>integer value 1-100</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_productpage>1</enable_productpage>
+                            </depends>
+                        </productpage_benefit_limit>
+                        <productpage_benefit_row_limit translate="label comment" module="brander_benefits">
+                            <label>Max Benefits in Row</label>
+                            <comment>integer value 1-100</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>52</sort_order>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_productpage>1</enable_productpage>
+                            </depends>
+                        </productpage_benefit_row_limit>
+                        <productpage_benefit_title_show translate="label comment" module="brander_benefits">
+                            <label>Show Benefits Title</label>
+                            <comment>integer value 1-100</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>55</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_productpage>1</enable_productpage>
+                            </depends>
+                        </productpage_benefit_title_show>
+                        <productpage_show_description translate="label comment" module="brander_benefits">
+                            <label>Show Benefits Description</label>
+                            <comment>integer value 1-100</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>55</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_productpage>1</enable_productpage>
+                            </depends>
+                        </productpage_show_description>
+
+                        <!--<benefits_categorypage translate="label">
+                            <label>Benefits on Category Page</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>39</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </benefits_categorypage>
+                        <enable_categorypage translate="label comment" module="brander_benefits">
+                            <label>Show on Category Page</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>60</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </enable_categorypage>-->
+                    </fields>
+                </benefits_config>
+            </groups>
+        </brander_benefits>
+    </sections>
+</config>

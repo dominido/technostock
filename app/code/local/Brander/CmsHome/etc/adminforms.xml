@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!--        /**
+        * Brander CmsHome extension
+        *
+        * NOTICE OF LICENSE
+        *
+        * This source file is subject to the MIT License
+        * that is bundled with this package in the file LICENSE.txt.
+        * It is also available through the world-wide-web at this URL:
+        * http://opensource.org/licenses/mit-license.php
+        *
+        * @category       Brander
+        * @package        CmsHome
+        * @copyright      Copyright (c) 2015
+        * @license        http://opensource.org/licenses/mit-license.php MIT License
+        * @author         AlexVegas (Alexandr Belyaev) <alexandr.belyaev.only@gmail.com>
+        */-->
+<adminforms>
+    <entities>
+		<homepage_slider_banners>
+			<attributes>
+				<page_id>
+					<template>page_id</template>
+				</page_id>
+				<title>
+					<template>text</template>
+					<required>1</required>
+				</title>
+                <alt>
+                    <template>text</template>
+                    <required>0</required>
+                </alt>
+                <image>
+                    <template>image</template>
+                </image>
+                    <pad_image>
+                        <template>image</template>
+                    </pad_image>
+                    <phone_image>
+                        <template>image</template>
+                    </phone_image>
+                <banner_text>
+                    <template>wtextarea</template>
+                    <note><![CDATA[<p>you can use some styles for your text code: div class = ''</p>
+                    <p>heading fade-on-hover</p><p>light1 / light2 / light3 / dark1 / dark2 / dark3</p><p>top / top-right / bottom-right / left / top-left / bottom-left</p>]]></note>
+                </banner_text>
+                <redirect_url>
+                    <template>text</template>
+                    <required>1</required>
+                </redirect_url>
+				<position>
+					<type>int</type>
+					<template>text</template>
+                    <required>1</required>
+				</position>
+				<status>
+					<type>int</type>
+                    <template>status</template>
+				</status>
+			</attributes>
+			<grid>
+				<fields>
+					<title/>
+					<image>
+                        <image_width>150</image_width>
+                    </image>
+                    <redirect_url/>
+					<position/>
+					<status/>
+				</fields>
+			</grid>
+		</homepage_slider_banners>
+        <homepage_banners>
+            <attributes>
+                <page_id>
+                    <template>page_id</template>
+                </page_id>
+                <title>
+                    <template>text</template>
+                    <required>1</required>
+                </title>
+                <alt>
+                    <template>text</template>
+                    <required>0</required>
+                </alt>
+                <redirect_url>
+                    <template>text</template>
+                    <required>1</required>
+                </redirect_url>
+                <image>
+                    <template>image</template>
+                </image>
+                <position>
+                    <type>int</type>
+                    <template>text</template>
+                    <required>1</required>
+                </position>
+                <status>
+                    <type>int</type>
+                    <template>status</template>
+                </status>
+            </attributes>
+            <grid>
+                <fields>
+                    <title/>
+                    <image>
+                        <image_width>150</image_width>
+                    </image>
+                    <redirect_url/>
+                    <position/>
+                    <status/>
+                </fields>
+            </grid>
+        </homepage_banners>
+    </entities>
+</adminforms>

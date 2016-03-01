@@ -1,0 +1,36 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php
+$helper = Mage::helper('brander_unitopblog');
+?>
+<?php $posts = $this->getPostCollection();?>
+<?php if ($posts->getSize()): ?>
+    <?php $postsHtml =
+        $this->getLayout()
+            ->createBlock("brander_unitopblog/post_list")
+            ->setTemplate("brander/unitopblog/catalog/product/list/list.phtml")
+            ->setPosts($posts)
+            ->toHtml(); ?>
+    <?php if ($postsHtml): ?>
+        <?php echo $postsHtml; ?>
+        <div class="show-all-wrap">
+            <a class="show-all-link" href="<?php $this->getAllPostsUrl($this->getBlockAlias()) ?>"><?php $this->__('Show all posts') ?></a>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

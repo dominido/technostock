@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_Benefits extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_Benefits
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_benefits_benefit_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_shop/brander_benefits/benefit</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_benefits/adminhtml_benefit" name="benefit">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+
+        </reference>
+    </adminhtml_benefits_benefit_index>
+    <adminhtml_benefits_benefit_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_benefits/adminhtml_benefit_grid" name="benefit_grid"/>
+        </block>
+    </adminhtml_benefits_benefit_grid>
+    <!-- Benefit add/edit action -->
+    <adminhtml_benefits_benefit_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_shop/brander_benefits/benefit</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_benefits/adminhtml_benefit_edit" name="benefit_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-"></block>
+            <block type="brander_benefits/adminhtml_benefit_edit_tabs" name="benefit_tabs"></block>
+        </reference>
+        <reference name="head">
+            <action method="setCanLoadTinyMce"><load>1</load></action>
+        </reference>
+        <reference name="js">
+            <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
+        </reference>
+    </adminhtml_benefits_benefit_edit>
+
+    <adminhtml_benefits_benefit_catalog_product_benefits>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_benefits/adminhtml_catalog_product_edit_tab_benefit" name="product.edit.tab.benefit"/>
+            <block type="adminhtml/widget_grid_serializer" name="benefit_grid_serializer">
+                <reference name="benefit_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>product.edit.tab.benefit</grid_block_name>
+                        <data_callback>getSelectedBenefits</data_callback>
+                        <hidden_input_name>benefits</hidden_input_name>
+                        <reload_param_name>product_benefits</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_benefits_benefit_catalog_product_benefits>
+    <adminhtml_benefits_benefit_catalog_product_benefitsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_benefits/adminhtml_catalog_product_edit_tab_benefit" name="product.edit.tab.benefit"/>
+        </block>
+    </adminhtml_benefits_benefit_catalog_product_benefitsgrid>
+    <adminhtml_benefits_benefit_products>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_benefits/adminhtml_benefit_edit_tab_product" name="benefit.edit.tab.product"/>
+            <block type="adminhtml/widget_grid_serializer" name="product_grid_serializer">
+                <reference name="product_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>benefit.edit.tab.product</grid_block_name>
+                            <data_callback>getSelectedProducts</data_callback>
+                            <hidden_input_name>products</hidden_input_name>
+                            <reload_param_name>benefit_products</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_benefits_benefit_products>
+    <adminhtml_benefits_benefit_productsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_benefits/adminhtml_benefit_edit_tab_product" name="benefit.edit.tab.product"/>
+        </block>
+    </adminhtml_benefits_benefit_productsgrid>
+    <adminhtml_benefits_benefit_categories>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_benefits/adminhtml_benefit_edit_tab_categories" name="benefit.edit.tab.categories"/>
+        </block>
+    </adminhtml_benefits_benefit_categories>
+    <adminhtml_benefits_benefit_catalog_category_benefitsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_benefits/adminhtml_catalog_category_tab_benefit" name="category.edit.tab.benefit"/>
+        </block>
+    </adminhtml_benefits_benefit_catalog_category_benefitsgrid>
+    <adminhtml_benefits_benefit_attribute_index>
+        <reference name="content">
+            <block type="brander_benefits/adminhtml_benefit_attribute" name="attribute_grid"></block>
+        </reference>
+    </adminhtml_benefits_benefit_attribute_index>
+    <adminhtml_benefits_benefit_attribute_edit>
+        <reference name="left">
+            <block type="brander_benefits/adminhtml_benefit_attribute_edit_tabs" name="attribute_edit_tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="brander_benefits/adminhtml_benefit_attribute_edit" name="attribute_edit_content"></block>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" name="attribute_edit_js" template="brander_benefits/attribute/js.phtml">
+                <action method="setMainEntityName"><name>benefit</name></action>
+            </block>
+        </reference>
+    </adminhtml_benefits_benefit_attribute_edit>
+</layout>

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * YellowDP extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_Cm
+ * @copyright  	Copyright (c) 2015
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+	<menu>
+		<brander_shop translate="title" module="brander_shop">
+			<title>Unitop Shop</title>
+			<sort_order>80</sort_order>
+			<children>
+				<shop_content translate="title" module="brander_shop">
+					<title>HomePage Content</title>
+					<sort_order>20</sort_order>
+				</shop_content>
+			</children>
+		</brander_shop>
+		<sales>
+			<children>
+				<recurring_profile>
+					<disabled>1</disabled>
+				</recurring_profile>
+			</children>
+		</sales>
+	</menu>
+	<acl>
+		<resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<brander_shop translate="title" module="brander_shop">
+						<title>Unitop Shop</title>
+						<sort_order>80</sort_order>
+						<children>
+							<shop_content translate="title" module="brander_shop">
+								<title>Page Content</title>
+								<sort_order>20</sort_order>
+							</shop_content>
+						</children>
+					</brander_shop>
+					<system>
+						<children>
+							<config>
+								<children>
+									<social_accounts translate="title" module="brander_shop">
+										<title>Social Accounts</title>
+									</social_accounts>
+									<unitop_settings translate="title" module="brander_shop">
+										<title>Site Settings</title>
+									</unitop_settings>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

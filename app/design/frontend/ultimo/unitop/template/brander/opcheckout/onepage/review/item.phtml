@@ -1,0 +1,40 @@
+<?php
+/** @var Mage_Checkout_Block_Cart_Item_Renderer_Configurable $this */
+/** @var Mage_Checkout_Helper_Data $helperCheckout */
+/** @var Brander_Opcheckout_Helper_Data $helperOpcheckout */
+
+    $helperCheckout = Mage::helper('checkout');
+    $helperOpcheckout = Mage::helper('brander_opcheckout');
+    $_item = $this->getItem();
+    $product = $_item->getProduct();
+?>
+<div class="checkout-item">
+    <a class="product-image" href="<?php echo $product->getProductUrl()?>">
+        <img src="<?php echo Mage::helper('catalog/image')->init($product, 'small_image')->resize(100, 118); ?>" alt="<?php echo $_item->getName() ?>"/>
+    </a>
+
+    <div class="product-info">
+        <a href="<?php echo $product->getProductUrl()?>" class="product-name">
+            <?php echo $this->htmlEscape($this->getProductName()) ?>
+        </a>
+        <span class="obj"><?php echo $this->__('Code of product: %s',$product->getSku()) ?></span>
+        <?php if ($_options = $this->getOptionList()):?>
+            <ul class="item-options">
+                <?php foreach ($_options as $_option) : ?>
+                    <li class="option-label"><?php echo $_option['label']; ?></li>
+                    <li class="option-value"><?php echo $_option['value']; ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif;?>
+    </div>
+
+    <div class="price-col">
+        <div class="final-price">
+            <?php echo $helperCheckout->formatPrice($product->getFinalPrice()); ?>
+        </div>
+        <div class="product-counter">
+           <?php echo $_item->getQty().$this->__("pcs") ?>
+        </div>
+    </div>
+</div>
+

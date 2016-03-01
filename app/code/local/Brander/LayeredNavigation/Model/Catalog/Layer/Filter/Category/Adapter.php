@@ -1,0 +1,3 @@
+<?php
+
+class Brander_LayeredNavigation_Model_Catalog_Layer_Filter_Category_Adapter extends Mage_Catalog_Model_Layer_Filter_Category {}

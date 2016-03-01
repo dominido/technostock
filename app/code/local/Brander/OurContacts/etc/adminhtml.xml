@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_OurContacts extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_OurContacts
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <brander_ourcontacts translate="title" module="brander_ourcontacts">
+                                        <title>Our Contacts</title>
+                                    </brander_ourcontacts>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <brander_shop>
+                        <children>
+                            <shop_content>
+                                <children>
+                                    <brander_ourcontacts translate="title" module="brander_ourcontacts">
+                                        <title>Our Contacts</title>
+<!--                                        <children>
+                                            <contact translate="title" module="brander_ourcontacts">
+                                                <title>Contact</title>
+                                                <sort_order>0</sort_order>
+                                            </contact>
+                                            <contact_attributes translate="title" module="brander_ourcontacts">
+                                                <title>Manage Contact attributes</title>
+                                                <sort_order>7</sort_order>
+                                            </contact_attributes>
+                                        </children>-->
+                                    </brander_ourcontacts>
+                                </children>
+                            </shop_content>
+                        </children>
+                    </brander_shop>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <brander_shop>
+            <children>
+                <shop_content>
+                    <children>
+                        <brander_ourcontacts translate="title" module="brander_ourcontacts">
+                            <title>Our Contacts</title>
+                            <sort_order>90</sort_order>
+                            <action>adminhtml/ourcontacts_contact</action>
+<!--                            <children>
+                                <contact translate="title" module="brander_ourcontacts">
+                                    <title>Contact</title>
+                                    <action>adminhtml/ourcontacts_contact</action>
+                                    <sort_order>0</sort_order>
+                                </contact>
+                                <contact_attributes translate="title" module="brander_ourcontacts">
+                                    <title>Manage Contact Attributes</title>
+                                    <action>adminhtml/ourcontacts_contact_attribute</action>
+                                    <sort_order>7</sort_order>
+                                </contact_attributes>
+                            </children>-->
+                        </brander_ourcontacts>
+                    </children>
+                </shop_content>
+            </children>
+        </brander_shop>
+
+    </menu>
+</config>

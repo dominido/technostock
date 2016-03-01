@@ -1,0 +1,194 @@
+<?php
+/** @var Mage_Customer_Model_Session $customer */
+$customer = Mage::getSingleton('customer/session');
+/** @var Brander_Opcheckout_Helper_Data $helperCheckout */
+$helperCheckout = Mage::helper('brander_opcheckout');
+?>
+
+<script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
+<div id="opcheckout-wrapper-main" class="checkout-main">
+    <div id="uni-main-loader-checkout"></div>
+    <div id="sub-loader"></div>
+
+    <h1 class="page-title"><?php echo $this->__(Mage::getStoreConfig('opcheckout/order/opcheckout_title')) ?></h1>
+    <div class="checkout-billing">
+        <div class="checkout-actions-wrap<?php echo !$customer->isLoggedIn() ? ' checkout-log-tabs': ''?>">
+            <?php if(!$customer->isLoggedIn()): ?>
+                <ul class="checkout-tabs">
+                    <li><a href="#reg-tab"><?php echo $helperCheckout->__('I am new buyer'); ?></a></li>
+                    <li><a href="#login-tab"><?php echo $helperCheckout->__('I am registered')?></a></li>
+                </ul>
+            <?php endif; ?>
+
+            <div id="reg-tab">
+                <div class="step">
+                    <h3 class="checkout-title"><?php echo $this->__('Personal Information') ?></h3>
+                    <?php echo $this->getChildHtml('billingx') ?>
+
+                    <?php if($this->canShip()) { ?>
+                        <?php echo $this->getChildHtml('shippingx') ?>
+                    <?php } ?>
+                </div>
+                
+                <?php echo $this->getChildHtml('opcheckout.additional.data')?>
+                <input id="opcheckout-canShip" type="hidden" value="<?php echo $this->canShip() ? 1 : 0; ?>" />
+
+                <div class="step payment-ship-step">
+                    <?php if ($this->canShip()): ?>
+                        <h3 class="checkout-title paiment-ship-title">
+                            <span class="inner-text">
+                                <span class="text">
+                                    <?php echo $helperCheckout->__('Shipping and payment') ?>
+                                </span>
+                            </span>
+                            <i class="ico-down-arrow"></i>
+                        </h3>
+                        <form id="co-shipping-method-form" action="">
+                             <div class="field" id="checkout-shipping-method-load">
+                                <?php echo $this->getChildHtml('availablex') ?>
+                             </div>
+                            <script type="text/javascript">
+                                var shippingMethod = new ShippingMethodStep('co-shipping-method-form', "<?php echo $this->getUrl('opcheckout/onepage/saveShippingMethod', array('_secure' => true)) ?>");
+                            </script>
+                            <div id="onepage-checkout-shipping-method-additional-load">
+                                <?php echo $this->getChildHtml('additionalx') ?>
+                            </div>
+                        </form>
+                    <?php endif; ?>
+
+                    <form action="" id="co-payment-form">
+                        <div id="opcheckout-payment-method">
+                            <?php echo $this->getChildHtml('methodsx') ?>
+                        </div>
+                        <div class="tool-tip" id="payment-tool-tip" style="display:none;">
+                            <div class="btn-close">
+                                <a href="#" id="payment-tool-tip-close">
+                                    <img src="<?php echo $this->getSkinUrl('images/brander/opcheckout/btn_window_close.gif') ?>" alt="<?php echo $this->__('Close') ?>" />
+                                </a>
+                            </div>
+                            <div class="block-content">
+                                <img src="<?php echo $this->getSkinUrl('images/cvv.gif') ?>" alt="<?php echo $this->__('Card Verification Number Visual Reference') ?>" />
+                            </div>
+                        </div>
+                    </form>
+                    <script type="text/javascript">
+                        //<![CDATA[
+                        var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('opcheckout/onepage/savePayment', array('_secure' => true)) ?>');
+                        payment.init();
+                        payment.currentMethod = "<?php echo $this->getChild('methodsx')->getSelectedMethodCode() ?>";
+                        //]]>
+                    </script>
+                </div>
+
+                <?php if (Mage::helper('brander_opcheckout')->isOrderCommentEnabled()): ?>
+                    <?php echo $this->getChildHtml('commentx'); ?>
+                <?php endif; ?>
+
+                <?php if (Mage::helper('brander_opcheckout')->isCouponDiscountEnabled()): ?>
+                    <?php echo $this->getChildHtml('coupanx'); ?>
+                <?php endif; ?>
+
+                <div class="checkout-end">
+                    <?php if (Mage::helper('brander_opcheckout')->isAllowedNewsletterSubscription()): ?>
+                        <?php echo $this->getChildHtml('subscribex'); ?>
+                    <?php endif; ?>
+                    <button id="opcheckout-place-order-button" class="button btn-checkout" onclick="checkout.save();">
+                        <?php echo $helperCheckout->__("Confirm order") ?>
+                    </button>
+                    <?php if (Mage::helper('brander_opcheckout')->showAgreements()): ?>
+                        <?php echo $this->getChildHtml('agreementsx'); ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <?php if(!$customer->isLoggedIn()): ?>
+                <?php echo $this->getChildHtml('opcheckout_login'); ?>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <div class="checkout-shopping-bag">
+        <div id="one-step-checkout-review">
+            <?php echo $this->getChildHtml('infox') ?>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var billingForm = $('co-billing-form');
+    var shippingForm = $('co-shipping-form');
+    var shippingMethodForm = $('co-shipping-method-form');
+    var paymentForm = $('co-payment-form');
+    var checkoutCommentForm = $('checkout-order-comment');
+    var agreementsForm = $('checkout-agreements');
+    if (canShip()) {
+        var allForms = ((agreementsForm == null || agreementsForm == undefined) ? [billingForm, shippingForm, shippingMethodForm, paymentForm] : [billingForm, shippingForm, shippingMethodForm, paymentForm, agreementsForm]);
+    } else {
+        var allForms = ((agreementsForm == null || agreementsForm == undefined) ? [billingForm, paymentForm] : [billingForm, paymentForm, agreementsForm]);
+    }
+    var checkout = new CheckoutMain(allForms);
+    var billingStep = new Billing(billingForm, '<?php echo $this->getUrl('opcheckout/onepage/getAddress', array('_secure' => true)) ?>address/', '<?php echo $this->getUrl('opcheckout/onepage/saveBillingStep', array('_secure' => true)) ?>');
+    var shippingStep = new ShippingStep(shippingForm, "<?php echo $this->getUrl('opcheckout/onepage/saveShippingStep', array('_secure' => true)) ?>", "<?php echo $this->getUrl('opcheckout/onepage/shippingMethod', array('_secure' => true)) ?>");
+    var payment = new Payment(paymentForm, "<?php echo $this->getUrl('opcheckout/onepage/savePayment', array('_secure' => true)) ?>", "<?php echo $this->getUrl('opcheckout/onepage/paymentmethod', array('_secure' => true)) ?>");
+    billing = billingStep;
+    shipping = shippingStep;
+    billingStep.save();
+    var reviewStep = new ReviewStep("<?php echo $this->getUrl('opcheckout/onepage/review', array('_secure' => true)) ?>");
+    var shippingMethodStep = new ShippingMethodStep(shippingMethodForm, "<?php echo $this->getUrl('opcheckout/onepage/saveShippingMethod', array('_secure' => true)) ?>", "<?php echo $this->getUrl('opcheckout/onepage/shippingMethod', array('_secure' => true)) ?>");
+    var reviewFinal = new ReviewFinal("<?php echo $this->getUrl('opcheckout/onepage/saveOrderCustom', array('_secure' => true)) ?>", "<?php echo $this->getUrl('opcheckout/onepage/success', array('_secure' => true)) ?>", agreementsForm);
+
+    var quoteItems = new QuoteItems("<?php echo $this->getUrl('opcheckout/onepage/removeQuoteItem', array('_secure' => true)) ?>", "<?php echo $this->getUrl('opcheckout/onepage/changeQuoteItemQty', array('_secure' => true)) ?>");
+
+    function syncWithShipping(flag) {
+	    resetShippingForm(flag);
+        checkout.setShippingDifferent('uni-wrapper-shipping-div', flag);
+        shippingStep.setSameAsBilling(flag);
+        if (flag) {
+            billingStep.save();
+        }
+    }
+    function syncShipping(flag) {
+        if ($('billing:use_for_shipping_yes') && ($('billing:use_for_shipping_yes').checked == true || $('billing:use_for_shipping_yes').value == '1')) {
+            if (($('shipping:country_id').value != $('billing:country_id').value) || $('shipping:region_id').value != $('billing:region_id').value || $('shipping:region').value != $('billing:region').value || $('shipping:city').value != $('billing:city').value || $('shipping:postcode').value != $('billing:postcode').value) {
+                $('shipping:country_id').value = $('billing:country_id').value;
+                shippingStep.setSameAsBilling(true);
+                billingStep.save();
+            } else {
+                $('shipping:country_id').value = $('billing:country_id').value;
+                shippingStep.setSameAsBilling(true);
+            }
+        } else {
+            if (flag) {
+                billingStep.save();
+            }
+        }
+    }
+
+    function reloadShippingCity(){
+	    shippingStep.save();
+    }
+    function getShippingAndTax() {
+        billingStep.save();
+    }
+    function getShippingAndTaxWithFlag(flag) {
+        if (flag) {
+            billingStep.save();
+        }
+    }
+    if ($('shipping-address-select')) {
+        $('shipping-address-select').observe('change', function() {
+            billingStep.save();
+        });
+    }
+    /*
+     * 
+     * @ reset shipping form when check box unchecked.
+     */
+    function resetShippingForm(flag) {
+        if (!flag) {
+            allNodes = $$('#uni-wrapper-shipping-div input[type=text]');
+            for (i = 0; i < allNodes.length; i++) {
+                allNodes[i].value = '';
+            }
+        }
+    }
+</script>

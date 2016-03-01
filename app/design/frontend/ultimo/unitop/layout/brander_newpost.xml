@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <checkout_onepage_index>
+        <reference name="opcheckout.additional.data">
+            <block type="core/template" name="additional.js" template="brander/newpost/checkout/onepage/additional-js.phtml"/>
+        </reference>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>css/brander/newpost/styles.css</stylesheet>
+            </action>
+        </reference>
+    </checkout_onepage_index>
+</layout>

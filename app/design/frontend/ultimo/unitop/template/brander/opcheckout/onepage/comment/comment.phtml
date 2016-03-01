@@ -1,0 +1,54 @@
+<?php if (Mage::helper('brander_opcheckout')->isOrderCommentEnabled()): ?>
+	<div class="opcheckout-comment">
+		<?php $_MAX_CHAR = Mage::getStoreConfig('opcheckout/order/opcheckout_order_comment_length'); ?>
+		<?php
+		$_msg = '';
+		$flag = false;
+		?>
+		<?php if ($_MAX_CHAR != '' && $_MAX_CHAR != 0): ?>
+			<?php $flag = true; ?>
+			<?php $_msg = $this->__('Maximum Character(s):' . $_MAX_CHAR); ?>
+		<?php endif; ?>
+		<div class="opener-wrap">
+			<a href="javascript:void(0)" id="opcheckout-order-comment-label" class="comment-opener">
+				<span class="text">
+					<?php echo $this->__('Your Comment for this Order') ?>
+				</span>
+				<i class="icon-arrow"></i>
+			</a>
+		</div>
+		<div class="form-wrap text-form" id="opcheckout-comment-outer" style="display: none">
+			<div id="opcheckout-order-comment-wrap" class="comment-wrap">
+				<div class="textarea-set">
+					<textarea name="opcheckout-order-comment" id="opcheckout_order_comment" class="input-text opcheckout_order_comment"></textarea>
+				</div>
+				<div class="max-note">
+					<?php echo $_msg ? $_msg : '' ?>
+					<span id="comment_count_left"></span>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			<?php if ($flag): ?>
+			var MAX_CHAR = '<?php echo $_MAX_CHAR; ?>';
+			var msg = '<?php echo $this->__('Character Left: ') ?>';
+			$('comment_count_left').innerHTML = msg + MAX_CHAR;
+			<?php endif; ?>
+			$('opcheckout_order_comment').observe('keyup', function() {
+				<?php if ($flag): ?>
+				var len = $(this).value.length;
+				if (len > MAX_CHAR) {
+					$(this).value = $(this).value.substring(0, MAX_CHAR);
+				}
+				$('comment_count_left').innerHTML = msg + (MAX_CHAR - $(this).value.length);
+				<?php endif; ?>
+				$('hidden_opcheckout_order_comment').value = $(this).value;
+			});
+			$('opcheckout-order-comment-label').observe('click', function() {
+				Effect.toggle("opcheckout-comment-outer", 'blind', { duration: 0.4 });
+				Element.toggleClassName(this, "opened")
+			});
+		</script>
+	</div>
+<?php endif; ?>

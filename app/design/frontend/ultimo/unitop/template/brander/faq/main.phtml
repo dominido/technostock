@@ -1,0 +1,24 @@
+<?php $cmsPageId = $this->getPage()->getEntityId(); ?>
+<div class="page-title">
+    <?php if ($heading = $this->getData('content_heading')): ?>
+        <h1><?php echo $heading; ?></h1>
+    <?php endif; ?>
+</div>
+<div class="faq-page">
+    <div class="container">
+        <div class="content-twocols">
+            <div class="twocols-left-view" id="faq-items">
+                <?php echo $this->getChild('faq.text.answers')->setPageId($cmsPageId)->toHtml(); ?>
+            </div>
+            <div class="twocols-right-view">
+                <?php echo $this->getChildHtml('faq.right.timetocall'); ?>
+                <?php echo $this->getChildHtml('faq.right.additional.links'); ?>
+            </div>
+        </div>
+    </div>
+
+    <?php echo $this->getChild('faq.question.form')->setEntityId($cmsPageId)->toHtml(); ?>
+    <div class="container">
+        <?php echo $this->getChildHtml('faq.viewed.products')?>
+    </div>
+</div>

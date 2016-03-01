@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_Benefits extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_Benefits
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<layout>
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="brander_benefits/catalog_product_list_benefit" name="product.info.benefits" as="product_benefits" template="">
+                <action method="setTemplate" modules="brander_benefits/benefits_config/" options="enable, enable_productpage" conditions="1, 1">
+                    <template>brander/benefits/catalog/product/list/benefit.phtml</template>
+                </action>
+                <action method="addToParentGroup">
+                    <group>detailed_info</group>
+                </action>
+                <action method="setTitle" translate="value" module="brander_benefits">
+                    <value>Benefits</value>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view>
+<!--    <brander_benefits_category>
+        <reference name="content">
+            <block type="brander_benefits/catalog_category_list_benefit" name="category.info.benefits" as="category_benefits" template="brander/benefits/catalog/category/list/benefit.phtml" after="-" />
+        </reference>
+    </brander_benefits_category>-->
+<!--    <catalog_category_default>
+        <update handle="brander_benefits_category" />
+    </catalog_category_default>
+    <catalog_category_layered>
+        <update handle="brander_benefits_category" />
+    </catalog_category_layered>-->
+</layout>

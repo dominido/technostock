@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout>
+
+    <customer_account_navigation>
+        <reference name="head">
+            <action ifconfig="ultimo/product_page/review_use_star" method="addItem"><type>skin_js</type><name>js/brander/review_stars/srka.review.stars.min.js</name></action>
+            <action ifconfig="ultimo/product_page/review_use_star" method="addItem"><type>skin_css</type><name>css/brander/review_stars/srka.review.stars.css</name><params/></action>
+        </reference>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label">
+                <name>newsletter</name>
+                <path>newsletter/manage/</path>
+                <label>Subscription</label>
+            </action>
+        </reference>
+
+        <reference name="left">
+            <remove name="sale.reorder.sidebar"/>
+            <remove name="left.permanent.callout"/>
+            <remove name="left.newsletter"/>
+            <remove name="catalog.compare.sidebar"/>
+            <remove name="wishlist_sidebar"/>
+            <remove name="right.reports.product.compared"/>
+            <remove name="left.reports.product.viewed"/>
+        </reference>
+    </customer_account_navigation>
+
+    <default>
+        <reference name="top.links">
+            <action method="addLink" translate="label title" module="brander_account">
+                <label>My Orders</label>
+                <url helper="brander_account/getMyOrdersUrl" />
+                <title>My Orders</title>
+                <prepare />
+                <urlParams/>
+                <position>90</position>
+            </action>
+        </reference>
+        <update handle="customer_account_navigation"/>
+    </default>
+
+    <customer_account_index translate="label">
+        <reference name="my.account.wrapper">
+            <reference name="customer_account_dashboard">
+                <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info" template="customer/account/dashboard/info.phtml"/>
+                <block type="brander_account/dashboardAddress" name="info_addressbook" as="info_addressbook" template="customer/account/dashboard/info_addressbook.phtml"/>
+                <block type="customer/account_dashboard_info" name="info_newsletter" as="info_newsletter" template="customer/account/dashboard/info_newsletter.phtml"/>
+            </reference>
+        </reference>
+
+    </customer_account_index>
+
+    <sales_order_history translate="label">
+        <remove name="customer.account.link.back"/>
+    </sales_order_history>
+
+    <newsletter_manage_index translate="label">
+        <label>Subscriptions</label>
+    </newsletter_manage_index>
+
+    <wishlist_index_index>
+        <reference name="customer.wishlist.buttons">
+            <remove name="customer.wishlist.button.share" />
+        </reference>
+    </wishlist_index_index>
+
+</layout>

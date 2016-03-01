@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--        /**
+        * Brander CmsHome extension
+        *
+        * NOTICE OF LICENSE
+        *
+        * This source file is subject to the MIT License
+        * that is bundled with this package in the file LICENSE.txt.
+        * It is also available through the world-wide-web at this URL:
+        * http://opensource.org/licenses/mit-license.php
+        *
+        * @category       Brander
+        * @package        CmsHome
+        * @copyright      Copyright (c) 2015
+        * @license        http://opensource.org/licenses/mit-license.php MIT License
+        * @author         AlexVegas (Alexandr Belyaev) <alexandr.belyaev.only@gmail.com>
+        */-->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <brander_homepage translate="title" module="brander_cmshome">
+                                        <title>Homepage</title>
+                                    </brander_homepage>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <catalog>
+                        <children>
+                            <products>
+                                <children>
+                                    <products translate="title" module="catalog">
+                                        <title>Manage Products</title>
+                                    </products>
+                                    <hit_products translate="title" module="brander_cmshome">
+                                        <title>Bestsellers</title>
+                                    </hit_products>
+                                    <special_offers translate="title" module="brander_cmshome">
+                                        <title>Special Offers</title>
+                                    </special_offers>
+                                </children>
+                            </products>
+                        </children>
+                    </catalog>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <catalog>
+            <children>
+                <products>
+                    <children>
+                        <products translate="title" module="catalog">
+                            <title>Manage Products</title>
+                            <action>adminhtml/catalog_product/</action>
+                            <sort_order>0</sort_order>
+                        </products>
+                        <hit_products translate="title" module="brander_cmshome">
+                            <title>Bestsellers</title>
+                            <action>adminhtml/hitsofsales/</action>
+                            <sort_order>10</sort_order>
+                        </hit_products>
+                        <special_offers translate="title" module="brander_cmshome">
+                            <title>Special Offers</title>
+                            <action>adminhtml/specialoffers/</action>
+                            <sort_order>20</sort_order>
+                        </special_offers>
+                    </children>
+                </products>
+            </children>
+        </catalog>
+    </menu>
+</config>

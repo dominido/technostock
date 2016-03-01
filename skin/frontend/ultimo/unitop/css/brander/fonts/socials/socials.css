@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'SocIcons';
+    src:    url('fonts/SocIcons.eot?hvknfi');
+    src:    url('fonts/SocIcons.eot?hvknfi#iefix') format('embedded-opentype'),
+        url('fonts/SocIcons.ttf?hvknfi') format('truetype'),
+        url('fonts/SocIcons.woff?hvknfi') format('woff'),
+        url('fonts/SocIcons.svg?hvknfi#SocIcons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+[class^="social-"] [class^="ic-"],
+[class*=" social-"] [class*=" ic-"],
+[class^="social-"] [class*=" ic-"],
+[class*=" social-"] [class^="ic-"] {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 36px;
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'SocIcons' !important;
+}
+
+.ic-yandex:before {
+    content: "\e803";
+}
+.ic-odnoklasniki:before,
+.ic-odnoklassniki:before {
+    content: "\e802";
+}
+.ic-moikrug:before {
+    content: "\e801";
+}
+.ic-mailru:before {
+    content: "\e800";
+}
+.ic-vk:before {
+    content: "\e859";
+}
+.ic-pinterest:before {
+    content: "\e823e";
+}
+.ic-twitter:before {
+    content: "\e814";
+}
+.ic-facebook:before {
+    content: "\e813";
+}
+.ic-google:before {
+    content: "\e817";
+}
+.ic-googleplus:before {
+    content: "\e818";
+}
+.ic-instagram:before {
+    content: "\e81b";
+}
+.ic-renren:before {
+    content: "\e822";
+}
+.ic-youtube:before {
+    content: "\e804";
+}
+.ic-vimeo:before {
+    content: "\e805";
+}
+.ic-flickr:before {
+    content: "\e827";
+}
+.ic-blogger:before {
+    content: "\e833";
+}
+.ic-tumblr:before {
+    content: "\e835";
+}
+.ic-linkedin:before {
+    content: "\e83f";
+}
+.ic-skype:before {
+    content: "\e83a";
+}

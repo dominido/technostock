@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_SocialLogin
+ * @copyright  Copyright (c) 2013 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-commercial-v1/   ETWS Commercial License (ECL1)
+ */
+ -->
+<config>
+    <modules>
+        <ET_SocialLogin>
+            <name>ET Social Login</name>
+            <version>0.0.10</version>
+            <descr>
+                <ru_RU>
+                    <![CDATA[Позволяет посетителям сайта регистрироваться и авторизироваться с помощью своих аккаунтов в социальных сетях.<br>Для работы модулю необходима инфомрация о созданных на социальных сетях приложениях для сайта.]]>
+                </ru_RU>
+                <en_US><![CDATA[Allows to register and login through social networks.]]>
+                </en_US>
+            </descr>
+            <permanentlink>
+                <ru_RU>http://shop.etwebsolutions.com/rus/et-social-login.html</ru_RU>
+                <en_US>http://shop.etwebsolutions.com/eng/et-social-login.html</en_US>
+            </permanentlink>
+            <license>
+                <ru_RU><![CDATA[ETWS Коммерческая лицензия (ECL1)]]></ru_RU>
+                <en_US><![CDATA[ETWS Commercial License (ECL1)]]></en_US>
+            </license>
+            <licenselink>
+                <ru_RU>http://shop.etwebsolutions.com/rus/etws-license-commercial-v1</ru_RU>
+                <en_US>http://shop.etwebsolutions.com/eng/etws-license-commercial-v1</en_US>
+            </licenselink>
+            <redminelink>http://support.etwebsolutions.com/projects/et-social-login/roadmap</redminelink>
+            <ourserviceslink>
+                <ru_RU>http://shop.etwebsolutions.com/rus/our-services</ru_RU>
+                <en_US>http://shop.etwebsolutions.com/eng/our-services</en_US>
+            </ourserviceslink>
+        </ET_SocialLogin>
+    </modules>
+    <admin>
+        <routers>
+            <accounts>
+                <use>admin</use>
+                <args>
+                    <module>ET_SocialLogin</module>
+                    <frontName>accounts</frontName>
+                </args>
+            </accounts>
+        </routers>
+    </admin>
+    <global>
+        <models>
+            <et_sociallogin>
+                <class>ET_SocialLogin_Model</class>
+                <resourceModel>et_sociallogin_mysql4</resourceModel>
+            </et_sociallogin>
+
+            <et_sociallogin_mysql4>
+                <class>ET_SocialLogin_Model_Mysql4</class>
+                <entities>
+                    <social_customer>
+                        <table>et_social_customer</table>
+                    </social_customer>
+                </entities>
+            </et_sociallogin_mysql4>
+        </models>
+        <blocks>
+            <et_sociallogin>
+                <class>ET_SocialLogin_Block</class>
+            </et_sociallogin>
+        </blocks>
+        <helpers>
+            <et_sociallogin>
+                <class>ET_SocialLogin_Helper</class>
+            </et_sociallogin>
+        </helpers>
+        <resources>
+            <et_sociallogin_setup>
+                <setup>
+                    <module>ET_SocialLogin</module>
+                </setup>
+            </et_sociallogin_setup>
+        </resources>
+
+        <events>
+            <controller_action_predispatch_adminhtml_customer_delete>
+                <observers>
+                    <delete_social_linked_accounts>
+                        <class>et_sociallogin/observer</class>
+                        <method>deleteSocialLinkedAccounts</method>
+                    </delete_social_linked_accounts>
+                </observers>
+            </controller_action_predispatch_adminhtml_customer_delete>
+            <controller_action_predispatch_adminhtml_customer_massDelete>
+                <observers>
+                    <delete_social_linked_accounts>
+                        <class>et_sociallogin/observer</class>
+                        <method>deleteSocialLinkedAccounts</method>
+                    </delete_social_linked_accounts>
+                </observers>
+            </controller_action_predispatch_adminhtml_customer_massDelete>
+        </events>
+    </global>
+
+    <frontend>
+        <routers>
+            <social>
+                <use>standard</use>
+                <args>
+                    <module>ET_SocialLogin</module>
+                    <frontName>social</frontName>
+                </args>
+            </social>
+        </routers>
+        <secure_url>
+            <social>/social/</social>
+        </secure_url>
+        <layout>
+            <updates>
+                <social>
+                    <file>et_sociallogin.xml</file>
+                </social>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <ET_SocialLogin>
+                    <files>
+                        <default>ET_SocialLogin.csv</default>
+                    </files>
+                </ET_SocialLogin>
+            </modules>
+        </translate>
+
+        <events>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <insert_social_block_to_checkout_page>
+                        <type>model</type>
+                        <class>et_sociallogin/observer</class>
+                        <method>insertSocialBlockToCheckoutPage</method>
+                    </insert_social_block_to_checkout_page>
+                </observers>
+            </core_block_abstract_to_html_before>
+
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <insert_social_block_to_login_page>
+                        <type>model</type>
+                        <class>et_sociallogin/observer</class>
+                        <method>insertSocialBlockToLoginPage</method>
+                    </insert_social_block_to_login_page>
+                </observers>
+            </core_block_abstract_to_html_before>
+
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <insert_social_block_to_register_page>
+                        <type>model</type>
+                        <class>et_sociallogin/observer</class>
+                        <method>insertSocialBlockToRegisterPage</method>
+                    </insert_social_block_to_register_page>
+                </observers>
+            </core_block_abstract_to_html_before>
+        </events>
+    </frontend>
+
+    <default>
+        <social_login>
+            <general>
+                <short_description_length>450</short_description_length>
+                <active>1</active>
+                <enable_jquery>1</enable_jquery>
+                <login_page_active>1</login_page_active>
+                <checkout_page_active>1</checkout_page_active>
+            </general>
+            <icons>
+                <size>24</size>
+                <shape>square</shape>
+                <color>colored</color>
+                <block_label>Log in with:</block_label>
+            </icons>
+            <vk>
+                <title>Vkontakte</title>
+                <auth_title>Log in with Vkontakte</auth_title>
+                <active>1</active>
+                <social>1</social>
+                <sort_order>0</sort_order>
+                <provider>vk</provider>
+            </vk>
+
+            <facebook>
+                <title>Facebook</title>
+                <auth_title>Log in with Facebook</auth_title>
+                <active>0</active>
+                <social>1</social>
+                <sort_order>10</sort_order>
+                <provider>facebook</provider>
+            </facebook>
+
+            <google>
+                <title>Google</title>
+                <auth_title>Log in with Google</auth_title>
+                <active>0</active>
+                <social>1</social>
+                <sort_order>20</sort_order>
+                <provider>google</provider>
+            </google>
+
+            <odnoklassniki>
+                <title>Odnoklassniki</title>
+                <auth_title>Log in with Odnoklassniki</auth_title>
+                <active>0</active>
+                <social>1</social>
+                <sort_order>30</sort_order>
+                <provider>odnoklassniki</provider>
+            </odnoklassniki>
+
+            <twitter>
+                <title>Twitter</title>
+                <auth_title>Log in with Twitter</auth_title>
+                <active>0</active>
+                <social>1</social>
+                <sort_order>40</sort_order>
+                <provider>twitter</provider>
+            </twitter>
+
+            <linkedin>
+                <title>Linkedin</title>
+                <auth_title>Log in with Linkedin</auth_title>
+                <active>0</active>
+                <social>1</social>
+                <sort_order>50</sort_order>
+                <provider>linkedin</provider>
+            </linkedin>
+
+            <github>
+                <title>Github</title>
+                <auth_title>Log in with Github</auth_title>
+                <active>0</active>
+                <social>1</social>
+                <sort_order>50</sort_order>
+                <provider>github</provider>
+            </github>
+
+            <yandex>
+                <title>Yandex</title>
+                <auth_title>Log in with Yandex</auth_title>
+                <active>0</active>
+                <social>1</social>
+                <sort_order>50</sort_order>
+                <provider>yandex</provider>
+            </yandex>
+
+            <mailru>
+                <title>Mail.ru</title>
+                <auth_title>Log in with Mail.ru</auth_title>
+                <active>0</active>
+                <social>1</social>
+                <sort_order>60</sort_order>
+                <provider>mailru</provider>
+            </mailru>
+            <sharing>
+                <vk_icon_title>Share to Vkontakte</vk_icon_title>
+                <facebook_icon_title>Share to Facebook</facebook_icon_title>
+                <mailru_icon_title>Share to Mail.Ru</mailru_icon_title>
+                <odnoklassniki_icon_title>Share to Odnoklassniki</odnoklassniki_icon_title>
+                <google_icon_title>Share to Google+</google_icon_title>
+                <twitter_icon_title>Share to Twitter</twitter_icon_title>
+                <size>24</size>
+                <shape>square</shape>
+                <color>colored</color>
+                <block_label>Share:</block_label>
+            </sharing>
+        </social_login>
+        <social_auth_callback>social/auth/callback</social_auth_callback>
+    </default>
+
+
+    <adminhtml>
+        <menu>
+            <customer>
+                <children>
+                    <et_sociallogin translate="label">
+                        <title>Social accounts</title>
+                        <sort_order>20</sort_order>
+                        <action>accounts/adminhtml_grid</action>
+                    </et_sociallogin>
+                </children>
+            </customer>
+            <report>
+                <children>
+                    <customers>
+                        <children>
+                            <social_accounts>
+                                <title>Social Accounts</title>
+                                <action>accounts/adminhtml_socialReport</action>
+                                <sort_order>11</sort_order>
+                            </social_accounts>
+
+                        </children>
+                    </customers>
+                </children>
+            </report>
+        </menu>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <social_login translate="title" module="et_sociallogin">
+                                            <title>ET Social Login</title>
+                                            <sort_order>10</sort_order>
+                                        </social_login>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <ET_SocialLogin>
+                    <files>
+                        <default>ET_SocialLogin.csv</default>
+                    </files>
+                </ET_SocialLogin>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <social>
+                    <file>et_sociallogin.xml</file>
+                </social>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

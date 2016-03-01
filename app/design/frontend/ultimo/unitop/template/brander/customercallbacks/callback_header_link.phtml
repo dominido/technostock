@@ -1,0 +1,12 @@
+<?php $helper = Mage::helper('brander_customercallbacks'); ?>
+<div class="callback callback-header links-wrapper-separators <?php echo $this->getParentBlock()->getParentBlock()->getElementClass(); ?>">
+    <ul class="links">
+        <?php if ($helper->isVisibleInHeader()): ?>
+            <li class="nav-item level0 level-top right">
+                <a class="level-top fancybox" href="#callbacks">
+                    <span class="callback-title"><?php echo $this->__('Callback')?></span>
+                </a>
+            </li>
+        <?php endif; ?>
+    </ul>
+</div>

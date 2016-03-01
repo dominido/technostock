@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<PAGE_TYPE_UNIPAGETYPE>
+        <remove name="cms.page.title" />
+		<reference name="root">
+			<action method="setTemplate" modules="brander_homepage/homepage_settings/" options="full_width_page" conditions="1, 0">
+				<template>page/1column.phtml</template>
+			</action>
+			<action method="setTemplate" modules="brander_homepage/homepage_settings/" options="full_width_page" conditions="1, 1">
+				<template>page/1column-full-width.phtml</template>
+			</action>
+		</reference>
+		<reference name="cmsadvanced.page">
+			<block type="brander_cmshome/productSliders" name="homepage.product_sliders" template="brander/page/homepage/sliders/products.phtml">
+				<block type="catalog/product_new" name="product_sliders.list_new" template="catalog/product/new.phtml"/>
+				<block type="brander_cmshome/product_list_specialOffers" name="product_sliders.list_special" template="catalog/product/list_featured_slider.phtml"/>
+				<block type="brander_cmshome/product_list_hitsOfSales" name="product_sliders.list_hits" template="catalog/product/list_featured_slider.phtml"/>
+				<block type="brander_cmshome/homepageBanners" name="home.homepage.banners" template="brander/page/homepage/banners/banners.phtml"/>
+			</block>
+			<block type="brander_cmshome/benefits" name="home.homepage.benefits">
+				<action method="setTemplate" modules="brander_benefits/benefits_config/" options="enable, enable_homepage" conditions="1, 1">
+					<template>brander/page/homepage/benefits/benefits.phtml</template>
+				</action>
+			</block>
+			<block type="brander_cmshome/homepageBanners" name="home.homepage.banners" template="brander/page/homepage/banners/banners.phtml"/>
+			<block type="brands/brands" name="homepage.brands_slider" template="infortis/brands/brand_slider.phtml" />
+
+		</reference>
+	</PAGE_TYPE_UNIPAGETYPE>
+
+	<cmsadvanced_page_view>
+		<reference name="root">
+			<action method="setTemplate">
+				<template>page/1column.phtml</template>
+			</action>
+		</reference>
+		<!-- Left column ====================================================================== -->
+		<reference name="left">
+			<block type="core/text_list" name="home_left" as="home_left" translate="label" before="-">
+				<label>Home, Left Column</label>
+			</block>
+
+			<!-- Disable left sidebar blocks on home page -->
+			<action ifconfig="ultimo/sidebar_blocks_home/compare" method="unsetChild"><name>catalog.compare.sidebar</name></action>
+			<action ifconfig="ultimo/sidebar_blocks_home/compared" method="unsetChild"><name>right.reports.product.compared</name></action>
+			<action ifconfig="ultimo/sidebar_blocks_home/viewed" method="unsetChild"><name>left.reports.product.viewed</name></action>
+
+			<action ifconfig="ultimo/sidebar_blocks_home/wishlist" method="unsetChild"><name>wishlist</name></action>
+			<action ifconfig="ultimo/sidebar_blocks_home/poll" method="unsetChild"><name>right.poll</name></action>
+			<action ifconfig="ultimo/sidebar_blocks_home/tags" method="unsetChild"><name>tags_popular</name></action>
+
+			<action ifconfig="ultimo/sidebar_blocks_home/paypal" method="unsetChild"><name>paypal.partner.right.logo</name></action>
+			<action ifconfig="ultimo/sidebar_blocks_home/block_left_top" method="unsetChild"><name>block_left_top</name></action>
+			<action ifconfig="ultimo/sidebar_blocks_home/block_left_bottom" method="unsetChild"><name>block_left_bottom</name></action>
+		</reference>
+
+		<!-- Right column ====================================================================== -->
+		<reference name="right">
+			<!-- Disable right sidebar blocks on home page -->
+			<action ifconfig="ultimo/sidebar_blocks_home/paypal" method="unsetChild"><name>paypal.partner.right.logo</name></action>
+			<action ifconfig="ultimo/sidebar_blocks_home/block_right_top" method="unsetChild"><name>block_right_top</name></action>
+			<action ifconfig="ultimo/sidebar_blocks_home/block_right_bottom" method="unsetChild"><name>block_right_bottom</name></action>
+		</reference>
+	</cmsadvanced_page_view>
+
+	<default>
+		<reference name="header">
+
+			<!-- Mini Account -->
+			<block type="page/html_header" name="account_sidebar" as="accountMini"
+				   template="brander/page/header/account.phtml" after="search_wrapper"/>
+			<reference name="user_menu">
+				<block type="core/template" name="account_sidebar" template="brander/page/header/account.phtml"
+					   before="-">
+					<action method="insert">
+						<block>top.links</block>
+					</action>
+				</block>
+			</reference>
+
+			<block type="core/text_list" name="header_contacts_callback" as="header_contacts_callback">
+				<action method="insert">
+					<block>callback_link_top</block>
+				</action>
+				<action method="insert">
+					<block>header_blocks.contacts</block>
+				</action>
+			</block>
+
+			<!-- Primary Blocks  -->
+			<block type="brander_cmsmenu/callbackContacts" name="container_header_primary_left_1">
+				<action method="setElementClass"><value>item item-left container_header_primary_left_1 std</value></action>
+			</block>
+
+			<block type="brander_cmsmenu/callbackContacts" name="container_header_primary_central_1">
+				<action method="setElementClass"><value>item item-left container_header_primary_central_1 std</value></action>
+			</block>
+			<block type="brander_cmsmenu/callbackContacts" name="container_header_primary_right_1">
+				<action method="setElementClass"><value>item item-left container_header_primary_right_1 std</value></action>
+			</block>
+
+			<!-- Top Blocks  -->
+			<block type="brander_cmsmenu/callbackContacts" name="container_header_top_right_1">
+				<action method="setElementClass"><value>item item-right container_header_top_right_1 std</value></action>
+			</block>
+			<block type="brander_cmsmenu/callbackContacts" name="container_header_top_right_2">
+				<action method="setElementClass"><value>item item-right container_header_top_right_2 std</value></action>
+			</block>
+			<block type="brander_cmsmenu/callbackContacts" name="container_header_top_left_1">
+				<action method="setElementClass"><value>item item-left container_header_top_left_1 std</value></action>
+			</block>
+			<block type="brander_cmsmenu/callbackContacts" name="container_header_top_left_2">
+				<action method="setElementClass"><value>item item-left container_header_top_left_2 std</value></action>
+			</block>
+		</reference>
+
+	</default>
+</layout>

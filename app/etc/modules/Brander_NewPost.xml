@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_NewPost>
+            <active>false</active>
+            <codePool>local</codePool>
+            <depends>
+	            <Mage_Shipping/>
+	            <Brander_Core />
+	            <Brander_Opcheckout />
+            </depends>
+        </Brander_NewPost>
+    </modules>
+</config>

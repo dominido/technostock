@@ -1,0 +1,9 @@
+<div class="page-title">
+    <?php if ($heading = $this->getData('content_heading')): ?>
+        <h1><?php echo $heading; ?></h1>
+    <?php endif; ?>
+</div>
+<div class="page-content">
+    <?php echo $this->getPreparedContent() ?>
+</div>
+

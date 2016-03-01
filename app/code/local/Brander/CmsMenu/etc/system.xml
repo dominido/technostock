@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <ultramegamenu>
+            <tab>infortis</tab>
+            <groups>
+                <mainmenu>
+                    <fields>
+                        <sticky_only translate="label" module="brander_cmsmenu">
+                            <label>Home Link: in "sticky" only</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>240</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sticky_only>
+                        <first_item_grid translate="label" module="brander_cmsmenu">
+                            <label>First Menu Item Extended Width</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </first_item_grid>
+                    </fields>
+                </mainmenu>
+
+            </groups>
+        </ultramegamenu>
+        <ultimo>
+            <tab>infortis</tab>
+            <groups>
+                <header>
+                    <fields>
+                        <account_position translate="label">
+                            <label>Account Position</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ultimo/system_config_source_header_position_primarytopusermenuinsidemenu</source_model>
+                            <sort_order>315</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </account_position>
+                    </fields>
+                </header>
+                <footer>
+                    <fields>
+                        <show_titles translate="label">
+                            <label>Show Blocks Titles</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_titles>
+                    </fields>
+                </footer>
+            </groups>
+        </ultimo>
+
+        <ultimo_design>
+            <groups>
+                <nav>
+                    <fields>
+                        <first_item_color translate="label">
+                            <label>First Menu Item Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </first_item_color>
+                    </fields>
+                </nav>
+            </groups>
+        </ultimo_design>
+
+        <ultraslideshow translate="label">
+            <tab>infortis</tab>
+            <groups>
+                <banners>
+                    <fields>
+                        <banners_or_menu translate="label" module="brander_cmsmenu">
+                            <label>Select Slider View Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>brander_cmsmenu/model_config_source_slidertype</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </banners_or_menu>
+                        <category_select translate="label" module="brander_cmsmenu">
+                            <label>Left SliderMenu root category select</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>36</sort_order>
+                            <source_model>brander_cmsmenu/model_config_source_categories</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <banners_or_menu>2</banners_or_menu>
+                            </depends>
+                        </category_select>
+                    </fields>
+                </banners>
+            </groups>
+        </ultraslideshow>
+    </sections>
+</config>

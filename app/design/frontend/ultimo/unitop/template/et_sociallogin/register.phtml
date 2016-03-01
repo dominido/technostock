@@ -1,0 +1,138 @@
+<?php
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_SocialLogin
+ * @copyright  Copyright (c) 2015 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-commercial-v1/   ETWS Commercial License (ECL1)
+ *
+ * @var $this Mage_Customer_Block_Form_Register
+ */
+
+$helper = Mage::helper('et_sociallogin');
+$socData = Mage::getSingleton('customer/session')->getSocialData();
+$accs = Mage::helper('et_sociallogin')->getActiveSocialAccounts();
+$providerName = isset($socData['provider']) ? $accs[$socData['provider']]['title'] : '';
+
+$_gender = $this->getLayout()->createBlock('customer/widget_gender');
+$_dob = $this->getLayout()->createBlock('customer/widget_dob');
+
+$email = $this->getFormData()->getEmail();
+
+?>
+<div class="account-create account-create-popup">
+    <?php echo $this->getChildHtml('form_fields_before') ?>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <form action="<?php echo Mage::getUrl('social/auth/registerpost'); ?>" method="post" id="form-validate">
+        <div class="fieldset">
+            <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>"/>
+
+            <table class="register-welcome">
+                <tr>
+                    <td><strong>
+                            <?php if (isset($socData['mini_photo'])) : ?>
+                                <img style="float:left; margin-right: 10px;"
+                                     src="<?php echo $socData['mini_photo'] ?>"/>
+                            <?php endif; ?>
+                            <?php echo $socData['firstname'] ?>
+                        </strong>, <?php echo $helper->__('You logged in with %s first time.', $providerName) ?>
+
+                        <?php if ($this->getDuplicateEmail() == 1) : ?>
+                            <br/> <?php echo $helper->__('You already have account in our store.') ?>
+                        <?php endif; ?>
+
+                        <div class="clearer"></div>
+                    </td>
+
+                </tr>
+            </table>
+
+            <ul class="form-list soc-register-form">
+                <?php if ($this->getDuplicateEmail() != 1) : ?>
+                    <li class="fields">
+                        <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->toHtml() ?>
+                    </li>
+                <?php endif; ?>
+
+                <li>
+                    <label for="email_address" class="required"><em>*</em><?php echo $helper->__('Email Address') ?>
+                    </label>
+
+                    <div class="input-box">
+                        <input type="text" name="email" id="email_address"
+                               value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>"
+                               title="<?php echo $helper->__('Email Address') ?>"
+                               class="input-text validate-email required-entry"/>
+                    </div>
+                </li>
+                <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+                <?php if ($_dob->isEnabled()): ?>
+                    <li><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></li>
+                <?php endif ?>
+                <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+                <?php if ($_taxvat->isEnabled()): ?>
+                    <li><?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?></li>
+                <?php endif ?>
+                <?php if ($_gender->isEnabled()): ?>
+                    <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
+                <?php endif ?>
+
+                <?php if ($this->getDuplicateEmail() == 1) : ?>
+                    <li class="fields">
+                        <fieldset>
+                            <label for="password"><?php echo $this->__('Password:'); ?></label>
+
+                            <div class="input-box">
+                                <input type="password" name="password"/>
+                            </div>
+                        </fieldset>
+                    </li>
+                <?php endif; ?>
+
+            </ul>
+
+            <p class="reg-message">
+                <?php echo $this->__('We are ready to create an account with your information on our website. When you complete the registration, you will be able to sign in into our website with your social network account (by pressing just one button). You can change any information about yourself before we save it into your account.') ?>
+            </p>
+        </div>
+
+        <input type="hidden" name="success_url"
+               value="<?php echo Mage::getSingleton('customer/session')->getBeforeAuthUrl(); ?>"/>
+
+        <div class="buttons-set" style="text-align: right">
+            <span class="load">&nbsp;</span>
+            <button type="submit" title="<?php echo $helper->__('Submit') ?>" class="button social-reg-submit">
+                <span><span><?php echo $helper->__('Submit') ?></span></span>
+            </button>
+        </div>
+    </form>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var dataForm = new VarienForm('form-validate', true);
+
+        jQuery(function () {
+            jQuery(".social-reg-submit").click(function (e) {
+                e.preventDefault();
+                if (dataForm.validator.validate()) {
+                    jQuery(".load").show();
+                    jQuery(".social-reg-submit").attr("disabled", "disabled");
+                    jQuery("#form-validate").submit();
+                }
+            });
+        });
+
+        //]]>
+    </script>
+</div>

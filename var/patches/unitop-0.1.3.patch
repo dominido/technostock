@@ -1,0 +1,86 @@
+Index: app/code/local/Infortis/Infortis/Model/System/Config/Source/Design/Font/Size/Basic.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/code/local/Infortis/Infortis/Model/System/Config/Source/Design/Font/Size/Basic.php	(revision 245f686a8a0b66133a3bb13f83714a1c6fbb7beb)
++++ app/code/local/Infortis/Infortis/Model/System/Config/Source/Design/Font/Size/Basic.php	(revision e2458c1cfc8eff28ed05a301f03fdd0049f76e61)
+@@ -10,6 +10,14 @@
+ 			array('value' => '14',		'label' => Mage::helper('infortis')->__('14 px')),
+ 			array('value' => '15',		'label' => Mage::helper('infortis')->__('15 px')),
+ 			array('value' => '16',		'label' => Mage::helper('infortis')->__('16 px')),
++			array('value' => '17',		'label' => Mage::helper('infortis')->__('17 px')),
++			array('value' => '18',		'label' => Mage::helper('infortis')->__('18 px')),
++			array('value' => '19',		'label' => Mage::helper('infortis')->__('19 px')),
++			array('value' => '20',		'label' => Mage::helper('infortis')->__('20 px')),
++			array('value' => '21',		'label' => Mage::helper('infortis')->__('21 px')),
++			array('value' => '22',		'label' => Mage::helper('infortis')->__('22 px')),
++			array('value' => '23',		'label' => Mage::helper('infortis')->__('23 px')),
++			array('value' => '24',		'label' => Mage::helper('infortis')->__('24 px')),
+ 			//Old:
+ 			//array('value' => '12px',	'label' => Mage::helper('infortis')->__('12 px')),
+ 			//array('value' => '13px',	'label' => Mage::helper('infortis')->__('13 px')),
+\ No newline at end of file
+Index: skin/frontend/ultimo/unitop/css/custom.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- skin/frontend/ultimo/unitop/css/custom.css	(revision e2458c1cfc8eff28ed05a301f03fdd0049f76e61)
++++ skin/frontend/ultimo/unitop/css/custom.css	(revision 3d34688dcdd30e78c62811df2c425ca5692c08d4)
+@@ -169,4 +169,7 @@
+ 
+ .toolbar .pager {
+     display: none;
+-}
+\ No newline at end of file
++}
++.toolbar-bottom .toolbar .pager {
++    display: inherit;
++}
+\ No newline at end of file
+Index: app/code/local/Brander/Shop/etc/config.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/code/local/Brander/Shop/etc/config.xml	(revision 3d34688dcdd30e78c62811df2c425ca5692c08d4)
++++ app/code/local/Brander/Shop/etc/config.xml	(revision 1ce3f2a4df1fe97d3bbd9c6aac704930d48d4551)
+@@ -2,7 +2,7 @@
+ <config>
+     <modules>
+         <Brander_Shop>
+-            <version>0.0.97</version>
++            <version>0.1.3</version>
+         </Brander_Shop>
+     </modules>
+     <global>
+\ No newline at end of file
+Index: app/code/local/Brander/UnitopBlog/Block/Post/List.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/code/local/Brander/UnitopBlog/Block/Post/List.php	(revision 3d34688dcdd30e78c62811df2c425ca5692c08d4)
++++ app/code/local/Brander/UnitopBlog/Block/Post/List.php	(revision 1ce3f2a4df1fe97d3bbd9c6aac704930d48d4551)
+@@ -35,9 +35,9 @@
+                          ->addAttributeToSelect('*')
+                          ->addAttributeToFilter('status', 1);
+         if ($this->getIsHomePage()) {
+-            if (Mage::helper('brander_shop')->getCfg('homepage/enable')) {
++            if (Mage::helper('brander_shop')->getCfg('brander_unitopblog/homepage/enable')) {
+                 $posts->addAttributeToFilter('show_on_homepage', 1);
+-                $postsNum = Mage::helper('brander_shop')->getCfg('homepage/posts_limit');
++                $postsNum = Mage::helper('brander_shop')->getCfg('brander_unitopblog/homepage/posts_limit');
+                 $posts->setPageSize($postsNum)->setCurPage(1);
+             } else {
+                 $posts = Mage::getModel('brander_unitopblog/post');
+@@ -122,7 +122,7 @@
+     public function getTitle()
+     {
+         if ($this->getIsHomePage()) {
+-            return Mage::helper('brander_shop')->getCfg('homepage/posts_block_title');
++            return Mage::helper('brander_shop')->getCfg('brander_unitopblog/homepage/posts_block_title');
+         }
+         else {
+             return Mage::helper('brander_unitopblog')->__('Blog');

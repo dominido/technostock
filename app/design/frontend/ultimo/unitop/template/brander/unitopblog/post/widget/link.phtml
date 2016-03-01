@@ -1,0 +1,24 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php $_post = $this->getCurrentPost();?>
+<?php if ($_post) :?>
+    <div class="post-widget-link">
+        <a href="<?php echo $_post->getPostUrl()?>"><?php echo $_post->getTitle()?></a>
+    </div>
+<?php endif;?>

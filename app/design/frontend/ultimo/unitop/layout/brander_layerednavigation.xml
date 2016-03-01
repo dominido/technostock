@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+
+<layout>
+    <default>
+        <!--<reference name="head">-->
+            <!--<action method="addCss"><stylesheet>css/brander/layerednavigation/layerednavigation.css</stylesheet></action>-->
+            <!--<action method="addJs"><script>scriptaculous/slider.js</script></action>-->
+        <!--</reference>-->
+    </default>
+
+    <layerednavigation_index_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/brander/layerednavigation/layerednavigation.css</stylesheet></action>
+            <action method="addJs"><script>scriptaculous/slider.js</script></action>
+        </reference>
+
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+
+        <reference name="left">
+            <block type="core/template" name="layerednavigation.navleft.marker" before="layerednavigation.navleft" template="catalog/layer/marker.phtml"/>
+            <block type="brander_layerednavigation/catalog_layer_view" name="layerednavigation.navleft" before="-" template="catalog/layer/view.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="brander_layerednavigation/catalog_layer_view_top" name="layerednavigation.navtop" template="brander/layerednavigation/view_top.phtml"/>
+            <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
+                <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+                    <block type="core/text_list" name="product_list.name.after" as="name.after" />
+                    <block type="core/text_list" name="product_list.after" as="after" />
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                    <action method="setColumnCount"><coulumn>4</coulumn></action>
+                </block>
+            </block>
+            <block type="brander_layerednavigation/top" name="layerednavigation.top" before="category.products" template="brander/layerednavigation/top.phtml"/>
+        </reference>
+        <reference name="product_list_toolbar">
+            <action method="setDefaultDirection"><string>desc</string></action>
+        </reference>
+    </layerednavigation_index_index>
+
+    <catalog_category_layered>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/brander/layerednavigation/layerednavigation.css</stylesheet></action>
+            <action method="addJs"><script>scriptaculous/slider.js</script></action>
+        </reference>
+
+        <remove name="catalog.leftnav" />
+
+        <reference name="right">
+            <!-- Disable left sidebar blocks on home page -->
+            <action ifconfig="ultimo/sidebar_blocks_home/compare" method="unsetChild"><name>catalog.compare.sidebar</name></action>
+            <action ifconfig="ultimo/sidebar_blocks_home/compared" method="unsetChild"><name>right.reports.product.compared</name></action>
+            <action ifconfig="ultimo/sidebar_blocks_home/viewed" method="unsetChild"><name>left.reports.product.viewed</name></action>
+
+            <action ifconfig="ultimo/sidebar_blocks_home/wishlist" method="unsetChild"><name>wishlist</name></action>
+            <action ifconfig="ultimo/sidebar_blocks_home/poll" method="unsetChild"><name>right.poll</name></action>
+            <action ifconfig="ultimo/sidebar_blocks_home/tags" method="unsetChild"><name>tags_popular</name></action>
+
+            <action ifconfig="ultimo/sidebar_blocks_home/paypal" method="unsetChild"><name>paypal.partner.right.logo</name></action>
+        </reference>
+
+        <reference name="left">
+
+            <!-- Disable left sidebar blocks on home page -->
+            <action ifconfig="ultimo/sidebar_blocks_home/compare" method="unsetChild"><name>catalog.compare.sidebar</name></action>
+            <action ifconfig="ultimo/sidebar_blocks_home/compared" method="unsetChild"><name>right.reports.product.compared</name></action>
+            <action ifconfig="ultimo/sidebar_blocks_home/viewed" method="unsetChild"><name>left.reports.product.viewed</name></action>
+
+            <action ifconfig="ultimo/sidebar_blocks_home/wishlist" method="unsetChild"><name>wishlist</name></action>
+            <action ifconfig="ultimo/sidebar_blocks_home/poll" method="unsetChild"><name>right.poll</name></action>
+            <action ifconfig="ultimo/sidebar_blocks_home/tags" method="unsetChild"><name>tags_popular</name></action>
+
+            <action ifconfig="ultimo/sidebar_blocks_home/paypal" method="unsetChild"><name>paypal.partner.right.logo</name></action>
+
+            <block type="core/template" name="layerednavigation.navleft.marker" before="layerednavigation.navleft" template="catalog/layer/marker.phtml"/>
+            <block type="brander_layerednavigation/catalog_layer_view" name="layerednavigation.navleft" before="-" template="catalog/layer/view.phtml">
+                <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="brander_layerednavigation/catalog_layer_view_top" name="layerednavigation.navtop" before="-" template="brander/layerednavigation/view_top.phtml"/>
+            <block type="brander_layerednavigation/top" name="layerednavigation.top" before="category.products" template="brander/layerednavigation/top.phtml"/>
+        </reference>
+        <reference name="product_list_toolbar">
+            <action method="setDefaultDirection"><string>desc</string></action>
+        </reference>
+    </catalog_category_layered>
+
+
+    <catalogsearch_result_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/brander/layerednavigation/layerednavigation.css</stylesheet></action>
+            <action method="addJs"><script>scriptaculous/slider.js</script></action>
+        </reference>
+
+        <remove name="catalogsearch.leftnav" />
+        <reference name="left">
+            <block type="core/template" name="layerednavigation.navleft.marker" before="layerednavigation.navleft" template="catalog/layer/marker.phtml"/>
+            <block type="brander_layerednavigation/search_layer" name="layerednavigation.navleft" before="-" template="catalog/layer/view.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="brander_layerednavigation/search_layer_top" name="layerednavigation.navtop" before="search.result" template="brander/layerednavigation/view_top.phtml"/>
+        </reference>
+        <reference name="search_result_list">
+            <action method="setDefaultDirection"><string>desc</string></action>
+        </reference>
+    </catalogsearch_result_index>
+    <catalogsearch_advanced_result>
+        <reference name="search_result_list">
+            <action method="setDefaultDirection"><string>desc</string></action>
+        </reference>
+    </catalogsearch_advanced_result>
+
+</layout>

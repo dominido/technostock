@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_cms_advanced_edit>
+        <reference name="head">
+            <action method="addJs"><name>cmsadvanced/main.js</name></action>
+        </reference>
+        <update handle="editor"/>
+        <reference name="left">
+            <block name="cms.advanced.tree" type="cmsadvanced/adminhtml_page_tree" template="cmsadvanced/page/tree.phtml" />
+        </reference>
+        <reference name="content">
+            <block name="cms.advanced.edit"  type="cmsadvanced/adminhtml_page_edit" template="cmsadvanced/page/edit.phtml" />
+        </reference>
+    </adminhtml_cms_advanced_edit>
+    <adminforms_is_window>
+        <remove name="header" />
+        <remove name="menu" />
+        <remove name="footer" />
+        <remove name="notifications" />
+        <remove name="breadcrumbs" />
+        <remove name="profiler" />
+        <remove name="before_body_end" />
+    </adminforms_is_window>
+</layout>

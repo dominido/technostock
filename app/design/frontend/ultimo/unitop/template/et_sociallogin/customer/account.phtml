@@ -1,0 +1,101 @@
+<?php
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_SocialLogin
+ * @copyright  Copyright (c) 2015 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-commercial-v1/   ETWS Commercial License (ECL1)
+ * @var $this ET_SocialLogin_Block_Customer_Account
+ */
+$helper = Mage::helper('et_sociallogin');
+?>
+
+
+
+<div class="social_customer_account">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php $unlinkExplanation = false; ?>
+    <?php if (count($this->getLinkedAccounts())) : ?>
+        <?php $unlinkExplanation = $this->__('If you press "Unlink account" this social account will be not associated with your store account.'); ?>
+        <div class="page-title">
+            <h1><?php echo $helper->__('Accounts in social networks') ?></h1>
+        </div>
+        <ul class="accounts">
+            <?php foreach ($this->getLinkedAccounts() as $linkedAccount) : ?>
+                <li>
+
+                    <div class="accountname"><?php echo strtoupper($linkedAccount->getSocialProvider()) ?></div>
+                    <div>
+                        <?php if ($linkedAccount->getSocialPhoto()) : ?>
+                            <img width="50" src="<?php echo $linkedAccount->getSocialPhoto() ?>"/>
+                        <?php else : ?>
+                            <img width="50"
+                                 src="<?php echo $this->getSkinUrl('et_sociallogin/images/no-photo.png') ?>"/>
+                        <?php  endif; ?>
+
+                        <?php if ($linkedAccount->getSocialName()) : ?>
+                            <a href="<?php echo $linkedAccount->getSocialProfileLink() ?>"><span><?php echo $linkedAccount->getSocialName() ?></span></a>
+                        <?php endif; ?>
+                    </div>
+                    <br>
+                    <a class="unlink"
+                       href="<?php echo $this->getUrl('social/auth/unlink', array('account' => $linkedAccount->getId())) ?>"><?php echo $this->__('Unlink this account'); ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+
+    <div style="margin-top: 20px">
+        <div class="page-title">
+            <h1><?php echo $helper->__('Link accounts in social networks') ?></h1>
+            <span><?php echo $helper->__('Store account link to social network account adds possibility to log in with one click. Store account can be linked to multiple accounts.') ?></span>
+        </div>
+
+        <div class="socibutton social-auth inline">
+            <h4><?php echo $this->getLabelText() ?></h4>
+            <ul class="social-list">
+                <?php
+                $accs = $this->getUnlinkedAccounts();
+
+                if (count($accs) > 0) :
+                    foreach ($accs as $provider => $item) :
+                        ?>
+                        <li>
+                            <a href="<?php echo Mage::getUrl('social/auth/login', array('provider' => $provider, 'responsetype' => 'popup')) ?>"
+                               title="<?php echo $item['auth_title'] ?>"
+                               class="soclogin socicon <?php echo $provider ?>"><span><?php echo $item['title'] ?></span></a>
+                        </li>
+
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p><?php echo $helper->__('Currently our website does not support other social networks to link your account.') ?></p>
+                <?php endif; ?>
+
+
+            </ul>
+
+            <div class="clear"></div>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <?php echo $helper->__('How to do it?<br/>Click on social network icon where you have account; if necessary log in a pop-up window. Done! You do not need to remember multiple passwords now, you can always log in in our store by authorising in social network.') ?>
+        </div>
+        <?php if ($unlinkExplanation): ?>
+            <div class="unlink-explanation">
+                <small><i><?php echo $unlinkExplanation ?></i></small>
+            </div>
+        <?php endif; ?>
+
+    </div>
+
+</div>

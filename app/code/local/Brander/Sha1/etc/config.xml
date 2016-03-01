@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_Sha1>
+            <version>0.1.0</version>
+            <depends>
+                <Mage_Core />
+            </depends>
+        </Brander_Sha1>
+    </modules>
+
+    <global>
+        <models>
+            <core>
+                <rewrite>
+                    <encryption>Brander_Sha1_Model_Encryption</encryption>
+                </rewrite>
+            </core>
+        </models>
+        <helpers>
+            <core>
+                <encryption_model>Brander_Sha1_Model_Encryption</encryption_model>
+            </core>
+        </helpers>
+    </global>
+
+    <frontend>
+        <routers>
+            <mynamespace_mymodule>
+                <use>standard</use>
+                <args>
+                    <module>Brander_Sha1</module>
+                    <frontName>sha1</frontName>
+                </args>
+            </mynamespace_mymodule>
+        </routers>
+    </frontend>
+</config>

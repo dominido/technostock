@@ -1,0 +1,593 @@
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_SocialLogin
+ * @copyright  Copyright (c) 2015 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-commercial-v1/   ETWS Commercial License (ECL1)
+ */
+
+a.socicon {
+	display: block;
+}
+
+a.socicon span {
+	display: none;
+}
+
+.inline a.socicon {
+	background: url('icons/socbuttons-32px.png') no-repeat;
+}
+
+a.socicons-small {
+	background: url('icons/socbuttons-24px.png') no-repeat;
+	width: 24px;
+	height: 24px;
+}
+
+a.socicons-large {
+	background: url('icons/socbuttons-32px.png') no-repeat;
+	width: 32px;
+	height: 32px;
+}
+
+.socibutton.large a.socicon, .socibutton.inline a.socicon {
+	width: 148px;
+	height: 32px;
+}
+
+.socibutton.large li, .socibutton.inline li {
+	margin-top: 10px;
+	float: left;
+	margin-left: 10px;
+	list-style: none;
+}
+
+.socibutton.small li {
+	float: left;
+	margin-left: 5px;
+}
+
+.socibutton.small h4 {
+	line-height: 30px;
+	color: rgb(68, 68, 68);
+	text-transform: none;
+}
+
+.social-list {
+	margin: 0;
+	padding: 0;
+}
+
+.account-create-popup {
+	padding: 0;
+	width: 600px
+}
+
+.account-create-popup .logo {
+	margin-left: -15px;
+}
+
+.register-welcome {
+	font-size: 14px;
+}
+
+.social-auth.large {
+	width: 400px;
+	height: 200px;
+	margin: 0 auto;
+	background: rgb(243, 243, 243);
+	padding: 10px;
+}
+
+.social-auth.inline {
+	margin: 0 auto;
+	background: rgb(243, 243, 243);
+	padding: 10px;
+	overflow: hidden;
+}
+
+.social-auth.small {
+	margin-bottom: 10px;
+}
+
+.social-auth h4 {
+	text-align: left;
+	color: #D30928;
+	text-transform: uppercase;
+	margin-bottom: 0;
+}
+
+.account-create-reference {
+	color: #888;
+}
+
+.soc-pass-reference {
+	font-weight: bold;
+	margin-top: 15px;
+}
+
+.soc-register-passwd-email {
+	text-decoration: underline;
+}
+
+/* like */
+
+.social-like li {
+	float: left;
+	margin-right: 10px;
+	width: 120px;
+
+}
+
+li.social-like-vk {
+	width: 140px;
+}
+
+li.social-like-facebook {
+	width: 110px;
+}
+
+li.social-like-twitter {
+	width: 100px;
+}
+
+li.social-like-mailru {
+	width: 120px;
+}
+
+li.social-like-odnoklassniki {
+	width: 100px;
+}
+
+.soc-login-header .social-auth.small {
+	padding: 0;
+}
+
+.social_customer_account .linkedAccounts {
+	margin-top: 20px;
+}
+
+.social_customer_account .linkedAccounts li {
+	margin-top: 15px;
+}
+
+.linkedAccounts .accountname {
+	font-weight: bold;
+}
+
+.checkout-onepage-index .social-auth h4 {
+	padding-left: 0;
+}
+
+.social-auth.small {
+	width: 270px;
+}
+
+/* SOCIAL ICONS*/
+
+.socibutton {
+	overflow: hidden;
+}
+
+.socibutton a {
+	cursor: pointer;
+}
+
+.socibutton.large a.socicon.vk, .socibutton.inline a.socicon.vk {
+	background-position: -4px -134px;
+}
+
+.socibutton.large a.socicon.facebook, .socibutton.inline a.socicon.facebook {
+	background-position: -153px -200px;
+}
+
+.socibutton.large a.socicon.google, .socibutton.inline a.socicon.google {
+	background-position: -4px -233px;
+}
+
+.socibutton.large a.socicon.odnoklassniki, .socibutton.inline a.socicon.odnoklassniki {
+	background-position: -153px -167px;
+}
+
+.socibutton.large a.socicon.yandex, .socibutton.inline a.socicon.yandex {
+	background-position: -4px -266px;
+}
+
+.socibutton.large a.socicon.yandex, .socibutton.inline a.socicon.yandex {
+	background-position: -4px -266px;
+}
+
+.socibutton.large a.socicon.mailru, .socibutton.inline a.socicon.mailru {
+	background-position: -153px -134px;
+}
+
+.socibutton.large a.socicon.twitter, .socibutton.inline a.socicon.twitter {
+	background-position: -4px -167px;
+}
+
+.socibutton.large a.socicon.linkedin, .socibutton.inline a.socicon.linkedin {
+	background-position: -5px -200px;
+}
+
+/* Icons 32x32px square colored */
+.socibutton.small .socicons-large.square-colored.vk {
+	background-position: -4px -34px;
+}
+
+.socibutton.small .socicons-large.square-colored.facebook {
+	background-position: -208px -34px;
+}
+
+.socibutton.small .socicons-large.square-colored.google {
+	background-position: -106px -34px;
+}
+
+.socibutton.small .socicons-large.square-colored.odnoklassniki {
+	background-position: -174px -34px;
+}
+
+.socibutton.small .socicons-large.square-colored.yandex {
+	background-position: -140px -34px;
+}
+
+.socibutton.small .socicons-large.square-colored.mailru {
+	background-position: -310px -34px;
+}
+
+.socibutton.small .socicons-large.square-colored.twitter {
+	background-position: -38px -34px;
+}
+
+.socibutton.small .socicons-large.square-colored.linkedin {
+	background-position: -72px -35px;
+}
+
+/* Icons 32x32px square black */
+.socibutton.small .socicons-large.square-black.vk {
+	background-position: -4px -101px;
+}
+
+.socibutton.small .socicons-large.square-black.facebook {
+	background-position: -208px -101px;
+}
+
+.socibutton.small .socicons-large.square-black.google {
+	background-position: -106px -101px;
+}
+
+.socibutton.small .socicons-large.square-black.odnoklassniki {
+	background-position: -174px -101px;
+}
+
+.socibutton.small .socicons-large.square-black.yandex {
+	background-position: -140px -101px;
+}
+
+.socibutton.small .socicons-large.square-black.mailru {
+	background-position: -310px -101px;
+}
+
+.socibutton.small .socicons-large.square-black.twitter {
+	background-position: -38px -101px;
+}
+
+.socibutton.small .socicons-large.square-black.linkedin {
+	background-position: -72px -101px;
+}
+
+/* Icons 32x32px circle colored */
+.socibutton.small .socicons-large.circle-colored.vk {
+	background-position: -4px -1px;
+}
+
+.socibutton.small .socicons-large.circle-colored.facebook {
+	background-position: -208px -1px;
+}
+
+.socibutton.small .socicons-large.circle-colored.google {
+	background-position: -106px -1px;
+}
+
+.socibutton.small .socicons-large.circle-colored.odnoklassniki {
+	background-position: -174px -1px;
+}
+
+.socibutton.small .socicons-large.circle-colored.yandex {
+	background-position: -140px -1px;
+}
+
+.socibutton.small .socicons-large.circle-colored.mailru {
+	background-position: -310px -1px;
+}
+
+.socibutton.small .socicons-large.circle-colored.twitter {
+	background-position: -38px -1px;
+}
+
+.socibutton.small .socicons-large.circle-colored.linkedin {
+	background-position: -72px -1px;
+}
+
+/* Icons 32x32px circle black */
+.socibutton.small .socicons-large.circle-black.vk {
+	background-position: -4px -68px;
+}
+
+.socibutton.small .socicons-large.circle-black.facebook {
+	background-position: -208px -68px;
+}
+
+.socibutton.small .socicons-large.circle-black.google {
+	background-position: -106px -68px;
+}
+
+.socibutton.small .socicons-large.circle-black.odnoklassniki {
+	background-position: -174px -68px;
+}
+
+.socibutton.small .socicons-large.circle-black.yandex {
+	background-position: -140px -68px;
+}
+
+.socibutton.small .socicons-large.circle-black.mailru {
+	background-position: -310px -68px;
+}
+
+.socibutton.small .socicons-large.circle-black.twitter {
+	background-position: -38px -68px;
+}
+
+.socibutton.small .socicons-large.circle-black.linkedin {
+	background-position: -72px -68px;
+}
+
+/* Icons 24x24px square colored */
+.socibutton.small .socicons-small.square-colored.vk {
+	background-position: -4px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.facebook {
+	background-position: -160px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.google {
+	background-position: -82px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.odnoklassniki {
+	background-position: -134px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.yandex {
+	background-position: -108px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.mailru {
+	background-position: -238px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.twitter {
+	background-position: -30px -27px;
+}
+
+.socibutton.small .socicons-small.square-colored.linkedin {
+	background-position: -56px -27px;
+}
+
+/* Icons 24x24px square black */
+.socibutton.small .socicons-small.square-black.vk {
+	background-position: -4px -77px;
+}
+
+.socibutton.small .socicons-small.square-black.facebook {
+	background-position: -160px -77px;
+}
+
+.socibutton.small .socicons-small.square-black.google {
+	background-position: -82px -77px;
+}
+
+.socibutton.small .socicons-small.square-black.odnoklassniki {
+	background-position: -134px -77px;
+}
+
+.socibutton.small .socicons-small.square-black.yandex {
+	background-position: -108px -77px;
+}
+
+.socibutton.small .socicons-small.square-black.mailru {
+	background-position: -238px -77px;
+}
+
+.socibutton.small .socicons-small.square-black.twitter {
+	background-position: -30px -77px;
+}
+
+.socibutton.small .socicons-small.square-black.linkedin {
+	background-position: -56px -77px;
+}
+
+/* Icons 24x24px circle colored */
+.socibutton.small .socicons-small.circle-colored.vk {
+	background-position: -4px -2px;
+}
+
+.socibutton.small .socicons-small.circle-colored.facebook {
+	background-position: -160px -2px;
+}
+
+.socibutton.small .socicons-small.circle-colored.google {
+	background-position: -82px -2px;
+}
+
+.socibutton.small .socicons-small.circle-colored.odnoklassniki {
+	background-position: -134px -2px;
+}
+
+.socibutton.small .socicons-small.circle-colored.yandex {
+	background-position: -108px -2px;
+}
+
+.socibutton.small .socicons-small.circle-colored.mailru {
+	background-position: -238px -2px;
+}
+
+.socibutton.small .socicons-small.circle-colored.twitter {
+	background-position: -30px -2px;
+}
+
+.socibutton.small .socicons-small.circle-colored.linkedin {
+	background-position: -56px -2px;
+}
+
+/* Icons 24x24px circle black */
+.socibutton.small .socicons-small.circle-black.vk {
+	background-position: -4px -52px;
+}
+
+.socibutton.small .socicons-small.circle-black.facebook {
+	background-position: -160px -52px;
+}
+
+.socibutton.small .socicons-small.circle-black.google {
+	background-position: -82px -52px;
+}
+
+.socibutton.small .socicons-small.circle-black.odnoklassniki {
+	background-position: -134px -52px;
+}
+
+.socibutton.small .socicons-small.circle-black.yandex {
+	background-position: -108px -52px;
+}
+
+.socibutton.small .socicons-small.circle-black.mailru {
+	background-position: -238px -52px;
+}
+
+.socibutton.small .socicons-small.circle-black.twitter {
+	background-position: -30px -52px;
+}
+
+.socibutton.small .socicons-small.circle-black.linkedin {
+	background-position: -56px -52px;
+}
+
+.social-auth-register .fieldset {
+	overflow: hidden;
+}
+
+.soc-register-form {
+	width: 300px;
+	float: left;
+}
+
+.social-auth-register .reg-message {
+	width: 240px;
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.account-create-popup .register-welcome {
+	margin-bottom: 10px;
+}
+
+.social-auth-register .buttons-set {
+	position: relative;
+}
+
+.account-create-popup .load {
+	display: none;
+	background: url('icons/opc-ajax-loader.gif');
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	left: 45%;
+	top: 40%;
+}
+
+/*
+.share-icons {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    background: url('icons/socbuttons-32px.png');
+}
+
+.share-icons.vk {
+    background-position: -4px -35px;
+}
+
+.share-icons.fb {
+    background-position: -208px -35px;
+}
+
+.share-icons.mailru {
+    background-position: -310px -35px;
+}
+
+.share-icons.twitter {
+    background-position: -386px -35px;
+}
+
+.share-icons.google {
+    background-position: -106px -35px;
+}
+
+.share-icons.odnoklassniki {
+    background-position: -174px -35px;
+}*/
+
+.social-wrapper {
+	position: relative;
+	margin-bottom: 27px;
+}
+
+.news-item-content .social {
+	height: 65px;
+}
+
+.form-list.soc-register-form li.fields .input-box {
+	width: 300px;
+}
+
+.social_customer_account ul.accounts {
+	display: table;
+	width: 100%;
+	background: lightgray;
+	padding: 10px
+}
+
+.social_customer_account ul.accounts li {
+	display: inline-block;
+	min-width: 100px;
+	margin-right: 20px;
+	list-style-type: none;
+}
+
+.social-account-explanation {
+	margin-top: 20px;
+}
+
+.unlink-explanation {
+	margin-top: 50px;
+	color: red;
+}
+
+.accounts a.unlink {
+	color: #F2F2F2;
+	text-decoration: underline;
+}

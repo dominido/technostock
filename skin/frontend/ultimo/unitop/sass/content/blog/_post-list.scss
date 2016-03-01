@@ -1,0 +1,225 @@
+.post-list {
+  @include cleaner;
+}
+
+.post-list .post-name,
+.post-grid .post-name,
+h3.post-name {
+  /* Sizes are modified for different number of columns */
+  font-size: 1.3333em;
+  line-height: 1.25em; /*16px 20px*/
+}
+
+.post-list .price-box.map-info a,
+.post-grid .price-box.map-info a {
+  margin-left: 3px;
+}
+
+/* POST image
+-------------------------------------------------------------- */
+/* POST alternative image */
+.post-list .post-image .alt-img,
+.post-grid .post-image .alt-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+/* Fix possible glitches during animation */
+.post-list .post-image img,
+.category-post-grid .post-image img /* Grid only in category view */
+{
+  -moz-transform: translateZ(0);
+}
+
+/* View type: list
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.post-list {
+  &.list-mode {
+	.item {
+	  margin-bottom: 20px;
+	}
+  }
+
+  &.grid-mode {
+	.post-image-wrapper {
+	  margin-bottom: 15px;
+	}
+  }
+
+  .item {
+	padding: 20px 1%;
+	margin-bottom: 20px;
+	background-color: #fff;
+	position: relative; /* For hover effect */
+	box-sizing: border-box;
+
+	@include trs(box-shadow 0ms ease-in, background 0s ease-out);
+	@include cleaner;
+
+	&.archived {
+	  .labels-wrap {
+		position: absolute;
+		right: -3px;
+		top: -3px;
+		z-index: 1;
+	  }
+
+	  .archived-label {
+		display: table-cell;
+		vertical-align: middle;
+		width: 60px;
+		height: 60px;
+		text-align: center;
+		border-radius: 50%;
+		transition: all .15s ease-out;
+	  }
+	}
+
+	&:hover {
+	  &.archived {
+		.archived-label {
+		  width: 65px;
+		  height: 65px;
+		}
+	  }
+	}
+  }
+
+  .right-column {
+	float: right;
+  }
+
+  .post-name {
+	margin: 0 0 15px;
+  }
+
+  .post-image {
+	display: block;
+	position: relative;
+	margin: 0 auto;
+  }
+
+  .price-box {
+	margin: 0 0 15px;
+	font-size: 1.3333em;
+	line-height: 1.25em;
+  }
+  .ratings {
+	margin: 10px 0;
+  }
+  .desc {
+	margin: 15px 0;
+  }
+  .link-learn {
+  }
+  .btn-cart {
+	width: 100%;
+	max-width: 180px;
+  }
+  a.btn-cart {
+	padding-left: 0;
+	padding-right: 0;
+  }
+  .button span {
+	float: none;
+  }
+  .availability {
+	float: none;
+	margin: 15px 0;
+  }
+  .add-to-links {
+	margin: 15px 0 0;
+  }
+
+  /* Hover effect
+  -------------------------------------------------------------- */
+  &.hover-effect {
+	.item:hover {
+	  z-index: 10;
+	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	  border-color: transparent;
+	  @include trs(box-shadow 400ms ease-out, background .4s ease-out);
+	}
+  }
+
+  .show-post {
+	clear: both;
+	display: inline-block;
+	vertical-align: top;
+
+	span {
+	  cursor: pointer;
+	}
+  }
+
+  @include bp(max-width, $bp-tiny) {
+	.item {
+	  margin-bottom: 20px;
+	}
+  }
+
+  .item,
+  .item.archived {
+	.show-more {
+	  font-weight: bold;
+	  font-style: italic;
+	}
+  }
+}
+
+.category-blog {
+  & + .show-all-wrap {
+	text-align: center;
+
+	.show-all-link {
+	  font-size: 18px;
+	  line-height: 24px;
+	}
+  }
+}
+
+.blog-section-title {
+  margin-bottom: 20px;
+}
+
+.postscategory-title {
+  h3 {
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border-bottom: 1px solid #e5e5e5;
+	font-weight: normal;
+	font-size: 1.5em;
+	line-height: 1.2222em;
+  }
+}
+
+.postscategory-list-item {
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  @include trs(box-shadow .4s ease-out, background .4s ease-out);
+
+  &:hover,
+  &.active {
+	background: #f2ffd4;
+	-webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  a {
+	padding: 5px 10px;
+	display: block;
+  }
+}
+
+#post-reviews {
+  dt {
+	text-align: right;
+	font-style: italic;
+	margin-bottom: 30px;
+	padding: 0 0 15px;
+	border-bottom: 2px solid #d8d8d8;
+  }
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <brander_faq translate="label" module="brander_faq">
+            <class>separator-top</class>
+            <label>F.A.Q.</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>110</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <faq_settings translate="label" module="brander_faq">
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_more_limit translate="label">
+                            <label>Show more limit</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_more_limit>
+                    </fields>
+                </faq_settings>
+            </groups>
+        </brander_faq>
+    </sections>
+</config>

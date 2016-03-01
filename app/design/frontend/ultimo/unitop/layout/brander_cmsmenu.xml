@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<PAGE_TYPE_UNIPAGETYPE>
+		<!-- Insert slideshow at the top of the homepage -->
+		<reference name="root">
+			<block type="ultraslideshow/slideshow" name="ultraslideshow" as="ultraslideshow" template="brander/page/homepage/slideshow/slideshow.phtml">
+				<action method="setPredefined"><value>1</value></action>
+				<block type="brander_cmshome/homepageSlider" name="homepage.ultraslideshow.slide" template="brander/page/homepage/slideshow/slide.phtml"/>
+				<block type="brander_cmsmenu/navigationLeft" name="homepage.leftnav.menu" template="brander/page/homepage/leftmenu/megamenu.phtml"/>
+			</block>
+		</reference>
+
+		<reference name="preface">
+			<action method="insert" ifconfig="ultraslideshow/general/position2">
+				<block>ultraslideshow</block>
+			</action>
+		</reference>
+	</PAGE_TYPE_UNIPAGETYPE>
+
+	<default>
+		<reference name="catalog.topnav.menu">
+			<!-- Deprecated block. Add custom links via category manager. -->
+			<block type="brander_cmsmenu/mainMenu" name="mainmenu.cms.list" template="brander/page/cmsmenu/main-menu-list.phtml"/>
+			<!-- Mini Account -->
+				<action method="insert">
+					<block>account_sidebar</block>
+				</action>
+		</reference>
+
+		<reference name="header">
+
+			<block type="brander_cmsmenu/topMenu" name="topmenu.left.block.menu" template="brander/page/header/topmenu_left.phtml"/>
+			<block type="brander_cmsmenu/topMenu" name="topmenu.right.block.menu" template="brander/page/header/topmenu_right.phtml"/>
+
+			<!-- Mini Account -->
+			<block type="core/template" name="account_sidebar" template="brander/page/header/account.phtml">
+				<action method="insert">
+					<block>top.links</block>
+				</action>
+			</block>
+
+			<reference name="user_menu">
+				<block type="core/template" name="account_sidebar" template="brander/page/header/account.phtml">
+					<action method="insert">
+						<block>top.links</block>
+					</action>
+				</block>
+			</reference>
+
+		</reference>
+
+		<reference name="footer">
+			<remove name="footer_links"/>
+			<block type="brander_shop/footer_socialLinks" name="footer_blocks.pages.social" as="footer_blocks.pages.social" template="brander/page/footer/blocks/social-links.phtml"/>
+			<block type="page/html_footer" name="footer_blocks"  as="footer.blocks" template="brander/page/footer/main-blocks.phtml">
+				<block type="brander_shop/footer_aboutUs" name="footer_blocks.about" template="brander/page/footer/blocks/about.phtml"/>
+				<block type="brander_shop/footer_contacts" name="footer_blocks.contacts" as="footer_blocks.contacts" template="brander/page/footer/blocks/contacts.phtml" />
+				<block type="brander_cmsmenu/footerCatalogMenu" name="footer_blocks.catalog" template="brander/page/footer/blocks/catalog.phtml"/>
+				<block type="brander_cmsmenu/footerMenu" name="footer_blocks.pages"
+					   template="brander/page/footer/blocks/pages.phtml">
+
+					<action method="insert" modules="social_accounts/social_settings/" options="icons_position" conditions="2">
+						<block>footer_blocks.pages.social</block>
+					</action>
+
+				</block>
+			</block>
+
+			<block type="core/text_list" name="block_footer_primary_bottom_left">
+				<action method="insert" modules="social_accounts/social_settings/" options="icons_position" conditions="1">
+					<block>footer_blocks.pages.social</block>
+				</action>
+			</block>
+		</reference>
+	</default>
+
+</layout>

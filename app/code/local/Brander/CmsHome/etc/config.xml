@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<!--        /**
+        * Brander CmsHome extension
+        *
+        * NOTICE OF LICENSE
+        *
+        * This source file is subject to the MIT License
+        * that is bundled with this package in the file LICENSE.txt.
+        * It is also available through the world-wide-web at this URL:
+        * http://opensource.org/licenses/mit-license.php
+        *
+        * @category       Brander
+        * @package        CmsHome
+        * @copyright      Copyright (c) 2015
+        * @license        http://opensource.org/licenses/mit-license.php MIT License
+        * @author         AlexVegas (Alexandr Belyaev) <alexandr.belyaev.only@gmail.com>
+        */-->
+<config>
+    <modules>
+        <Brander_CmsHome>
+            <version>0.1.12</version>
+        </Brander_CmsHome>
+    </modules>
+    <global>
+        <blocks>
+            <brander_cmshome>
+                <class>Brander_CmsHome_Block</class>
+            </brander_cmshome>
+        </blocks>
+        <helpers>
+            <brander_cmshome>
+                <class>Brander_CmsHome_Helper</class>
+            </brander_cmshome>
+        </helpers>
+        <models>
+            <brander_cmshome>
+                <class>Brander_CmsHome_Model</class>
+            </brander_cmshome>
+        </models>
+        <resources>
+            <brander_cmshome_setup>
+                <setup>
+                    <module>Brander_CmsHome</module>
+                    <class>Brander_Cms_Model_Entity_Setup</class>
+                </setup>
+            </brander_cmshome_setup>
+        </resources>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <brander_cmshome>
+                    <file>brander_cmshome.xml</file>
+                </brander_cmshome>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_CmsHome>
+                    <files>
+                        <default>Brander_CmsHome.csv</default>
+                    </files>
+                </Brander_CmsHome>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <brander_cmshome before="Mage_Adminhtml">Brander_CmsHome_Adminhtml</brander_cmshome>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <adminmarketexport>
+                    <file>brander_cmshome.xml</file>
+                </adminmarketexport>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <Brander_CmsHome>
+                    <files>
+                        <default>Brander_CmsHome.csv</default>
+                    </files>
+                </Brander_CmsHome>
+            </modules>
+        </translate>
+    </adminhtml>
+    <cmsadvanced>
+        <pagetypes>
+            <unipagetype translate="name" module="brander_cmshome">
+                <name>Home page</name>
+                <template>brander/home/main.phtml</template>
+                <groups>
+                    <unislidergroup>
+                        <name>Slideshow</name>
+                        <attributes>
+                            <homepage_slider_banners>
+                                <input>grid</input>
+                            </homepage_slider_banners>
+                        </attributes>
+                    </unislidergroup>
+                    <unibannersgroup>
+                        <name>Banners</name>
+                        <attributes>
+                            <homepage_banners>
+                                <input>grid</input>
+                            </homepage_banners>
+                        </attributes>
+                    </unibannersgroup>
+                </groups>
+            </unipagetype>
+        </pagetypes>
+    </cmsadvanced>
+    <default>
+        <brander_homepage>
+            <homepage_settings>
+                <enable_hotcat>1</enable_hotcat>
+                <hotcat_show_titles>1</hotcat_show_titles>
+            </homepage_settings>
+            <banner_config>
+                <enable>0</enable>
+            </banner_config>
+            <sliders_config>
+                <breakpoints>[0, 1], [320, 2], [480, 3], [768, 4], [960, 5], [1280, 6]</breakpoints>
+                <breakpoints_mini>[0, 1], [320, 2], [480, 3], [768, 2], [960, 2], [1280, 3]</breakpoints_mini>
+                <max_category_lvl>3</max_category_lvl>
+            </sliders_config>
+            <products_sliders_new>
+                <enable>1</enable>
+                <block_name>New Arrivals</block_name>
+                <product_count>12</product_count>
+                <hide_button>1</hide_button>
+                <random>1</random>
+                <move>2</move>
+                <pagination>1</pagination>
+                <centered>1</centered>
+            </products_sliders_new>
+            <products_sliders_special>
+                <enable>1</enable>
+                <block_name>Special Offers</block_name>
+                <product_count>12</product_count>
+                <random>1</random>
+                <hide_button>1</hide_button>
+                <move>1</move>
+                <pagination>1</pagination>
+                <centered>1</centered>
+            </products_sliders_special>
+            <products_sliders_hits>
+                <enable>1</enable>
+                <block_name>Hits of Sales</block_name>
+                <product_count>12</product_count>
+                <random>1</random>
+                <hide_button>1</hide_button>
+                <move>1</move>
+                <pagination>1</pagination>
+                <centered>1</centered>
+            </products_sliders_hits>
+        </brander_homepage>
+    </default>
+</config>
+

@@ -1,0 +1,15 @@
+<?php
+$collection = $this->getCollection();
+?>
+<?php if ($collection): ?>
+    <?php foreach ($collection as $_banner): ?>
+        <div class="slideshow item slide">
+            <a href="<?php echo $_banner->getRedirectUrl() ?>" title="<?php echo $_banner->getTitle() ?>">
+                <img class="fade-on-hover" src="<?php echo $this->getSkinUrl('images/spacer.gif');?>" id="slideshow-slide-<?php echo $_banner->getEntityId(); ?>" alt="<?php echo $_banner->getAlt() ?>" title="" style="opacity: 1;" />
+                <?php if ($bannerText = $_banner->getBannerText()) {
+                    echo $bannerText;
+                } ?>
+            </a>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

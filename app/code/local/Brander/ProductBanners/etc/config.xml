@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_ProductBanners extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_ProductBanners
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <Brander_ProductBanners>
+            <version>0.1.0</version>
+        </Brander_ProductBanners>
+    </modules>
+    <global>
+        <resources>
+            <brander_productbanners_setup>
+                <setup>
+                    <module>Brander_ProductBanners</module>
+                    <class>Brander_ProductBanners_Model_Resource_Setup</class>
+                </setup>
+            </brander_productbanners_setup>
+        </resources>
+        <blocks>
+            <brander_productbanners>
+                <class>Brander_ProductBanners_Block</class>
+            </brander_productbanners>
+        </blocks>
+        <helpers>
+            <brander_productbanners>
+                <class>Brander_ProductBanners_Helper</class>
+            </brander_productbanners>
+        </helpers>
+        <models>
+            <brander_productbanners>
+                <class>Brander_ProductBanners_Model</class>
+                <resourceModel>brander_productbanners_resource</resourceModel>
+            </brander_productbanners>
+            <brander_productbanners_resource>
+                <class>Brander_ProductBanners_Model_Resource</class>
+                <entities>
+                    <banner>
+                        <table>brander_productbanners_banner</table>
+                    </banner>
+                    <banner_product>
+                        <table>brander_productbanners_banner_product</table>
+                    </banner_product>
+                    <eav_attribute>
+                        <table>brander_productbanners_eav_attribute</table>
+                    </eav_attribute>
+                </entities>
+            </brander_productbanners_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <brander_productbanners>
+                    <file>brander_productbanners.xml</file>
+                </brander_productbanners>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_ProductBanners>
+                    <files>
+                        <default>Brander_ProductBanners.csv</default>
+                    </files>
+                </Brander_ProductBanners>
+            </modules>
+        </translate>
+        <events>
+            <core_block_abstract_prepare_layout_after>
+                <observers>
+                    <brander_productbanners_banner_product>
+                        <type>singleton</type>
+                        <class>brander_productbanners/adminhtml_observer</class>
+                        <method>addProductBannerBlock</method>
+                    </brander_productbanners_banner_product>
+                </observers>
+            </core_block_abstract_prepare_layout_after>
+            <catalog_product_save_after>
+                <observers>
+                    <brander_productbanners_banner_product>
+                        <type>singleton</type>
+                        <class>brander_productbanners/adminhtml_observer</class>
+                        <method>saveProductBannerData</method>
+                    </brander_productbanners_banner_product>
+                </observers>
+            </catalog_product_save_after>
+        </events>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Brander_ProductBanners before="Mage_Adminhtml">Brander_ProductBanners_Adminhtml</Brander_ProductBanners>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <frontend>
+        <routers>
+            <brander_productbanners>
+                <use>standard</use>
+                <args>
+                    <module>Brander_ProductBanners</module>
+                    <frontName>brander_productbanners</frontName>
+                </args>
+            </brander_productbanners>
+        </routers>
+        <layout>
+            <updates>
+                <brander_productbanners>
+                    <file>brander_productbanners.xml</file>
+                </brander_productbanners>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_ProductBanners>
+                    <files>
+                        <default>Brander_ProductBanners.csv</default>
+                    </files>
+                </Brander_ProductBanners>
+            </modules>
+        </translate>
+    </frontend>
+    <default>
+        <brander_productbanners>
+            <banner>
+                <breadcrumbs>1</breadcrumbs>
+            </banner>
+        </brander_productbanners>
+    </default>
+</config>

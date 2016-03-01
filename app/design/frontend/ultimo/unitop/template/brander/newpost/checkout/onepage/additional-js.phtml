@@ -1,0 +1,50 @@
+<script type="text/javascript">
+
+	var substringMatcher = function(strs) {
+		return function findMatches(q, cb) {
+			var matches, substringRegex;
+
+			matches = [];
+			try {
+				substrRegex = new RegExp(q, 'i');
+			}
+			catch(e) {}
+
+			jQuery.each(strs, function(i, str) {
+				if (substrRegex.test(str)) {
+					matches.push({ value: str });
+				}
+			});
+
+			cb(matches);
+		};
+	};
+
+	var cities = <?php echo JSON_encode(Mage::getModel('brander_newpost/city')->getOptionArray()); ?>;
+
+	jQuery("[name='billing[city]']").typeahead({
+			hint: true,
+			highlight: true,
+			minLength: 1
+		},
+		{
+			name: 'cities',
+			displayKey: 'value',
+			source: substringMatcher(cities)
+		});
+	jQuery("[name='shipping[city]']").typeahead({
+			hint: true,
+			highlight: true,
+			minLength: 1
+		},
+		{
+			name: 'cities',
+			displayKey: 'value',
+			source: substringMatcher(cities)
+		});
+
+
+	jQuery(".twitter-typeahead input:first-child").removeClass("required-entry");
+
+
+</script>

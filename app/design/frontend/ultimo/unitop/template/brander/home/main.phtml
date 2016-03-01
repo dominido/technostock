@@ -1,0 +1,85 @@
+<?php
+$theme = Mage::helper('ultimo');
+$bgUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $theme->getBgImagesPath();
+$texUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $theme->getTexPath();
+$hotCategoriesOuter = $theme->getCfgDesign('main/hotcategories_outer_bg_image');
+$hotCategoriesInner = $theme->getCfgDesign('main/hotcategories_inner_bg_image');
+$blogOuter = $theme->getCfgDesign('main/blog_outer_bg_image');
+$blogInner = $theme->getCfgDesign('main/blog_inner_bg_image');
+?>
+<?php if ($hotCategoriesOuter || $hotCategoriesInner || $blogOuter || $blogInner): ?>
+<style type="text/css">
+    <?php if ($hotCategoriesOuter): ?>
+        .col-main .homepage-hotcategories
+        {
+            background-image: url(<?php echo $bgUrl . $hotCategoriesOuter; ?>);
+        }
+    <?php endif; ?>
+    <?php if ($hotCategoriesInner): ?>
+        .homepage-hotcategories .homepage-hotcategories-container
+        {
+            background-image: url(<?php echo $bgUrl . $hotCategoriesInner; ?>);
+        }
+    <?php endif; ?>
+    <?php if ($blogOuter): ?>
+    .col-main .homepage-unitopblog
+    {
+        background-image: url(<?php echo $bgUrl . $blogOuter; ?>);
+    }
+    <?php endif; ?>
+    <?php if ($blogInner): ?>
+    .homepage-unitopblog .homepage-unitopblog-container
+    {
+        background-image: url(<?php echo $bgUrl . $blogInner; ?>);
+    }
+    <?php endif; ?>
+</style>
+<?php endif; ?>
+<?php
+    $cmsPageId = $this->getPage()->getEntityId();
+?>
+<?php //echo $this->getChildHtml('catalog.slider.menu');?>
+
+<?php
+    echo $this->getChildHtml('homepage.hotcategories');
+?>
+
+<?php
+    /* homepage product sliders */
+    echo $this->getChildHtml('homepage.product_sliders');
+?>
+<?php
+    /* homepage banners bottom page */
+    //echo $this->getChildHtml('home.homepage.banners');
+?>
+
+<?php /* homepage store benefits */
+    $_benefitsConfig =Mage::helper('brander_shop')->getCfg('brander_benefits/benefits_config');
+?>
+<?php if ($_benefitsConfig->getEnable() && $_benefitsConfig->getEnableHomepage()): ?>
+    <?php echo $this->getChildHtml('home.homepage.benefits'); ?>
+<?php endif; ?>
+
+<?php
+    /* homepage posts */
+    echo $this->getChildHtml('homepage.posts_list');
+?>
+
+<?php
+/* homepage brands sliders */
+$data = new Varien_Object();
+$data->setBreakpoints('[0, 1], [320, 2], [480, 2], [768, 3], [960, 4], [1280, 5]')
+    ->setTimeout('6000')
+    ->setMove('0')
+    ->setPagination('1')
+    ->setBlockName($this->__('Our Brands'));
+//echo $this->getChild('homepage.brands_slider')->setData($data->getData())->toHtml();
+?>
+
+<?php if ($content = $this->getPage()->getContent()): ?>
+<div class="homepage-container-seotext clearer">
+    <div class="grid-full padding-top homepage-pagetext">
+        <?php echo $content; ?>
+    </div>
+</div>
+<?php endif; ?>

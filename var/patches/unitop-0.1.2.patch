@@ -1,0 +1,68 @@
+Index: app/design/frontend/ultimo/unitop/template/brander/benefits/catalog/product/list/benefit.phtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/design/frontend/ultimo/unitop/template/brander/benefits/catalog/product/list/benefit.phtml	(date 1447061584000)
++++ app/design/frontend/ultimo/unitop/template/brander/benefits/catalog/product/list/benefit.phtml	(date 1447063978000)
+@@ -8,6 +8,7 @@
+ <div class="benefits-container additional-bg-color">
+     <ul class="benefits-grid<?php echo $rowLimit ? ' benefits-per-row-'.$rowLimit: ''; ?>">
+         <?php foreach ($benefits as $_benefit) : ?>
++            <?php $tooltip = null; ?>
+             <?php if ($_benefit->getTooltipEnable() && $_benefit->getTooltip()): ?>
+                 <?php $tooltip = $_benefit->getTooltip(); ?>
+             <?php endif; ?>
+Index: app/design/frontend/ultimo/unitop/template/page/html/footer.phtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/design/frontend/ultimo/unitop/template/page/html/footer.phtml	(date 1447061584000)
++++ app/design/frontend/ultimo/unitop/template/page/html/footer.phtml	(date 1447063978000)
+@@ -118,9 +118,13 @@
+ 				</div> <!-- end: footer-primary-top -->
+ 				<?php endif; ?>
+ 
++				<?php $spacing = '';
++				if (empty($b['primary'] && !empty($b['primary_bottom']))) {
++					$spacing = '-spacing';
++				} ?>
+ 				<?php if (!empty($b['primary_uniblocks'])): ?>
+ 					<div class="footer-primary-top grid12-12">
+-						<div class="<?php if(!empty($b['primary_uniblocks'])) echo 'footer-primary-top-spacing '; ?>clearer">
++						<div class="<?php if(!empty($b['primary_uniblocks'])) echo 'footer-primary-top'.$spacing; ?> clearer">
+ 							<?php echo $b['primary_uniblocks']; ?>
+ 						</div>
+ 					</div> <!-- end: footer-primary-top -->
+Index: app/design/frontend/ultimo/unitop/template/brander/benefits/catalog/category/list/benefit.phtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/design/frontend/ultimo/unitop/template/brander/benefits/catalog/category/list/benefit.phtml	(date 1447063978000)
++++ app/design/frontend/ultimo/unitop/template/brander/benefits/catalog/category/list/benefit.phtml	(date 1447064860000)
+@@ -25,7 +25,7 @@
+ <?php $benefits = $this->getBenefitCollection();?>
+ <?php if ($benefits && $benefits->count() > 0) :?>
+ <div class="box-collateral box-benefits box-up-sell">
+-    <h2>Benefits</h2>
++    <h2><?php $this->__('Benefits'); ?></h2>
+     <?php foreach ($benefits as $_benefit) : ?>
+         <div class="item">
+             <?php echo $_benefit->getTitle();?>
+Index: app/design/frontend/ultimo/unitop/template/brander/page/homepage/benefits/benefits.phtml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/design/frontend/ultimo/unitop/template/brander/page/homepage/benefits/benefits.phtml	(date 1447064860000)
++++ app/design/frontend/ultimo/unitop/template/brander/page/homepage/benefits/benefits.phtml	(date 1447064905000)
+@@ -8,6 +8,7 @@
+ <div class="benefits-container additional-bg-color">
+     <ul class="benefits-grid<?php echo $rowLimit ? ' benefits-per-row-'.$rowLimit: ''; ?>">
+         <?php foreach ($benefits as $_benefit) : ?>
++            <?php $tooltip = ''; ?>
+             <li class="benefit">
+                 <?php if ($_benefit->getTooltipEnable() && $_benefit->getTooltip()): ?>
+                     <?php $tooltip = $_benefit->getTooltip(); ?>

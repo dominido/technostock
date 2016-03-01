@@ -1,0 +1,134 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php $_posts = $this->getPosts(); ?>
+<?php if ($_posts->getSize()) :?>
+<div class="std homepage-unitopblog container">
+    <div class="homepage-unitopblog-container">
+        <div class="page-title category-title blog-section-title">
+            <?php if (Mage::helper('brander_unitopblog/post')->isRssEnabled()) : ?>
+                <a href="<?php echo Mage::helper('brander_unitopblog/post')->getRssUrl();?>" class="link-rss"><?php echo Mage::helper('brander_unitopblog')->__('Subscribe to RSS Feed')?></a>
+            <?php endif;?>
+            <h2 class="section-title"><?php echo $this->getTitle(); ?></h2>
+        </div>
+
+        <?php
+        $_helper = $this->helper('catalog/output');
+        $theme = $this->helper('ultimo');
+        $helpLabels = $this->helper('brander_unitopblog/labels');
+        $helpTemplate = $this->helper('ultimo/template');
+        $helpImg = $this->helper('brander_unitopblog/post_image');
+        $configHome = Mage::helper('brander_shop')->getCfg('brander_unitopblog/homepage');
+        $newsletter = 0;
+        if ($configHome->getAttachNewsletters() && !Mage::helper('brander_shop')->getCfg('ultimo/magento_blocks/footer_newsletter')) {
+            $newsletter = 1;
+        }
+        $grid = intval(12/($configHome->getPostsRowLimit()+$newsletter));
+
+        //Image size
+        $imgWidth = 295;
+        $imgHeight = $imgWidth;
+
+        //If image width is not specified, use default values
+
+        //Image aspect ratio settings
+        $catViewKeepFrame = TRUE;
+
+        if (Mage::registry('blogViewKeepFrame') === NULL)
+        {
+            Mage::register('blogViewKeepFrame', $catViewKeepFrame);
+        }
+
+        //Hide toolbar
+        $hideToolbar = true;
+        ?>
+
+        <div class="category-blog">
+            <?php if (!$this->getIsHomePage()): ?>
+                <div class="toolbar">
+                    <?php echo $this->getPagerHtml(); ?>
+                </div>
+            <?php endif; ?>
+            <?php
+            //Get list configuration array
+            $lc = $theme->getCfgGroup('category_list');
+
+            //List classes
+            $listClasses = '';
+            if ($lc['hover_effect'])
+                $listClasses = ' hover-effect';
+            ?>
+
+            <?php $_iterator = 0; ?>
+            <ul class="grid-mode post-list<?php if($listClasses) echo $listClasses; ?>" id="posts-list">
+                <?php foreach ($_posts as $_post) : ?>
+                    <?php $archived = ''; if ($_post->getArchived()): ?>
+                        <?php $archived = ' archived'; ?>
+                    <?php endif; ?>
+
+                    <li class="post-text-color post-full-bg item<?php if( ++$_iterator == sizeof($_posts) ): ?> last<?php endif; ?><?php echo $archived ?> grid12-<?php echo $grid; ?>">
+                        <?php //Post Image ?>
+                        <div class="post-image-wrapper grid12-12 mobile-grid-half">
+                            <a href="<?php echo $_post->getPostUrl() ?>" title="" class="post-image" style="max-width:<?php echo $imgWidth; ?>px;">
+                                <img id="post-collection-image-<?php echo $_post->getEntityId(); ?>"
+                                     src="<?php echo $helpImg->init($_post, 'preview_image'); ?>"
+                                     alt="<?php echo $_post->getTitle(); ?>" />
+
+                                <?php if ($theme->getCfg('category/alt_image')): ?>
+                                    <?php //echo $theme->getAltImgHtml($_product, $imgWidth, $imgHeight); ?>
+                                <?php endif; ?>
+
+                                <?php echo $helpLabels->getLabels($_post); //labels ?>
+                                <?php if ($_post->getArchived()): ?>
+                                    <span class="labels-wrap">
+                                        <span class="archived-label">
+                                            <?php echo $this->__("Archive") ?>
+                                        </span>
+                                    </span>
+                                <?php endif; ?>
+                            </a>
+                        </div> <!-- end: product-image-wrapper -->
+
+                        <?php //Product description ?>
+                        <div class="post-shop grid12-12 mobile-grid-half">
+                            <div class="post-shop-inner">
+                                <h2 class="post-name"><a href="<?php echo $_post->getPostUrl() ?>" title=""><?php echo $_post->getTitle(); ?></a></h2>
+                                <div class="above-heading"><?php echo $_post->getNote() ?></div>
+                                <?php echo Mage::helper('brander_unitopblog/post')->getAdditionInformation($_post); ?>
+                                <div class="desc std">
+                                    <?php echo $this->getShortContent($_post) ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="show-post" onclick="setLocation('<?php echo $_post->getPostUrl() ?>')">
+                            <span><?php echo $this->__('Learn More') ?></span>
+                        </div>
+                    </li>
+                <?php endforeach;?>
+                <?php if ($newsletter): ?>
+                    <li class="post-text-color post-full-bg item<?php if( ++$_iterator == sizeof($_posts) ): ?> last<?php endif; ?><?php echo $archived ?> grid12-<?php echo $grid; ?>">
+                        <?php echo $this->getChildHtml('homepage.blog.site_newsletter'); ?>
+                    </li>
+                <?php endif; ?>
+            </ul>
+            <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+            <?php //echo $this->getPagerHtml(); ?>
+        </div>
+    </div>
+</div>
+<?php endif;?>

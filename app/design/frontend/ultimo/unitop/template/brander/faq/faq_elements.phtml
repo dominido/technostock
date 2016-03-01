@@ -1,0 +1,13 @@
+<?php
+$collection = $this->getFaqCollection();
+$curI = $this->getFaqIncrement();
+?>
+<?php if($collection && $curI): ?>
+    <?php $i = $curI; foreach($collection as $item): ?>
+        <li class="faq-item">
+            <div class="faq-number"><?php echo $i++; ?></div>
+            <div class="faq-question"><span><?php echo $item->getQuestion()?></span>&nbsp;<span><i class="ico-down-arrow"></i></span></div>
+            <div class="faq-answer"><?php echo $item->getAnswer()?></div>
+        </li>
+    <?php endforeach; ?>
+<?php endif; ?>

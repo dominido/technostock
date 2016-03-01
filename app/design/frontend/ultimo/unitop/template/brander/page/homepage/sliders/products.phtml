@@ -1,0 +1,61 @@
+<?php
+/**
+ * Product sliders
+ *
+ * @see Brander_CmsHome_Block_ProductSliders
+ *
+ */
+?>
+<?php $html_block = array(); ?>
+<?php $configuration = $this->getSliderConfiguration('new'); ?>
+<?php if ($configuration): ?>
+    <?php $block_data = $this->getChild('product_sliders.list_new')->setData($configuration->getData())->toHtml(); ?>
+    <?php if (trim($block_data)):?>
+        <div class="container homepage-productslider full-width-slider clearer">
+            <?php echo $block_data ?>
+        </div>
+    <?php endif;?>
+<?php endif; ?>
+<?php
+    if ($this->getShowBannerBlock()) {
+        /* homepage banners bottom page */
+        echo $this->getChildHtml('home.homepage.banners');
+    }
+?>
+<?php $html_blocks = array(); ?>
+<?php foreach ($this->getSlidersConfiguration() as $slider): ?>
+    <?php
+        $position = $slider->getPosition();
+        if ($position) {
+            $key = $position;
+        } else {
+            $key = $slider->getType();
+        }
+        $block_data = $this->getChild($slider->getBlockAlias())->setData($slider->getData());
+        $html_blocks[] =    array(
+            'position'  => $key,
+            'block'     => $block_data,
+            );
+        if ($position && ($position == 'left' || $position == 'right') &&
+             !$block_data->getCollectionCount()) {
+                $this->_miniSliders = false;
+        }
+    ?>
+<?php endforeach; ?>
+
+<?php //TODO: do sliders ?>
+<div class="homepage-productslider clearer">
+<?php foreach ($html_blocks as $_html): ?>
+    <?php
+        if ($this->_miniSliders == true && ($gutter = $this->checkForGutter($_html['position']))) {
+            echo '<div class="grid12-6 no-'.$gutter.'-gutter">';
+            echo $_html['block']->toHtml();
+            echo '</div>';
+        } else {
+            echo '<div class="inner-container">';
+            echo $_html['block']->setBreakpoints($this->getBreakpoints(''))->toHtml();
+            echo '</div>';
+        }
+    ?>
+<?php endforeach; ?>
+</div>

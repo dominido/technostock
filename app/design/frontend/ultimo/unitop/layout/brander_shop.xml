@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout>
+    <default>
+        <reference name="head">
+            <!-- jQuery plugins -->
+            <!-- <action method="addItem"><type>skin_css</type><name>css/brander-overrides.css</name><params/></action> -->
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/brander/shop/element.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/brander/shop/chosen.proto.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/brander/shop/chosen.init.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/brander/shop/chosen.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/brander/fonts/socials/socials.css</name>
+            </action>
+        </reference>
+        <reference name="header">
+            <block type="page/html_header" name="logo" template="brander/page/header/logo.phtml" />
+        </reference>
+    </default>
+
+    <catalog_product_view>
+        <reference name="head">
+            <action ifconfig="ultimo/product_page/review_use_star" method="addItem"><type>skin_js</type><name>js/brander/review_stars/srka.review.stars.min.js</name></action>
+            <action ifconfig="ultimo/product_page/review_use_star" method="addItem"><type>skin_css</type><name>css/brander/review_stars/srka.review.stars.css</name><params/></action>
+        </reference>
+
+        <reference name="content">
+            <reference name="product.info">
+                <block type="reports/product_viewed" name="reports.product.viewed" as="reports.product.viewed" template="brander/product_viewed/viewed_slider.phtml" />
+            </reference>
+        </reference>
+    </catalog_product_view>
+</layout>

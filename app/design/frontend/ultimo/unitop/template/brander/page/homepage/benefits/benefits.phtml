@@ -1,0 +1,48 @@
+<?php
+$benefits = $this->getCollection();
+$helperImg = Mage::helper('brander_benefits/benefit_image');
+$helper = Mage::helper('brander_benefits');
+$config = Mage::helper('brander_shop')->getCfg('brander_benefits/benefits_config');
+$rowLimit = $config->getHomepageBenefitRowLimit();
+$benefitsLimit = $config->getHomepageBenefitLimit();
+?>
+<?php if ($config->getEnable() && $benefits && $benefits->count() > 0) :?>
+<div class="homepage-benefits additional-bg-color">
+    <div class="homepage-benefits-container">
+        <ul class="benefits-grid<?php echo $rowLimit ? ' benefits-per-row-'.min($rowLimit, $benefitsLimit): ''; ?>">
+            <?php foreach ($benefits as $_benefit) : ?>
+                <?php $tooltip = ''; $noImage = ''; ?>
+                <?php if ($_benefit->getImage()) {$noImage = ' no-image';} ?>
+                <li class="benefit<?php echo $noImage; ?>">
+                    <?php if ($_benefit->getTooltipEnable() && $_benefit->getTooltip()): ?>
+                        <?php $tooltip = $_benefit->getTooltip(); ?>
+                    <?php endif; ?>
+                    <?php $benefitUrl = $helper->getRedirectUrl($_benefit); ?>
+
+                    <?php if ($benefitUrl): ?>
+                    <a href="<?php echo $benefitUrl; ?>" title="<?php echo $tooltip ?>">
+                    <?php endif; ?>
+
+                        <?php if ($_benefit->getImage()): ?>
+                            <span class="img-wrap">
+                                <img src="<?php echo $helperImg->init($_benefit, 'image') ?>" alt="<?php echo $tooltip ?>"/>
+                            </span>
+                        <?php endif; ?>
+                        <?php if ($config->getHomepageShowTitle() && $_benefit->getTitleOnFront()): ?>
+                            <span class="benefit-title ">
+                                <b><?php echo $_benefit->getTitle();?></b>
+                            </span>
+                        <?php endif; ?>
+                        <?php if ($config->getHomepageShowDescription() && $_benefit->getBenefitText()): ?>
+                            <span class="benefit-text"><?php echo $_benefit->getBenefitText();?></span>
+                        <?php endif; ?>
+
+                    <?php if ($benefitUrl): ?>
+                    </a>
+                    <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php endif;?>

@@ -1,0 +1,36 @@
+<?php
+$benefits = $this->getCollection();
+$helperImg = Mage::helper('brander_benefits/benefit_image');
+$helper = Mage::helper('brander_benefits');
+$rowLimit = Mage::helper('brander_shop')->getCfg('brander_benefits/benefits_config/productpage_benefit_row_limit');
+?>
+<?php if ($benefits && $benefits->count() > 0) :?>
+<div class="benefits-container">
+    <ul class="benefits-grid<?php echo $rowLimit ? ' benefits-per-row-'.$rowLimit: ''; ?>">
+        <?php foreach ($benefits as $_benefit) : ?>
+            <?php $tooltip = null; $noImage = ''; ?>
+            <?php if ($_benefit->getImage()) {$noImage = ' no-image';} ?>
+            <?php if ($_benefit->getTooltipEnable() && $_benefit->getTooltip()): ?>
+                <?php $tooltip = $_benefit->getTooltip(); ?>
+            <?php endif; ?>
+            <li class="benefit<?php echo $noImage; ?>">
+                <a href="<?php echo $_benefit->getRedirectUrl(); ?>"<?php echo !empty($tooltip) ? ' title="'.$tooltip.'"': '' ?>>
+                    <?php if ($_benefit->getImage()): ?>
+                        <span class="img-wrap">
+                            <img class="benefit-image <?php echo $helperImg->getImageType($_benefit->getImage()) ?>" src="<?php echo $helperImg->init($_benefit, 'image') ?>" alt="<?php echo !empty($tooltip) ? $tooltip : '#' ?>" />
+                        </span>
+                    <?php endif; ?>
+                    <?php if ($_benefit->getTitleOnFront()): ?>
+                        <span class="benefit-title ">
+                            <b><?php echo $_benefit->getTitle();?></b>
+                        </span>
+                    <?php endif; ?>
+                    <?php if ($_benefit->getBenefitText()): ?>
+                        <span class="benefit-text"><?php echo $_benefit->getBenefitText();?></span>
+                    <?php endif; ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif;?>

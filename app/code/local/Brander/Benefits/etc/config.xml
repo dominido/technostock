@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_Benefits extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_Benefits
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <Brander_Benefits>
+            <version>0.1.1</version>
+        </Brander_Benefits>
+    </modules>
+    <global>
+        <resources>
+            <brander_benefits_setup>
+                <setup>
+                    <module>Brander_Benefits</module>
+                    <class>Brander_Benefits_Model_Resource_Setup</class>
+                </setup>
+            </brander_benefits_setup>
+        </resources>
+        <blocks>
+            <brander_benefits>
+                <class>Brander_Benefits_Block</class>
+            </brander_benefits>
+        </blocks>
+        <helpers>
+            <brander_benefits>
+                <class>Brander_Benefits_Helper</class>
+            </brander_benefits>
+        </helpers>
+        <models>
+            <brander_benefits>
+                <class>Brander_Benefits_Model</class>
+                <resourceModel>brander_benefits_resource</resourceModel>
+            </brander_benefits>
+            <brander_benefits_resource>
+                <class>Brander_Benefits_Model_Resource</class>
+                <entities>
+                    <benefit>
+                        <table>brander_benefits_benefit</table>
+                    </benefit>
+                    <benefit_product>
+                        <table>brander_benefits_benefit_product</table>
+                    </benefit_product>
+                    <benefit_category>
+                        <table>brander_benefits_benefit_category</table>
+                    </benefit_category>
+                    <eav_attribute>
+                        <table>brander_benefits_eav_attribute</table>
+                    </eav_attribute>
+                </entities>
+            </brander_benefits_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <brander_benefits>
+                    <file>brander_benefits.xml</file>
+                </brander_benefits>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_Benefits>
+                    <files>
+                        <default>Brander_Benefits.csv</default>
+                    </files>
+                </Brander_Benefits>
+            </modules>
+        </translate>
+        <events>
+            <core_block_abstract_prepare_layout_after>
+                <observers>
+                    <brander_benefits_benefit_product>
+                        <type>singleton</type>
+                        <class>brander_benefits/adminhtml_observer</class>
+                        <method>addProductBenefitBlock</method>
+                    </brander_benefits_benefit_product>
+                </observers>
+            </core_block_abstract_prepare_layout_after>
+            <adminhtml_catalog_category_tabs>
+                <observers>
+                    <brander_benefits_benefit_category>
+                        <type>singleton</type>
+                        <class>brander_benefits/adminhtml_observer</class>
+                        <method>addCategoryBenefitBlock</method>
+                    </brander_benefits_benefit_category>
+                </observers>
+            </adminhtml_catalog_category_tabs>
+            <catalog_product_save_after>
+                <observers>
+                    <brander_benefits_benefit_product>
+                        <type>singleton</type>
+                        <class>brander_benefits/adminhtml_observer</class>
+                        <method>saveProductBenefitData</method>
+                    </brander_benefits_benefit_product>
+                </observers>
+            </catalog_product_save_after>
+            <catalog_category_save_after>
+                <observers>
+                    <brander_benefits_benefit_category>
+                        <type>singleton</type>
+                        <class>brander_benefits/adminhtml_observer</class>
+                        <method>saveCategoryBenefitData</method>
+                    </brander_benefits_benefit_category>
+                </observers>
+            </catalog_category_save_after>
+        </events>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Brander_Benefits before="Mage_Adminhtml">Brander_Benefits_Adminhtml</Brander_Benefits>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <frontend>
+        <layout>
+            <updates>
+                <brander_benefits>
+                    <file>brander_benefits.xml</file>
+                </brander_benefits>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_Benefits>
+                    <files>
+                        <default>Brander_Benefits.csv</default>
+                    </files>
+                </Brander_Benefits>
+            </modules>
+        </translate>
+    </frontend>
+    <default>
+        <brander_benefits>
+            <benefits_config>
+                <enable>1</enable>
+                <enable_homepage>1</enable_homepage>
+                <homepage_benefit_limit>3</homepage_benefit_limit>
+                <homepage_benefit_line_limit>3</homepage_benefit_line_limit>
+                <homepage_benefit_title_show>1</homepage_benefit_title_show>
+                <homepage_show_description>1</homepage_show_description>
+                <enable_productpage>1</enable_productpage>
+                <productpage_benefit_limit>4</productpage_benefit_limit>
+                <productpage_benefit_row_limit>4</productpage_benefit_row_limit>
+                <productpage_benefit_title_show>1</productpage_benefit_title_show>
+                <productpage_show_description>1</productpage_show_description>
+                <enable_categorypage>0</enable_categorypage>
+            </benefits_config>
+        </brander_benefits>
+    </default>
+</config>

@@ -1,0 +1,21 @@
+<?php
+
+$collection = $this->getCollection(); ?>
+<?php if ($collection): ?>
+    <?php $page = Mage::registry('current_page'); ?>
+    <?php foreach ($collection as $_menuItem): ?>
+        <?php $active = ''; ?>
+        <?php if ($page && $page->getUrl() == $_menuItem->getRedirectUrl()): ?>
+            <?php $active = 'active'; ?>
+        <?php elseif ($this->getRequest()->getModuleName() == 'blog'): ?>
+            <?php if (Mage::helper('brander_unitopblog')->isBlogPage($_menuItem->getRedirectUrl())): ?>
+                <?php $active = 'active'; ?>
+            <?php endif; ?>
+        <?php endif; ?>
+        <li class="nav-item level0 level-top left <?php echo $active; ?>">
+            <a class="level-top" href="<?php echo $_menuItem->getRedirectUrl() ?>">
+                <span><?php echo $_menuItem->getName() ?></span>
+            </a>
+        </li>
+    <?php endforeach; ?>
+<?php endif; ?>

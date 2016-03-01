@@ -1,0 +1,15 @@
+<?php
+if ($this->helper('searchautocomplete')->isEnabled()) { ?>
+<script type="text/javascript">
+//<![CDATA[    
+    var searchFieldId = 'search';
+    $(searchFieldId).stopObserving();
+    $('search_autocomplete').style.position = 'absolute';
+    $('search_autocomplete').style.display = 'none';
+    var autocomplete = new SearchAutocomplete(searchFieldId, 'search_autocomplete',
+    '<?php echo $this->helper('catalogsearch')->getSuggestUrl() ?>',
+    <?php echo $this->helper('searchautocomplete')->getPopUpDelay() ?>,
+        '<?php echo $this->__('Search entire store here...') ?>');
+//]]>
+</script>
+<?php } ?>

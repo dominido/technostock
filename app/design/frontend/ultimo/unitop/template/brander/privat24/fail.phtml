@@ -1,0 +1,9 @@
+<div class="page-title">
+    <h1><?php echo $this->__('Your order does not paid for.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Error payment order.') ?></h2>
+<p><?php echo $this->__('During the payment order was an error and the order is not paid. The order will be canceled Peret. If payment has been made, but you see this message - contact the support site.') ?></p>
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl('') ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>

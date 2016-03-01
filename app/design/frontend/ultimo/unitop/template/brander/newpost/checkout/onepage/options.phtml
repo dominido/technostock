@@ -1,0 +1,27 @@
+<?php
+$_code=$this->getMethodCode();
+$carrier = $this->getMethodInstance();
+$pickupData = $this->getQuote()->getPickupData();
+$_rate = $this->getRate();
+?>
+<div class="field" id="shipping_form_<?php echo $_rate->getCode() ?>" style="display:none;">
+	<label for="newpost-warehouses"><?php echo $this->__('Warehouse')?>:</label>
+	<div class="input-box">
+		<select id="newpost-warehouses" class="select" name="shipping_newpost[address]">
+			<?php foreach($this->getAddressList() as $wh) {?>
+				<option value="<?php echo htmlspecialchars($wh); ?>"><?php echo htmlspecialchars($wh); ?></option>
+			<?php } ?>
+		</select>
+	</div>
+</div>
+<script type="text/javascript">
+	(function (jQuery) {
+		jQuery.each(['show', 'hide'], function (i, ev) {
+			var el = jQuery.fn[ev];
+			jQuery.fn[ev] = function () {
+				this.trigger(ev);
+				return el.apply(this, arguments);
+			};
+		});
+	})(jQuery);
+</script>

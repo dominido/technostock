@@ -1,0 +1,106 @@
+# Exclude backups, archives and logs
+*.tar
+*.gz
+*.sql
+*.log
+*.tar.gz
+*.zip
+*.rar
+
+# Exclude OS trash
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Exclude Sitemap and robots.txt
+sitemap.xml
+robots.txt
+
+# Exclude IDEs directories
+.idea
+nbproject
+
+# Exclude Gulp
+skin/frontend/ultimo/default/gulpfile.js
+skin/frontend/ultimo/default/package.json
+skin/frontend/ultimo/default/node_modules
+skin/frontend/ultimo/unitop/gulpfile.js
+skin/frontend/ultimo/unitop/package.json
+skin/frontend/ultimo/unitop/node_modules
+
+
+# Exclude Magento var dir
+var/cache
+var/full_page_cache
+var/session
+var/log
+var/locks
+var/export
+var/exports
+var/import
+var/importexport
+var/report
+var/tmp
+var/resource_config.json
+var/data-response.txt
+var/data.txt
+var/package
+
+
+#Exclude Magmi
+magmi
+
+#Exclude Magento media directory
+/media
+!media/.htaccess
+!media/xmlconnect
+!media/wysiwyg
+!media/downloadable
+!media/dhl
+!media/customer
+!skin/adminhtml/default/default/media/
+
+#Exclude webstat
+webstat
+index.html
+
+#Exclude other Magento dirs
+pkginfo
+downloader
+includes
+
+#Exclude configs
+app/etc/local.xml
+
+#Downloader
+downloader/config.*
+downloader/.cache
+
+#Other
+magicento.phpstorm.meta.php
+.tmp_*
+
+#styles
+skin/frontend/ultimo/default/css/_config
+skin/frontend/ultimo/default/css/_config/*.css
+
+#devtools all-in-one
+skin/frontend/base/default/debug
+skin/frontend/default/vlasa/scss/.sass-cache
+app/code/community/HM
+app/code/community/HM/DeveloperToolbar
+app/code/community/Magneto/Debug
+app/code/local/MDN
+app/design/adminhtml/default/default/layout/ExtensionConflict.xml
+app/design/adminhtml/default/default/template/ExtensionConflict
+app/design/frontend/base/default/layout/debug.xml
+app/design/frontend/base/default/layout/developertoolbar.xml
+app/design/frontend/base/default/template/debug
+app/design/frontend/base/default/template/developertoolbar
+app/etc/modules/HM_DeveloperToolbar.xml
+app/etc/modules/Magneto_Debug.xml
+app/etc/modules/MDN_ExtensionConflict.xml

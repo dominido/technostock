@@ -1,0 +1,25 @@
+<?php if (Mage::helper('brander_opcheckout')->isAllowedNewsletterSubscription()): ?>
+	<div class="opcheckout-subscribe">
+		<div class="opcheckout-newsletter-subscribe">
+			<input type="checkbox" name="subscribe_to_newsletter" id="subscribe_to_newsletter" value=""/>
+			<label for="subscribe_to_newsletter" class="custom-checkbox">
+				<span class="text">
+					<?php echo $this->__('Subscribe me for newsletter.') ?>
+				</span>
+			</label>
+		</div>
+	</div>
+	<script tytype="text/javascript">
+		$('subscribe_to_newsletter').observe('change', function() {
+			if ($('subscribe_to_newsletter').checked == true) {
+				$('hidden_newsletter_subscription').value = 1;
+			} else {
+				$('hidden_newsletter_subscription').value = 0;
+			}
+		});
+		<?php if (Mage::helper('brander_opcheckout')->isNewsletterSubscriptionChecked()): ?>
+			$('subscribe_to_newsletter').checked = true;
+			$('hidden_newsletter_subscription').value = 1;
+		<?php endif; ?>
+	</script>
+<?php endif; ?>

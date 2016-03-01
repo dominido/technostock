@@ -1,0 +1,48 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php $_postscategory = $this->getCurrentPostscategory();?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title postscategory-title">
+    <h1><?php echo $_postscategory->getTitle(); ?></h1>
+</div>
+<div class="postscategory-view">
+    <div class="postscategory-title">
+        <?php echo Mage::helper('brander_unitopblog')->__('Title');?>:<?php echo $_postscategory->getTitle();?>
+
+    </div>
+    <div class="postscategory-header_text">
+        <?php echo Mage::helper('brander_unitopblog')->__('Header Text');?>:<?php echo $_postscategory->getHeaderText();?>
+
+    </div>
+    <div class="postscategory-label">
+        <?php echo Mage::helper('brander_unitopblog')->__("Label");?>:<?php echo $_postscategory->getAttributeText('label');?>
+
+    </div>
+    <div class="postscategory-preview_image">
+        <?php if ($_postscategory->getPreviewImage()) :?>
+    <img src="<?php echo Mage::helper('brander_unitopblog/postscategory_image')->init($_postscategory, 'preview_image')->resize(75);?>" alt="<?php echo $this->escapeHtml($_postscategory->getTitle());?>" />
+<?php endif;?>
+
+    </div>
+    <div class="postscategory-short_description">
+        <?php echo Mage::helper('brander_unitopblog')->__('Short Description');?>:<?php echo $_postscategory->getShortDescription();?>
+
+    </div>
+
+</div>

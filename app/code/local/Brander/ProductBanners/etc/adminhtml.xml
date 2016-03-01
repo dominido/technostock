@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_ProductBanners extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_ProductBanners
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <brander_productbanners translate="title" module="brander_productbanners">
+                                        <title>ProductBanners</title>
+                                    </brander_productbanners>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <brander_shop>
+                        <children>
+                            <shop_content>
+                                <children>
+                                    <brander_productbanners translate="title" module="brander_productbanners">
+                                        <title>Product Banners</title>
+                                        <!--<children>
+                                            <banner translate="title" module="brander_productbanners">
+                                                <title>Banner</title>
+                                                <sort_order>0</sort_order>
+                                            </banner>
+                                            <banner_attributes translate="title" module="brander_productbanners">
+                                                <title>Manage Banner attributes</title>
+                                                <sort_order>7</sort_order>
+                                            </banner_attributes>
+                                        </children>-->
+                                    </brander_productbanners>
+                                </children>
+                            </shop_content>
+                        </children>
+                    </brander_shop>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <brander_shop>
+            <children>
+                <shop_content>
+                    <children>
+                        <brander_productbanners translate="title" module="brander_productbanners">
+                            <title>Product Banners</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/productbanners_banner</action>
+                            <!--<children>
+                                <banner translate="title" module="brander_productbanners">
+                                    <title>Banner</title>
+                                    <action>adminhtml/productbanners_banner</action>
+                                    <sort_order>0</sort_order>
+                                </banner>
+                                <banner_attributes translate="title" module="brander_productbanners">
+                                    <title>Manage Banner Attributes</title>
+                                    <action>adminhtml/productbanners_banner_attribute</action>
+                                    <sort_order>7</sort_order>
+                                </banner_attributes>
+                            </children>-->
+                        </brander_productbanners>
+                    </children>
+                </shop_content>
+            </children>
+        </brander_shop>
+
+    </menu>
+</config>

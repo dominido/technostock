@@ -1,0 +1,1308 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_SocialLogin
+ * @copyright  Copyright (c) 2013 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-commercial-v1/   ETWS Commercial License (ECL1)
+ */
+ -->
+<config>
+    <tabs>
+        <etall translate="label">
+            <label>ET Extensions</label>
+            <sort_order>400</sort_order>
+        </etall>
+    </tabs>
+
+    <sections>
+        <social_login translate="label" module="et_sociallogin">
+            <label>Social Login</label>
+            <tab>etall</tab>
+            <sort_order>300</sort_order>
+            <frontend_type>text</frontend_type>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <info translate="label">
+                    <label>Social Login information</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <support_information>
+                            <frontend_model>et_sociallogin/adminhtml_support</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </support_information>
+                    </fields>
+                </info>
+                <general>
+                    <label>Social Login settings</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <active_sociallogin translate="label">
+                            <label>Enabled Social Login</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active_sociallogin>
+
+                        <enable_jquery translate="label">
+                            <label>Include jQuery file</label>
+                            <comment><![CDATA[Version 1.10.2]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_jquery>
+
+                        <login_page_active translate="label">
+                            <label>Show social icons on login page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </login_page_active>
+                        <checkout_page_active translate="label">
+                            <label>Show social icons on checkout page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </checkout_page_active>
+                    </fields>
+                </general>
+                <icons>
+                    <label>Icons view settings</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <size translate="label">
+                            <label>Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>et_sociallogin/iconsSizes</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </size>
+                        <shape translate="label">
+                            <label>Shape</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>et_sociallogin/iconsShape</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shape>
+                        <color translate="label">
+                            <label>Color</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>et_sociallogin/iconsColor</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </color>
+                        <icons_view>
+                            <frontend_model>et_sociallogin/adminhtml_icons</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </icons_view>
+                        <block_label>
+                            <label>Authorization block header</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </block_label>
+                    </fields>
+                </icons>
+                <sharing translate="label">
+                    <label>Share buttons</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <sharing translate="label">
+                            <label>Enable</label>
+                            <comment><![CDATA[Share buttons will be displayed on product page.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sharing>
+                        <heading_general_settings translate="label">
+                            <label>Share buttons display settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </heading_general_settings>
+                        <vk translate="label">
+                            <label>Vkontakte</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </vk>
+
+                        <vk_icon_title translate="label comment">
+                            <label>Vkontate icon title</label>
+                            <comment>Shown on icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                                <vk>1</vk>
+                            </depends>
+                        </vk_icon_title>
+
+                        <facebook translate="label">
+                            <label>Facebook</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </facebook>
+
+                        <facebook_icon_title translate="label comment">
+                            <label>Facebook icon title</label>
+                            <comment>Shown on icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                                <facebook>1</facebook>
+                            </depends>
+                        </facebook_icon_title>
+                        <mailru translate="label">
+                            <label>Mail.Ru</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </mailru>
+
+                        <mailru_icon_title translate="label comment">
+                            <label>Mail.Ru icon title</label>
+                            <comment>Shown on icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                                <mailru>1</mailru>
+                            </depends>
+                        </mailru_icon_title>
+
+                        <odnoklassniki translate="label">
+                            <label>Odnoklassniki</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </odnoklassniki>
+                        <odnoklassniki_icon_title translate="label comment">
+                            <label>Odnoklassniki icon title</label>
+                            <comment>Shown on icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                                <odnoklassniki>1</odnoklassniki>
+                            </depends>
+                        </odnoklassniki_icon_title>
+
+                        <google translate="label">
+                            <label>Google+</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </google>
+                        <google_icon_title translate="label comment">
+                            <label>Google+ icon title</label>
+                            <comment>Shown on icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                                <google>1</google>
+                            </depends>
+                        </google_icon_title>
+
+                        <twitter translate="label">
+                            <label>Twitter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </twitter>
+                        <twitter_icon_title translate="label comment">
+                            <label>Twitter icon title</label>
+                            <comment>Shown on icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                                <twitter>1</twitter>
+                            </depends>
+                        </twitter_icon_title>
+
+
+
+                        <heading_icons_view translate="label">
+                            <label>Icons view settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </heading_icons_view>
+                        <size translate="label">
+                            <label>Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>et_sociallogin/iconsSizes</source_model>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </size>
+                        <shape translate="label">
+                            <label>Shape</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>et_sociallogin/iconsShape</source_model>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </shape>
+                        <color translate="label">
+                            <label>Color</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>et_sociallogin/iconsColor</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </color>
+                        <icons_view>
+                            <frontend_model>et_sociallogin/adminhtml_icons</frontend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </icons_view>
+
+                        <block_label>
+                            <label>Share block header</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sharing>1</sharing>
+                            </depends>
+                        </block_label>
+                    </fields>
+                </sharing>
+                <vk translate="label">
+                    <label>Vkontakte</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Enable registration and authorization with Vkontakte social network. <br> <span style="color: red">Important!</span> Fields: "App key" and "Secret key" must be filled, to enable icon for registration/authorization with Vkontakte.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <heading_app_settings translate="label">
+                            <label>Application Settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_app_settings>
+
+                        <key translate="label comment">
+                            <label>App key</label>
+                            <comment><![CDATA[If you don't have a key, create an application on social network page: <a target="_blank" href="https://vk.com/editapp?act=create">https://vk.com/editapp?act=create</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key>
+                        <secret translate="label">
+                            <label>Secret key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret>
+
+                        <heading_display_settings translate="label">
+                            <label>Display settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_display_settings>
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <auth_title translate="label comment">
+                            <label>Auth icon title</label>
+                            <comment>Shown on login(registration) icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auth_title>
+                        <sort_order>
+                            <label>Sort Order</label>
+                            <comment><![CDATA[Display icons in a predetermined order.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <notify translate="label comment">
+                            <label>Special notes</label>
+                            <comment><![CDATA[You can enter a note here, for example which e-mail was used to create the application and other necessary data.]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify>
+                    </fields>
+                </vk>
+
+                <facebook translate="label">
+                    <label>Facebook</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label comment">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Enable registration and authorization with Facebook social network. <br> <span style="color: red">Important!</span> Fields: "App key" and "Secret key" must be filled, to enable icon for registration/authorization with Facebook.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <heading_app_settings translate="label">
+                            <label>Application Settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_app_settings>
+                        <key translate="label comment">
+                            <label>App key</label>
+                            <comment><![CDATA[If you don't have a key, create an application on social network page:  <a href="https://developers.facebook.com/" target="_blank">https://developers.facebook.com/</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key>
+                        <secret translate="label">
+                            <label>Secret key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret>
+
+                        <heading_display_settings translate="label">
+                            <label>Display settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_display_settings>
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <auth_title translate="label comment">
+                            <label>Auth icon title</label>
+                            <comment>Shown on login(registration) icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auth_title>
+
+                        <sort_order>
+                            <label>Sort Order</label>
+                            <comment><![CDATA[Display icons in a predetermined order.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+
+                        <notify translate="label comment">
+                            <label>Special notes</label>
+                            <comment><![CDATA[You can enter a note here, for example which e-mail was used to create the application and other necessary data.]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify>
+                    </fields>
+                </facebook>
+
+                <google translate="label">
+                    <label>Google+</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Enable registration and authorization with Google+ social network. <br> <span style="color: red">Important!</span> Fields: "App key" and "Secret key" must be filled, to enable icon for registration/authorization with Google+.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <heading_app_settings translate="label">
+                            <label>Application Settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_app_settings>
+
+                        <key translate="label">
+                            <label>Client ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key>
+                        <secret translate="label">
+                            <label>Secret key</label>
+                            <comment><![CDATA[If you don't have a key, create an application on social network page:  <a href="https://code.google.com/apis/console" target="_blank">https://code.google.com/apis/console</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret>
+
+                        <heading_display_settings translate="label">
+                            <label>Display settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_display_settings>
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <auth_title translate="label comment">
+                            <label>Auth icon title</label>
+                            <comment>Shown on login(registration) icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auth_title>
+
+                        <sort_order>
+                            <label>Sort Order</label>
+                            <comment><![CDATA[Display icons in a predetermined order.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+
+                        <notify translate="label comment">
+                            <label>Special notes</label>
+                            <comment><![CDATA[You can enter a note here, for example which e-mail was used to create the application and other necessary data.]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify>
+                    </fields>
+                </google>
+
+                <odnoklassniki translate="label">
+                    <label>Odnoklassniki</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Enable registration and authorization with Odnoklassniki social network. <br> <span style="color: red">Important!</span> Fields: "App key", "Secret key" and "Public key" must be filled, to enable icon for registration/authorization with Odnoklassniki.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <heading_app_settings translate="label">
+                            <label>Application Settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_app_settings>
+
+                        <appkey translate="label comment">
+                            <label>App key</label>
+                            <!-- <comment><![CDATA[Если у вас нет ключа, создайте приложение на странице социальной сети: <a target="_blank" href="http://ok.ru">http://ok.ru</a>. Перейдите в свой профиль, затем в закладку "игры", затем в левом меню выбрать "мои загруженные" и создать приложение.]]></comment>-->
+                            <comment><![CDATA[If you don't have a key, create an application on social network page:  <a target="_blank" href="http://ok.ru">http://ok.ru</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </appkey>
+
+                        <secret translate="label">
+                            <label>Secret key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret>
+
+                        <key translate="label comment">
+                            <label>Public key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key>
+
+
+                        <heading_display_settings translate="label">
+                            <label>Display settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_display_settings>
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <auth_title translate="label comment">
+                            <label>Auth icon title</label>
+                            <comment><![CDATA[Shown on login(registration) icon hover]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auth_title>
+
+                        <sort_order>
+                            <label>Sort Order</label>
+                            <comment><![CDATA[Display icons in a predetermined order.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+
+                        <notify translate="label comment">
+                            <label>Special notes</label>
+                            <comment><![CDATA[You can enter a note here, for example which e-mail was used to create the application and other necessary data.]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify>
+                    </fields>
+                </odnoklassniki>
+
+
+                <yandex translate="label">
+                    <label>Yandex</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>80</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Enable registration and authorization with Yandex social network. <br> <span style="color: red">Important!</span> Fields: "App key" and "Secret key" must be filled, to enable icon for registration/authorization with Yandex.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <heading_app_settings translate="label">
+                            <label>Application Settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_app_settings>
+
+                        <key translate="label">
+                            <label>App key</label>
+                            <comment><![CDATA[If you don't have a key, create an application on social network page: <a href="https://oauth.yandex.ru/client/new" target="_blank">https://oauth.yandex.ru/client/new</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key>
+                        <secret translate="label">
+                            <label>Secret key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret>
+
+
+                        <heading_display_settings translate="label">
+                            <label>Display settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_display_settings>
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <auth_title translate="label comment">
+                            <label>Auth icon title</label>
+                            <comment>Shown on login(registration) icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auth_title>
+
+                        <sort_order>
+                            <label>Sort Order</label>
+                            <comment><![CDATA[Display icons in a predetermined order.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+
+                        <notify translate="label comment">
+                            <label>Special notes</label>
+                            <comment><![CDATA[You can enter a note here, for example which e-mail was used to create the application and other necessary data.]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify>
+                    </fields>
+                </yandex>
+
+
+                <mailru translate="label">
+                    <label>Mail.Ru</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>90</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Enable registration and authorization with Mail.Ru social network. <br> <span style="color: red">Important!</span> Fields: "App key" and "Secret key" must be filled, to enable icon for registration/authorization with Mail.Ru.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <heading_app_settings translate="label">
+                            <label>Application Settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_app_settings>
+
+                        <key translate="label">
+                            <label>App key</label>
+                            <comment><![CDATA[If you don't have a key, create an application on social network page: <a href="http://api.mail.ru/sites/my/add/" target="_blank">http://api.mail.ru/sites/my/add/</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key>
+                        <secret translate="label">
+                            <label>Secret key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret>
+
+
+                        <heading_display_settings translate="label">
+                            <label>Display settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_display_settings>
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <auth_title translate="label comment">
+                            <label>Auth icon title</label>
+                            <comment>Shown on login(registration) icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auth_title>
+
+                        <sort_order>
+                            <label>Sort Order</label>
+                            <comment><![CDATA[Display icons in a predetermined order.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+
+                        <notify translate="label comment">
+                            <label>Special notes</label>
+                            <comment><![CDATA[You can enter a note here, for example which e-mail was used to create the application and other necessary data.]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify>
+                    </fields>
+                </mailru>
+
+                <twitter translate="label">
+                    <label>Twitter</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>80</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Enable registration and authorization with Twitter social network. <br> <span style="color: red">Important!</span> Fields: "App key" and "Secret key" must be filled, to enable icon for registration/authorization with Twitter.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <heading_app_settings translate="label">
+                            <label>Application Settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_app_settings>
+
+                        <key translate="label">
+                            <label>App key</label>
+                            <comment><![CDATA[If you don't have a key, create an application on social network page: <a href="https://apps.twitter.com/" target="_blank">https://apps.twitter.com/</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key>
+                        <secret translate="label">
+                            <label>Secret key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret>
+
+
+                        <heading_display_settings translate="label">
+                            <label>Display settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_display_settings>
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <auth_title translate="label comment">
+                            <label>Auth icon title</label>
+                            <comment>Shown on login(registration) icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auth_title>
+
+                        <sort_order>
+                            <label>Sort Order</label>
+                            <comment><![CDATA[Display icons in a predetermined order.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+
+                        <notify translate="label comment">
+                            <label>Special notes</label>
+                            <comment><![CDATA[You can enter a note here, for example which e-mail was used to create the application and other necessary data.]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify>
+                    </fields>
+                </twitter>
+                <linkedin translate="label">
+                    <label>Linkedin</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>90</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Enable registration and authorization with Linkedin social network. <br> <span style="color: red">Important!</span> Fields: "App key" and "Secret key" must be filled, to enable icon for registration/authorization with Linkedin.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <heading_app_settings translate="label">
+                            <label>Application Settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_app_settings>
+
+                        <key translate="label comment">
+                            <label>App key</label>
+                            <comment><![CDATA[If you don't have a key, create an application on social network page: <a href="https://www.linkedin.com/secure/developer" target="_blank">https://www.linkedin.com/secure/developer</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key>
+                        <secret translate="label">
+                            <label>Secret key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret>
+
+
+                        <heading_display_settings translate="label">
+                            <label>Display settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_display_settings>
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <auth_title translate="label comment">
+                            <label>Auth icon title</label>
+                            <comment>Shown on login(registration) icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auth_title>
+
+                        <sort_order>
+                            <label>Sort Order</label>
+                            <comment><![CDATA[Display icons in a predetermined order.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+
+                        <notify translate="label comment">
+                            <label>Special notes</label>
+                            <comment><![CDATA[You can enter a note here, for example which e-mail was used to create the application and other necessary data.]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify>
+                    </fields>
+                </linkedin>
+                <github translate="label">
+                    <label>Github</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>90</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <comment><![CDATA[Включить модуль регистрации и входа в аккаунт при помощи соц. сети Github. <br> <span style="color: red">Важно!</span> Чтобы появилась иконка входа\регистрации через Github, поля: "Ключ приложения" и "Секретный коюч" должны быть заполнены.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <heading_app_settings translate="label">
+                            <label>Application Settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_app_settings>
+
+                        <key translate="label">
+                            <label>App key</label>
+                            <comment><![CDATA[If you don't have a key, create an application on social network page: <a href="https://github.com/settings/applications/" target="_blank">https://github.com/settings/applications/</a>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key>
+                        <secret translate="label">
+                            <label>Secret key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret>
+
+
+                        <heading_display_settings translate="label">
+                            <label>Display settings</label>
+                            <frontend_model>et_sociallogin/adminhtml_system_config_form_field_heading</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_display_settings>
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <auth_title translate="label comment">
+                            <label>Auth icon title</label>
+                            <comment>Shown on login(registration) icon hover</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auth_title>
+
+                        <sort_order>
+                            <label>Sort Order</label>
+                            <comment><![CDATA[Display icons in a predetermined order.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+
+                        <notify translate="label comment">
+                            <label>Special notes</label>
+                            <comment><![CDATA[You can enter a note here, for example which e-mail was used to create the application and other necessary data.]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify>
+                    </fields>
+                </github>
+            </groups>
+        </social_login>
+    </sections>
+</config>

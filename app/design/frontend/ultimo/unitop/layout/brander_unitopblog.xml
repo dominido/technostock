@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<layout>
+    <PAGE_TYPE_UNIPAGETYPE>
+        <reference name="cmsadvanced.page">
+            <block type="brander_unitopblog/post_list" name="homepage.posts_list" modules="brander_unitopblog/homepage/">
+                <action method="setTemplate" modules="brander_unitopblog/homepage/" options="enable, show_as_slider" conditions="1, 0">
+                    <template>brander/page/homepage/blog/list.phtml</template>
+                </action>
+                <action method="setTemplate" modules="brander_unitopblog/homepage/" options="enable, show_as_slider" conditions="1, 1">
+                    <template>brander/page/homepage/blog/slider_list.phtml</template>
+                </action>
+                <block type="newsletter/subscribe" name="homepage.blog.site_newsletter">
+                    <action method="setTemplate" modules="brander_unitopblog/homepage/" options="attach_newsletters" conditions="1">
+                        <template>brander/page/homepage/blog/newsletter.phtml</template>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </PAGE_TYPE_UNIPAGETYPE>
+
+<!--    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="brander_unitopblog"><name>post_comments</name><path>brander/unitopblog/post_customer_comment</path><label>Posts Comments</label></action>
+        </reference>
+    </customer_account>-->
+    <brander_unitopblog_postscategory_index translate="label" module="brander_unitopblog">
+        <label>Blog</label>
+        <update handle="page_two_columns_left"/>
+        <reference name="head">
+            <action method="addCss"><js>css/brander/unitopblog/tree.css</js></action>
+            <action method="addItem" ifconfig="brander_unitopblog/postscategory/tree">
+                <type>skin_js</type>
+                <js>js/brander/unitopblog/tree.js</js>
+            </action>
+        </reference>
+
+        <reference name="left">
+            <action method="unsetChildren"/>
+            <block type="brander_unitopblog/postscategory_list" name="category_list" template="brander/unitopblog/postscategory/list.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="brander_unitopblog/post_list" name="post_list" template="brander/unitopblog/post/list.phtml" />
+        </reference>
+    </brander_unitopblog_postscategory_index>
+
+    <brander_unitopblog_post_index translate="label" module="brander_unitopblog">
+        <label>Posts list</label>
+        <update handle="page_two_columns_right" />
+        <reference name="content">
+            <block type="brander_unitopblog/post_list" name="post_list" template="brander/unitopblog/post/list.phtml" />
+        </reference>
+    </brander_unitopblog_post_index>
+<!--    <brander_unitopblog_postscategory_view translate="label" module="brander_unitopblog">
+        <label>Category view page</label>
+        <update handle="page_one_column" />
+        <reference name="head">
+            <action method="addItem" ifconfig="brander_unitopblog/postscategory/tree"><type>skin_js</type><js>js/brander/unitopblog/tree.js</js></action>
+        </reference>
+        <reference name="content">
+            <block type="brander_unitopblog/postscategory_view" name="category_view" template="brander/unitopblog/postscategory/view.phtml" />
+            <block type="brander_unitopblog/postscategory_children" name="category_children" template="brander/unitopblog/postscategory/children.phtml" />
+            <block type="brander_unitopblog/postscategory_post_list" name="category.post_list" as="category_categories" template="brander/unitopblog/postscategory/post/list.phtml" />
+        </reference>
+    </brander_unitopblog_postscategory_view>-->
+    <brander_unitopblog_post_view translate="label" module="brander_unitopblog">
+        <label>Post view page</label>
+        <update handle="page_one_column"/>
+        <reference name="content">
+            <block type="brander_unitopblog/post_view" name="post_view" template="brander/unitopblog/post/view.phtml" />
+            <block type="brander_unitopblog/post_comment_list" name="post.comments_list" as="post_comment_list"
+                   template="brander/unitopblog/post/comment/list.phtml">
+                <block type="brander_unitopblog/post_comment_form" name="comment_form" as="comment_form"
+                       template="brander/unitopblog/post/comment/form.phtml"/>
+            </block>
+            <block type="brander_unitopblog/post_catalog_product_list" name="post.info.products" as="post_products"
+                   template="brander/unitopblog/post/products/slider.phtml"/>
+        </reference>
+    </brander_unitopblog_post_view>
+<!--    <brander_unitopblog_post_rss translate="label" module="brander_unitopblog">
+        <label>Posts rss feed</label>
+        <block type="brander_unitopblog/post_rss" output="toHtml" name="brander_unitopblog.post.rss" />
+    </brander_unitopblog_post_rss>-->
+<!--    <rss_index_index>
+        <reference name="content">
+            <block type="brander_unitopblog/rss" name="unitopblog.rss" template="brander/unitopblog/rss.phtml">
+                <action method="addFeed" ifconfig="brander_unitopblog/post/rss" translate="label" module="brander_unitopblog">
+                    <label>Posts</label>
+                    <url helper="brander_unitopblog/post/getRssUrl" />
+                </action>
+            </block>
+        </reference>
+    </rss_index_index>-->
+<!--    <catalog_product_view>
+        <reference name="product.info">
+            <block type="brander_unitopblog/catalog_product_list_post" name="product.info.posts" as="product_posts" template="brander/unitopblog/catalog/product/list/post.phtml">
+                <action method="addToParentGroup"><group>detailed_info</group></action>
+                <action method="setTitle" translate="value" module="brander_unitopblog"><value>Posts</value></action>
+            </block>
+        </reference>
+    </catalog_product_view>-->
+
+    <catalog_product_view>
+        <reference name="product.info">
+            <reference name="product.info.tabs">
+                <reference name="blog.tabs">
+                    <block type="brander_unitopblog/post_list" name="post_list_tab1" template="brander/unitopblog/catalog/product/list/list.phtml"/>
+                </reference>
+            </reference>
+        </reference>
+    </catalog_product_view>
+
+
+    <brander_unitopblog_category>
+        <reference name="content">
+            <block type="brander_unitopblog/catalog_category_list_post" name="category.info.posts" as="category_posts"
+                   template="brander/unitopblog/catalog/category/list/posts.phtml" after="-">
+                <block type="catalog/product_view_tabs" name="blog.tabs" template="brander/unitopblog/catalog/category/list/tabs.phtml" />
+                <block type="brander_unitopblog/post_list" name="post_list" template="brander/unitopblog/catalog/category/list/list.phtml"/>
+            </block>
+        </reference>
+    </brander_unitopblog_category>
+
+    <catalog_category_default>
+        <update handle="brander_unitopblog_category" />
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <update handle="brander_unitopblog_category" />
+    </catalog_category_layered>
+
+    <brander_unitopblog_post_customer_comment_index translate="label" module="brander_unitopblog">
+        <label>My Posts comments</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="brander_unitopblog/post_customer_comment_list" name="customer_post_comments" template="brander/unitopblog/post/customer/comment/list.phtml"/>
+        </reference>
+    </brander_unitopblog_post_customer_comment_index>
+    <brander_unitopblog_post_customer_comment_view translate="label" module="brander_unitopblog">
+        <label>My Posts comment view</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="brander_unitopblog/post_customer_comment_view" name="customer_post_comment" template="brander/unitopblog/post/customer/comment/view.phtml"/>
+        </reference>
+    </brander_unitopblog_post_customer_comment_view>
+</layout>

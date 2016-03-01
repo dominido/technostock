@@ -1,0 +1,37 @@
+<?php $collection = $this->getShopsCollection(); ?>
+<?php $array = array(); ?>
+<?php foreach ($collection as $shop): ?>
+    <?php if (strlen($shop->getImage('image')->getFile())) { ?>
+    <?php $array[] = array(
+        $shop->getTitle(),
+        $shop->getAdress(),
+        $shop->getPhone(),
+        $shop->getLongitude(),
+        $shop->getLatitude(),
+        (string)$shop->getImage('image')->resize(150, 150))?>
+    <?php } else { ?>
+<!-- if no image selected in admin form for store-->
+        <?php $array[] = array(
+            $shop->getTitle(),
+            $shop->getAdress(),
+            $shop->getPhone(),
+            $shop->getLongitude(),
+            $shop->getLatitude())
+       ?>
+    <?php  }?>
+<?php endforeach; ?>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+<div id="map" style="width: 100%; height: 400px;"></div>
+
+<script>
+    Translator.add('name: ','<?php echo $this->__('name: ') ?>');
+    Translator.add('phone: ','<?php echo $this->__('phone: ') ?>');
+    Translator.add('address: ','<?php echo $this->__('address: ') ?>');
+    Translator.add('phone: ','<?php echo $this->__('phone: ') ?>');
+    //<![CDATA[
+    Event.observe(document, 'dom:loaded', function () {
+        mapsInit.Init(<?php echo Mage::helper('core')->jsonEncode($array); ?>);
+    });
+    //]]>
+</script>

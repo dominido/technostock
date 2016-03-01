@@ -1,0 +1,187 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+
+ <?php $_posts = $this->getPosts(); ?>
+
+<?php if ($_posts->getSize() > 0) :?>
+<div class="homepage-unitopblog clearer">
+<div class="homepage-unitopblog-container">
+    <?php
+
+    $theme = $this->helper('ultimo');
+    $helpImg = $this->helper('brander_unitopblog/post_image');
+    $configHome = Mage::helper('brander_shop')->getCfg('brander_unitopblog/homepage');
+
+    $sliderClasses = '';
+    $gridClasses = '';
+
+    $sliderId = "homepage-blog-slider";
+
+//Slider parameters
+//--------------------------------------------------------------
+
+//Responsive mode on/off
+    $isResponsive = true;
+
+//Assign number of items in a row to specific viewport width
+    $breakpoints = $configHome->getBreakpoints();
+    if (empty($breakpoints)) //Param not set
+    {
+        $breakpoints = '[0, 1], [320, 2], [480, 2], [960, 3], [1280, 3]'; //Set default breakpoints
+    }
+
+//Pagination on/off
+    $pagination = false;
+
+    $imgWidth = 296;
+    $imgHeight = 296;
+
+//Image aspect ratio
+    if ($theme->getCfg('category/aspect_ratio'))
+    {
+        $imgHeight = 0; //Height will be computed automatically (based on width) to keep the aspect ratio
+    }
+
+//Slider timeout. Set to enable automatic scrolling.
+    $timeout = 4000;
+
+//Number of items that should move on scrolling
+    $move = 0;
+
+//If set, slider will loop
+    $loop = 1;
+
+//Speed (arrows / touch swipe)
+    $speed = intval($theme->getCfg('product_slider/speed'));
+
+//Speed (automatic scrolling / pagination)
+    $autoSpeed = intval($theme->getCfg('product_slider/auto_speed'));
+
+//Pause slider on mouse hover
+    $pause = $theme->getCfg('product_slider/pause');
+
+//Lazy loading
+    $lazy = $theme->getCfg('product_slider/lazy');
+
+//Slider classes
+//--------------------------------------------------------------
+    if($isResponsive)
+    {
+        $sliderClasses .= ' itemslider-responsive';
+    }
+
+    if ($_posts->getSize() == 1)
+    {
+        $sliderClasses .= ' single-item';
+    }
+
+//Product grid classes
+//--------------------------------------------------------------
+
+//Align elements to the center
+    $gridClasses .= ' centered';
+    
+    ?>
+
+    <div class="block block-viewed">
+        <h3 class="section-title padding-right"><?php echo $this->getTitle(); ?></h3>
+        <div class="itemslider-wrapper itemslider-viewed-wrapper slider-arrows1 slider-arrows1-pos-top-right slider-pagination1">
+            <div id="<?php echo $sliderId; ?>" class="itemslider <?php if($sliderClasses) echo $sliderClasses; ?> products-grid<?php if($gridClasses) echo $gridClasses; ?>">
+
+                <?php foreach($_posts as $_post): //$_link replaced with $_post ?>
+                    <div class="item">
+                        <a href="<?php echo $_post->getPostUrl() ?>" title="<?php echo $this->escapeHtml($_post->getTitle()) ?>" class="product-image">
+                            <?php if ($lazy): ?>
+                                <img class="lazyOwl" src="#" data-src="<?php echo $helpImg->init($_post, 'preview_image'); ?>" alt="<?php echo $this->escapeHtml($_post->getTitle()) ?>" />
+                            <?php else: ?>
+                                <img src="<?php echo $helpImg->init($_post, 'preview_image'); ?>" alt="<?php echo $this->escapeHtml($_post->getTitle()) ?>" />
+                            <?php endif; ?>
+                        </a>
+                        <h3 class="blog-name"><a href="<?php echo $_post->getPostUrl() ?>" title="<?php echo $this->escapeHtml($_post->getTitle()) ?>"><?php echo $this->escapeHtml($_post->getTitle()) ?></a></h3>
+                        <?php echo $this->getPriceHtml($_post, true, '-blog') ?>
+                    </div>
+                <?php endforeach; ?>
+            </div> <!-- end: itemslider -->
+        </div> <!-- end: itemslider-wrapper -->
+
+        <script type="text/javascript">
+            //<![CDATA[
+            jQuery(function($) {
+
+                var owl = $('#<?php echo $sliderId; ?>');
+                owl.owlCarousel({
+
+                    <?php if ($lazy): ?>
+                    lazyLoad: true,
+                    <?php endif; ?>
+
+                    <?php if(!$isResponsive): ?>
+                    responsive: false,
+                    items: <?php echo $showItems; ?>,
+                    <?php else: ?>
+                    itemsCustom: [ <?php echo $breakpoints; ?> ],
+                    responsiveRefreshRate: 50,
+                    <?php endif; ?>
+
+                    <?php if ($speed): ?>
+                    slideSpeed: <?php echo $speed; ?>,
+                    <?php endif; ?>
+
+                    <?php if ($autoSpeed): ?>
+                    paginationSpeed: <?php echo $autoSpeed; ?>,
+                    <?php endif; ?>
+
+                    <?php if ($move !== 1): ?>
+                    scrollPerPage: true,
+                    <?php endif; ?>
+
+                    <?php if ($timeout): ?>
+                    autoPlay: <?php echo $timeout; ?>,
+                    <?php endif; ?>
+
+                    <?php if ($pause): ?>
+                    stopOnHover: true,
+                    <?php endif; ?>
+
+                    <?php if ($loop): ?>
+                    rewindNav: true,
+                    rewindSpeed: 600,
+                    <?php else: ?>
+                    rewindNav: false,
+                    <?php endif; ?>
+
+                    <?php if ($pagination): ?>
+                    pagination: true,
+                    <?php else: ?>
+                    pagination: false,
+                    <?php endif; ?>
+
+                    navigation: true,
+                    navigationText: false
+
+                }); //end: owl
+
+            });
+            //]]>
+        </script>
+
+    </div>
+</div>
+</div>
+<?php endif; ?>

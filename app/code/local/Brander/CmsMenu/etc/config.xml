@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_CmsMenu>
+            <version>0.1.1</version>
+        </Brander_CmsMenu>
+    </modules>
+    <global>
+        <blocks>
+            <brander_cmsmenu>
+                <class>Brander_CmsMenu_Block</class>
+            </brander_cmsmenu>
+        </blocks>
+        <helpers>
+            <brander_cmsmenu>
+                <class>Brander_CmsMenu_Helper</class>
+            </brander_cmsmenu>
+        </helpers>
+        <models>
+            <brander_cmsmenu>
+                <class>Brander_CmsMenu_Model</class>
+            </brander_cmsmenu>
+        </models>
+        <resources>
+            <brander_cmsmenu_setup>
+                <setup>
+                    <module>Brander_CmsMenu</module>
+                    <class>Brander_Cms_Model_Entity_Setup</class>
+                </setup>
+            </brander_cmsmenu_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <brander_cmsmenu>
+                    <file>brander_cmsmenu.xml</file>
+                </brander_cmsmenu>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_CmsMenu>
+                    <files>
+                        <default>Brander_CmsMenu.csv</default>
+                    </files>
+                </Brander_CmsMenu>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Brander_CmsMenu>
+                    <files>
+                        <default>Brander_CmsMenu.csv</default>
+                    </files>
+                </Brander_CmsMenu>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <cmsadvanced>
+        <pagetypes>
+            <redirect>
+                <groups>
+                    <menupagegroup>
+                        <name>Menu Configuration</name>
+                        <attributes>
+                            <top_menu>
+                                <label>Top Menu</label>
+                                <template>yesno</template>
+                                <default>0</default>
+                            </top_menu>
+                            <main_menu>
+                                <label>Main Menu</label>
+                                <template>yesno</template>
+                                <default>0</default>
+                            </main_menu>
+                            <footer_menu>
+                                <label>Footer Menu</label>
+                                <template>yesno</template>
+                                <default>0</default>
+                            </footer_menu>
+                        </attributes>
+                    </menupagegroup>
+                </groups>
+            </redirect>
+        </pagetypes>
+    </cmsadvanced>
+
+    <default>
+        <ultramegamenu>
+            <mainmenu>
+                <first_item_grid>1</first_item_grid>
+            </mainmenu>
+        </ultramegamenu>
+        <ultimo>
+            <header>
+                <account_position>userMenu</account_position>
+            </header>
+            <footer>
+                <show_titles>1</show_titles>
+            </footer>
+        </ultimo>
+    </default>
+</config>

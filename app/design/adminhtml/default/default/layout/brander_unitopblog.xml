@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_UnitopBlog extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_unitopblog_post_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_shop/brander_unitopblog/post</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_unitopblog/adminhtml_post" name="post">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+
+        </reference>
+    </adminhtml_unitopblog_post_index>
+    <adminhtml_unitopblog_post_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_unitopblog/adminhtml_post_grid" name="post_grid"/>
+        </block>
+    </adminhtml_unitopblog_post_grid>
+    <!-- Post add/edit action -->
+    <adminhtml_unitopblog_post_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_shop/brander_unitopblog/post</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_unitopblog/adminhtml_post_edit" name="post_edit"/>
+        </reference>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-"/>
+            <block type="brander_unitopblog/adminhtml_post_edit_tabs" name="post_tabs"/>
+        </reference>
+        <reference name="head">
+            <action method="setCanLoadTinyMce"><load>1</load></action>
+        </reference>
+        <reference name="js">
+            <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
+        </reference>
+    </adminhtml_unitopblog_post_edit>
+
+    <adminhtml_unitopblog_post_catalog_product_posts>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_unitopblog/adminhtml_catalog_product_edit_tab_post" name="product.edit.tab.post"/>
+            <block type="adminhtml/widget_grid_serializer" name="post_grid_serializer">
+                <reference name="post_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>product.edit.tab.post</grid_block_name>
+                        <data_callback>getSelectedPosts</data_callback>
+                        <hidden_input_name>posts</hidden_input_name>
+                        <reload_param_name>product_posts</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_unitopblog_post_catalog_product_posts>
+    <adminhtml_unitopblog_post_catalog_product_postsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_unitopblog/adminhtml_catalog_product_edit_tab_post" name="product.edit.tab.post"/>
+        </block>
+    </adminhtml_unitopblog_post_catalog_product_postsgrid>
+    <adminhtml_unitopblog_post_products>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_unitopblog/adminhtml_post_edit_tab_product" name="post.edit.tab.product"/>
+            <block type="adminhtml/widget_grid_serializer" name="product_grid_serializer">
+                <reference name="product_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>post.edit.tab.product</grid_block_name>
+                            <data_callback>getSelectedProducts</data_callback>
+                            <hidden_input_name>products</hidden_input_name>
+                            <reload_param_name>post_products</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_unitopblog_post_products>
+    <adminhtml_unitopblog_post_productsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_unitopblog/adminhtml_post_edit_tab_product" name="post.edit.tab.product"/>
+        </block>
+    </adminhtml_unitopblog_post_productsgrid>
+    <adminhtml_unitopblog_post_categories>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_unitopblog/adminhtml_post_edit_tab_categories" name="post.edit.tab.categories"/>
+        </block>
+    </adminhtml_unitopblog_post_categories>
+    <adminhtml_unitopblog_post_catalog_category_postsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_unitopblog/adminhtml_catalog_category_tab_post" name="category.edit.tab.post"/>
+        </block>
+    </adminhtml_unitopblog_post_catalog_category_postsgrid>
+    <adminhtml_unitopblog_postscategory_edit>
+        <update handle="editor"/>
+        <reference name="head">
+            <action method="setCanLoadTinyMce"><load>1</load></action>
+        </reference>
+        <reference name="js">
+            <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
+        </reference>
+        <reference name="left">
+            <block name="postscategory.tree" type="brander_unitopblog/adminhtml_postscategory_tree" />
+        </reference>
+        <reference name="content">
+            <block name="postscategory.edit" type="brander_unitopblog/adminhtml_postscategory_edit" template="brander_unitopblog/postscategory/edit.phtml" />
+        </reference>
+        <reference name="js">
+            <block type="core/template" template="catalog/wysiwyg/js.phtml" name="catalog.wysiwyg.js" />
+        </reference>
+    </adminhtml_unitopblog_postscategory_edit>
+    <adminhtml_unitopblog_postscategory_attribute_index>
+        <reference name="content">
+            <block type="brander_unitopblog/adminhtml_postscategory_attribute" name="attribute_grid"/>
+        </reference>
+    </adminhtml_unitopblog_postscategory_attribute_index>
+    <adminhtml_unitopblog_postscategory_attribute_edit>
+        <reference name="left">
+            <block type="brander_unitopblog/adminhtml_postscategory_attribute_edit_tabs" name="attribute_edit_tabs"/>
+        </reference>
+        <reference name="content">
+            <block type="brander_unitopblog/adminhtml_postscategory_attribute_edit" name="attribute_edit_content"/>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" name="attribute_edit_js" template="brander_unitopblog/attribute/js.phtml">
+                <action method="setMainEntityName"><name>postscategory</name></action>
+            </block>
+        </reference>
+    </adminhtml_unitopblog_postscategory_attribute_edit>
+    <adminhtml_unitopblog_post_attribute_index>
+        <reference name="content">
+            <block type="brander_unitopblog/adminhtml_post_attribute" name="attribute_grid"/>
+        </reference>
+    </adminhtml_unitopblog_post_attribute_index>
+    <adminhtml_unitopblog_post_attribute_edit>
+        <reference name="left">
+            <block type="brander_unitopblog/adminhtml_post_attribute_edit_tabs" name="attribute_edit_tabs"/>
+        </reference>
+        <reference name="content">
+            <block type="brander_unitopblog/adminhtml_post_attribute_edit" name="attribute_edit_content"/>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" name="attribute_edit_js" template="brander_unitopblog/attribute/js.phtml">
+                <action method="setMainEntityName"><name>post</name></action>
+            </block>
+        </reference>
+    </adminhtml_unitopblog_post_attribute_edit>
+
+    <adminhtml_unitopblog_post_comment_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_shop/brander_unitopblog/post_comment</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_unitopblog/adminhtml_post_comment" name="post_comment_grid"/>
+        </reference>
+    </adminhtml_unitopblog_post_comment_index>
+    <adminhtml_unitopblog_post_comment_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_unitopblog/adminhtml_post_comment_grid" name="post_comment_grid"/>
+        </block>
+    </adminhtml_unitopblog_post_comment_grid>
+    <adminhtml_unitopblog_post_comment_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_shop/brander_unitopblog/post_comment</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_unitopblog/adminhtml_post_comment_edit" name="post_comment_edit"/>
+        </reference>
+        <reference name="left">
+            <block type="brander_unitopblog/adminhtml_post_comment_edit_tabs" name="post_comment_tabs"/>
+        </reference>
+    </adminhtml_unitopblog_post_comment_edit>
+
+</layout>

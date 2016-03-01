@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+		<system>
+			<children>
+				<brander_newpost translate="title" module="brander_newpost">
+					<title>Nova Poshta</title>
+						<children>
+							<brander_newpost_locales translate="title" module="brander_newpost">
+								<title>Manage Locales</title>
+								<action>adminhtml/locales</action>
+							</brander_newpost_locales>
+							<brander_newpost_warehouses translate="title" module="brander_newpost">
+								<title>View Warehouses</title>
+								<action>adminhtml/warehouses</action>
+							</brander_newpost_warehouses>
+						</children>
+				</brander_newpost>
+			</children>
+		</system>
+	</menu>
+	<acl>
+		<resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<brander_newpost>
+								<children>
+									<brander_newpost_locales translate="title" module="brander_newpost">
+										<title>Manage Locales</title>
+										<action>adminhtml/locales</action>
+									</brander_newpost_locales>
+									<brander_newpost_warehouses translate="title" module="brander_newpost">
+										<title>View Warehouses</title>
+										<action>adminhtml/warehouses</action>
+									</brander_newpost_warehouses>
+								</children>
+							</brander_newpost>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

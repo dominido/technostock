@@ -1,0 +1,30 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php $_postscategories = $this->getPostscategories(); ?>
+<?php if ($_postscategories->getSize() > 0) :?>
+    <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/brander_unitopblog/tree.js')?>"></script>
+    <ul id="<?php echo $this->getUniqueId()?>">
+        <?php foreach ($_postscategories as $_postscategory) : ?>
+            <?php echo $this->drawPostscategory($_postscategory);?>
+        <?php endforeach;?>
+    </ul>
+    <script type="text/javascript">
+        unitopblogTree('<?php echo $this->getUniqueId()?>');
+    </script>
+<?php endif;?>

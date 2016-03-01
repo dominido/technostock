@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_AdminForms>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Brander_AdminForms>
+    </modules>
+</config>

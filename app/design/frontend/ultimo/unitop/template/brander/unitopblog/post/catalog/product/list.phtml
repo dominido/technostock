@@ -1,0 +1,31 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php $products = $this->getProductCollection();?>
+<?php if ($products->count() > 0) :?>
+<h2><?php echo Mage::helper('catalog')->__('Products');?></h2>
+<div class="box-collateral box-products box-up-sell">
+    <?php foreach ($products as $product) : ?>
+        <div class="item">
+            <a href="<?php echo $product->getProductUrl()?>">
+                <?php echo $product->getName();?><br />
+            </a>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php endif;?>

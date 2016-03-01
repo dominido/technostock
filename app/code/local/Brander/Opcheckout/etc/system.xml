@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <opcheckout translate="label" module="brander_opcheckout">
+            <label>One Step Checkout</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>306</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </general>
+                <order translate="label">
+                    <label>Order</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <opcheckout_title translate="label">
+                            <label>OP Checkout Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_title>                                               
+                        <opcheckout_desc translate="label">
+                            <label>OP Checkout Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_desc>
+                        <opcheckout_show_billing_same_as_shipping translate="label">
+                            <label>Show "Ship to the same address"</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_show_billing_same_as_shipping>
+                        <opcheckout_show_countries translate="label">
+                            <label>Show Countries</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_show_countries>
+                        <opcheckout_default_country translate="label">
+                            <label>Default Country</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>brander_opcheckout/system_config_source_country</source_model>
+                            <sort_order>4</sort_order>
+                            <depends><opcheckout_show_countries>0</opcheckout_show_countries></depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_default_country>
+                        <opcheckout_show_states translate="label">
+                            <label>Show States</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_show_states>
+                        <opcheckout_default_state translate="label">
+                            <label>Default State</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <depends><opcheckout_show_states>0</opcheckout_show_states></depends>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_default_state>
+                        <opcheckout_create_account_later_use translate="label">
+                            <label>Enable Create Account Checkbox</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_create_account_later_use>
+                        <opcheckout_newsletter_subscribe translate="label">
+                            <label>Enable Newsletter Subscription</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_newsletter_subscribe>
+                        <newsletter_checked_bydefault translate="label">
+                            <label>Newsletter subscription checkbox checked by default</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <opcheckout_newsletter_subscribe>1</opcheckout_newsletter_subscribe>
+                            </depends>
+                        </newsletter_checked_bydefault>
+                        <opcheckout_agreements translate="label">
+                            <label>Show Agreements</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <comment><![CDATA[Included should be the option System->Configuration->Checkout->Checkout options->Enable Terms and Conditions and At least one must be an agreement in the Sales->Terms and Conditions]]></comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_agreements>
+                        <opcheckout_agreement_checked_default translate="label">
+                            <label>Agreement checked default</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <comment><![CDATA[Hide checkboxes]]></comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <opcheckout_agreements>1</opcheckout_agreements>
+                            </depends>
+                        </opcheckout_agreement_checked_default>
+                        <opcheckout_order_comment translate="label">
+                            <label>Checkout Order Comment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_order_comment>
+                        <opcheckout_order_comment_length translate="label">
+                            <label>Comment Length</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Character.]]></comment>
+                            <depends><opcheckout_order_comment>1</opcheckout_order_comment></depends>
+                        </opcheckout_order_comment_length>                        
+                        <opcheckout_order_deliverydate translate="label">
+                            <label>Enable Delivery Date</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>24</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Select Yes to enable this feature.</comment>
+                        </opcheckout_order_deliverydate>                        
+                        <opcheckout_order_couponcode translate="label">
+                            <label>Enable Discount Coupon</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Select Yes to enable this feature.</comment>
+                        </opcheckout_order_couponcode>                                            
+                    </fields>
+                </order>
+            </groups>
+        </opcheckout>
+    </sections>
+</config>

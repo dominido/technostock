@@ -1,0 +1,278 @@
+.header-container {
+  .nav-regular {
+    > .nav-item.first {
+      position: relative;
+
+      @include bp(min-width, 800px) {
+        box-sizing: border-box;
+
+        > a {
+          padding-left: 65px;
+          position: relative;
+
+          > .caret {
+            display: none;
+          }
+
+          @include bp(max-width, 1024px) {
+            //padding-left: 45px;
+
+            &:after {
+              left: 15px;
+            }
+          }
+        }
+
+        > ul {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .lang-switcher {
+    &.dropdown {
+      .dropdown-content {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+      }
+    }
+  }
+
+  .dropdown.header-contacts {
+    .dropdown-content {
+      min-width: 100%;
+      box-sizing: border-box;
+
+      li {
+        margin-bottom: 8px;
+        white-space: normal;
+        clear: both;
+        //font-size: 1.42em;
+        padding-left: 2px;
+      }
+
+      .operator-icon {
+        display: none;
+        float: left;
+        margin: 0 8px 8px 0;
+      }
+
+      .content {
+        display: block;
+        overflow: hidden;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  //.header-contacts {
+  //  font-weight: bold;
+  //
+  //  .dropdown-heading {
+  //    font-size: 1.42em;
+  //  }
+  //}
+
+  .callback-header {
+    margin-right: 0;
+  }
+}
+
+.header-top {
+  > .inner-container {
+    padding: 0;
+  }
+}
+
+.callback-header {
+  a {
+    font-weight: bold;
+  }
+
+  .callback-title {
+    display: block;
+    padding-top: 3px;
+  }
+}
+
+.links-wrapper-separators .links > li {
+  &:first-child {
+    > a {
+      padding-left: 0;
+    }
+  }
+
+  > a {
+    background: none;
+  }
+}
+
+.user-menu {
+
+  [id$="-wrapper-regular"] {
+    float: right;
+
+    @include bp(max-width, 769px){
+      float: none;
+    }
+  }
+  
+  .dropdown {
+    //&.is-not-empty {
+    //  .icon {
+    //    color: $link-hover;
+    //  }
+    //}
+
+    .dropdown-heading {
+      font-size: 1.28em;
+
+      .caret {
+        display: none;
+      }
+    }
+  }
+}
+
+.mini-cart {
+  .mini-cart-content {
+    .actions {
+      button {
+        font-size: 14px;
+        padding: 0 10px;
+
+        &:last-child {
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+.header-mobile {
+  .user-menu {
+    border: none;
+  }
+
+  //.header .item-right {
+  //  float: none;
+  //  text-align: left;
+  //}
+  @include bp(max-width, 769px) {
+    .hp-block {
+      .item-right {
+        float: none;
+        margin-left: 0;
+        text-align: left;
+      }
+    }
+  }
+
+  @include bp(max-width, $bp-tiny) {
+    .skip-link {
+      font-size: 16px;
+    }
+  }
+}
+
+// SEARCH AUTOCOMPLETE
+.search-wrapper {
+  .reset-button {
+    display: none;
+  }
+
+  #search_mini_form {
+    .input-text {
+      border-width: 0 0 1px;
+      border-radius: 0;
+      padding-right: 0;
+      margin-right: 35px;
+      width: calc(100% - 35px);
+      background: none;
+
+      &:focus {
+        border-color: #333;
+      }
+
+      & + button {
+        font-size: 20px;
+        color: #333;
+      }
+    }
+  }
+
+  .searchautocomplete-search {
+    border: 1px solid #d5d5d5;
+    -webkit-box-shadow: 0 3px 10px rgba(0,0,0, 0.15);
+    box-shadow: 0 3px 10px rgba(0,0,0, 0.15);
+    padding: 10px;
+    right: 0;
+
+    .s_item {
+      @include cleaner;
+      @include trs(opacity .3s ease, border-color .3s ease);
+      margin-bottom: 20px;
+      opacity: .65;
+      border-bottom: 1px solid #333;
+
+      &:hover {
+        opacity: 1;
+        border-color: #ffab00;
+      }
+    }
+
+    .s_icon {
+      float: left;
+      width: 80px;
+    }
+
+    .s_details {
+      float: left;
+      width: calc(100% - 80px);
+      padding-left: 20px;
+      padding-bottom: 10px;
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    a {
+      display: inline-block;
+
+      .s_item_name {
+        color: #333;
+        font-size: 16px;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        transition: color .3s ease;
+
+      }
+
+      &:hover {
+        .s_item_name {
+          color: #ffab00;
+        }
+      }
+    }
+  }
+}
+
+[id^="mini-account"] {
+  > a {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+//.hp-block {
+//  &.right-column {
+//    .item-right {
+//      min-width: 174px;
+//
+//      @include bp(max-width, 1099px) {
+//        min-width: 160px;
+//      }
+//    }
+//  }
+//}

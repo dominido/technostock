@@ -1,0 +1,74 @@
+<div id="checkout-review-table">
+    <h3 class="checkout-title"><?php echo $this->__('Shopping bag')?></h3>
+    <?php foreach($this->getItems() as $_item):?>
+        <div class="checkout-item">
+            <a href="<?php echo $_item->getProduct()->getProductUrl()?>" class="product-image">
+                <img src="<?php echo Mage::helper('catalog/image')->init($_item->getProduct(), 'small_image')->resize(100); ?>" alt="<?php echo $_item->getName() ?>"/>
+            </a>
+            <div class="product-info">
+                <a class="product-name" href="<?php echo $_item->getProduct()->getProductUrl()?>">
+                    <?php echo $_item->getName() ?>
+                </a>
+                <span class="obj">
+                    <?php echo $this->__('Code of product: %s',$_item->getProduct()->getSku()) ?>
+                </span>
+                <a href="javascript:void(0)" data="<?php echo $_item->getId() ?>" title="<?php echo $this->__('Remove item')?>"
+                    class="btn-remove btn-remove2 opcheckout-item-remove">
+                    <?php echo $this->__('Remove item')?>
+                </a>
+            </div>
+            <div class="price-col">
+                <?php echo $this->helper('checkout')->formatPrice($_item->getRowTotal()) ?>
+                <div class="product-counter">
+                    <input id="opcheckout-item-qty-<?php echo $_item->getId() ?>" data="<?php echo $_item->getId() ?>" class="spinner opcheckout-item-qty" class="input-text" type="text" name="opcheckout-item-qty-<?php echo $_item->getId() ?>" value="<?php echo $_item->getQty() ?>" readonly />
+                </div>
+            </div>
+        </div>
+    <?php endforeach ?>
+    <?php
+    $totals = $this->getTotals();
+    if ($this->getTotals()): ?>
+        <ul class="totals-wrap">
+            <?php foreach($totals as $total): ?>
+                <li class="totals-item">
+                    <div class="totals-label">
+                        <?php echo $total->getTitle()?>
+                    </div>
+                    <div class="totals-price">
+                        <?php if ($total->getCode() == 'shipping' && $total->getValue() == 0): ?>
+                        <?php else: ?>
+                            <?php echo $this->helper('checkout')->formatPrice($total->getValue())?>
+                        <?php endif; ?>
+                    </div>
+                </li>
+            <?php endforeach;?>
+        </ul>
+    <?php endif; ?>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    $$('.opcheckout-item-remove').each(function(el) {
+        el.observe('click', function(){
+            quoteItems.removeItem(el.readAttribute('data'));
+        });
+    });
+    /*
+    // for dropdown select without spinner
+    $$('.opcheckout-item-qty').each(function(el) {
+        el.observe('change', function(){
+            quoteItems.changeItemQty(el.readAttribute('data'), el.value);
+        });
+    });
+    */
+    jQuery(function ($) {
+       jQuery(".spinner").spinner({
+            max: 10,
+            min: 1,
+            numberFormat: "n",
+            spin: function(event, ui){
+                quoteItems.changeItemQty($(this).attr('data'), ui.value);
+            }
+        });
+    });
+    //]]>
+</script>

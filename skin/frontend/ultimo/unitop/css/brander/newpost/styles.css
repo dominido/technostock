@@ -1,0 +1,27 @@
+.tt-dropdown-menu
+{
+	background-color: white;
+	color: black;
+	cursor: hand;
+
+	border: 1px black solid;
+
+	~max-height: 300px;
+	~overflow-y: auto;
+}
+
+.tt-cursor
+{
+	background-color: midnightblue;
+	color: white;
+}
+
+.tt-suggestion
+{
+	padding: 12px;
+}
+
+.tt-suggestion p
+{
+	margin: 0;
+}

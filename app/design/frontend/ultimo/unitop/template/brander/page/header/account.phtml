@@ -1,0 +1,58 @@
+<?php
+$accountLinksHtml = $this->getChildHtml('top.links');
+$accLabel = $this->__('My Account');
+$theme = Mage::helper('ultimo');
+$accountPosition = $theme->getCfg('header/account_position');
+if ($accountPosition === 'mainMenu') {
+    $accLabel = '';
+}
+$helper = $this->helper('brander_shop');
+$topLoggedInPosition = array('topLeft_1', 'topRight_1');
+?>
+<?php
+if(!Mage::getSingleton('customer/session')->isLoggedIn() && in_array($accountPosition, $topLoggedInPosition)): ?>
+
+    <div id="mini-account-wrapper-regular-slip">
+        <a href="<?php echo Mage::getUrl('customer/account/login'); ?>" title="<?php echo $this->__('Account'); ?>">
+            <span class="icon ic ic-user"></span>
+            <?php echo $this->__('Sign Up'); ?>
+        </a>
+    </div>
+
+    <div id="mini-account-wrapper-regular" style="display: none;">
+        <div id="mini-account" class="mini-account is-not-empty dropdown">
+
+            <div class="mini-account-heading dropdown-heading cover skip-link skip-account" title="<?php echo $this->__('Sign Up'); ?>">
+            <span>
+                <span class="icon ic ic-user"></span>
+                <span class="label"><?php echo $accLabel; ?></span>
+                <span class="caret">&nbsp;</span>
+            </span>
+            </div>
+            <div id="header-account" class="mini-account-content dropdown-content left-hand block skip-content skip-content--style" style="display: none;">
+                <ul class="links">
+                    <li class="first"><a href="<?php echo Mage::getUrl('customer/account/login'); ?>" title="<?php echo $this->__('My Account'); ?>"><?php echo $this->__('Sign Up'); ?></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<?php else: ?>
+
+<div id="mini-account-wrapper-regular">
+    <div id="mini-account" class="mini-account is-not-empty dropdown">
+
+        <div class="mini-account-heading dropdown-heading cover skip-link skip-account" title="<?php echo $this->__('My Account'); ?>">
+            <span>
+                <span class="icon ic ic-user"></span>
+                <span class="label"><?php echo $accLabel; ?></span>
+                <span class="caret">&nbsp;</span>
+
+            </span>
+        </div>
+        <div id="header-account" class="mini-account-content dropdown-content left-hand block skip-content skip-content--style" style="display: none;">
+            <?php echo $accountLinksHtml ?>
+        </div>
+    </div>
+</div>
+
+<?php endif; ?>

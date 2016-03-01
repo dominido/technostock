@@ -1,0 +1,21 @@
+<?php
+/** @var Brander_Faq_Block_Product $this */
+/** @var Brander_Faq_Helper_Data $helper */
+$helper = Mage::helper('brander_faq');
+?>
+<?php if($this->getSelectedPosts()): ?>
+<div class="faq-page">
+    <div class="container">
+        <h2 class="block-title"><?php echo $helper->__('Answer for your questions'); ?></h2>
+        <div class="content-twocols">
+            <div class="twocols-left-view" id="faq-items">
+                <?php echo $this->getChildHtml('faq.text.answers'); ?>
+            </div>
+            <div class="twocols-right-view">
+                <?php echo $this->getChildHtml('faq.right.timetocall'); ?>
+                <?php echo $this->getChildHtml('faq.right.additional.links'); ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

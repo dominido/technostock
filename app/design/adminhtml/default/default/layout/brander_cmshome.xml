@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <adminhtml_hitsofsales_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>catalog/products/</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_cmshome/adminhtml_hitsofsales" name="hitsofsales">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm">
+                        <params>0</params>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_hitsofsales_index>
+    <adminhtml_hitsofsales_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_cmshome/adminhtml_hitsofsales_grid" name="hitsofsales_grid"/>
+        </block>
+    </adminhtml_hitsofsales_grid>
+
+    <adminhtml_specialoffers_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>catalog/products/</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_cmshome/adminhtml_specialoffers" name="specialoffers">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher" >
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_specialoffers_index>
+    <adminhtml_specialoffers_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_cmshome/adminhtml_specialoffers_grid" name="specialoffers_grid"/>
+        </block>
+    </adminhtml_specialoffers_grid>
+</layout>

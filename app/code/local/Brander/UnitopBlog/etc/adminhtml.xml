@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_UnitopBlog extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <brander_unitopblog translate="title" module="brander_unitopblog">
+                                        <title>Blog</title>
+                                    </brander_unitopblog>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <brander_shop>
+                        <children>
+                            <brander_unitopblog translate="title" module="brander_unitopblog">
+                                <title>Blog</title>
+                                <children>
+                                    <postscategory translate="title" module="brander_unitopblog">
+                                        <title>Categories</title>
+                                        <sort_order>0</sort_order>
+                                    </postscategory>
+<!--                                    <postscategory_attributes translate="title" module="brander_unitopblog">
+                                        <title>Manage Post Category attributes</title>
+                                        <sort_order>7</sort_order>
+                                    </postscategory_attributes>-->
+                                    <post translate="title" module="brander_unitopblog">
+                                        <title>Posts</title>
+                                        <sort_order>10</sort_order>
+                                    </post>
+                                    <post_comments translate="title" module="brander_unitopblog">
+                                        <title>Manage Post Comments</title>
+                                        <sort_order>15</sort_order>
+                                    </post_comments>
+<!--                                    <post_attributes translate="title" module="brander_unitopblog">
+                                        <title>Manage Post attributes</title>
+                                        <sort_order>17</sort_order>
+                                    </post_attributes>-->
+                                </children>
+                            </brander_unitopblog>
+                        </children>
+                    </brander_shop>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <brander_shop>
+            <children>
+                <brander_unitopblog translate="title" module="brander_unitopblog">
+                    <title>Blog</title>
+                    <sort_order>30</sort_order>
+                    <children>
+                        <postscategory translate="title" module="brander_unitopblog">
+                            <title>Categories</title>
+                            <action>adminhtml/unitopblog_postscategory</action>
+                            <sort_order>0</sort_order>
+                        </postscategory>
+<!--                        <postscategory_attributes translate="title" module="brander_unitopblog">
+                            <title>Manage Post Category Attributes</title>
+                            <action>adminhtml/unitopblog_postscategory_attribute</action>
+                            <sort_order>7</sort_order>
+                        </postscategory_attributes>-->
+                        <post translate="title" module="brander_unitopblog">
+                            <title>Posts</title>
+                            <action>adminhtml/unitopblog_post</action>
+                            <sort_order>10</sort_order>
+                        </post>
+                        <post_comments translate="title" module="brander_unitopblog">
+                            <title>Manage Post Comments</title>
+                            <action>adminhtml/unitopblog_post_comment</action>
+                            <sort_order>14</sort_order>
+                        </post_comments>
+<!--                        <post_attributes translate="title" module="brander_unitopblog">
+                            <title>Manage Post Attributes</title>
+                            <action>adminhtml/unitopblog_post_attribute</action>
+                            <sort_order>17</sort_order>
+                        </post_attributes>-->
+                    </children>
+                </brander_unitopblog>
+            </children>
+        </brander_shop>
+    </menu>
+</config>

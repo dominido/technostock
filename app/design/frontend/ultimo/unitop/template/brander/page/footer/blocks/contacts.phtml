@@ -1,0 +1,20 @@
+<div class="grid12-3">
+    <div class="footer-block">
+        <?php
+        /*<div class="collapsible mobile-collapsible">*/
+        ?>
+        <?php if ($contacts = trim($this->getChildHtml('footer_blocks.contacts.phones'))): ?>
+            <?php if (Mage::helper('brander_cmsmenu')->isShowFooterTitle()): ?>
+                <h6 class="block-title heading"><?php echo $this->__('Our Contacts:'); ?></h6>
+            <?php endif; ?>
+            <div class="block-content">
+                <?php echo $contacts; ?>
+                <br/>
+            </div>
+        <?php endif; ?>
+        <div class="block-content">
+            <?php echo $this->getChildHtml('footer.callbacks'); ?>
+        </div>
+        <br/><br/>
+    </div>
+</div>

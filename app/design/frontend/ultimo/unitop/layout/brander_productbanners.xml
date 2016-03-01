@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_ProductBanners extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_ProductBanners
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<layout>
+    
+<!--    <brander_productbanners_banner_view translate="label" module="brander_productbanners">
+        <label>Banner view page</label>
+        <update handle="page_one_column" />
+        <reference name="content">
+            <block type="brander_productbanners/banner_view" name="banner_view" template="brander/productbanners/banner/view.phtml" />
+            <block type="brander_productbanners/banner_catalog_product_list" name="banner.info.products" as="banner_products" template="brander/productbanners/banner/catalog/product/list.phtml" />
+        </reference>
+    </brander_productbanners_banner_view>-->
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="brander_productbanners/catalog_product_list_banner" name="product.info.banners" as="product_banners" template="brander/productbanners/catalog/product/list/banner.phtml" />
+        </reference>
+    </catalog_product_view>
+</layout>

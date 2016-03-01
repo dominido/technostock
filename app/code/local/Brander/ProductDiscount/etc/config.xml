@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_ProductDiscount>
+            <version>0.1.0</version>
+        </Brander_ProductDiscount>
+    </modules>
+    <global>
+        <helpers>
+            <brander_productdiscount>
+                <class>Brander_ProductDiscount_Helper</class>
+            </brander_productdiscount>
+        </helpers>
+    </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Brander_ProductDiscount>
+                    <files>
+                        <default>Brander_ProductDiscount.csv</default>
+                    </files>
+                </Brander_ProductDiscount>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <translate>
+            <modules>
+                <Brander_ProductDiscount>
+                    <files>
+                        <default>Brander_ProductDiscount.csv</default>
+                    </files>
+                </Brander_ProductDiscount>
+            </modules>
+        </translate>
+    </frontend>
+</config>

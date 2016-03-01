@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_HotCategories extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_HotCategories
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <Brander_HotCategories>
+            <version>0.1.0</version>
+        </Brander_HotCategories>
+    </modules>
+    <global>
+        <resources>
+            <brander_hotcategories_setup>
+                <setup>
+                    <module>Brander_HotCategories</module>
+                    <class>Brander_HotCategories_Model_Resource_Setup</class>
+                </setup>
+            </brander_hotcategories_setup>
+        </resources>
+        <blocks>
+            <brander_hotcategories>
+                <class>Brander_HotCategories_Block</class>
+            </brander_hotcategories>
+        </blocks>
+        <helpers>
+            <brander_hotcategories>
+                <class>Brander_HotCategories_Helper</class>
+            </brander_hotcategories>
+        </helpers>
+        <models>
+            <brander_hotcategories>
+                <class>Brander_HotCategories_Model</class>
+                <resourceModel>brander_hotcategories_resource</resourceModel>
+            </brander_hotcategories>
+            <brander_hotcategories_resource>
+                <class>Brander_HotCategories_Model_Resource</class>
+                <entities>
+                    <hotcategory>
+                        <table>brander_hotcategories_hotcategory</table>
+                    </hotcategory>
+                    <eav_attribute>
+                        <table>brander_hotcategories_eav_attribute</table>
+                    </eav_attribute>
+                </entities>
+            </brander_hotcategories_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <brander_hotcategories>
+                    <file>brander_hotcategories.xml</file>
+                </brander_hotcategories>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_HotCategories>
+                    <files>
+                        <default>Brander_HotCategories.csv</default>
+                    </files>
+                </Brander_HotCategories>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <layout>
+            <updates>
+                <brander_hotcategories>
+                    <file>brander_hotcategories.xml</file>
+                </brander_hotcategories>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_HotCategories>
+                    <files>
+                        <default>Brander_HotCategories.csv</default>
+                    </files>
+                </Brander_HotCategories>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Brander_HotCategories before="Mage_Adminhtml">Brander_HotCategories_Adminhtml</Brander_HotCategories>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

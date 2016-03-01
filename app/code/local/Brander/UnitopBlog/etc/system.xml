@@ -1,0 +1,1286 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_UnitopBlog extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<config>
+    <sections>
+        <brander_unitopblog translate="label" module="brander_unitopblog">
+            <class>separator-top</class>
+            <label>Blog</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>30</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <homepage translate="label" module="brander_unitopblog">
+                <label>Homepage</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>10</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label comment" module="brander_unitopblog">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <show_as_slider translate="label comment" module="brander_unitopblog">
+                            <label>Show Posts as Slider</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </show_as_slider>
+                        <breakpoints translate="label" module="brander_unitopblog">
+                            <label>Breakpoints</label>
+                            <sort_order>22</sort_order>
+                            <comment>amount of slider items on screen for different screen resolution, example: [0, 1], [320, 2], [480, 2], [960, 3], [1280, 3]</comment>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <show_as_slider>1</show_as_slider>
+                            </depends>
+                        </breakpoints>
+                        <attach_newsletters translate="label comment" module="brander_unitopblog">
+                            <label>Attach Newsletters</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>25</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <show_as_slider>0</show_as_slider>
+                            </depends>
+                        </attach_newsletters>
+                        <posts_row_limit translate="label" module="brander_unitopblog">
+                            <label>Posts per Row/Page</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <source_model>brander_unitopblog/config_source_homepagepostlimit</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </posts_row_limit>
+                        <posts_limit translate="label" module="brander_unitopblog">
+                            <label>Posts Limit</label>
+                            <sort_order>40</sort_order>
+                            <comment>min 3 max 20</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-3-20</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </posts_limit>
+                        <posts_block_title translate="label" module="brander_unitopblog">
+                            <label>Block Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </posts_block_title>
+                    </fields>
+                </homepage>
+                <product_category translate="label" module="brander_unitopblog">
+                    <label>Product Page and Category Page</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <tab_posts_limit translate="label" module="brander_unitopblog">
+                            <label>Tab posts limit</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tab_posts_limit>
+                        <show_category_tabs translate="label" module="brander_unitopblog">
+                            <label>Show Posts Tabs on Category Page</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_category_tabs>
+                        <show_category_description_in translate="label" module="brander_unitopblog">
+                            <label>Show Category Description</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <source_model>brander_unitopblog/config_source_catdescrpostion</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <show_category_tabs>1</show_category_tabs>
+                            </depends>
+                        </show_category_description_in>
+                        <category_posts_tabs translate="label" module="brander_unitopblog">
+                            <label>Category Page Posts Tabs</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>40</sort_order>
+                            <source_model>brander_unitopblog/config_source_postscategories</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <show_category_tabs>1</show_category_tabs>
+                            </depends>
+                        </category_posts_tabs>
+                        <show_product_tabs translate="label" module="brander_unitopblog">
+                            <label>Show Posts Tabs on Product Page</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>50</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_product_tabs>
+                        <product_posts_tabs translate="label" module="brander_unitopblog">
+                            <label>Product Page Posts Tabs</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>60</sort_order>
+                            <source_model>brander_unitopblog/config_source_postscategories</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <show_product_tabs>1</show_product_tabs>
+                            </depends>
+                        </product_posts_tabs>
+                    </fields>
+                </product_category>
+
+                <settings translate="label" module="brander_unitopblog">
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <author_roles_select translate="label" module="brander_unitopblog">
+                            <label>Author Roles</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>brander_unitopblog/config_source_authorroles</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </author_roles_select>
+                        <days_to_archive translate="label" module="brander_unitopblog">
+                            <label>Archive Post After (days)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </days_to_archive>
+                    </fields>
+                </settings>
+                <postscategory translate="label" module="brander_unitopblog">
+                    <label>Post Category</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>25</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <breadcrumbs translate="label">
+                            <label>Use Breadcrumbs</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </breadcrumbs>
+                        <url_rewrite_list translate="label comment">
+                            <label>URL key for list page</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Leave empty to use default URL module/controller/action</comment>
+                        </url_rewrite_list>
+                        <url_prefix translate="label comment">
+                            <label>URL prefix</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Leave empty for no prefix</comment>
+                        </url_prefix>
+                        <url_suffix translate="label comment">
+                            <label>Url suffix</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>What goes after the dot. Leave empty for no suffix.</comment>
+                        </url_suffix>
+                        <tree translate="label">
+                            <label>Display as tree</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tree>
+                        <recursion translate="label">
+                            <label>Recursion level</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </recursion>
+                        <meta_title translate="label">
+                            <label>Meta title for post categories list page</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </meta_title>
+                        <meta_description translate="label">
+                            <label>Meta description for post categories list page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </meta_description>
+                        <meta_keywords translate="label">
+                            <label>Meta keywords for post categories list page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </meta_keywords>
+                    </fields>
+                </postscategory>
+                <post translate="label" module="brander_unitopblog">
+                    <label>Post</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <breadcrumbs translate="label comment" module="brander_unitopblog">
+                            <label>Use Breadcrumbs</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </breadcrumbs>
+                        <url_rewrite_list translate="label comment" module="brander_unitopblog">
+                            <label>URL key for list page</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Leave empty to use default URL module/controller/action</comment>
+                        </url_rewrite_list>
+                        <url_prefix translate="label comment" module="brander_unitopblog">
+                            <label>URL prefix</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Leave empty for no prefix</comment>
+                        </url_prefix>
+                        <url_suffix translate="label comment" module="brander_unitopblog">
+                            <label>Url suffix</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>What goes after the dot. Leave empty for no suffix.</comment>
+                        </url_suffix>
+                        <short_content_limit translate="label comment" module="brander_unitopblog">
+                            <label>Short Content Text Length</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>integer value</comment>
+                            <validate>int</validate>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </short_content_limit>
+                        <allow_comment translate="label comment" module="brander_unitopblog">
+                            <label>Allow comments</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allow_comment>
+                        <allow_guest_comment translate="label comment" module="brander_unitopblog">
+                            <label>Allow guest comments</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <allow_comment>1</allow_comment>
+                            </depends>
+                        </allow_guest_comment>
+                        <necessarily_poster_email translate="label comment" module="brander_unitopblog">
+                            <label>Necessarily Poster Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <allow_comment>1</allow_comment>
+                            </depends>
+                        </necessarily_poster_email>
+                        <rss translate="label comment" module="brander_unitopblog">
+                            <label>Enable rss</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rss>
+                        <meta_title translate="label comment" module="brander_unitopblog">
+                            <label>Meta title for posts list page</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </meta_title>
+                        <meta_description translate="label comment" module="brander_unitopblog">
+                            <label>Meta description for posts list page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </meta_description>
+                        <meta_keywords translate="label comment" module="brander_unitopblog">
+                            <label>Meta keywords for posts list page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </meta_keywords>
+                    </fields>
+                </post>
+
+                <post_product_slider translate="label" module="brander_unitopblog">
+                    <label>Post Attached Products Slider</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>71</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label comment" module="brander_unitopblog">
+                            <label>Set custom settings for Post Product Slider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <product_limit translate="label comment" module="brander_shop">
+                            <label>Number of Products in slider</label>
+                            <comment>Value in etc. From 1 to 100</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-100</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </product_limit>
+                        <breakpoints translate="label comment" module="brander_unitopblog">
+                            <label>Breakpoints</label>
+                            <comment>Assign number of items in a row to specific viewport width. in default: '[0, 1], [320, 2], [480, 3], [768, 4], [960, 5], [1280, 6]'</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </breakpoints>
+                        <responsive translate="label comment" module="brander_shop">
+                            <label>Responsive</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </responsive>
+                        <show_items translate="label comment" module="brander_unitopblog">
+                            <label>Show Items Number</label>
+                            <comment>Number of items in a row displayed if responsive mode is off. Value in etc. from 1 to 100</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-100</validate>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <responsive>0</responsive>
+                            </depends>
+                        </show_items>
+                        <aspect_ratio translate="label comment" module="brander_unitopblog">
+                            <label>Keep Aspect Ratio</label>
+                            <comment>if Yes, you may set Width image only</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </aspect_ratio>
+                        <img_width translate="label comment" module="brander_unitopblog">
+                            <label>Image Width</label>
+                            <comment>Value in pixels</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-1000</validate>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </img_width>
+                        <img_height translate="label comment" module="brander_unitopblog">
+                            <label>Image Height</label>
+                            <comment>Value in pixels</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-1000</validate>
+                            <sort_order>46</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <aspect_ratio>0</aspect_ratio>
+                            </depends>
+                        </img_height>
+                        <init_delay translate="label comment" module="brander_unitopblog">
+                            <label>Init Delay</label>
+                            <comment>Value in milliseconds. From 1 to 100000</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-100000</validate>
+                            <sort_order>47</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </init_delay>
+                        <pagination translate="label comment" module="brander_shop">
+                            <label>Pagination</label>
+                            <comment>Pagination on/off</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </pagination>
+                        <random translate="label comment" module="brander_shop">
+                            <label>Random Output</label>
+                            <comment>show in random order</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>60</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </random>
+                        <hide_button translate="label comment" module="brander_shop">
+                            <label>Hide Buttons</label>
+                            <comment>Hide "buy"/"details"</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </hide_button>
+                        <move translate="label comment" module="brander_shop">
+                            <label>Move</label>
+                            <comment>Number of items that should move on scrolling. From 1 to 10</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-1-10</validate>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </move>
+                        <loop translate="label comment" module="brander_shop">
+                            <label>Loop</label>
+                            <comment>If set, slider will loop</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </loop>
+                        <timeout translate="label comment" module="brander_unitopblog">
+                            <label>Timeout</label>
+                            <comment>Slider timeout. Set to enable automatic scrolling. Value in milliseconds.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-1000000</validate>
+                            <sort_order>95</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </timeout>
+                        <speed translate="label comment" module="brander_shop">
+                            <label>Scrolling Speed</label>
+                            <comment>Speed (arrows / touch swipe). in milliseconds from 0 to 100000</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100000</validate>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </speed>
+                        <auto_speed translate="label comment" module="brander_shop">
+                            <label>Auto Scrolling Speed </label>
+                            <comment>Speed (automatic scrolling / pagination). in milliseconds from 0 to 100000</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100000</validate>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </auto_speed>
+                        <pause translate="label comment" module="brander_shop">
+                            <label>Pause</label>
+                            <comment>Pause slider on mouse hover</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </pause>
+                        <lazy translate="label comment" module="brander_shop">
+                            <label>Lazy Image Loading</label>
+                            <comment>Load image only if need to show it to user</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </lazy>
+                        <centered translate="label comment" module="brander_shop">
+                            <label>Centered</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </centered>
+                        <equal_height translate="label comment" module="brander_shop">
+                            <label>Equal Height</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </equal_height>
+                    </fields>
+                </post_product_slider>
+            </groups>
+        </brander_unitopblog>
+        <ultimo_design>
+            <groups>
+                <blog translate="label comment" module="brander_unitopblog">
+                    <label>Blog View</label>
+                    <comment>Configure Blog Post List Item and Post View</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>62</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <blog_list_item translate="label comment" module="brander_unitopblog">
+                            <label>Posts List Item</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_list_item>
+
+                        <list_item_text_color translate="label comment" module="brander_unitopblog">
+                            <label>Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_text_color>
+                        <list_item_text_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Text Color (on hover)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_text_color_hover>
+                        <list_item_text_size translate="label comment" module="brander_unitopblog">
+                            <label>Text Font Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </list_item_text_size>
+
+                        <blog_background_list_item translate="label comment" module="brander_unitopblog">
+                            <label></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_background_list_item>
+                        <list_item_background_color translate="label comment" module="brander_unitopblog">
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_background_color>
+                        <list_item_background_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Background Color (on hover)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_background_color_hover>
+
+                        <list_item_header_color translate="label comment" module="brander_unitopblog">
+                            <label>Header Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_header_color>
+                        <list_item_header_color_item_hover translate="label comment" module="brander_unitopblog">
+                            <label>Header Color (on post hover)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_header_color_item_hover>
+                        <list_item_header_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Header Color (on hover)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_header_color_hover>
+                        <list_item_header_size translate="label comment" module="brander_unitopblog">
+                            <label>Header Font Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </list_item_header_size>
+
+                        <blog_bullet_list_item translate="label comment" module="brander_unitopblog">
+                            <label></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_bullet_list_item>
+                        <list_item_bullet_color translate="label comment" module="brander_unitopblog">
+                            <label>Bullet Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_bullet_color>
+                        <list_item_bullet_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Bullet Color (on hover)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_bullet_color_hover>
+                        <list_item_bullet_size translate="label comment" module="brander_unitopblog">
+                            <label>Bullet Font Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </list_item_bullet_size>
+
+                        <blog_link_list_item translate="label comment" module="brander_unitopblog">
+                            <label></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_link_list_item>
+                        <list_item_link_color translate="label comment" module="brander_unitopblog">
+                            <label>Link Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_link_color>
+                        <list_item_link_color_item_hover translate="label comment" module="brander_unitopblog">
+                            <label>Link Color (on item hover)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            </list_item_link_color_item_hover>
+                        <list_item_link_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Link Color (on hover)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_item_link_color_hover>
+
+                        <blog_list_item_archived translate="label comment" module="brander_unitopblog">
+                            <label>Posts List Item (Archived)</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_list_item_archived>
+
+                        <list_archived_item_label_color translate="label comment" module="brander_unitopblog">
+                            <label>Archived Label Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_label_color>
+                        <list_archived_item_label_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Archived Label Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_label_color_hover>
+                        <list_archived_item_label_bg_color translate="label comment" module="brander_unitopblog">
+                            <label>Archived Label Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_label_bg_color>
+                        <list_archived_item_label_bg_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Archived Label Background Color (on hover)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>240</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_label_bg_color_hover>
+                        <list_archived_item_label_size translate="label comment" module="brander_unitopblog">
+                            <label>Archived Label Text Font Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>250</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </list_archived_item_label_size>
+
+                        <blog_archived_text_list_item translate="label comment" module="brander_unitopblog">
+                            <label></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>260</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_archived_text_list_item>
+                        <list_archived_item_text_color translate="label comment" module="brander_unitopblog">
+                            <label>Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>270</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_text_color>
+                        <list_archived_item_text_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Text Color (on hover)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>280</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_text_color_hover>
+                        <list_archived_item_text_size translate="label comment" module="brander_unitopblog">
+                            <label>Text Font Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>290</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </list_archived_item_text_size>
+
+                        <blog_archived_background_list_item translate="label comment" module="brander_unitopblog">
+                            <label></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_archived_background_list_item>
+                        <list_archived_item_background_color translate="label comment" module="brander_unitopblog">
+                            <label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_background_color>
+                        <list_archived_item_background_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Background Color (hover effect)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>320</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_background_color_hover>
+
+                        <blog_archived_header_list_item translate="label comment" module="brander_unitopblog">
+                            <label></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>325</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_archived_header_list_item>
+
+                        <list_archived_item_header_color translate="label comment" module="brander_unitopblog">
+                            <label>Header Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>330</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_header_color>
+                        <list_archived_item_header_color_item_hover translate="label comment" module="brander_unitopblog">
+                            <label>Header Color (item hover effect)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>340</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_header_color_item_hover>
+                        <list_archived_item_header_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Header Color (hover effect)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>350</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_header_color_hover>
+                        <list_archived_item_header_size translate="label comment" module="brander_unitopblog">
+                            <label>Header Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>360</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </list_archived_item_header_size>
+
+                        <blog_archived_bullet_list_item translate="label comment" module="brander_unitopblog">
+                            <label></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>370</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_archived_bullet_list_item>
+                        <list_archived_item_bullet_color translate="label comment" module="brander_unitopblog">
+                            <label>Bullet Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>380</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_bullet_color>
+                        <list_archived_item_bullet_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Bullet Color (hover effect)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>390</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_bullet_color_hover>
+                        <list_archived_item_bullet_size translate="label comment" module="brander_unitopblog">
+                            <label>Bullet Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </list_archived_item_bullet_size>
+
+                        <blog_archived_link_list_item translate="label comment" module="brander_unitopblog">
+                            <label></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_archived_link_list_item>
+                        <list_archived_item_link_color translate="label comment" module="brander_unitopblog">
+                            <label>Link Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>420</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_link_color>
+                        <list_archived_item_link_color_item_hover translate="label comment" module="brander_unitopblog">
+                            <label>Link Color (item hover effect)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>430</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_link_color_item_hover>
+                        <list_archived_item_link_color_hover translate="label comment" module="brander_unitopblog">
+                            <label>Link Color (hover effect)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>440</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </list_archived_item_link_color_hover>
+
+
+                        <view_item translate="label comment" module="brander_unitopblog">
+                            <label>Post View</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>510</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </view_item>
+
+                        <view_item_title_color translate="label comment" module="brander_unitopblog">
+                            <label>Title Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>520</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </view_item_title_color>
+                        <view_item_title_size translate="label comment" module="brander_unitopblog">
+                            <label>Title Font Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>530</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </view_item_title_size>
+                        <view_item_title_line_height translate="label comment" module="brander_unitopblog">
+                            <label>Title Line Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>540</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </view_item_title_line_height>
+
+                        <view_item_bullet translate="label comment" module="brander_unitopblog">
+                            <label></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>550</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </view_item_bullet>
+                        <view_item_bullet_color translate="label comment" module="brander_unitopblog">
+                            <label>Post Info Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>560</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </view_item_bullet_color>
+                        <view_item_bullet_size translate="label comment" module="brander_unitopblog">
+                            <label>Post Info Text Font Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>570</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </view_item_bullet_size>
+
+                        <view_item_content translate="label comment" module="brander_unitopblog">
+                            <label></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>580</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </view_item_content>
+                        <view_item_content_color translate="label comment" module="brander_unitopblog">
+                            <label>Content Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>infortis/adminhtml_system_config_form_field_color</frontend_model>
+                            <backend_model>infortis/system_config_backend_design_color_validatetransparent</backend_model>
+                            <sort_order>590</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </view_item_content_color>
+                        <view_item_content_size translate="label comment" module="brander_unitopblog">
+                            <label>Content Text Font Size</label>
+                            <comment>Value in pixels.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-number-range number-range-0-100</validate>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </view_item_content_size>
+                    </fields>
+                </blog>
+            </groups>
+        </ultimo_design>
+    </sections>
+</config>

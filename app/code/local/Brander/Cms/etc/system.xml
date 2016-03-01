@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <cms_advanced>
+            <label>Advanced CMS</label>
+            <tab>general</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <default>
+                    <label>Default</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <home_page translate="label" module="cms">
+                            <label>Home Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>cmsadvanced/config_source_pagetree</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </home_page>
+                    </fields>
+                </default>
+            </groups>
+        </cms_advanced>
+    </sections>
+</config>

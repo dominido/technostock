@@ -1,0 +1,15 @@
+.social-list{
+    li{
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+.icu{
+    display: inline-block;
+
+    &.ic-lg{
+        font-size: 2em;
+        line-height: 36px;
+    }
+}

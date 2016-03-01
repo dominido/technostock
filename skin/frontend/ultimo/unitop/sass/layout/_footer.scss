@@ -1,0 +1,40 @@
+.footer-container {
+  .block-footer-contacts {
+	margin-bottom: 10px;
+	clear: both;
+
+	.content {
+	  overflow: hidden;
+	}
+
+	.operator-icon {
+	  float: left;
+	  margin: 0 10px 0 0;
+	}
+  }
+
+  .footer-copyright {
+	font-size: 14px;
+
+	.ic-brander {
+	  margin-left: 5px;
+	  font-size: 12px;
+	}
+  }
+
+  @include bp(max-width, $bp-tiny) {
+	.block-footer-contacts {
+	  .operator-icon {
+		float: none;
+	  }
+
+	  .content {
+		display: inline;
+	  }
+	}
+
+	.footer-logo {
+	  margin: 0 auto;
+	}
+  }
+}

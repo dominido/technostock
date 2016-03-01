@@ -1,0 +1,23 @@
+<?php $collection = $this->getCollection(); ?>
+
+<div class="links-wrapper-separators">
+    <ul class="links clearfix top-left-menu-items" id="top-left-menu-items">
+        <?php echo $this->getChildHtml('accountMini'); ?>
+
+        <?php if ($collection): ?>
+            <?php foreach ($collection as $_menuItem): ?>
+                <li class="nav-item level0 level-top left">
+                    <a class="level-top" href="<?php echo $_menuItem->getRedirectUrl() ?>" title="">
+                        <span><?php echo $_menuItem->getName() ?></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </ul>
+
+</div>
+
+
+
+
+

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+		<brander_shop>
+			<children>
+				<cms_advanced translate="title" module="brander_shop">
+					<title>Menus and Pages</title>
+					<sort_order>1</sort_order>
+					<action>adminhtml/cms_advanced</action>
+				</cms_advanced>
+			</children>
+		</brander_shop>
+	</menu>
+	<acl>
+		<resources>
+	        <admin>
+	            <children>
+					<brander_shop>
+						<children>
+							<cms_advanced translate="title" module="brander_shop">
+								<title>Menus and Pages</title>
+							</cms_advanced>
+						</children>
+					</brander_shop>
+					<system>
+                        <children>
+                            <config>
+                                <children>
+                                    <cms_advanced translate="title" module="brander_shop">
+                                        <title>Menus and Pages</title>
+                                    </cms_advanced>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+	    </resources>
+	</acl>
+</config>

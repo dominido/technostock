@@ -1,0 +1,176 @@
+.product-view {
+  .product-shop {
+    .product-name {
+      margin-bottom: 0;
+    }
+  }
+
+  .ratings, .no-rating {
+    margin-top: 0;
+    text-align: right;
+  }
+
+  .sku {
+    margin-top: 0;
+    color: #737373;
+
+    .label {
+      font-weight: normal;
+    }
+  }
+
+  .product-type-data {
+    .item-options {
+      dd {
+        float: none;
+      }
+    }
+  }
+
+  .product-options {
+    p.required {
+      top: 0;
+    }
+  }
+
+  .qty-wrapper {
+    .ui-spinner {
+      border-color: #ddd;
+      @include trs(border-color 300ms ease-in-out);
+
+      &:hover {
+        border-color: #aaa;
+      }
+
+      .ui-state-default {
+        border-color: #ddd;
+      }
+
+      .ui-state-hover {
+        border-color: #aaa;
+      }
+    }
+
+    .qty {
+      margin: 0 16px 0 0;
+      border: 0;
+    }
+  }
+
+  .sticker-wrapper {
+    .sticker {
+      padding: 8px 10px;
+    }
+  }
+
+  #srka-product-review-list .options li .option {
+    width: 18px;
+    height: 17px;
+    background: url(../images/rating.png) 0 0 no-repeat;
+  }
+
+  .benefits-container {
+    padding: 0;
+
+    @include bp(max-width, $bp-desktop) {
+      .benefit-title,
+      .benefit-text {
+        font-size: 14px;
+        letter-spacing: -1px;
+      }
+    }
+  }
+
+  @include bp(max-width, $bp-tiny) {
+    .add-to-cart {
+      .btn-cart {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  @include bp(max-width, $bp-smallest) {
+    .box-reviews {
+      .form-add {
+        .form-list {
+          input.input-text,
+          textarea {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .availability-only {
+    &.expanded {
+      .caret {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.product-shop-heading {
+  @include cleaner;
+}
+
+.reviews-list {
+  label {
+    width: 100px;
+  }
+
+  .input-box {
+    width: calc(100% - 100px);
+    float: left;
+    clear: none;
+
+    .input-text {
+      max-width: 100%;
+    }
+  }
+}
+
+#srka-product-review-list .srka-rating-code .label {
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+  width: 110px;
+
+  &:after {
+    content: ' *';
+    color: #EE001C;
+    font-weight: normal;
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    font-size: 12px;
+  }
+
+  & + .options {
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 0;
+  }
+}
+
+.rating-box {
+  width: 90px;
+  height: 17px;
+  @include cleaner;
+
+  @include mq(retina) {
+    background-size: 14px 62px;
+  }
+
+  .rating {
+    height: 17px;
+    @include mq(retina) {
+      background-size: 14px 62px;
+    }
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), not all, not all, not all, not all {
+  .rating-box, .rating-box .rating {
+    background-size: 18px 62px;
+  }
+}

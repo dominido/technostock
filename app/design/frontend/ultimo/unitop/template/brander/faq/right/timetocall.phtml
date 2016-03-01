@@ -1,0 +1,18 @@
+<?php $_phones = $this->getPhones(); ?>
+
+<h4 class="right-column-title">
+    <?php echo Mage::helper('brander_faq')->__('Need help?'); ?>
+</h4>
+<div class="right-column-intro">
+    <?php echo Mage::helper('brander_faq')->__('Ask questions by any convenient way'); ?>
+    <?php echo $this->getStoreHours(); ?>
+</div>
+<?php if(count($_phones)) { ?>
+    <ul class="right-shop-phones ico-phone">
+        <?php foreach($_phones as $_phone) { ?>
+            <?php if(!empty($_phone['phone'])) { ?>
+                <li><?php echo $_phone['phone']?></li>
+            <?php } ?>
+        <?php } ?>
+    </ul>
+<?php } ?>

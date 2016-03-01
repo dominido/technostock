@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!--        /**
+        * Brander Account extension
+        *
+        * NOTICE OF LICENSE
+        *
+        * This source file is subject to the MIT License
+        * that is bundled with this package in the file LICENSE.txt.
+        * It is also available through the world-wide-web at this URL:
+        * http://opensource.org/licenses/mit-license.php
+        *
+        * @category       Brander
+        * @package        Account
+        * @copyright      Copyright (c) 2015
+        * @license        http://opensource.org/licenses/mit-license.php MIT License
+        * @author         AlexVegas (Alexandr Belyaev) <alexandr.belyaev.only@gmail.com>
+        */-->
+<config>
+    <modules>
+        <Brander_Account>
+            <version>0.0.2</version>
+        </Brander_Account>
+    </modules>
+    <global>
+        <blocks>
+            <brander_account>
+                <class>Brander_Account_Block</class>
+            </brander_account>
+            <customer>
+                <rewrite>
+                    <account_navigation>Brander_Account_Block_Navigation</account_navigation>
+                </rewrite>
+            </customer>
+        </blocks>
+        <helpers>
+            <brander_account>
+                <class>Brander_Account_Helper</class>
+            </brander_account>
+        </helpers>
+        <models>
+            <brander_account>
+                <class>Brander_Account_Model</class>
+            </brander_account>
+        </models>
+    </global>
+    <frontend>
+        <routers>
+            <catalog>
+                <args>
+                    <modules>
+                        <brander_account before="Mage_Catalog">Brander_Account_Compare</brander_account>
+                    </modules>
+                </args>
+            </catalog>
+            <wishlist>
+                <args>
+                    <modules>
+                        <Brander_Account before="Mage_Wishlist">Brander_Account_Wishlist</Brander_Account>
+                    </modules>
+                </args>
+            </wishlist>
+            <downloadable>
+                <args>
+                    <modules>
+                        <Brander_Account before="Mage_Downloadable_Customer">Brander_Account_Downloadable</Brander_Account>
+                    </modules>
+                </args>
+            </downloadable>
+            <sales>
+                <args>
+                    <modules>
+                        <Brander_Account before="Sales_Billing_Agreement">Brander_Account_Sales</Brander_Account>
+                    </modules>
+                    <modules>
+                        <Brander_Account before="Sales_Recurring_Profile">Brander_Account_Sales</Brander_Account>
+                    </modules>
+                </args>
+            </sales>
+            <oauth>
+                <args>
+                    <modules>
+                        <Brander_Account before="Mage_Oauth_Customer_Token">Brander_Account_Oauth</Brander_Account>
+                    </modules>
+                </args>
+            </oauth>
+            <customer>
+                <args>
+                    <modules>
+                        <Brander_Account before="Mage_Customer_Account">Brander_Customer</Brander_Account>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+
+        <layout>
+            <updates>
+                <brander_account>
+                    <file>brander_account.xml</file>
+                </brander_account>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <Brander_Account>
+                    <files>
+                        <default>Brander_Account.csv</default>
+                    </files>
+                </Brander_Account>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Brander_Account>
+                    <files>
+                        <default>Brander_Account.csv</default>
+                    </files>
+                </Brander_Account>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <customer>
+            <telephone_settings>
+                <enable_phone_mask>1</enable_phone_mask>
+                <phone_mask>+380 dd ddd-dd-dd</phone_mask>
+            </telephone_settings>
+        </customer>
+    </default>
+</config>
+

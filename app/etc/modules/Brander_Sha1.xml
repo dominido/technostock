@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_Sha1>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Brander_Sha1>
+    </modules>
+</config>

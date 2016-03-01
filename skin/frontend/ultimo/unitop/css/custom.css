@@ -1,0 +1,187 @@
+/*HOMEPAGE  HOT CATEGORY *****************************************************************
+*****************************************************************************************/
+
+@media only screen and (max-width: 767px) {
+
+    .grid12-3.hotcategory {
+        width: 50% !important;
+    }
+}
+
+/*override-theme.css str.142 *****************************************************************
+**********************************************************************************************/
+/* Regular header %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Cart + compare
+-------------------------------------------------------------- */
+/* Skip links has to be hidden except cart and compare */
+.header-regular .mini-cart-heading,
+.header-regular .mini-compare-heading,
+.header-regular .mini-account-heading { display: block; }
+
+.header-regular .mini-cart-heading .label.no-display,
+.header-regular .mini-compare-heading .label.no-display,
+.header-regular .mini-account-heading .label.no-display { display: none; }
+
+
+/*override-theme.css str.274 ******************************************************************/
+
+/*language switcher */
+@media only screen and (max-width: 767px) {
+
+    /* show */
+    .show-below-768 {
+        display: inherit !important;
+    }
+    .lang-switcher .dropdown-content .show-below-768 {
+        display: inline !important;
+    }
+}
+@media only screen and (min-width: 767px) {
+
+    /* show */
+    .show-below-768 {
+        display: none !important;
+    }
+}
+
+/* Central column
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+/* Hidden elements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.header-regular #mini-account-wrapper-mobile {
+    display: none;
+}
+
+/* Selected skip links
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Account
+-------------------------------------------------------------- */
+/* Hide account block's heading (only heading) */
+
+.header-mobile .mini-account .mini-account-heading { display: none; }
+.header-mobile .mini-account .mini-account-content { text-transform: uppercase; }
+.header-mobile .mini-account .actions {
+    border: none;
+    padding-top: 0;
+}
+
+
+@media only screen and (min-width: 767px)
+{
+    .mini-account-content > ul > li > a{
+        white-space: nowrap;
+    }
+}
+
+
+/* microformats
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Product page
+-------------------------------------------------------------- */
+
+.micrform-section{
+    position:absolute;
+    left:0;
+    top:-9999px;
+}
+
+.mini-account-content > ul > li {
+    float: none;
+}
+
+/*HOMEPAGE  BANNERS *****************************************************************
+*****************************************************************************************/
+
+.homepage-banners.slim-homepage-banners .nested-container {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+
+.homepage-banners.slim-homepage-banners .banner {
+    margin: 0;
+}
+
+.homepage-banners.slim-homepage-banners .grid12-6 {
+    width: 50%;
+}
+
+/* FOOTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.footer-block .block-title {
+    padding-top: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .footer-block .block-title {
+        padding-top: 20px;
+    }
+}
+
+.container.leftsidemenu {
+    padding-top: 0;
+}
+
+.cmsadvanced-page-view .main {
+    padding-top: 0;
+}
+
+.developer-logo {
+    width: 102px;
+    height: 13px;
+    display: inline-block;
+    background-image: url('../images/brander/brander.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.dev-logo {
+    margin-left: 10px;
+    max-width: 120px;
+}
+
+.footer-primary-top .social-links {
+    padding-top: 20px;
+}
+
+/* PRODUCT PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.product-banner {
+    width: 100%;
+}
+
+/* LAYERED NAVIGATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.toolbar .pager {
+    display: none;
+}
+.toolbar-bottom .toolbar .pager {
+    display: inherit;
+}
+
+
+@media print {
+    #sh_button {
+        display: none;
+    }
+}
+@media only screen and (min-width: 767px) {
+    div.post-preview_image {
+        max-width: 50%;
+    }
+}

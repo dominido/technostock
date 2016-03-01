@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_Preorder extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_Preorder
+ * @copyright  	Copyright (c) 2015
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+	<modules>
+		<Brander_Preorder>
+			<version>0.0.1</version>
+		</Brander_Preorder>
+	</modules>
+	<global>
+		<resources>
+			<brander_preorder_setup>
+				<setup>
+					<module>Brander_Preorder</module>
+					<class>Brander_Preorder_Model_Resource_Setup</class>
+				</setup>
+			</brander_preorder_setup>
+		</resources>
+		<blocks>
+			<preorder>
+				<class>Brander_Preorder_Block</class>
+			</preorder>
+		</blocks>
+		<helpers>
+			<preorder>
+				<class>Brander_Preorder_Helper</class>
+			</preorder>
+		</helpers>
+		<models>
+			<preorder>
+				<class>Brander_Preorder_Model</class>
+				<resourceModel>preorder_resource</resourceModel>
+			</preorder>
+			<preorder_resource>
+				<class>Brander_Preorder_Model_Resource</class>
+				<entities>
+					<preorder>
+						<table>preorder_preorder</table>
+					</preorder>
+					<preorder_store>
+						<table>preorder_preorder_store</table>
+					</preorder_store>
+				</entities>
+			</preorder_resource>
+		</models>
+        <template>
+            <email>
+                <preorder translate="label" module="preorder">
+                    <label>OneClick</label>
+                    <file>oneclick.html</file>
+                    <type>html</type>
+                </preorder>
+            </email>
+        </template>
+	</global>
+	<adminhtml>
+		<layout>
+			<updates>
+				<brander_preorder>
+					<file>brander_preorder.xml</file>
+				</brander_preorder>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<Brander_Preorder>
+					<files>
+						<default>Brander_Preorder.csv</default>
+					</files>
+				</Brander_Preorder>
+			</modules>
+		</translate>
+	</adminhtml>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<Brander_Preorder before="Mage_Adminhtml">Brander_Preorder_Adminhtml</Brander_Preorder>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+    <frontend>
+        <layout>
+            <updates>
+                <brander_preorder>
+                    <file>brander_preorder.xml</file>
+                </brander_preorder>
+            </updates>
+        </layout>
+        <routers>
+            <fastbuy>
+                <use>standard</use>
+                <args>
+                    <module>Brander_Preorder</module>
+                    <frontName>preorder</frontName>
+                </args>
+            </fastbuy>
+        </routers>
+    </frontend>
+	<default>
+		<preorder>
+		</preorder>
+	</default>
+</config>

@@ -1,0 +1,185 @@
+<?php
+
+?>
+<?php
+/**
+ * @methods
+ * - getValue($key, $default)
+ * - getSelected($key, $value)
+ * - getChecked($key)
+ * - getAttributes()
+ * - getMappings()
+ * - getAddMapButtonHtml()
+ * - getRemoveMapButtonHtml()
+ */
+?>
+
+<script type="text/javascript">
+//<![CDATA[
+var profileImportOnly = ['profile_number_of_records', 'profile_decimal_separator'];
+function showOption(select)
+{
+    select = $(select);
+    for (var i = 0, l = select.options.length; i<l; i++) {
+        $$('.'+select.id+'_'+select.options[i].value).each(function (el) {
+            el.style.display = select.selectedIndex==i ? '' : 'none';
+        });
+    }
+
+}
+
+function addFieldMapping()
+{
+
+    Element.insert($('map_container_product'), {bottom: $('map_template_product').innerHTML});
+}
+
+function removeFieldMapping(button)
+{
+    Element.remove(button.parentNode);
+}
+
+function setMapFileField(select)
+{
+    select.parentNode.getElementsByTagName('input')[0].value = select.value;
+}
+
+function toggleSelectOption(type, source, target, sourceValue, targetValue, targetText)
+{
+    source = $(source);
+    target = $(target);
+
+    var i, ex, option, present;
+    var selectValue = source.options[source.selectedIndex].value;
+
+    if('remove'==type && selectValue==sourceValue || 'add'==type && selectValue!=sourceValue) {
+        for(i=0;i<target.options.length;i++){
+            if(target.options[i].value==targetValue){
+                target.remove(i);
+                break;
+            }
+        }
+    } else {
+        for(i=0;i<target.options.length;i++){
+            if(target.options[i].value==targetValue){
+                present = true;
+                break;
+            } else {
+                present = false;
+            }
+        }
+        if(!present){
+            option = document.createElement("OPTION");
+            option.text = targetText;
+            option.value = targetValue;
+            try {
+                target.add(option, null); // standards compliant; doesn't work in IE
+            } catch(ex) {
+                target.add(option); // IE only
+            }
+        }
+    }
+    showOption(target);
+}
+
+function exportUrlField()
+{
+    var urlFieldEl = $('profile_add_url_field').up();
+        urlFieldEl.show();
+
+}
+
+//]]>
+</script>
+
+<div id="profile-generator" class="entry-edit profile-generator">
+
+    <div>
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("Additional Attributes") ?></h4>
+        </div>
+<!--        <fieldset>-->
+             <span class="field-row">
+                <label for="parse_fieldnames"><?php echo $this->__("Make additional attributes select:") ?></label>
+                <span class="with-tip">
+                    <select id="parse_fieldnames" name="custom_attributes" onchange="showFeildMapping();showOption(this)" class="option-control">
+                        <option value="true" <?php echo $this->getSelected('custom_attributes', false) ?>><?php echo $this->__("No") ?></option>
+                        <option value="" <?php echo $this->getSelected('custom_attributes', true) ?>><?php echo $this->__("Yes") ?></option>
+                    </select>
+                    <small class="profile_direction_import">
+                        <span class="parse_fieldnames_">
+                            <?php echo $this->__("(When 'No' - standard attribute set used. 'Yes'  for append additional attributes)") ?>
+                        </span>
+                    </small>
+                </span>
+            </span>
+
+
+        <span id="__fieldmapping">
+            <div class="profile_entity_type_product">
+                <div id="map_template_product" style="display:none">
+                    <span class="field-row">
+                        <?php echo $this->__("Attribute:") ?> <select name="custom_attributes_data[map][product][db][]" onchange="setMapFileField(this)">
+                            <?php
+                                $fieldMappingInDatabase = $this->getAttributes('product');
+                                asort($fieldMappingInDatabase);
+                                foreach ($fieldMappingInDatabase as $_value=>$_label): ?>
+                                <option value="<?php echo $_value ?>"><?php echo $_label ?></option>
+                            <?php endforeach ?>
+                        </select>
+                        &lt;--&gt;
+                        <?php echo $this->__("XML Title:") ?> <input class="input-text" name="custom_attributes_data[map][product][file][]"/>
+                        <?php echo $this->getRemoveMapButtonHtml() ?>
+                    </span>
+                </div>
+                <div id="map_container_product">
+                    <?php foreach ($this->getMappings('product') as $_i=>$_dbField): ?>
+                        <span class="field-row">
+                            <?php echo $this->__("Attribute:") ?> <select name="custom_attributes_data[map][product][db][]">
+                            <?php foreach ($this->getAttributes('product') as $_value=>$_label): ?>
+                                <option value="<?php echo $_value ?>" <?php echo $this->getSelected('custom_attributes_data/map/product/db/'.$_i, $_value) ?>><?php echo $_label ?></option>
+                            <?php endforeach ?>
+                            </select>
+                            &lt;--&gt;
+                            <?php echo $this->__("XML Title:") ?> <input class="input-text" name="custom_attributes_data[map][product][file][]" value="<?php echo $this->getValue('custom_attributes_data/map/product/file/'.$_i) ?>"/>
+                            <?php echo $this->getRemoveMapButtonHtml() ?>
+                        </span>
+                    <?php endforeach ?>
+                </div>
+            </div>
+            <?php echo $this->getAddMapButtonHtml() ?>
+        </span>
+        <!--</fieldset>-->
+    </div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+    $$('.option-control').each(showOption);
+
+    function showFeildMapping() {
+        var value = $('parse_fieldnames').options[$('parse_fieldnames').options.selectedIndex].value;
+            if (value) {
+                Element.hide($('__fieldmapping'));
+                deleteAllAddedMappingFields();
+            } else {
+                Element.show($('__fieldmapping'));
+            }
+    }
+
+    function deleteAllAddedMappingFields()
+    {
+
+        var elems = $('map_container_product').childElements();
+        if (elems.length > 0) for (var idx in elems) {
+            if (elems[idx] != undefined && elems[idx].tagName != undefined) {
+                elems[idx].remove();
+            }
+        }
+    }
+
+    deleteAllAddedMappingFields();
+    Element.hide($('__fieldmapping'));
+
+//]]>
+</script>

@@ -1,0 +1,44 @@
+<?php $currentPageId = ($this->getEntityId()) ? $this->getEntityId() : 0; ?>
+<div class="faq-form text-form">
+    <div class="form-container">
+        <h3 class="form-title">
+            <span class="text"><?php echo Mage::helper('brander_faq')->__('Ask your question'); ?></span>
+            <span class="ico-down-arrow"></span>
+        </h3>
+        <form name="faq-form" id="faqForm" action="<?php echo Mage::helper('brander_faq')->getFormUrl()?>" method="post" novalidate>
+            <input type="hidden" name="faq[page_id]" value="<?php echo Mage::helper('core')->encrypt($currentPageId)?>">
+                <div class="inputs-set">
+                    <div class="input-box name">
+                        <input name="faq[customer_name]"  id="customer-name" 
+                            title="<?php echo Mage::helper('brander_faq')->__('Name') ?>"
+                            placeholder="<?php echo Mage::helper('brander_faq')->__('Name') ?>"
+                            value="" class="input-text required-entry" type="text" />
+                    </div>
+                    <div class="input-box email">
+                        <input name="faq[customer_email]" id="customer-email" 
+                            title="<?php echo Mage::helper('brander_faq')->__('E-mail address') ?>"
+                            placeholder="<?php echo Mage::helper('brander_faq')->__('E-mail address') ?>"
+                            value="" class="input-text required-entry validate-email" type="email" />
+                    </div>
+                </div>
+                <div class="textarea-set">
+                    <div class="input-box">
+                        <textarea name="faq[question]" id="question"
+                            title="<?php echo Mage::helper('brander_faq')->__('Question') ?>"
+                            placeholder="<?php echo Mage::helper('brander_faq')->__('Question') ?>"
+                            class="required-entry input-text" cols="5" rows="3"></textarea>
+                    </div>
+                </div>
+            <div class="buttons-set">
+                <button type="submit" title="<?php echo Mage::helper('brander_faq')->__('Send') ?>"
+                    class="button"><span><?php echo Mage::helper('brander_faq')->__('Send') ?></span></button>
+            </div>
+        </form>
+        <script type="text/javascript">
+            //<![CDATA[
+            var faqForm = new VarienForm('faqForm');
+            //]]>
+        </script>
+    </div>
+</div>
+

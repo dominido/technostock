@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_system_config_edit>
+        <update handle="editor"/>
+        <reference name="head">
+            <action method="setCanLoadTinyMce">
+                <load>1</load>
+            </action>
+        </reference>
+    </adminhtml_system_config_edit>
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>jquery/jquery-1.11.3.min.js</script></action>
+            <action method="addJs"><script>jquery/jquery-noconflict.js</script></action>
+        </reference>
+    </default>
+</layout>

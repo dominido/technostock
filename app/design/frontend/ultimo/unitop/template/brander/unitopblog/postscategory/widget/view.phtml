@@ -1,0 +1,30 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         Alexandr Belyaev @AlexVegas (alexvegas.brander@gmail.com)
+ */
+?>
+<?php $_postscategory = $this->getCurrentPostscategory();?>
+<?php if ($_postscategory) :?>
+    <div class="postscategory-widget-view">
+        <h3><?php echo $_postscategory->getTitle()?></h3>
+        <div>
+            <div class="title-widget">
+                <?php echo Mage::helper('brander_unitopblog')->__('Title');?>:<?php echo $_postscategory->getTitle();?>
+            </div>
+
+        </div>
+    </div>
+<?php endif;?>

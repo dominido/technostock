@@ -1,0 +1,21 @@
+<?php $collection = $this->getCategories(); ?>
+<div class="grid12-3">
+    <?php if ($collection->getSize()): ?>
+        <div class="collapsible mobile-collapsible">
+            <?php if (Mage::helper('brander_cmsmenu')->isShowFooterTitle()): ?>
+                <h6 class="block-title heading"><?php echo $this->__('Product Catalog'); ?></h6>
+            <?php endif; ?>
+            <div class="block-content">
+                <?php if ($collection): ?>
+                    <?php foreach ($collection as $_menuItem): ?>
+                        <div>
+                            <a class="level-top" href="<?php echo $_menuItem->getUrl() ?>" title="">
+                                <span><?php echo $_menuItem->getName() ?></span>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>

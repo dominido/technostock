@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_Preorder extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_Preorder
+ * @copyright  	Copyright (c) 2015
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+
+ <block type="core/template" name="fastbuy_form" template="brander/preorder/fast_buy.phtml"/>
+
+-->
+<layout>
+<catalog_product_view>
+    <reference name="head">
+        <action method="addItem">
+            <type>skin_js</type>
+            <name>js/brander/one_click/ajax_form.js</name>
+            <params/>
+        </action>
+    </reference>
+    <reference name="before_body_end">
+        <block type="core/template" name="fastbuy_form" template="brander/preorder/fast_buy.phtml"/>
+    </reference>
+</catalog_product_view>
+
+</layout>

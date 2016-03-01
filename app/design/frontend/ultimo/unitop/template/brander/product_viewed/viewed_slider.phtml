@@ -1,0 +1,179 @@
+
+<?php
+$_products = $this->getRecentlyViewedProducts();
+?>
+
+<?php if($_products): ?>
+
+<?php
+
+$theme = $this->helper('ultimo');
+$helper = Mage::helper('brander_shop');
+$helpImg = $this->helper('infortis/image');
+$sliderClasses = '';
+$gridClasses = '';
+
+$hashStr = time().$this->getCategoryId().$this->getProductCount().$this->getBlockName().mt_rand(mt_rand(100, 9999), mt_rand(10000, 999999));
+$hash = md5($hashStr);
+$sliderId = "itemslider-viewed-{$hash}";
+
+//Slider parameters
+//--------------------------------------------------------------
+
+//Responsive mode on/off
+$isResponsive = true;
+
+//Assign number of items in a row to specific viewport width
+$breakpoints = $helper->getCfg('ultimo/product_page/viewed_breakpoints');
+if (empty($breakpoints)) //Param not set
+{
+    $breakpoints = '[0, 1], [320, 2], [480, 3], [960, 4], [1280, 5]'; //Set default breakpoints
+}
+
+//Pagination on/off
+$pagination = false;
+
+$imgWidth = 295;
+$imgHeight = 295;
+
+//Image aspect ratio
+if ($theme->getCfg('category/aspect_ratio'))
+{
+    $imgHeight = 0; //Height will be computed automatically (based on width) to keep the aspect ratio
+}
+
+//Slider timeout. Set to enable automatic scrolling.
+$timeout = intval($helper->getCfg('ultimo/product_page/viewed_timeout'));
+
+//Number of items that should move on scrolling
+$move = 0;
+
+//If set, slider will loop
+$loop = $theme->getCfg('product_slider/loop');
+
+//Speed (arrows / touch swipe)
+$speed = intval($theme->getCfg('product_slider/speed'));
+
+//Speed (automatic scrolling / pagination)
+$autoSpeed = intval($theme->getCfg('product_slider/auto_speed'));
+
+//Pause slider on mouse hover
+$pause = $theme->getCfg('product_slider/pause');
+
+//Lazy loading
+$lazy = $theme->getCfg('product_slider/lazy');
+
+//Slider classes
+//--------------------------------------------------------------
+if($isResponsive)
+{
+    $sliderClasses .= ' itemslider-responsive';
+}
+
+if ($_products->getSize() == 1)
+{
+    $sliderClasses .= ' single-item';
+}
+
+//Product grid classes
+//--------------------------------------------------------------
+
+//Align elements to the center
+if ($theme->getCfg('category_grid/centered'))
+{
+    $gridClasses .= ' centered';
+}
+?>
+
+    <div class="block block-viewed grid12-12">
+        <h3 class="section-title padding-right"><?php echo $this->__('Recently Viewed Products'); ?></h3>
+        <div class="itemslider-wrapper itemslider-viewed-wrapper slider-arrows1 slider-arrows1-pos-top-right slider-pagination1">
+            <div id="<?php echo $sliderId; ?>" class="itemslider <?php if($sliderClasses) echo $sliderClasses; ?> products-grid<?php if($gridClasses) echo $gridClasses; ?>">
+
+                <?php foreach($_products as $_product): //$_link replaced with $_product ?>
+                    <div class="item">
+                        <div class="item-inner">
+                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>" class="product-image">
+
+                                <?php if ($lazy): ?>
+                                    <?php $label = $this->escapeHtml($_product->getName()) ?>
+                                    <img class="lazyOwl" src="#" data-src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo ($label ? $label : 'product_image'); ?>" />
+                                <?php else: ?>
+                                    <img src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->escapeHtml($_product->getName()) ?>" />
+                                <?php endif; ?>
+
+                            </a>
+                            <div class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>"><?php echo $this->escapeHtml($_product->getName()) ?></a></div>
+                            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                            <div class="price-holder">
+                                <?php echo $this->getPriceHtml($_product, true, '-viewed') ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div> <!-- end: itemslider -->
+        </div> <!-- end: itemslider-wrapper -->
+
+        <script type="text/javascript">
+            //<![CDATA[
+            jQuery(function($) {
+
+                var owl = $('#<?php echo $sliderId; ?>');
+                owl.owlCarousel({
+
+                    <?php if ($lazy): ?>
+                    lazyLoad: true,
+                    <?php endif; ?>
+
+                    <?php if(!$isResponsive): ?>
+                    responsive: false,
+                    items: <?php echo $showItems; ?>,
+                    <?php else: ?>
+                    itemsCustom: [ <?php echo $breakpoints; ?> ],
+                    responsiveRefreshRate: 50,
+                    <?php endif; ?>
+
+                    <?php if ($speed): ?>
+                    slideSpeed: <?php echo $speed; ?>,
+                    <?php endif; ?>
+
+                    <?php if ($autoSpeed): ?>
+                    paginationSpeed: <?php echo $autoSpeed; ?>,
+                    <?php endif; ?>
+
+                    <?php if ($move !== 1): ?>
+                    scrollPerPage: true,
+                    <?php endif; ?>
+
+                    <?php if ($timeout): ?>
+                    autoPlay: <?php echo $timeout; ?>,
+                    <?php endif; ?>
+
+                    <?php if ($pause): ?>
+                    stopOnHover: true,
+                    <?php endif; ?>
+
+                    <?php if ($loop): ?>
+                    rewindNav: true,
+                    rewindSpeed: 600,
+                    <?php else: ?>
+                    rewindNav: false,
+                    <?php endif; ?>
+
+                    <?php if ($pagination): ?>
+                    pagination: true,
+                    <?php else: ?>
+                    pagination: false,
+                    <?php endif; ?>
+
+                    navigation: true,
+                    navigationText: false
+
+                }); //end: owl
+
+            });
+            //]]>
+        </script>
+
+    </div>
+<?php endif; ?>

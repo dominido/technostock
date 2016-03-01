@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_Privat24>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Sales/>
+                <Mage_Checkout/>
+            </depends>
+        </Brander_Privat24>
+    </modules>
+</config>

@@ -1,0 +1,60 @@
+<?php
+/** @var Mage_Sales_Block_Order_Print $this */
+/** @var Brander_Opcheckout_Helper_Data  $helper */
+/** @var Mage_Core_Helper_Data $helperCore */
+
+$helper = Mage::helper('brander_opcheckout');
+$helperCore = Mage::helper('core');
+$order = $this->getOrder();
+$shipping = $order->getShippingAddress();
+?>
+<div class="success-top">
+    <h2 class="title"><?php echo $helper->__('Thank you for your purchase!') ?></h2>
+    <h3><?php echo $helper->__('You have made an excellent choice.'); ?></h3>
+    <h3><?php echo $helper->__('The manager will contact you by phone %s.', $shipping->getTelephone()); ?></h3>
+    <div class="center-block">
+        <p><?php echo $helper->__('Your order number'); ?></p>
+        <p class="order-number"><?php echo $this->escapeHtml($order->getIncrementId()); ?></p>
+    </div>
+</div>
+<div class="success-bottom">
+    <h4><?php echo $helper->__('About order'); ?></h4>
+    <?php $shippingMethodTitle = $order->getShippingDescription();
+    $paymentMethodTitle = $order->getPayment()->getMethodInstance()->getTitle();
+    $streets = $shipping->getStreet();
+    ?>
+
+    <p><?php echo $helper->__('Shipping method:') ?><?php echo $shippingMethodTitle ?></p>
+    <p><?php echo $helper->__('Shipping by address:') ?>
+        <?php foreach($streets as $street) echo $street; ?>
+    </p>
+    <p><?php echo $helper->__('Payment method:') ?><?php echo $paymentMethodTitle  ?></p>
+    <h2><?php echo $helper->__('Products in order')?></h2>
+    <?php $ordered_items = $order->getAllVisibleItems(); ?>
+    <div class="products-list">
+        <?php $ordered_items = $order->getAllVisibleItems(); ?>
+        <div class="products-list">
+            <?php foreach ($ordered_items as $_item): ?>
+                <?php $itemType = $this->_getItemType($_item); ?>
+                <?php
+                $blockRenderer = $this->getItemRenderer($itemType);
+                $blockRenderer->setItem($_item)
+                              ->setData('print_order', true);
+                echo $blockRenderer->toHtml(); ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="success-totals">
+        <ul>
+            <li><?php echo $helper->__('Shipping cost:') ?></li>
+            <li><?php echo $helperCore->currency($order->getShippingAmount()); ?></li>
+        </ul>
+        <ul>
+            <li><?php echo $helper->__('Total:') ?></li>
+            <li><?php echo $helperCore->currency($order->getGrandTotal()); ?></li>
+        </ul>
+    </div>
+
+</div>
+
+<script type="text/javascript">window.print();</script>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_CustomerCallbacks>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Brander_Core />
+            </depends>
+        </Brander_CustomerCallbacks>
+    </modules>
+</config>

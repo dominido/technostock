@@ -1,0 +1,156 @@
+<?php
+/**
+ * Brander_UnitopBlog extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Brander
+ * @package        Brander_UnitopBlog
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+?>
+<div class="content-header">
+    <h3 class="icon-head head-categories">
+        <?php echo $this->escapeHtml($this->getHeader()) . ($this->getPostscategoryId() ? ' (' . Mage::helper('brander_unitopblog')->__('ID: %s', $this->getPostscategoryId()) . ')' : '') ?>
+    </h3>
+    <p class="content-buttons form-buttons">
+        <?php echo $this->getResetButtonHtml() ?>
+        <?php if ($this->getPostscategoryId()): ?>
+            <?php echo $this->getDeleteButtonHtml() ?>
+        <?php endif; ?>
+        <?php echo $this->getAdditionalButtonsHtml(); ?>
+        <?php echo $this->getSaveButtonHtml() ?>
+    </p>
+</div>
+<?php echo $this->getTabsHtml() ?>
+<iframe name="iframeSave" style="display:none; width:100%;" src="<?php echo $this->getJsUrl() ?>blank.html"></iframe>
+<form target="iframeSave" id="postscategory_edit_form" action="<?php echo $this->getSaveUrl() ?>" method="post" enctype="multipart/form-data">
+    <div class="no-display">
+        <input type="hidden" name="isIframe" value="1" />
+        <input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+        <input type="hidden" name="active_tab_id" id="active_tab_id" value="" />
+    </div>
+    <div id="postscategory_tab_content"></div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    postscategoryForm = new varienForm('postscategory_edit_form');
+    postscategoryForm.submit= function (url) {
+        this.errorSections = $H({});
+        this.canShowError = true;
+        this.submitUrl = url;
+        if (this.validator && this.validator.validate()) {
+            if (this.validationUrl) {
+                this._validate();
+            } else {
+                if (this.isSubmitted) {
+                    return false;
+                }
+                this.isSubmitted = true;
+                this._submit();
+            }
+            displayLoadingMask();
+            return true;
+        }
+        return false;
+    };
+    postscategoryForm.refreshPath = function () {
+        postscategoryId = this.getPostscategoryId();
+        if (!postscategoryId) {
+            return false;
+        }
+        var refreshPathSuccess = function(transport) {
+            if (transport.responseText.isJSON()) {
+                response = transport.responseText.evalJSON()
+                if (response.error) {
+                    alert(response.message);
+                } else {
+                    if (postscategoryForm.getPostscategoryId() == response['id']) {
+                        postscategoryForm.setPostscategoryPath(response['path']);
+                    }
+                }
+            }
+        };
+        new Ajax.Request(
+            '<?php echo $this->getRefreshPathUrl() ?>',
+            {
+                method: 'POST',
+                evalScripts: true,
+                onSuccess: refreshPathSuccess
+            }
+        );
+    };
+
+    postscategoryForm.getPostscategoryId = function () {
+        collection = $(this.formId).getInputs('hidden', 'postscategory[id]');
+        if (collection.size() > 0) {
+            return collection.first().value;
+        }
+        return false;
+    };
+    postscategoryForm.setPostscategoryPath = function (path) {
+        collection = $(this.formId).getInputs('hidden', 'postscategory[path]');
+        if (collection.size() > 0) {
+            return collection.first().value = path;
+        }
+    };
+    function postscategorySubmit(url, useAjax) {
+        var activeTab = $('active_tab_id');
+        if (activeTab) {
+            if (activeTab.tabsJsObject && activeTab.tabsJsObject.activeTab) {
+                activeTab.value = activeTab.tabsJsObject.activeTab.id;
+            }
+        }
+        var params = {};
+        var fields = $('postscategory_edit_form').getElementsBySelector('input', 'select');
+        for(var i=0;i<fields.length;i++) {
+            if (!fields[i].name) {
+                continue;
+            }
+            params[fields[i].name] = fields[i].getValue();
+        }
+        var postscategoryId = params['postscategory[id]'] ? params['postscategory[id]'] : 0;
+        var isCreating = postscategoryId == 0;
+        var path = params['postscategory[path]'].split('/');
+        var parentId = path.pop();
+        if (parentId == postscategoryId) {
+            parentId = path.pop();
+        }
+        if (isCreating) {
+            if (!tree.currentNodeId) {
+                tree.currentNodeId = parentId;
+            }
+            tree.addNodeTo = parentId;
+        } else {
+            var currentNode = tree.getNodeById(postscategoryId);
+            var oldClass = 'active-category';
+            var newClass = 'active-category';
+            if (currentNode) {
+                if (parseInt(params['postscategory[status]'])) {
+                    var oldClass = 'no-active-category';
+                    var newClass = 'active-category';
+                } else {
+                    var oldClass = 'active-category';
+                    var newClass = 'no-active-category';
+                }
+                Element.removeClassName(currentNode.ui.wrap.firstChild, oldClass);
+                Element.addClassName(currentNode.ui.wrap.firstChild, newClass);
+            }
+        }
+        postscategoryForm.submit();
+    }
+    <?php if ($this->isAjax() && ($block = $this->getLayout()->getBlock('tabs')) && ($_tabsJsObject=$block->getJsObjectName())): ?>
+        <?php echo $_tabsJsObject ?>.moveTabContentInDest();
+        if (<?php echo $_tabsJsObject ?>.activeTab) {
+            $('active_tab_id').value = <?php echo $_tabsJsObject ?>.activeTab.id;
+        }
+        $('active_tab_id').tabsJsObject = <?php echo $_tabsJsObject ?>;
+    <?php endif; ?>
+//]]>
+</script>

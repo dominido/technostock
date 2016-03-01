@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander CmsPages extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        CmsPages
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         AlexVegas (Alexandr Belyaev) <alexandr.belyaev.only@gmail.com>
+ */
+-->
+<config>
+    <modules>
+        <Brander_CmsPages>
+            <version>0.1.4</version>
+        </Brander_CmsPages>
+    </modules>
+    <global>
+        <blocks>
+            <brander_cmspages>
+                <class>Brander_CmsPages_Block</class>
+            </brander_cmspages>
+        </blocks>
+        <helpers>
+            <brander_cmspages>
+                <class>Brander_CmsPages_Helper</class>
+            </brander_cmspages>
+        </helpers>
+        <models>
+            <brander_cmspages>
+                <class>Brander_CmsPages_Model</class>
+            </brander_cmspages>
+        </models>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <brander_cmspages>
+                    <file>brander_cmspages.xml</file>
+                </brander_cmspages>
+            </updates>
+        </layout>
+        <routers>
+            <cms>
+                <args>
+                    <modules>
+                        <Brander_CmsPages before="Mage_Cms">Brander_CmsPages_Cms</Brander_CmsPages>
+                    </modules>
+                </args>
+            </cms>
+        </routers>
+    </frontend>
+
+
+    <cmsadvanced>
+        <pagetypes>
+            <textpagetype translate="name" module="brander_cmspages">
+                <name>Text Page</name>
+                <block>brander_cmspages/page</block>
+                <template>brander/page/cmstextpage.phtml</template>
+                <groups>
+                    <meta>
+                        <attributes>
+                            <meta_robots>
+                                <label>Robots</label>
+                                <type>varchar</type>
+                                <template>dropdown</template>
+                                <source>brander_cmspages/config_source_robots</source>
+                            </meta_robots>
+                        </attributes>
+                    </meta>
+                </groups>
+            </textpagetype>
+            <page404 translate="name" module="brander_cmspages">
+                <name>Page 404</name>
+                <block>brander_cmspages/page</block>
+                <template>brander/page/page404.phtml</template>
+            </page404>
+        </pagetypes>
+    </cmsadvanced>
+</config>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <PAGE_TYPE_DEFAULT>
+        <reference name="content">
+            <block type="cmsadvanced/page" name="cmsadvanced.page" />
+        </reference>
+    </PAGE_TYPE_DEFAULT>
+</layout>

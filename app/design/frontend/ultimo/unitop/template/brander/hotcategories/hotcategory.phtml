@@ -1,0 +1,33 @@
+<?php
+$collection = $this->getCollection();
+$_helper = Mage::helper('brander_hotcategories/hotcategory_image');
+$availableWidth = 12;
+?>
+<?php if ($collection): ?>
+    <div class="std homepage-hotcategories clearer">
+        <div class="homepage-hotcategories-container">
+            <div class="grid-container">
+                <?php foreach ($collection as $_category): ?>
+                    <?php
+                        $imageFile = $_helper->getImageBaseUrl().$_category->getImage();
+                        $gridWidth = $_category->getGridParts();
+                    ?>
+                    <?php if ($availableWidth-$gridWidth >= 0 && $this->checkFile($_category->getImage())): ?>
+                        <?php $availableWidth = $availableWidth - $gridWidth; ?>
+                        <div class="grid12-<?php echo $gridWidth; ?> banner hotcategory">
+                            <a href="<?php echo $this->getElementUrl($_category) ?>">
+                                <?php if ($this->getShowTitle()): ?>
+                                    <span class="hotcategories-title"><?php echo $_category->getTitle() ?></span>
+                                <?php endif; ?>
+                                <img src="<?php echo $imageFile ?>" alt="<?php echo $_category->getTitle() ?>" style="opacity: 1;"/>
+                                <?php if($description = $_category->getDescription()): ?>
+                                    <span class="hotcategories-description"></span>
+                                <?php endif; ?>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
