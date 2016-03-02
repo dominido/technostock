@@ -2,11 +2,11 @@
 <layout version="0.1.0">
 	<PAGE_TYPE_UNIPAGETYPE>
 		<reference name="content">
-			<block type="brander_hotcategories/hotCategories" name="homepage.hotcategories">
-				<action method="setTemplate" modules="brander_homepage/homepage_settings/" options="enable_hotcat" conditions="1">
-					<template>brander/hotcategories/hotcategory.phtml</template>
-				</action>
-			</block>
+			<!--<block type="brander_hotcategories/hotCategories" name="homepage.hotcategories">-->
+				<!--<action method="setTemplate" modules="brander_homepage/homepage_settings/" options="enable_hotcat" conditions="1">-->
+					<!--<template>brander/hotcategories/hotcategory.phtml</template>-->
+				<!--</action>-->
+			<!--</block>-->
 		</reference>
 	</PAGE_TYPE_UNIPAGETYPE>
 </layout>
