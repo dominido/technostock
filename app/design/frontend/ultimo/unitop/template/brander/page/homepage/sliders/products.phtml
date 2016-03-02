@@ -7,12 +7,14 @@
  */
 ?>
 <?php $html_block = array(); ?>
+<?php echo $this->getChildHtml('product_sliders.grid_new'); ?>
+
 <?php $configuration = $this->getSliderConfiguration('new'); ?>
 <?php if ($configuration): ?>
-    <?php $block_data = $this->getChild('product_sliders.list_new')->setData($configuration->getData())->toHtml(); ?>
+    <?php $block_data = $this->getChild('product_sliders.grid_new')->setData($configuration->getData())->toHtml(); ?>
     <?php if (trim($block_data)):?>
         <div class="container homepage-productslider full-width-slider clearer">
-            <?php echo $block_data ?>
+            <?php //echo $block_data ?>
         </div>
     <?php endif;?>
 <?php endif; ?>

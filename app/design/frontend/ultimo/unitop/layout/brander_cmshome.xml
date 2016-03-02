@@ -11,11 +11,16 @@
 			</action>
 		</reference>
 		<reference name="cmsadvanced.page">
-			<block type="brander_cmshome/productSliders" name="homepage.product_sliders" template="brander/page/homepage/sliders/products.phtml">
-				<block type="catalog/product_new" name="product_sliders.list_new" template="catalog/product/new.phtml"/>
-				<block type="brander_cmshome/product_list_specialOffers" name="product_sliders.list_special" template="catalog/product/list_featured_slider.phtml"/>
-				<block type="brander_cmshome/product_list_hitsOfSales" name="product_sliders.list_hits" template="catalog/product/list_featured_slider.phtml"/>
-				<block type="brander_cmshome/homepageBanners" name="home.homepage.banners" template="brander/page/homepage/banners/banners.phtml"/>
+			<block type="brander_cmshome/productSliders" name="homepage.product_sliders"
+				   template="brander/page/homepage/sliders/products.phtml">
+				<block type="brander_shop/catalog_product_new" name="product_sliders.grid_new"
+					   template="brander/page/homepage/sliders/gridnew.phtml"/>
+				<block type="brander_cmshome/product_list_specialOffers" name="product_sliders.list_special"
+					   template="catalog/product/list_featured_slider.phtml"/>
+				<block type="brander_cmshome/product_list_hitsOfSales" name="product_sliders.list_hits"
+					   template="catalog/product/list_featured_slider.phtml"/>
+				<block type="brander_cmshome/homepageBanners" name="home.homepage.banners"
+					   template="brander/page/homepage/banners/banners.phtml"/>
 			</block>
 			<block type="brander_cmshome/benefits" name="home.homepage.benefits">
 				<action method="setTemplate" modules="brander_benefits/benefits_config/" options="enable, enable_homepage" conditions="1, 1">
