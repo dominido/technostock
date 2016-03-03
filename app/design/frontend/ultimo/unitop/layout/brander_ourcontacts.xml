@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
 	<default>
-		<reference name="footer_blocks.contacts">
-			<block type="brander_ourcontacts/footerContacts" name="footer_blocks.contacts.phones" template="brander/page/footer/blocks/ourcontacts.phtml"/>
+		<reference name="footer_blocks.about">
+			<block type="brander_ourcontacts/footerContacts" name="footer_blocks.contacts.phones"
+				   template="brander/page/footer/blocks/ourcontacts.phtml"/>
 		</reference>
 		<reference name="header">
-			<block type="brander_ourcontacts/headerContacts" name="header_blocks.contacts" as="header_blocks.contacts" template="brander/page/header/contacts.phtml"/>
+			<block type="brander_ourcontacts/headerContacts" name="header_blocks.contacts" as="header_blocks.contacts"
+				   template="brander/page/header/contacts.phtml"/>
 		</reference>
 	</default>
 </layout>

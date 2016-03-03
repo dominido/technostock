@@ -17,12 +17,25 @@
                     <p><?php echo $address ?></p>
                 </div>
             <?php endif; ?>
+
+            <?php if ($contacts = trim($this->getChildHtml('footer_blocks.contacts.phones'))): ?>
+                <?php if (Mage::helper('brander_cmsmenu')->isShowFooterTitle()): ?>
+                    <h6 class="block-title heading"><?php echo $this->__('Our Contacts:'); ?></h6>
+                <?php endif; ?>
+                <div class="block-content">
+                    <?php echo $contacts; ?>
+                    <br/>
+                </div>
+            <?php endif; ?>
+
             <?php if ($hours = Mage::helper('brander_cmshome')->getSiteCfg('general/store_information/hours')): ?>
                 <h6 class="block-title heading"><?php echo $this->__('Hours of Operations:') ?></h6>
                 <div class="feature first last">
                     <p><?php echo $hours ?></p>
                 </div>
             <?php endif; ?>
+
+            <?php echo $this->getChildHtml('footer.callbacks'); ?>
         </div>
     </div>
 </div>

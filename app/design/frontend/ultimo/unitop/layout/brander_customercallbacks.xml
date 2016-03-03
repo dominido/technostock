@@ -17,7 +17,7 @@
             </action>
         </reference>
         <reference name="footer">
-            <reference name="footer_blocks.contacts">
+            <reference name="footer_blocks.about">
 					<block type="core/text_list" name="footer.callbacks" as="footer.callbacks">
 						<block type="core/template" name="callback_link" template="brander/customercallbacks/callback_link.phtml"/>
 						<block type="core/template" name="callback_form" template="brander/customercallbacks/callback_form.phtml"/>
