@@ -2,7 +2,7 @@
 "My Wishlist","Избранное"
 "My Wishlist (%d item)","Избранные (%d)"
 "My Wishlist (%d items)","Избранные (%d)"
-"My Account","Мой кабинет"
+"My Account","Мой профиль"
 "Cart","Корзина"
 "View Cart","Показать корзину"
 "View all items in your shopping cart","Показать все товары в корзине"
@@ -99,5 +99,4 @@
 "Please select region, state or province", "Пожалуйста, выберите район/область"
 "Previous", "Предыдущая"
 "Next", "Следующая"
-
-"New products", "Новинки"
+"New products", "Новые поступления"
