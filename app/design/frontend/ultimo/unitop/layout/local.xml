@@ -582,11 +582,11 @@
 					<!--ifconfig="ultimo/product_page/collateral_tags"><alias>tags</alias><title>Product Tags</title><block>tag/product_list</block><template>tag/list.phtml</template></action>-->
 
 				<!-- Custom blocks -->
-<!--
-				<action method="addTab" translate="title" module="catalog"><alias>product_cms_block1</alias><title helper="ultimo/template_catalog_product_view/getCmsBlockTitle"><id>block_product_tab1</id></title><block>core/template</block><template>catalog/product/view/cms_block1.phtml</template></action>
 
-				<action method="addTab" translate="title" module="catalog"><alias>product_cms_block2</alias><title helper="ultimo/template_catalog_product_view/getCmsBlockTitle"><id>block_product_tab2</id></title><block>core/template</block><template>catalog/product/view/cms_block2.phtml</template></action>
--->
+				<action method="addTab" translate="title" module="catalog"><alias>warranty</alias><title helper="ultimo/template_catalog_product_view/getCmsBlockTitle">Warranty</title><block>core/template</block><template>catalog/product/view/cms_block1.phtml</template></action>
+
+				<action method="addTab" translate="title" module="catalog"><alias>check availability</alias><title helper="ultimo/template_catalog_product_view/getCmsBlockTitle">Check availability</title><block>core/template</block><template>catalog/product/view/avaliability.phtml</template></action>
+
 
 				<!-- Related products -->
 				<action method="addTab" translate="title" module="catalog"

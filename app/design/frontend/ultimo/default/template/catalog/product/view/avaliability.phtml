@@ -1,0 +1,11 @@
+<?php echo $this->__('Located at') ?>
+<div>
+	<?php
+	$product = Mage::registry('current_product');
+	if ($product) //sometimes need check for instanse, use instanseof
+	{
+		// attribute with name of shop will be brented here
+	echo 	$product->getSku();
+	}
+	?>
+</div>
