@@ -578,8 +578,8 @@
 					ifconfig="ultimo/product_page/collateral_reviews"><alias>tabreviews</alias><title>Reviews</title><block>review/product_view_list</block><template>review/product/view/list.phtml</template></action>
 				
 				<!-- Tags -->
-				<action method="addTab" translate="title" module="tag"
-					ifconfig="ultimo/product_page/collateral_tags"><alias>tags</alias><title>Product Tags</title><block>tag/product_list</block><template>tag/list.phtml</template></action>
+				<!--<action method="addTab" translate="title" module="tag"-->
+					<!--ifconfig="ultimo/product_page/collateral_tags"><alias>tags</alias><title>Product Tags</title><block>tag/product_list</block><template>tag/list.phtml</template></action>-->
 
 				<!-- Custom blocks -->
 <!--
