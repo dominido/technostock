@@ -261,8 +261,6 @@
 					<?php if ($tmpHtml = $this->getChildHtml('block_header_top_right')): ?>
 						<div class="item item-right block_header_top_right"><?php echo $tmpHtml; ?></div>
 					<?php endif; ?>
-					<div id="currency-switcher-wrapper-regular" class="item item-right"><?php echo $currencySwitcher; ?></div>
-					<div id="lang-switcher-wrapper-regular" class="item item-right"><?php echo $languageSwitcher; ?></div>
 
 					<?php if ($tmpHtml = $this->getChildHtml('topmenu.right.block.menu')): ?>
 						<div class="item item-right block_header_top_right"><?php echo $tmpHtml; ?></div>
@@ -398,7 +396,7 @@
 						<?php endif; ?>
 					</div> <!-- end: right column -->
 				<?php endif; ?>
-
+				<div id="lang-switcher-wrapper-regular" class="item item-right"><?php echo $languageSwitcher; ?></div>
 			</div> <!-- end: hp-blocks-holder -->
 		</div> <!-- end: header-primary -->
 	</div> <!-- end: header-primary-container -->
