@@ -10,6 +10,7 @@ $_products = $this->getRecentlyViewedProducts();
 $theme = $this->helper('ultimo');
 $helper = Mage::helper('brander_shop');
 $helpImg = $this->helper('infortis/image');
+$helpLabels = $this->helper('brander_shop/labels');
 $sliderClasses = '';
 $gridClasses = '';
 
@@ -101,13 +102,22 @@ if ($theme->getCfg('category_grid/centered'))
                                 <?php else: ?>
                                     <img src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->escapeHtml($_product->getName()) ?>" />
                                 <?php endif; ?>
-
+                                <?php echo $helpLabels->getLabels($_product); //Product labels ?>
                             </a>
                             <div class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>"><?php echo $this->escapeHtml($_product->getName()) ?></a></div>
                             <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                             <div class="price-holder">
                                 <?php echo $this->getPriceHtml($_product, true, '-viewed') ?>
                             </div>
+
+                            <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                            <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                                <a title="<?php echo $this->__('View Details') ?>" class="button btn-cart" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                            <?php else: ?>
+                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                            <?php endif; ?>
+
                         </div>
                     </div>
                 <?php endforeach; ?>
