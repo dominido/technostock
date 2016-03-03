@@ -93,10 +93,7 @@
                     <?php endif; ?>
                     
                     <?php echo $this->getPriceHtml($_item, true, '-related') ?>
-                    
-                    <?php if ($this->helper('wishlist')->isAllow()): ?>
-                        <a class="related-add-to-wishlist" href="<?php echo $this->getAddToWishlistUrl($_item); ?>" title="<?php echo $this->__('Add to Wishlist') ?>"><?php echo $this->__('Add to Wishlist'); ?></a>
-                    <?php endif; ?>
+
                 </div> <!-- end: product-details -->
             </li>
 
