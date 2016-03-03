@@ -216,4 +216,16 @@ if($_collectionSize = $_productCollection->getSize()): ?>
         <?php endif; ?>
 
     </div> <!-- end: block -->
+    <?php
+    // new products category url
+    $category = Mage::getModel('catalog/category')
+        ->getCollection()
+        ->addAttributeToFilter('url_key', 'new')
+        ->getFirstItem();
+
+    $catUrl_key = $category->getUrl_key();
+    // if new category exist  create link after slider elements
+    if (!empty($catUrl_key)) : ?>
+        <a href="<?php echo $category->getUrl()?>"><?php echo $this->__('All news'); ?></a>
+    <?php endif;?>
 <?php endif; ?>
