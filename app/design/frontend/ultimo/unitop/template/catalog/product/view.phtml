@@ -173,6 +173,15 @@
 			<?php if (isset($p['primCol_1'])) echo $p['primCol_1']; ?>
 			<?php echo $this->getChildHtml('alert_urls'); //alerts ?>
 
+			<?php if ($shortDescription): ?>
+				<div class="short-description">
+					<div class="std" itemprop="description">
+						<?php echo $shortDescription; ?>
+					</div>
+				</div>
+			<?php endif;?>
+
+
 			<div <?php if ($useRichSnippets) echo $helperSnippets->getOfferItemscope(); ?>>
 				<div class="product-type-data<?php echo $productTypeClasses; ?>">
 					<?php echo $this->getChildHtml('product_type_data'); ?>
@@ -180,6 +189,7 @@
 				<?php echo $this->getTierPriceHtml(); ?>
 				<?php echo $priceProperties; ?>
 			</div> <?php //end: offers ?>
+
 
 			<?php if (!$this->hasOptions()): //add to cart when no options (e.g. simple products) ?>
 				<?php if($_product->isSaleable()): ?>
@@ -214,13 +224,7 @@
 			*/ ?>
 
 
-			<?php if ($shortDescription): ?>
-				<div class="short-description">
-					<div class="std" itemprop="description">
-						<?php echo $shortDescription; ?>
-					</div>
-				</div>
-			<?php endif;?>
+
 			<?php if ($socialShareHtml): //compare, wishlist, send to friend, share social ?>
 				<div class="action-box clearer">
 					<div class="fl">
