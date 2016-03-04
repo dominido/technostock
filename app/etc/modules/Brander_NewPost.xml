@@ -2,12 +2,12 @@
 <config>
     <modules>
         <Brander_NewPost>
-            <active>false</active>
+            <active>true</active>
             <codePool>local</codePool>
             <depends>
-	            <Mage_Shipping/>
-	            <Brander_Core />
-	            <Brander_Opcheckout />
+                <Mage_Shipping/>
+                <Brander_Core/>
+                <Brander_Opcheckout/>
             </depends>
         </Brander_NewPost>
     </modules>
