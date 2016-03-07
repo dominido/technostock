@@ -74,7 +74,7 @@ class Brander_NewPost_Model_Warehouse extends Mage_Core_Model_Abstract
 		$collection
 			->addFieldToFilter('a.locale_id', Mage::getModel('brander_newpost/locale')->getLocaleIdByStore())
 			->addFieldToFilter('c.locale_id', Mage::getModel('brander_newpost/locale')->getLocaleIdByStore())
-            ->addFieldToFilter('LOWER(c.name)', mb_strtolower($city, 'UTF-8'));
+            ->addFieldToFilter('c.name', mb_strtolower($city, 'UTF-8'));
 
 		$options = array();
 		foreach ($collection as $wh)

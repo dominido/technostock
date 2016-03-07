@@ -34,7 +34,7 @@ class Brander_NewPost_Model_Carrier
 		$shipping = $checkout->getShippingAddress();
 
 		if(!Mage::getModel('brander_newpost/city')->getCollection()
-            ->addFieldToFilter('LOWER(name)', mb_strtolower($shipping->getCity(), 'UTF-8'))
+            ->addFieldToFilter('name', mb_strtolower($shipping->getCity(), 'UTF-8'))
 			->addFieldToFilter('locale_id', Mage::getModel('brander_newpost/locale')->getLocaleIdByStore())
 			->getSize()) {
 			$error = Mage::getModel('shipping/rate_result_error');
