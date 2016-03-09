@@ -1609,7 +1609,6 @@ ul.disc ul li {
 */
 .header .logo-wrapper .logo {
 	display: inline-block;
-	margin: 10px 0;
 }
 
 .header-regular .logo-wrapper .logo img {
@@ -1645,13 +1644,10 @@ ul.disc ul li {
 }
 
 .form-search .input-text {
-	float: right;
-	width: 100%;
 	display: block;
-	height: 36px;
-	line-height: 36px; /*IE8*/
+	height: 30px;
+	line-height: 30px;
 	padding: 0 35px 0 7px;
-	color: #bbb;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
@@ -1661,13 +1657,13 @@ ul.disc ul li {
 	position: absolute;
 	right: 0;
 	top: 0;
-	margin: 1px;
+	margin: 0;
 	padding: 0;
 	background-color: transparent !important;
 	color: #000;
-	width: 34px;
-	height: 34px;
-	line-height: 34px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
 	text-align: center;
 }
 

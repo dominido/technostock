@@ -1,48 +1,40 @@
-#header-nav {
-  .nav {
-	.inner-container {
-	  padding: 0;
-	}
-  }
-}
-
-.homepage-hotcategories-container {
+.homepage-hotcategories {
   margin-bottom: 50px;
+  padding-top: 67px;
+  padding-bottom: 67px;
+
+  .banner {
+	margin: 0 1px;
+  }
+
+  .inner-container {
+	width: auto;
+  }
+
+  .owl-pagination {
+	position: relative;
+	top: 30px;
+  }
 
   .hotcategory {
 	> a {
 	  position: relative;
 	  display: block;
-	  color: $white;
-	  text-shadow: 1px 1px 1px #000;
+	  @include trs(opacity .3s ease);
+
+	  &:hover {
+		opacity: .75;
+	  }
 
 	  .hotcategories-title {
 		position: absolute;
-		bottom: 34px;
-		left: 13%;
-		font-size: 1.14em;
+		top: 25px;
+		left: 6%;
+		right: 6%;
+		font-size: 1.3125rem;
+		line-height: 1.4;
+		letter-spacing: .5px;
 		text-transform: uppercase;
-		font-weight: bold;
-		padding-top: 18px;
-
-		&:after {
-		  position: absolute;
-		  content: '';
-		  width: 29px;
-		  height: 4px;
-		  //background: $link-hover;
-		  top: 0;
-		  left: 0;
-		  @include trs(width .3s ease);
-		}
-	  }
-
-	  &:hover {
-		.hotcategories-title {
-		  &:after {
-			width: 100%;
-		  }
-		}
 	  }
 	}
 
@@ -50,4 +42,38 @@
 	  width: 100%;
 	}
   }
+
+  .owl-controls .owl-buttons {
+	top: -50px;
+	right: 0;
+  }
+}
+
+.not-full-width {
+  .homepage-unitopblog,
+  .homepage-productslider,
+  .homepage-banners-container {
+	&.container {
+	  max-width: 100%;
+	  width: 100%;
+	}
+  }
+}
+
+.homepage-unitopblog {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-size: cover;
+
+  a {
+	@include trs(opacity .3s ease);
+
+	&:hover {
+	  opacity: .75;
+	}
+  }
+}
+
+.preface {
+  margin-bottom: 40px;
 }

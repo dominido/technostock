@@ -4,7 +4,6 @@
 .btn-cart,
 .btn-checkout {
   text-transform: uppercase;
-  letter-spacing: .5px;
   line-height: 1.2;
 }
 
@@ -16,7 +15,6 @@
 
 	.regular-price {
 	  display: block;
-	  padding-top: 23px;
 	}
   }
 }
@@ -34,16 +32,16 @@
 
 	.bullet li {
 	  background: none;
-	  font-size: 1.28em;
+	  font-size: 1.28rem;
 	}
 
 	.post-name {
-	  font-size: 1.71em;
+	  font-size: 1.71rem;
 	}
 
 	.desc {
 	  color: #838383;
-	  font-size: 1.28em;
+	  font-size: 1.28rem;
 	}
   }
 
@@ -52,37 +50,16 @@
 	text-align: right;
 
 	> span {
-	  //color: $link;
-	  font-size: 1.28em;
+	  font-size: 1.28rem;
 	  font-style: italic;
-
-	  //&:hover {
-		//color: $link-hover;
-	  //}
 	}
   }
 }
 
 //Header
 .header {
-  .logo-wrapper {
-	.logo {
-	  display: block;
-	  max-width: 125px;
-	}
-  }
 
   .hp-block {
-	@include bp(max-width, 1024px) {
-	  &.left-column {
-		width: 14.66%;
-	  }
-
-	  &.right-column {
-		width: 56.33%;
-	  }
-	}
-
 	@include bp(max-width, $bp-desktop) {
 	  &.right-column {
 		.item-left {
@@ -94,13 +71,6 @@
 		.dropdown-heading,
 		.dropdown-content li {
 		  font-size: 1em;
-		}
-
-		.caret {
-		  &:before {
-			font-size: 6px;
-			top: 2px;
-		  }
 		}
 	  }
 	}
@@ -117,7 +87,6 @@
 //Nav
 @media only screen and (max-width: 1279px) and (min-width: 1024px) {
   .nav-regular .nav-item.level0 > a {
-	font-size: 16px;
 	padding: 0 12px;
   }
 }
@@ -126,42 +95,17 @@
   position: relative;
 }
 
-#nav,
-#nav-left {
-  > .nav-item {
-	> .nav-panel--dropdown {
-	  //background: #fff;
-	  padding: 0;
+.nav-regular .nav-item.level0.active > a {
+  position: relative;
 
-	  > .nav-item {
-		padding: 0;
-
-		> a {
-		  display: block;
-		  font-size: 14px;
-		  line-height: 48px;
-		  font-weight: bold;
-		  padding: 0 12px 0 32px;
-		  text-transform: uppercase;
-
-		  @include bp(max-width, 1024px) {
-			padding-left: 15px;
-		  }
-		}
-
-		.nav-submenu {
-		  padding: 0;
-
-		  li {
-			padding: 0;
-
-			a {
-			  padding: 12px 20px;
-			}
-		  }
-		}
-	  }
-	}
+  &:after {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 3px;
+	bottom: 0;
+	left: 0;
+	background: $link-hover;
   }
 }
 
@@ -201,11 +145,14 @@
 
 #nav-left {
 
-  > li {
+  li {
+	background: $gray;
+
 	> a {
 	  font-size: 14px;
-	  font-weight: bold;
+	  font-weight: 500;
 	  padding-left: 32px;
+	  color: #35426d;
 
 	  @include bp(max-width, 1024px) {
 		padding-left: 15px;
@@ -218,6 +165,7 @@
 
 	&:hover {
 	  > a {
+		background-color: $link-hover;
 		color: #fff;
 	  }
 	}
@@ -230,7 +178,8 @@
 	  padding: 0;
 
 	  a {
-		padding: 12px 20px;
+		padding: 0 20px;
+		line-height: 50px;
 	  }
 	}
   }
@@ -240,24 +189,12 @@
 
 #goto-reviews-form {
   font-weight: bold;
-  //color: $link;
-
-  //&:hover {
-	//color: $link-hover;
-  //}
 }
 
 .product-view {
   > form {
 	background: #fff;
 	padding-top: 20px;
-  }
-
-  .btn-cart {
-	color: #fff;
-	min-width: 180px;
-	margin-right: 42px;
-	line-height: 40px;
   }
 
   .qty-wrapper {
@@ -302,7 +239,7 @@
 	  height: 60px;
 
 	  @include bp(max-width, $bp-desktop) {
-		width: 200px;
+		width: 195px;
 	  }
 
 	  &.ui-widget-content {
@@ -379,27 +316,6 @@
 	font-size: 2em;
   }
 
-  .img-box .more-images .thumbnails .item a {
-	border: 2px solid transparent;
-	margin: 0 2px;
-	@include trs(border-color .3s ease);
-
-	&:hover,
-	&.active {
-	  border-color: #6b61f4;
-	}
-
-	img {
-	  width: 100%;
-	}
-  }
-
-  .availability {
-	color: $dark;
-	text-transform: uppercase;
-	font-weight: bold;
-  }
-
   .add-to-box,
   .product-type-data > .price-box {
 	border: none;
@@ -409,19 +325,9 @@
 	padding: 0;
   }
 
-  .short-description {
-	border-top: 1px solid #e8e8e8;
-	padding: 35px 0;
-	font-size: 16px;
-  }
-
   .social-list {
 	li {
-	  margin-right: 20px;
-
-	  &:last-child {
-		margin-right: 0;
-	  }
+	  margin: 0 10px 10px;
 	}
   }
 
@@ -465,11 +371,11 @@
 .product-view .price-as-configured .price,
 .map-popup-price .regular-price .price,
 .product-view .price-box.map-info .old-price .price {
-  font-size: 2.85em;
+  font-size: 2rem;
 }
 
 .product-shop .price-box .old-price .price {
-  font-size: 1.85em;
+  font-size: 1.143em;
 }
 
 //end product page
@@ -483,33 +389,6 @@
 	display: block;
 	max-width: 124px;
   }
-}
-
-.footer {
-  #subscribe-form {
-	label[for="newsletter"] {
-	  font-weight: bold;
-	  line-height: 1.5;
-	  color: $dark;
-	  max-width: 180px;
-	}
-
-	.input-text {
-	  background: none;
-	  border-width: 0 0 1px;
-	  font-size: 1.29em;
-	  font-weight: normal;
-	}
-  }
-
-  .social-links {
-	min-width: 275px;
-  }
-}
-
-.block-footer-contacts {
-  font-size: 1.29em;
-  line-height: 1.5;
 }
 
 .footer {

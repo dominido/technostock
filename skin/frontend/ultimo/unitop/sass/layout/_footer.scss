@@ -1,7 +1,9 @@
 .footer-container {
   .block-footer-contacts {
 	margin-bottom: 10px;
-	clear: both;
+	font-size: 14px;
+	color: #e5e1e1;
+	line-height: 2;
 
 	.content {
 	  overflow: hidden;
@@ -22,7 +24,40 @@
 	}
   }
 
+  .footer-logo {
+	display: block;
+	margin-bottom: 50px;
+  }
+
   @include bp(max-width, $bp-tiny) {
+	text-align: center;
+
+	.collapsible {
+	  margin: 0 -30px;
+
+	  >* {
+		@include trs(background-color .3s ease-out);
+	  }
+	}
+
+	.block-title {
+	  padding: 40px 0 30px;
+	  margin: 0;
+
+	  >span {
+		margin-right: 5px;
+	  }
+
+	  &.active {
+		background: $darkest;
+
+		& + .block-content {
+		  background: $darkest;
+		  padding-bottom: 30px;
+		}
+	  }
+	}
+
 	.block-footer-contacts {
 	  .operator-icon {
 		float: none;
@@ -34,7 +69,125 @@
 	}
 
 	.footer-logo {
-	  margin: 0 auto;
+	  margin: 0 auto 40px;
+	}
+
+	.block-footer-contacts {
+	  font-size: 16px;
+	}
+
+	.callback-footer {
+	  display: inline-block;
+	  vertical-align: top;
+	  margin-bottom: 50px;
+	}
+
+	.level-top {
+	  font-size: 16px;
+	  line-height: 2;
+	}
+  }
+
+  //.footer-catalog {
+	//padding-left: 50px;
+	//box-sizing: border-box;
+  //
+	//@include bp(max-width, $bp-tiny) {
+	//  padding-left: 0;
+  //
+	//  .collapsible {
+	//	margin: 0 -30px;
+	//	background: $darkest;
+	//  }
+	//}
+  //}
+
+
+
+  #subscribe-form {
+	padding-top: 20px;
+
+	label[for="newsletter"] {
+	  display: block;
+	  font-size: 16px;
+	  font-weight: bold;
+	  color: #fff;
+	  text-transform: uppercase;
+	  margin-right: 0;
+	}
+
+	.input-box {
+	  white-space: nowrap;
+	}
+
+	.input-text {
+	  width: 200px;
+	  height: 36px;
+	  background: none;
+	  border-width: 1px 0 1px 1px;
+	  border-color: $border-color;
+	  font-size: 1.29em;
+	  font-weight: normal;
+
+	  @include bp(max-width, 991px) {
+		width: 60%;
+	  }
+	}
+
+	.button {
+	  text-transform: none;
+	  font-size: 14px;
+	}
+
+	@include bp(max-width, $bp-tiny) {
+	  display: block;
+	  float: none;
+
+	  .input-box {
+		float: none;
+		white-space: normal;
+		margin-right: 0;
+	  }
+
+	  .input-text {
+		width: 100%;
+		height: 50px;
+		padding-left: 20px;
+		padding-right: 20px;
+		border-width: 1px;
+		margin-bottom: 30px;
+	  }
+
+	  .button {
+		height: 50px;
+		width: 100%;
+		font-size: 16px;
+	  }
+	}
+  }
+
+  .footer-social {
+	@include bp(max-width, $bp-tiny) {
+	  .block-title {
+		padding-bottom: 0;
+	  }
+	}
+  }
+
+  .social-links {
+	min-width: 275px;
+
+	@include bp(max-width, $bp-tiny) {
+	  margin-bottom: 30px;
+	}
+  }
+}
+
+.footer-bottom {
+  @include bp(max-width, $bp-tiny) {
+	.item {
+	  float: none;
+	  width: 100%;
 	}
   }
 }

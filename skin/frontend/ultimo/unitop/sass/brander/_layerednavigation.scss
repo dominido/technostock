@@ -1,6 +1,20 @@
 .block-layered-nav {
   .multiselect-child {
-	display: inline-block;
+	display: block;
+  }
+
+  .currently {
+	&+.actions {
+	  a {
+		font-size: 1rem;
+		color: $link-hover;
+		font-weight: bold;
+
+		&:hover {
+		  color: $dark;
+		}
+	  }
+	}
   }
 
   .btn-remove-inline {
@@ -10,10 +24,6 @@
 
   dl dd ol > li > a {
 	padding: 6px 0;
-
-	&:before {
-	  display: none;
-	}
   }
 
   #narrow-by-list {
@@ -30,7 +40,6 @@
 	padding-left: 35px;
 	position: relative;
 	background: transparent url("../images/brander/layerednavigation/layerednavigation-cb2.png") no-repeat left center;
-
 
 	&:hover,
 	&[class$='-selected'] {

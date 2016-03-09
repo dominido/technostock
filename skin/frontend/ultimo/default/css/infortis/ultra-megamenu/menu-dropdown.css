@@ -35,7 +35,7 @@
 
 /* Top-level item on hover: pull up the link above the dropdown */
 .nav-regular li.level0:hover > a {
-	z-index: 801;
+	/*z-index: 801;*/
 	/* One level above the dropdown */
 	position: relative;
 }

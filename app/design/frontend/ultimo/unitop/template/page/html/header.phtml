@@ -275,129 +275,130 @@
 
 	<div class="header-primary-container">
 		<div class="header-primary header container">
+			<div class="inner-container">
+				<?php echo $this->getChildHtml('topContainer'); ?>
 
-			<?php echo $this->getChildHtml('topContainer'); ?>
+				<?php
+					//Important: do not add any additional blocks directly inside the "hp-blocks-holder" div.
+					//Additional blocks, if needed, can be added inside columns (left, central, righ).
+				?>
+				<div class="hp-blocks-holder<?php if($hpClasses) echo $hpClasses; ?> skip-links--<?php echo $skipLinksCount; ?>">
 
-			<?php
-				//Important: do not add any additional blocks directly inside the "hp-blocks-holder" div.
-				//Additional blocks, if needed, can be added inside columns (left, central, righ).
-			?>
-			<div class="hp-blocks-holder<?php if($hpClasses) echo $hpClasses; ?> skip-links--<?php echo $skipLinksCount; ?>">
+					<?php if ($hasHeaderCollateral && $mobileHeaderMode && $moveSwitchers): ?>
+						<!-- Mobile header collaterals -->
+						<div id="header-collateral" class="header-collateral">
+							<?php echo $languageSwitcher; ?>
+							<?php echo $currencySwitcher; ?>
+						</div>
+					<?php endif; ?>
 
-				<?php if ($hasHeaderCollateral && $mobileHeaderMode && $moveSwitchers): ?>
-					<!-- Mobile header collaterals -->
-					<div id="header-collateral" class="header-collateral">
-						<?php echo $languageSwitcher; ?>
-						<?php echo $currencySwitcher; ?>
+					<!-- Mobile logo -->
+					<div class="logo-wrapper--mobile">
+						<?php $logoObj = $_helper->getLogoObj('header'); ?>
+						<a class="logo logo--mobile" href="<?php echo $this->getUrl('') ?>">
+							<img src="<?php echo (($small = $logoObj->getLogoSrcSmall()) ? $small : $logoObj->getLogoSrc()); ?>" alt="<?php echo $logoObj->getLogoAlt() ?>" />
+						</a>
 					</div>
-				<?php endif; ?>
+					<div class="clearer after-mobile-logo"></div>
 
-				<!-- Mobile logo -->
-				<div class="logo-wrapper--mobile">
-					<?php $logoObj = $_helper->getLogoObj('header'); ?>
-					<a class="logo logo--mobile" href="<?php echo $this->getUrl('') ?>">
-						<img src="<?php echo (($small = $logoObj->getLogoSrcSmall()) ? $small : $logoObj->getLogoSrc()); ?>" alt="<?php echo $logoObj->getLogoAlt() ?>" />
-					</a>
-				</div>
-				<div class="clearer after-mobile-logo"></div>
+					<!-- Skip links -->
 
-				<!-- Skip links -->
+					<?php if (!empty($menuContainerHtml)): ?>
+						<a href="#header-nav" class="skip-link skip-nav">
+							<span class="icon ic ic-menu"></span>
+							<span class="label"><?php echo $this->__('Menu'); ?></span>
+						</a>
+					<?php endif; ?>
 
-				<?php if (!empty($menuContainerHtml)): ?>
-					<a href="#header-nav" class="skip-link skip-nav">
-						<span class="icon ic ic-menu"></span>
-						<span class="label"><?php echo $this->__('Menu'); ?></span>
-					</a>
-				<?php endif; ?>
+					<?php if (!empty($searchHtml) || $existsInChildBlock['search']): ?>
+						<a href="#header-search" class="skip-link skip-search">
+							<span class="icon ic ic-search"></span>
+							<span class="label"><?php echo $this->__('Search'); ?></span>
+						</a>
+					<?php endif; ?>
 
-				<?php if (!empty($searchHtml) || $existsInChildBlock['search']): ?>
-					<a href="#header-search" class="skip-link skip-search">
-						<span class="icon ic ic-search"></span>
-						<span class="label"><?php echo $this->__('Search'); ?></span>
-					</a>
-				<?php endif; ?>
+					<?php if (!empty($accountHtml) || $existsInChildBlock['account-links']): ?>
+						<a href="#header-account" class="skip-link skip-account">
+							<span class="icon ic ic-user"></span>
+							<span class="label"><?php echo $this->__('My Account'); ?></span>
+						</a>
+					<?php endif; ?>
 
-				<?php if (!empty($accountHtml) || $existsInChildBlock['account-links']): ?>
-					<a href="#header-account" class="skip-link skip-account">
-						<span class="icon ic ic-user"></span>
-						<span class="label"><?php echo $this->__('My Account'); ?></span>
-					</a>
-				<?php endif; ?>
+					<?php if (!empty($compareHtml) || $existsInChildBlock['compare']): ?>
+						<a href="#header-compare" class="skip-link skip-compare">
+							<span class="icon ic ic-compare"></span>
+							<?php if (($compareCount = Mage::registry('miniCompareProductCount')) > 0): ?>
+								<span class="count"><?php echo $compareCount; ?></span>
+							<?php endif; ?>
+							<span class="label"><?php echo $this->__('Compare'); ?></span>
+						</a>
+					<?php endif; ?>
 
-				<?php if (!empty($compareHtml) || $existsInChildBlock['compare']): ?>
-					<a href="#header-compare" class="skip-link skip-compare">
-						<span class="icon ic ic-compare"></span>
-						<?php if (($compareCount = Mage::registry('miniCompareProductCount')) > 0): ?>
-							<span class="count"><?php echo $compareCount; ?></span>
-						<?php endif; ?>
-						<span class="label"><?php echo $this->__('Compare'); ?></span>
-					</a>
-				<?php endif; ?>
+						<!-- Mini cart wrapper for cart and its skip link on mobile devices -->
+						<div id="mini-cart-wrapper-mobile"></div>
 
-					<!-- Mini cart wrapper for cart and its skip link on mobile devices -->
-					<div id="mini-cart-wrapper-mobile"></div>
+						<div class="skip-links-clearer clearer"></div>
 
-					<div class="skip-links-clearer clearer"></div>
+					<!-- end: Skip links -->
 
-				<!-- end: Skip links -->
+					<!-- Additional containers for elements displayed on mobile devices -->
 
-				<!-- Additional containers for elements displayed on mobile devices -->
+					<?php if ($move['search']): //Search on mobile devices ?>
+						<div id="search-wrapper-mobile"></div>
+					<?php endif; ?>
 
-				<?php if ($move['search']): //Search on mobile devices ?>
-					<div id="search-wrapper-mobile"></div>
-				<?php endif; ?>
+					<?php if ($move['user-menu']): //User Menu on mobile devices ?>
+						<div id="user-menu-wrapper-mobile"></div>
+					<?php endif; ?>
 
-				<?php if ($move['user-menu']): //User Menu on mobile devices ?>
-					<div id="user-menu-wrapper-mobile"></div>
-				<?php endif; ?>
+					<?php if ($move['account']): //Mini compare on mobile devices ?>
+						<div id="mini-account-wrapper-mobile"></div>
+					<?php endif; ?>
 
-				<?php if ($move['account']): //Mini compare on mobile devices ?>
-					<div id="mini-account-wrapper-mobile"></div>
-				<?php endif; ?>
+					<?php if ($move['compare']): //Mini compare on mobile devices ?>
+						<div id="mini-compare-wrapper-mobile"></div>
+					<?php endif; ?>
 
-				<?php if ($move['compare']): //Mini compare on mobile devices ?>
-					<div id="mini-compare-wrapper-mobile"></div>
-				<?php endif; ?>
+					<!-- Primary columns -->
 
-				<!-- Primary columns -->
+					<?php if (isset($grid['primLeftCol'])): ?>
+						<!-- Left column -->
+						<div class="hp-block left-column <?php echo $grid['primLeftCol']; ?>">
+							<?php echo $this->getChildHtml('container_header_primary_left_1'); ?>
+							<?php if (isset($html['primLeftCol'])): ?>
+								<?php foreach ($html['primLeftCol'] as $element): ?>
+									<div class="item"><?php echo $element; ?></div>
+								<?php endforeach; ?>
+							<?php endif; ?>
+						</div> <!-- end: left column -->
+					<?php endif; ?>
 
-				<?php if (isset($grid['primLeftCol'])): ?>
-					<!-- Left column -->
-					<div class="hp-block left-column <?php echo $grid['primLeftCol']; ?>">
-						<?php echo $this->getChildHtml('container_header_primary_left_1'); ?>
-						<?php if (isset($html['primLeftCol'])): ?>
-							<?php foreach ($html['primLeftCol'] as $element): ?>
-								<div class="item"><?php echo $element; ?></div>
-							<?php endforeach; ?>
-						<?php endif; ?>
-					</div> <!-- end: left column -->
-				<?php endif; ?>
+					<?php if (isset($grid['primCentralCol'])): ?>
+						<!-- Central column -->
+						<div class="hp-block central-column <?php echo $grid['primCentralCol']; ?>">
+							<?php echo $this->getChildHtml('container_header_primary_central_1'); ?>
+							<?php if (isset($html['primCentralCol'])): ?>
+								<?php foreach ($html['primCentralCol'] as $element): ?>
+									<div class="item"><?php echo $element; ?></div>
+								<?php endforeach; ?>
+							<?php endif; ?>
+						</div> <!-- end: central column -->
+					<?php endif; ?>
 
-				<?php if (isset($grid['primCentralCol'])): ?>
-					<!-- Central column -->
-					<div class="hp-block central-column <?php echo $grid['primCentralCol']; ?>">
-						<?php echo $this->getChildHtml('container_header_primary_central_1'); ?>
-						<?php if (isset($html['primCentralCol'])): ?>
-							<?php foreach ($html['primCentralCol'] as $element): ?>
-								<div class="item"><?php echo $element; ?></div>
-							<?php endforeach; ?>
-						<?php endif; ?>
-					</div> <!-- end: central column -->
-				<?php endif; ?>
-
-				<?php if (isset($grid['primRightCol'])): ?>
-					<!-- Right column -->
-					<div class="hp-block right-column <?php echo $grid['primRightCol']; ?>">
-						<?php echo $this->getChildHtml('container_header_primary_right_1'); ?>
-						<?php if (isset($html['primRightCol'])): ?>
-							<?php foreach ($html['primRightCol'] as $element): ?>
-								<div class="item item-right"><?php echo $element; ?></div>
-							<?php endforeach; ?>
-						<?php endif; ?>
-					</div> <!-- end: right column -->
-				<?php endif; ?>
-				<div id="lang-switcher-wrapper-regular" class="item item-right"><?php echo $languageSwitcher; ?></div>
-			</div> <!-- end: hp-blocks-holder -->
+					<?php if (isset($grid['primRightCol'])): ?>
+						<!-- Right column -->
+						<div class="hp-block right-column <?php echo $grid['primRightCol']; ?>">
+							<?php if (isset($html['primRightCol'])): ?>
+								<?php foreach ($html['primRightCol'] as $element): ?>
+									<div class="item item-right"><?php echo $element; ?></div>
+								<?php endforeach; ?>
+							<?php endif; ?>
+							<div id="lang-switcher-wrapper-regular" class="item item-right"><?php echo $languageSwitcher; ?></div>
+							<?php echo $this->getChildHtml('container_header_primary_right_1'); ?>
+						</div> <!-- end: right column -->
+					<?php endif; ?>
+				</div> <!-- end: hp-blocks-holder -->
+			</div>
 		</div> <!-- end: header-primary -->
 	</div> <!-- end: header-primary-container -->
 

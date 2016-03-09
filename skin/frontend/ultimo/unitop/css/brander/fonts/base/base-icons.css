@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'BaseIcons';
-	src:    url('fonts/BaseIcons.eot?ilwz5b');
-	src:    url('fonts/BaseIcons.eot?ilwz5b#iefix') format('embedded-opentype'),
+	src: url('fonts/BaseIcons.eot?ilwz5b');
+	src: url('fonts/BaseIcons.eot?ilwz5b#iefix') format('embedded-opentype'),
 	url('fonts/BaseIcons.ttf?ilwz5b') format('truetype'),
 	url('fonts/BaseIcons.woff?ilwz5b') format('woff'),
 	url('fonts/BaseIcons.svg?ilwz5b#BaseIcons') format('svg');
@@ -27,187 +27,244 @@
 .ic-arrow:before {
 	content: "\e260";
 }
+
 .ic-rest:before {
 	content: "\e25f";
 }
+
 .ic-list:before {
 	content: "\e255";
 }
+
 .ic-grid:before {
 	content: "\e254";
 }
+
 .ic-rotate:before {
 	content: "\e253";
 }
+
 .ic-day:before {
 	content: "\e246";
 }
+
 .ic-idea:before {
 	content: "\e244";
 }
+
 .ic-box:before {
 	content: "\e242";
 }
+
 .ic-car:before {
 	content: "\e241";
 }
+
 .ic-operator:before {
 	content: "\e240";
 }
+
 .ic-callback:before {
 	content: "\e23f";
 }
+
 .ic-minus:before {
 	content: "\e23d";
 }
+
 .ic-plus:before {
 	content: "\e23c";
 }
+
 .ic-clock:before {
 	content: "\e23b";
 }
+
 .ic-calendar:before {
 	content: "\e238";
 }
+
 .ic-gift:before {
 	content: "\e236";
 }
+
 .ic-search:before {
 	content: "\e235";
 }
+
 .ic-zoom-down:before {
 	content: "\e234";
 }
+
 .ic-zoom-up:before {
 	content: "\e233";
 }
+
 .ic-mobile:before {
 	content: "\e231";
 }
+
 .ic-edit:before {
 	content: "\e22e";
 }
+
 .ic-arrow-up:before {
 	display: block;
 	content: "\e22a";
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
 }
+
 .ic-arrow-down:before {
 	display: block;
 	content: "\e22a";
 	-webkit-transform: rotate(-90deg);
 	transform: rotate(-90deg);
 }
+
 .ic-star-full:before {
 	content: "\e224";
 }
+
 .ic-star-empty:before {
 	content: "\e223";
 }
+
 .ic-burger:before {
 	content: "\e222";
 }
+
 .ic-home:before {
 	content: "\e21f";
 }
+
 .ic-update:before {
 	content: "\e210";
 }
+
 .ic-cross:before {
 	content: "\e20f";
 }
+
 .ic-checker:before {
 	content: "\e20e";
 }
+
 .ic-info:before {
 	content: "\e20d";
 }
+
 .ic-question:before {
 	content: "\e20c";
 }
+
 .ic-important:before {
 	content: "\e20b";
 }
+
 .ic-cloud-upload:before {
 	content: "\e20a";
 }
+
 .ic-cloud-download:before {
 	content: "\e209";
 }
+
 .ic-chart:before {
 	content: "\e207";
 }
+
 .ic-letter:before {
 	content: "\e205";
 }
+
 .ic-card:before {
 	content: "\e203";
 }
+
 .ic-label:before {
 	content: "\e201";
 }
+
 .ic-brander:before {
 	content: "\e620";
 }
+
 .ic-checkmark:before {
 	content: "\e607";
 }
+
 .ic-film:before {
 	content: "\e900";
 }
+
 .ic-folder-download:before {
 	content: "\e901";
 }
+
 .ic-folder-upload:before {
 	content: "\e902";
 }
+
 .ic-phone:before {
 	content: "\e903";
 }
+
 .ic-printer:before {
 	content: "\e904";
 }
+
 .ic-bubble2:before {
 	content: "\e908";
 }
+
 .ic-bubbles3:before {
 	content: "\e909";
 }
+
 .ic-bubbles4:before {
 	content: "\e90a";
 }
+
 .ic-spinner2:before {
 	content: "\e90c";
 }
+
 .ic-spinner3:before {
 	content: "\e90d";
 }
+
 .ic-spinner6:before {
 	content: "\e910";
 }
+
 .ic-spinner8:before {
 	content: "\e912";
 }
+
 .ic-spinner9:before {
 	content: "\e913";
 }
+
 .ic-cog:before {
 	content: "\e915";
 }
+
 .ic-sphere:before {
 	content: "\e917";
 }
+
 .ic-attachment:before {
 	content: "\e918";
 }
+
 .ic-play3:before {
 	content: "\e91a";
 }
+
 .ic-location:before {
 	content: "\e91b";
 }
-
 
 /*Override components*/
 
@@ -220,7 +277,11 @@
 
 	font-size: 20px;
 }
-.owl-controls .owl-buttons [class^='owl-']:before { content: "\e260"; }
+
+.owl-controls .owl-buttons [class^='owl-']:before {
+	content: "\e260";
+}
+
 .owl-controls .owl-buttons .owl-next {
 	-ms-transform: rotate(180deg);
 	-webkit-transform: rotate(180deg);
@@ -261,11 +322,11 @@
 	content: "\e235";
 }
 
-.nav-regular >.nav-item.first > a:before {
+.nav-regular > .nav-item.first > a:before {
 	position: absolute;
 	font-family: BaseIcons;
 	content: '\e222';
-	left: 32px;
+	left: 30px;
 	top: 0;
 }
 
@@ -278,15 +339,16 @@
 }
 
 .caret:before {
-	 position: absolute;
-	 font-family: BaseIcons;
-	 content: "\e260";
-	 font-size: 16px;
-	 font-weight: bold;
-	 line-height: 1;
-	 left: 0;
-	 top: 0;
-	 color: inherit;
+	position: absolute;
+	font-family: BaseIcons;
+	content: "\e260";
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 1;
+	left: 0;
+	right: 0;
+	top: 0;
+	color: inherit;
 	-webkit-transform: rotate(-90deg);
 	transform: rotate(-90deg);
- }
+}
