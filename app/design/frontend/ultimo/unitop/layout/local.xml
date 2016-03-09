@@ -63,7 +63,6 @@
 			<!-- Override styles added via admin panel -->
 			<action method="addItem"><type>skin_css</type><name>css/override-config.css</name><params/></action>
 			<action method="addItem"><type>skin_css</type><name>css/brander-overrides.css</name><params/></action>
-			<action method="addItem"><type>skin_css</type><name>css/_to-config.css</name><params/></action>
 
 			<action method="addItem"><type>skin_css</type><name>css/brander/fonts/base/base-icons.css</name><params/></action>
 

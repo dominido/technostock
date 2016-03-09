@@ -66,17 +66,6 @@ textarea {
   }
 }
 
-//.page {
-//  .inner-container {
-//	@include bp(min-width, 1280px) {
-//	  padding-left: 95px;
-//	  padding-right: 95px;
-//
-//
-//	}
-//  }
-//}
-
 .preface {
   margin: 0 -15px;
 }
@@ -84,13 +73,6 @@ textarea {
 #root-wrapper {
   position: relative;
   overflow: hidden;
-}
-
-.main{
-  &.not-full-width {
-	border-left: 1px solid #f6f3ef;
-	border-right: 1px solid #f6f3ef;
-  }
 }
 
 .main-bottom-container {
@@ -198,40 +180,108 @@ textarea {
   .regular-price,
   .price-as-configured {
 	.price {
-	  font-size: 1.31rem;
-	  color: $link-hover !important;
-	  font-weight: bold;
+	  font-size: 1.625rem;
+	  color: $darkest !important;
+	  font-weight: 600;
 	}
   }
 
   .old-price {
 	.price {
-	  color: #b2a6b4;
+	  font-size: 1rem;
+	  color: #7b9ccf;
 	}
   }
 }
 
 .products-grid {
   .item-inner {
+	border: 3px solid transparent;
+	@include trs(border-color .3s ease);
+	
 	.product-image {
-	  border: 1px solid #e4e0e5;
-	  @include trs(border-color .3s ease);
-
 	  img {
 		width: 100%;
 		height: auto;
 	  }
 	}
 
+	.product-name {
+	  a {
+		color: #35426d;
+
+		&:hover {
+		  color: $dark;
+		}
+	  }
+	}
+
 	&:hover {
-	  .product-image {
-		border-color: $link-hover;
+	  border-color: $link-hover;
+	}
+
+	.price-holder {
+	  height: 70px;
+	  text-align: left;
+
+	  .price-box {
+		padding-right: 50px;
+		margin: 0;
+
+		.regular-price {
+		  display: block;
+		  padding-top: 22px;
+		}
+	  }
+	}
+
+	.actions {
+	  margin: 0;
+	  padding: 0;
+
+	  .btn-cart {
+		position: absolute;
+		width: 80px;
+		height: 72px;
+		bottom: -3px;
+		right: -3px;
+		min-width: 60px;
+		border-width: 3px;
+		padding: 0;
+		border-radius: 20px 0 0;
+		text-indent: -9999em;
+		color: #1938a5;
+		background: $link-hover;
+		font-weight: normal;
+
+		&:after {
+		  position: absolute;
+		  font-family: 'iconpack2';
+		  content: '\e221';
+		  font-size: 22px;
+		  line-height: 1;
+		  left: 0;
+		  right: 0;
+		  top: 24px;
+		  text-indent: 0;
+		}
+
+		&:hover {
+		  background: $white;
+		  color: $link-hover;
+		}
 	  }
 	}
   }
 
   .btn-cart {
 	@extend %button;
+  }
+}
+
+#itemslider-related-multi {
+  .item-inner {
+	margin-bottom: 40px;
   }
 }
 
@@ -397,16 +447,6 @@ textarea {
 	padding: 5px;
 	border-radius: 0;
   }
-
-  &.top-right {
-	top: 0;
-	right: 0;
-  }
-
-  &.top-left {
-	top: 0;
-	left: 0;
-  }
 }
 
 .the-slideshow {
@@ -419,8 +459,8 @@ textarea {
 
 .item-inner {
   position: relative;
-  background: #ffffff;
-  padding: 20px 10px;
+  background: $white;
+  padding: 20px 10% 0;
 }
 
 .section-title {
@@ -429,8 +469,11 @@ textarea {
 
   &.padding-right {
 	padding-right:95px;
-	padding-left:95px;
-	text-align: center;
+	padding-left: 10px;
+	text-transform: uppercase;
+	font-size: 28px;
+	letter-spacing: .25px;
+	color: $dark;
   }
 }
 
@@ -451,10 +494,9 @@ textarea {
 	div {
 	  width: 40px;
 	  height: 40px;
-	  border: 1px solid $link-hover;
 	  border-radius: 50%;
 	  background: $white;
-	  color: $link-hover;
+	  color: $dark;
 	  margin-left: 10px;
 	  position: relative;
 	  @include trs(color .3s ease, background-color .3s ease);

@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'iconpack2';
+    src:
+        url('fonts/iconpack2.ttf?m4sbcr') format('truetype'),
+        url('fonts/iconpack2.woff?m4sbcr') format('woff'),
+        url('fonts/iconpack2.svg?m4sbcr#iconpack2') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ic-cart,
+.ic-user,
+.ic-compare,
+.ic-heart,
+.ic-share,
+.nav-regular > .nav-item.first > a:before {
+    font-family: 'iconpack2' !important;
+}
+
+.ic-menu:before {
+    content: "\e222";
+}
+.ic-user:before {
+    content: "\e227";
+    font-size: 24px;
+}
+.ic-cart:before {
+    content: "\e221";
+    font-size: 22px;
+}
+.ic-compare:before {
+    content: "\e228";
+}
+.ic-share:before {
+    content: "\e25e";
+}
+.ic-heart:before {
+    content: "\e903";
+}

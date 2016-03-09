@@ -40,8 +40,8 @@ if($_collectionSize = $_productCollection->getSize()): ?>
     $pagination = false;
 
     //Default image size
-    $imgWidth = 100;
-    $imgHeight = 100;
+    $imgWidth = 295;
+    $imgHeight = 295;
 
     //Image aspect ratio
     if ($theme->getCfg('category/aspect_ratio'))
@@ -74,41 +74,46 @@ if($_collectionSize = $_productCollection->getSize()): ?>
     <div class="block block-related block-related-thumbnails">
         <h3 class="section-title padding-right"><?php echo $this->__('New products'); ?></h3>
         <div class="itemslider-wrapper itemslider-related-wrapper slider-arrows1 slider-arrows1-pos-top-right slider-pagination1">
-            <div id="<?php echo $sliderId; ?>" class="itemslider <?php if($sliderClasses) echo $sliderClasses; ?>">
+            <div id="<?php echo $sliderId; ?>" class="products-grid itemslider <?php if($sliderClasses) echo $sliderClasses; ?>">
                 <?php foreach ($_productCollection as $_item): ?>
                     <?php if ($i++ % $productCountInSlide == 0): //Open: new slide and list of products ?>
                         <div class="item">
                         <ul class="clearer">
                     <?php endif; ?>
 
-                    <li class="product">
-                        <a class="product-image" href="<?php echo $_item->getProductUrl(); ?>" title="<?php echo $this->escapeHtml($_item->getName()); ?>">
-                            <img src="<?php echo $helpImg->getImg($_item, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->escapeHtml($_item->getName()); ?>" />
-                            <?php echo $helpLabels->getLabels($_item); //Product labels ?>
-                        </a>
-                        <div class="product-details">
-                            <h3 class="product-name"><a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->stripTags($_item->getName(), null, true) ?>"><?php echo $this->escapeHtml($_item->getName()); ?></a></h3>
+                    <li class="product item-inner">
+                        <div class="product-image-wrapper">
+                            <a class="product-image" href="<?php echo $_item->getProductUrl(); ?>" title="<?php echo $this->escapeHtml($_item->getName()); ?>">
+                                <img src="<?php echo $helpImg->getImg($_item, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->escapeHtml($_item->getName()); ?>" />
+                                <?php echo $helpLabels->getLabels($_item); //Product labels ?>
+                            </a>
+                        </div>
 
-                            <?php if ($theme->getCfg('magento_blocks/related_products_checkbox')): ?>
-                                <?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
-                                    <?php if (!$_item->getRequiredOptions()): ?>
-                                        <input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
-                                    <?php endif; ?>
+                        <div class="product-name">
+                            <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->stripTags($_item->getName(), null, true) ?>"><?php echo $this->escapeHtml($_item->getName()); ?></a>
+                        </div>
+
+                        <?php if ($theme->getCfg('magento_blocks/related_products_checkbox')): ?>
+                            <?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
+                                <?php if (!$_item->getRequiredOptions()): ?>
+                                    <input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
                                 <?php endif; ?>
                             <?php endif; ?>
+                        <?php endif; ?>
 
+                        <div class="price-holder">
                             <?php echo $this->getPriceHtml($_item, true, '-related') ?>
-                            <div>
-                                <?php if(!$_item->canConfigure() && $_item->isSaleable()): ?>
-                                    <p><button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
-                                <?php elseif($_item->getStockItem() && $_item->getStockItem()->getIsInStock()): ?>
-                                    <p><a title="<?php echo $this->__('View Details') ?>" class="button btn-cart" href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a></p>
-                                <?php else: ?>
-                                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                                <?php endif; ?>
-                            </div>
+                        </div>
 
-                        </div> <!-- end: product-details -->
+                        <div class="actions">
+                            <?php if(!$_item->canConfigure() && $_item->isSaleable()): ?>
+                               <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+                            <?php elseif($_item->getStockItem() && $_item->getStockItem()->getIsInStock()): ?>
+                                <a title="<?php echo $this->__('View Details') ?>" class="button btn-cart" href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                            <?php else: ?>
+                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                            <?php endif; ?>
+                        </div>
                     </li>
 
                     <?php if ($i % $productCountInSlide == 0 || $i == $_collectionSize): //Close: list of products and slide ?>
