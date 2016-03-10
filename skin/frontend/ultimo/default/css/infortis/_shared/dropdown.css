@@ -59,9 +59,9 @@
 }
 
 /* Elements of the dropdown heading */
-.dropdown .dropdown-heading .value {
-	margin-left: 2px;
-}
+/*.dropdown .dropdown-heading .value {*/
+	/*margin-left: 2px;*/
+/*}*/
 
 .dropdown .dropdown-heading .dropdown-icon {
 	/* e.g. for flags */

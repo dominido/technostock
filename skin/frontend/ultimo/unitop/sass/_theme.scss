@@ -66,13 +66,6 @@
 		  margin-right: 0;
 		}
 	  }
-
-	  .header-contacts {
-		.dropdown-heading,
-		.dropdown-content li {
-		  font-size: 1em;
-		}
-	  }
 	}
   }
 }
@@ -386,19 +379,6 @@
 
 .footer-primary-top-spacing {
   margin-bottom: 40px;
-
-  .footer-logo {
-	display: block;
-	max-width: 124px;
-  }
-}
-
-.footer {
-  .callback-footer {
-	text-transform: uppercase;
-	//color: $link;
-	font-weight: bold;
-  }
 }
 
 .footer-primary-bottom {
@@ -415,30 +395,6 @@
 	  #subscribe-form {
 		max-width: 570px;
 		margin: 0 auto;
-	  }
-	}
-  }
-}
-
-.footer-bottom {
-  .item-left {
-	.footer-copyright {
-	  text-transform: uppercase;
-	}
-  }
-
-  .item-right {
-	.footer-copyright {
-	  > a {
-		line-height: 1.2;
-	  }
-	}
-  }
-
-  .footer-copyright {
-	.icon-brander {
-	  &:before {
-		font-size: 10px;
 	  }
 	}
   }

@@ -1647,7 +1647,7 @@ ul.disc ul li {
 	display: block;
 	height: 30px;
 	line-height: 30px;
-	padding: 0 35px 0 7px;
+	padding: 0 35px 0 0;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
@@ -1656,7 +1656,7 @@ ul.disc ul li {
 .form-search .button {
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: 4px;
 	margin: 0;
 	padding: 0;
 	background-color: transparent !important;
@@ -2233,9 +2233,6 @@ ul.disc ul li {
 .block-related-thumbnails .related-add-to-wishlist {
 	font-size: 1em;
 	line-height: 1.25em;
-	font-family: inherit;
-	font-weight: inherit;
-	display: inline-block;
 }
 
 .block-related-thumbnails .checkbox {
@@ -2690,9 +2687,9 @@ ul.disc ul li {
 
 /* Align to the center
 	-------------------------------------------------------------- */
-.products-grid.centered .item {
-	text-align: center;
-}
+/*.products-grid.centered .item {*/
+	/*text-align: center;*/
+/*}*/
 
 .products-grid.centered .item .ratings .rating-box,
 .products-grid.centered .item .btn-cart {

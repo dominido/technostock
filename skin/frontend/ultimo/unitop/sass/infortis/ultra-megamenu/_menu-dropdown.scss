@@ -180,36 +180,6 @@
 	  width: 100%;
 	}
   }
-
-  &.fixed-nav {
-	@include bp(min-width, 960px) {
-	  //display: table;
-	  //width: 100%;
-	  //table-layout: fixed;
-
-	  //> div {
-		//display: table-cell;
-		//vertical-align: top;
-		//float: none;
-	  //}
-
-	  .vert-nav {
-		//position: relative;
-
-		//.nav-regular {
-		//  position: absolute;
-		//  top: 0;
-		//  left: 0;
-		//  right: 0;
-		//  min-height: 100%;
-		//}
-
-		//& + .the-slideshow {
-		//  float: none !important;
-		//}
-	  }
-	}
-  }
 }
 
 #nav-left {
@@ -223,7 +193,6 @@
 
 	.nav-submenu {
 	  padding: 12px 0;
-	  //min-height: 100%;
 	  box-sizing: border-box;
 
 	  .caret {
@@ -249,6 +218,7 @@
 		border-left: 5px solid transparent;
 		border-right: 5px solid transparent;
 		border-top: 6px solid $white;
+		border-radius: 3px;
 	  }
 
 	  &.skip-active {

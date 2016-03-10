@@ -197,6 +197,7 @@
 	float: none;
 	display: table-cell;
 	vertical-align: middle;
+	position: relative;
 }
 
 .header-regular .hp-blocks-holder .hp-block:before,

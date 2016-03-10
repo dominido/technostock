@@ -1,4 +1,4 @@
-<div class="grid12-3">
+<div class="grid12-4 footer-about">
     <div>
     <?php
 /*        <div class="collapsible mobile-collapsible">
@@ -8,8 +8,7 @@
             <?php $logoObj = $this->getLogo(); ?>
             <a href="<?php echo $this->getUrl('') ?>" class="footer-logo">
                 <img src="<?php echo $logoObj->getLogoSrc(); ?>"
-                     alt="<?php echo $logoObj->getLogoAlt(); ?>"
-                     style="padding-bottom:10px;" />
+                     alt="<?php echo $logoObj->getLogoAlt(); ?>"/>
             </a>
             <?php if ($address = Mage::helper('brander_cmshome')->getSiteCfg('general/store_information/address')): ?>
                 <h6 class="block-title heading"><?php echo $this->__('Shop Address:') ?></h6>
@@ -19,9 +18,6 @@
             <?php endif; ?>
 
             <?php if ($contacts = trim($this->getChildHtml('footer_blocks.contacts.phones'))): ?>
-                <?php if (Mage::helper('brander_cmsmenu')->isShowFooterTitle()): ?>
-                    <h6 class="block-title heading"><?php echo $this->__('Our Contacts:'); ?></h6>
-                <?php endif; ?>
                 <div class="block-content">
                     <?php echo $contacts; ?>
                     <br/>

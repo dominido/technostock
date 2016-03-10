@@ -36,7 +36,7 @@
     $breakpoints = $this->getBreakpoints(); //param: breakpoints
     if ($breakpoints === NULL) //Param not set
     {
-        $breakpoints = '[0, 0], [480, 1], [768, 1]';
+        $breakpoints = '[0, 1], [480, 2], [768, 3], [992, 4]';
     }
 
     //Number of items in a row displayed if responsive mode is off
@@ -252,7 +252,11 @@
         <?php endif; ?>
 
             navigation: true,
-            navigationText: false
+            navigationText: false,
+
+            afterInit: function() {
+                $('.item .product-name').dotdotdot();
+            }
 
         }); //end: owl
 

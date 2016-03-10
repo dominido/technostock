@@ -51,11 +51,10 @@
     <a href="#header-cart" class="mini-cart-heading dropdown-heading cover skip-link skip-cart">
         <span id="mini-cart-heading"> <?php /* id for mini cart ajax update */ ?>
             <span class="icon ic ic-cart"></span>
+            <span class="label"<?php if (!$theme->getCfg('header/cart_label')) echo ' style="display:none;"'; ?>><?php echo $this->__('Cart'); ?></span>
             <?php if ($_cartQty > 0): ?>
                 <span class="count"><?php echo $_cartQty; ?></span>
             <?php endif; ?>
-            <span class="label"<?php if (!$theme->getCfg('header/cart_label')) echo ' style="display:none;"'; ?>><?php echo $this->__('Cart'); ?></span>
-            <span id="mini-cart-label" class="label" style="display:none;"><?php echo $this->__('Cart'); ?></span>
             <?php /* Comment-out to remove the subtotal from the mini-cart heading
             <?php if ($_cartQty > 0): ?>
                 <?php if (!$canApplyMsrp): ?>
@@ -65,8 +64,6 @@
                 <span class="summary hide-below-960"><?php echo Mage::helper('checkout')->formatPrice(0); ?></span>
             <?php endif; ?>
             */ ?>
-            <span class="caret">&nbsp;</span>
-
         </span>
     </a> <!-- end: heading -->
     

@@ -22,6 +22,7 @@
 			<action method="addJs"><script>infortis/jquery/plugins/imagesloaded.js</script></action>
 
 			<action method="addJs"><script>local/jquery/jquery.matchHeight-min.js</script></action>
+			<action method="addJs"><script>local/jquery/jquery.dotdotdot.min.js</script></action>
 			<action method="addJs"><script>local/jquery/scripts.js</script></action>
 
 			<action method="addItem"><type>skin_js</type><name>js/app.js</name></action>

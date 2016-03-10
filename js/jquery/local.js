@@ -12,6 +12,9 @@ jQuery(document).ready(function($) {
 
     $('.benefits-grid .benefit').matchHeight();
 
+    $('.item .product-name').dotdotdot();
+    $('.compare-table .product-name').dotdotdot();
+
     //price slider for mobile fix
     var handle = $( ".slider-wrap .handle" );
     handle.draggable({
@@ -45,6 +48,8 @@ jQuery(document).ready(function($) {
 
     //RESIZE
     $(window).resize(function () {
+        $('.item .product-name').dotdotdot();
+
         if ($(window).width() < 751) {
             $('.product-img-column').prepend($('.product-shop-heading'));
         } else {
