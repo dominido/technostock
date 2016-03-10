@@ -110,6 +110,16 @@
   }
 }
 
+.nav-mobile {
+  > .nav-item {
+	&.item-active {
+	  > a {
+		color: $link-hover;
+	  }
+	}
+  }
+}
+
 #sticky-nav,
 #sticky-catalog-menu{
   display: none;

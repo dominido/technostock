@@ -493,6 +493,8 @@
 				jQuery('#header-compare').css('display', '');
 				jQuery('#header-account').css('display', '');
 
+				jQuery('.header-top .inner-container').prepend(jQuery('.hp-blocks-holder > .hp-block.central-column'));
+
 			}
 
 			, moveElementsToRegularPosition : function()
@@ -535,6 +537,7 @@
 				jQuery('#mini-compare').addClass('dropdown');
 				jQuery('#mini-account').addClass('dropdown');
 
+				jQuery('.hp-blocks-holder .hp-block.left-column').after(jQuery('.header-top .inner-container .hp-block.central-column'));
 			}
 
 		}; //end: SmartHeader

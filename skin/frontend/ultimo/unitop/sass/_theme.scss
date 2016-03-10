@@ -56,27 +56,6 @@
   }
 }
 
-//Header
-.header {
-
-  .hp-block {
-	@include bp(max-width, $bp-desktop) {
-	  &.right-column {
-		.item-left {
-		  margin-right: 0;
-		}
-	  }
-	}
-  }
-}
-
-.header-mobile .logo-wrapper--mobile {
-  .logo {
-	max-width: 200px;
-	margin: 0 auto 10px;
-  }
-}
-
 //Nav
 @media only screen and (max-width: 1279px) and (min-width: 1024px) {
   .nav-regular .nav-item.level0 > a {
