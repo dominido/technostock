@@ -1025,10 +1025,7 @@
 }
 
 .breadcrumbs .sep:before {
-	content: "\e260";
-	display: block;
-	-webkit-transform: rotate(180deg);
-	transform: rotate(180deg);
+	content: "/";
 }
 
 .gen-tabs .acctab:after,
@@ -1068,14 +1065,8 @@
 	width: 100%;
 }
 
-.block_category_above_collection {
-	margin: 10px 0;
-}
-
-.block_category_below_collection {
-	margin: 10px 0;
-}
-
+.block_category_above_collection,
+.block_category_below_collection,
 .block_category_above_empty_collection {
 	margin: 10px 0;
 }

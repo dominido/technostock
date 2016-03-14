@@ -64,14 +64,15 @@
     }
 
     .value {
-      color: $link-hover;
+      font-weight: 600;
     }
   }
 
   .short-description {
     padding: 35px 0;
     margin: 0;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.75;
   }
 
   .product-type-data {
@@ -89,11 +90,11 @@
     }
   }
 
-  .btn-cart {
+  .button.btn-cart {
     @extend %button;
-    min-width: 195px;
+    min-width: 220px;
+    min-height: 60px;
     margin-right: 42px;
-    min-height: 62px;
     margin-bottom: 10px;
   }
 
@@ -147,6 +148,12 @@
 
   .benefits-container {
     padding: 0;
+
+    .benefit {
+      float: left;
+      width:(100% / 3);
+      background: #e0e9f8;
+    }
 
     .benefit-heading {
       display: block;
@@ -220,35 +227,15 @@
   }
 
   .img-box  {
-    .product-image-gallery {
-      border: 1px solid #e4e0e5;
-    }
-
     .more-images {
       .thumbnails .item a {
-        border: 1px solid #e4e0e5;
+        border: 2px solid transparent;
         margin: 0 2px;
-        position: relative;
         @include trs(border-color .3s ease);
-
-        &:after {
-          position: absolute;
-          content: '';
-          width: 0;
-          height: 4px;
-          background: $link-hover;
-          left: 0;
-          bottom: -1px;
-          @include trs(width .3s ease);
-        }
 
         &:hover,
         &.active {
           border-color: $link-hover;
-
-          &:after {
-            width: 100%;
-          }
         }
 
         img {

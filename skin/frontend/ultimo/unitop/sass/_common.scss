@@ -142,6 +142,19 @@ textarea {
 // blog pager
 .breadcrumbs {
   margin-bottom: 20px;
+
+  li {
+	a {
+	  line-height: 24px;
+	  letter-spacing: .25px;
+	  color: #35426d;
+	}
+
+	.sep {
+	  vertical-align: top;
+	  margin: 0 12px 0 10px;
+	}
+  }
 }
 
 .category-blog {
@@ -150,15 +163,6 @@ textarea {
 
 	.pager {
 	  border-top: 0;
-	}
-  }
-}
-
-.breadcrumbs {
-  li {
-	.sep {
-	  vertical-align: top;
-	  margin: 0 12px 0 10px;
 	}
   }
 }
@@ -364,7 +368,7 @@ textarea {
 	  box-sizing: border-box;
 
 	  &:hover {
-		background: #ddd;
+		background: #dae3f5;
 	  }
 	}
   }

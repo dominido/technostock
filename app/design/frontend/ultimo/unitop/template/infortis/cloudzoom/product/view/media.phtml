@@ -356,6 +356,12 @@
             afterInit: function() {
                 var thumbItem = $('.more-images .item > a');
 
+                $(thumbItem).each(function(){
+                    if ($(this).attr('href') == $('#wrap > a').attr('href')){
+                        $(this).addClass('active');
+                    }
+                });
+
                 thumbItem.click(function (evt) {
                     var currentTarget = $(evt.currentTarget);
                     thumbItem.removeClass('active');

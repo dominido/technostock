@@ -5,7 +5,7 @@ $helper = Mage::helper('brander_benefits');
 $rowLimit = Mage::helper('brander_shop')->getCfg('brander_benefits/benefits_config/productpage_benefit_row_limit');
 ?>
 <?php if ($benefits && $benefits->count() > 0) :?>
-<div class="benefits-container">
+<div class="benefits-container grid12-12">
     <ul class="benefits-grid<?php echo $rowLimit ? ' benefits-per-row-'.$rowLimit: ''; ?>">
         <?php foreach ($benefits as $_benefit) : ?>
             <?php $tooltip = null; $noImage = ''; ?>
