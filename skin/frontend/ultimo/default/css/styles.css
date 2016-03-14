@@ -476,7 +476,6 @@ button.button::-moz-focus-inner {
 -------------------------------------------------------------- */
 .product-view .btn-cart,
 .btn-checkout {
-	/*line-height: 55px;*/
 	font-size: 1.1666em;
 }
 

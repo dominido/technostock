@@ -66,6 +66,13 @@ textarea {
   }
 }
 
+.inner-container {
+  @include bp(min-width, 1366px) {
+	padding-left: 100px;
+	padding-right: 100px;
+  }
+}
+
 .preface {
   margin: 0 -15px;
 }
@@ -82,17 +89,22 @@ textarea {
 }
 
 %button {
+  display: inline-block;
+  vertical-align: top;
+  font-family: exo_2, sans-serif;
   min-width: 130px;
   border: 2px solid $link-hover;
-  color: $link-hover;
-  background: none;
-  font-weight: bold;
+  color: #1938a5;
+  background: $link-hover;
+  font-weight: 600;
   letter-spacing: 1px;
   border-radius: 3px;
+  box-sizing: border-box;
+  @include trs(background-color .3s ease, box-shadow .3s ease);
 
   &:hover {
-	background: $link-hover;
-	color: $white;
+	background: none;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   }
 }
 
@@ -287,6 +299,7 @@ textarea {
 		&:hover {
 		  background: $white;
 		  color: $link-hover;
+		  box-shadow: none;
 		}
 
 		@include bp(max-width, 1280px) {
@@ -359,7 +372,6 @@ textarea {
   }
 
   .benefit {
-
 	> a {
 	  display: block;
 	  height: 100%;
@@ -414,7 +426,7 @@ textarea {
 
 	.benefit {
 	  > a {
-		padding: 15px;
+		padding: 50px;
 		font-size: 14px;
 		line-height: $lh-small;
 	  }

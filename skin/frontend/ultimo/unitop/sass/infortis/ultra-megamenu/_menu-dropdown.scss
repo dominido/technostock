@@ -92,7 +92,11 @@
 
 #header-nav {
   .inner-container {
-	padding: 0;
+	#nav {
+	  @include bp(min-width, 1366px) {
+		margin: 0 -15px;
+	  }
+	}
   }
 }
 

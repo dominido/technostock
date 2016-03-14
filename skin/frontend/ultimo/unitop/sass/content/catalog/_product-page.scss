@@ -94,8 +94,39 @@
     @extend %button;
     min-width: 220px;
     min-height: 60px;
-    margin-right: 42px;
+    margin-right: 30px;
     margin-bottom: 10px;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: .25px;
+    white-space: nowrap;
+    float: left;
+
+    > * {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    span {
+      padding: 2px 0 0 14px;
+    }
+  }
+
+  .button.fastbuy-btn {
+    display: table;
+    margin-right: 0;
+    border-color: #c3cee4;
+    background: none;
+
+    &:hover {
+      border-color: $link-hover;
+      background: $link-hover;
+    }
+
+    span {
+      display: table-cell;
+      vertical-align: middle;
+    }
   }
 
   .share-icons {

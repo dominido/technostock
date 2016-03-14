@@ -27,11 +27,9 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
-    <div>
-        <a class="fancybox fastbuy-btn" href="#fastbuy_form"><?php echo $this->__('Buy One Click') ?></a>
-    </div>
     <div class="add-to-cart">
-        <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><?php echo $buttonTitle ?></span></button>
+        <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><i class="ic-cart"></i><span><?php echo $buttonTitle ?></span></button>
+        <a class="button btn-cart fancybox fastbuy-btn" href="#fastbuy_form"><span><?php echo $this->__('Buy One Click') ?></span></a>
     </div>
     <div class="paypal-wrapper"><?php echo $this->getChildHtml('', true, true) ?></div>
 <?php endif; ?>
