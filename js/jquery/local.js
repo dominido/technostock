@@ -52,8 +52,18 @@ jQuery(document).ready(function($) {
 
         if ($(window).width() < 751) {
             $('.product-img-column').prepend($('.product-shop-heading'));
+
+            var footerAbout = $('.footer-about');
+
+            if(!footerAbout.hasClass('contactsCloned')) {
+                $('.header-top .header-contacts').clone().insertBefore($('.callback-footer'));
+                footerAbout.addClass('contactsCloned');
+            }
+
         } else {
             $('.product-shop').prepend($('.product-shop-heading'));
+            $('.footer-about .header-contacts').remove();
+            $('.footer-about').removeClass('contactsCloned');
         }
     }).resize();
 });

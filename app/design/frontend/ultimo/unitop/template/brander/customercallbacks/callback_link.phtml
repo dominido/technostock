@@ -1,4 +1,6 @@
 <?php $helper = Mage::helper('brander_customercallbacks'); ?>
 <?php if ($helper->isVisibleInFooter()): ?>
-    <a class="fancybox callback callback-footer" href="#callbacks"><?php echo $this->__('Callback')?></a>
+    <div class="callback-footer-holder">
+        <a class="fancybox callback callback-footer" href="#callbacks"><?php echo $this->__('Callback')?></a>
+    </div>
 <?php endif; ?>

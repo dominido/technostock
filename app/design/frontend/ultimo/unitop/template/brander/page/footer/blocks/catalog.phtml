@@ -3,7 +3,7 @@
     <?php if ($collection->getSize()): ?>
         <div class="collapsible mobile-collapsible">
             <?php if (Mage::helper('brander_cmsmenu')->isShowFooterTitle()): ?>
-                <h6 class="block-title heading"><?php echo $this->__('Catalog'); ?></h6>
+                <h6 class="block-title heading"><span><?php echo $this->__('Catalog'); ?></span></h6>
             <?php endif; ?>
             <div class="block-content">
                 <?php if ($collection): ?>

@@ -957,7 +957,6 @@
 .sidebar .block .block-title:after,
 	/* Layered navigation */
 .block-layered-nav .block-title:after {
-	float: right;
 	font-size: 22px;
 }
 
@@ -1033,8 +1032,6 @@
 }
 
 .gen-tabs .acctab:after,
-.collapsible .block-title:after,
-.mobile-collapsible .block-title:after,
 .sidebar .block .block-title:after,
 .block-layered-nav .block-title:after {
 	content: "\e260";
@@ -1043,8 +1040,6 @@
 }
 
 .gen-tabs .acctab.current:after,
-.collapsible .block-title.active:after,
-.mobile-collapsible .block-title.active:after,
 .sidebar .block .block-title.active:after,
 .block-layered-nav .block-title.active:after {
 	content: "\e260";
