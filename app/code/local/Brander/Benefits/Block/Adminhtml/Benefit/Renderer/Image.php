@@ -21,7 +21,7 @@ class Brander_Benefits_Block_Adminhtml_Benefit_Renderer_Image
 
     public function render(Varien_Object $row)
     {
-        $url = Mage::helper('brander_benefits/benefit_image')->init($row, 'benefit_image')->resize(150, 150);
+        $url = Mage::helper('brander_benefits/benefit_image')->init($row, 'benefit_image');
         return $url ? "<img src=\"{$url}\"/>" : '';
     }
 
