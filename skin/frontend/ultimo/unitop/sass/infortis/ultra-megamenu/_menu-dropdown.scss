@@ -220,21 +220,3 @@
 	display: none;
   }
 }
-
-
-.dropdown {
-  .dropdown-heading {
-	.caret {
-	  width: 0;
-	  height: 0;
-	  border-left: 5px solid transparent;
-	  border-right: 5px solid transparent;
-	  border-top: 6px solid $white;
-	  border-radius: 3px;
-
-	  &:before {
-		display: none;
-	  }
-	}
-  }
-}

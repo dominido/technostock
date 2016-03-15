@@ -178,7 +178,11 @@ if ($theme->getCfg('category_grid/centered'))
                     <?php endif; ?>
 
                     navigation: true,
-                    navigationText: false
+                    navigationText: false,
+
+                    afterInit: function() {
+                        $('.item .product-name').dotdotdot();
+                    }
 
                 }); //end: owl
 

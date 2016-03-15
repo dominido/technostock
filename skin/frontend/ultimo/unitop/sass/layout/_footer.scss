@@ -278,10 +278,15 @@
   .dropdown {
 	display: inline-block;
 	vertical-align: top;
+	margin-left: -12px;
 
 	.dropdown-heading {
 	  margin-bottom: 0;
 	  line-height: 36px;
+
+	  @include bp(max-width, $bp-smallest) {
+		font-size: 14px;
+	  }
 	}
 
 	&.open {
@@ -296,6 +301,12 @@
 
 		.operator-icon {
 		  display: none;
+		}
+
+		a {
+		  @include bp(max-width, $bp-smallest) {
+			font-size: 14px;
+		  }
 		}
 	  }
 
@@ -315,6 +326,10 @@
 
 	  &+.callback-footer {
 		float: right;
+
+		@include bp(max-width, $bp-smallest) {
+		  font-size: 14px;
+		}
 	  }
 	}
   }

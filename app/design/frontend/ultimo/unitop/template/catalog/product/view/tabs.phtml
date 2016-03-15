@@ -44,7 +44,7 @@
     <?php
         if($tmpBlock = $this->getChildHtml($_tab['alias']))
         {
-            $_panes .= '<h2 class="acctab" id="acctab-'. $_tab['alias'] .'">'. $_tab['title'] .'</h2>';
+            $_panes .= '<h2 class="acctab" id="acctab-'. $_tab['alias'] .'">'. $_tab['title'] .' <span class="caret"></span></h2>';
             $_panes .= '<div class="panel">'. $tmpBlock .'</div>';
         }
     ?>

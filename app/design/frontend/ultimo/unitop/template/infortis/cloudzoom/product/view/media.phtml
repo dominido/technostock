@@ -320,13 +320,10 @@
             lazyLoad: true,
         <?php endif; ?>
 
-        <?php if(!$isResponsive): ?>
-            responsive: false,
-            items: <?php echo $showItems; ?>,
-        <?php else: ?>
-            itemsCustom: [ <?php echo $breakpoints; ?> ],
+            responsive: true,
+            items: 3,
+            itemsCustom: [ [0, 1], [320, 2], [480, 3], [767, 2], [1099, 3] ],
             responsiveRefreshRate: 50,
-        <?php endif; ?>
 
         <?php if ($speed): ?>
             slideSpeed: <?php echo $speed; ?>,

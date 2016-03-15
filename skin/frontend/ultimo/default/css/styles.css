@@ -206,8 +206,6 @@ ul, ol {
 
 .page {
 	text-align: left;
-	background-repeat: repeat;
-	background-position: center top;
 }
 
 .page-print {
@@ -2220,7 +2218,7 @@ ul.disc ul li {
 -------------------------------------------------------------- */
 
 .block-related-thumbnails .product-details {
-	margin-left: 110px;
+	margin-left: 120px;
 }
 
 .block-related-thumbnails .product-details > * {
@@ -3279,9 +3277,9 @@ a.availability-only {
 }
 
 /* Add-to links */
-.product-view .action-box {
-	margin: 20px 0;
-}
+/*.product-view .action-box {*/
+	/*margin: 20px 0;*/
+/*}*/
 
 /* Add-to links in different places of the product page */
 .product-view .add-to-links li {
@@ -3401,7 +3399,7 @@ a.availability-only {
 
 /* Button container */
 .product-view .add-to-box {
-	margin-top: 15px;
+	padding: 15px 0;
 }
 
 /* Other elements

@@ -226,10 +226,8 @@
 
 
 			<?php if ($socialShareHtml): //compare, wishlist, send to friend, share social ?>
-				<div class="action-box clearer">
-					<div class="fl">
-						<?php echo $socialShareHtml; ?>
-					</div>
+				<div class="action-box social-list-holder">
+					<?php echo $socialShareHtml; ?>
 				</div>
 			<?php endif; ?>
 
@@ -329,30 +327,30 @@
 	//]]>
 	</script>
 
-	<div class="clearer"></div>
-	<?php //Lower primary column ?>
-	<div class="box-additional <?php echo $grid['lowerPrimCol']; ?>">
+	<div class="box-additionals-holder grid12-12">
+		<?php //Lower primary column ?>
+		<div class="box-additional <?php //echo $grid['lowerPrimCol']; ?>">
 
-		<?php if (isset($p['lowerPrimCol_1'])) echo $p['lowerPrimCol_1']; ?>
-		
-		<?php echo $this->getChildHtml('product_additional_data') ?>
+			<?php if (isset($p['lowerPrimCol_1'])) echo $p['lowerPrimCol_1']; ?>
 
-		<?php echo $this->getChildHtml('reviews'); //Reviews ?>
+			<?php echo $this->getChildHtml('product_additional_data') ?>
 
-	</div> <!-- end: box-tabs -->
+			<?php echo $this->getChildHtml('reviews'); //Reviews ?>
 
-	<?php //Lower secondary column ?>
-	<?php if (isset($p['lowerSecCol_2'])): ?>
-		<div class="box-additional box-sidebar custom-sidebar-right <?php echo $grid['lowerSecCol']; ?>">
-			<div class="inner"><?php echo $p['lowerSecCol_2']; ?></div>
-		</div>
-	<?php endif; ?>
+		</div> <!-- end: box-tabs -->
+
+		<?php //Lower secondary column ?>
+		<?php if (isset($p['lowerSecCol_2'])): ?>
+			<div class="box-additional box-sidebar <?php //echo $grid['lowerSecCol']; ?>">
+				<div class="inner"><?php echo $p['lowerSecCol_2']; ?></div>
+			</div>
+		<?php endif; ?>
+	</div>
 
 	<?php if (isset($p['lowerPrimCol_2'])): ?>
 		<div class="box-additional <?php echo $grid['lowerPrimCol']; ?>"><?php echo $p['lowerPrimCol_2']; ?></div>
+		<div class="clearer"></div>
 	<?php endif; ?>
-
-	<div class="clearer"></div>
 	<?php echo $this->getChildHtml('product_banners'); ?>
 	<div class="clearer"></div>
 	<?php echo $this->getChildHtml('reports.product.viewed'); ?>

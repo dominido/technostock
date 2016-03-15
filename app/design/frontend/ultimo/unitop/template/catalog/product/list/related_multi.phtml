@@ -9,6 +9,7 @@
     $theme = $this->helper('ultimo');
     $helpImg = $this->helper('infortis/image');
     $productCountInSlide = intval($theme->getCfg('product_page/related_count')); //Number of products displayed in a single slide
+    $productCountInSlideMobile = 1;
     $i = 0;
     $sliderClasses = '';
     $gridClasses = '';
@@ -36,8 +37,8 @@
     $pagination = false;
 
     //Default image size
-    $imgWidth = 100;
-    $imgHeight = 100;
+    $imgWidth = 560;
+    $imgHeight = 560;
     
         //Image aspect ratio
         if ($theme->getCfg('category/aspect_ratio'))
@@ -104,6 +105,45 @@
         <?php endforeach; ?>
         </div> <!-- end: itemslider -->
     </div> <!-- end: itemslider-wrapper -->
+
+    <div class="itemslider-wrapper itemslider-related-mobile-wrapper slider-arrows1 slider-arrows1-pos-top-right slider-pagination1">
+        <div id="itemslider-related-mobile">
+            <?php foreach ($_productCollection as $_item): ?>
+                <?php if ($i++ % $productCountInSlideMobile == 0): //Open: new slide and list of products ?>
+                    <div class="item">
+                    <ul class="clearer">
+                <?php endif; ?>
+
+                        <li class="product">
+                            <a class="product-image" href="<?php echo $_item->getProductUrl(); ?>" title="<?php echo $this->escapeHtml($_item->getName()); ?>">
+                                <img src="<?php echo $helpImg->getImg($_item, $imgWidth, $imgHeight, 'thumbnail'); ?>" alt="<?php echo $this->escapeHtml($_item->getName()); ?>" />
+                            </a>
+                            <div class="product-details">
+                                <h3 class="product-name"><a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->stripTags($_item->getName(), null, true) ?>"><?php echo $this->escapeHtml($_item->getName()); ?></a></h3>
+
+                                <?php if ($theme->getCfg('magento_blocks/related_products_checkbox')): ?>
+                                    <?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
+                                        <?php if (!$_item->getRequiredOptions()): ?>
+                                            <input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
+                                <?php echo $this->getPriceHtml($_item, true, '-related') ?>
+
+<!--                                --><?php //if ($this->helper('wishlist')->isAllow()): ?>
+<!--                                    <a class="related-add-to-wishlist" href="--><?php //echo $this->getAddToWishlistUrl($_item); ?><!--" title="--><?php //echo $this->__('Add to Wishlist') ?><!--">--><?php //echo $this->__('Add to Wishlist'); ?><!--</a>-->
+<!--                                --><?php //endif; ?>
+                            </div> <!-- end: product-details -->
+                        </li>
+
+                <?php if ($i % $productCountInSlideMobile == 0 || $i == $_collectionSize): //Close: list of products and slide ?>
+                    </ul> <!-- end: list of products -->
+                    </div> <!-- end: slider item -->
+                <?php endif ?>
+            <?php endforeach; ?>
+        </div> <!-- end: itemslider -->
+    </div> <!-- end: itemslider-wrapper -->
     <script type="text/javascript">
     //<![CDATA[
         jQuery(function($) {
@@ -159,6 +199,60 @@
 
         });
     //]]>
+    </script>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        jQuery(function($) {
+
+            var owl = $('#itemslider-related-mobile');
+            owl.owlCarousel({
+
+                responsive: true,
+                items: 2,
+                itemsCustom: [ [0, 1], [320, 1], [480, 1], [640, 2] ],
+                responsiveRefreshRate: 50,
+
+                <?php if ($speed): ?>
+                slideSpeed: <?php echo $speed; ?>,
+                <?php endif; ?>
+
+                <?php if ($autoSpeed): ?>
+                paginationSpeed: <?php echo $autoSpeed; ?>,
+                <?php endif; ?>
+
+                <?php if ($move !== 1): ?>
+                scrollPerPage: true,
+                <?php endif; ?>
+
+                <?php if ($timeout): ?>
+                autoPlay: <?php echo $timeout; ?>,
+                <?php endif; ?>
+
+                <?php if ($pause): ?>
+                stopOnHover: true,
+                <?php endif; ?>
+
+                <?php if ($loop): ?>
+                rewindNav: true,
+                rewindSpeed: 600,
+                <?php else: ?>
+                rewindNav: false,
+                <?php endif; ?>
+
+                autoHeight: true,
+                pagination: true,
+                navigation: false,
+                navigationText: false,
+
+                afterInit: function() {
+                    $('.item .product-name').dotdotdot();
+                }
+
+            }); //end: owl
+
+        });
+        //]]>
     </script>
 
     <?php if ($theme->getCfg('magento_blocks/related_products_checkbox')): ?>

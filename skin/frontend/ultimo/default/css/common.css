@@ -303,6 +303,6 @@ input.input-text, select, textarea,
 .gen-tabs .acctab,
 	/* OPC accordion */
 .opc .step-title {
-	-webkit-transition: color 300ms ease-in-out, background-color 300ms ease-in-out, border-color 300ms ease-in-out;
-	transition: color 300ms ease-in-out, background-color 300ms ease-in-out, border-color 300ms ease-in-out;
+	-webkit-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+	transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
 }

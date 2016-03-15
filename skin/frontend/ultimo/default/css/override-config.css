@@ -14,11 +14,7 @@
 .sorter .view-mode a,
 .sorter .sort-by .category-asc,
 .sorter .sort-by .category-desc,
-.pager .pages li a,
-
-/* Slider arrows (for zoom thumbnails) */
-.slider-arrows3 .owl-controls .owl-buttons div,
-.slider-arrows3 .owl-controls.clickable .owl-buttons div.disabled:hover
+.pager .pages li a
 {
 	background-color:transparent;
 }

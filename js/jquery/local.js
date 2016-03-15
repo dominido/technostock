@@ -66,6 +66,7 @@ jQuery(document).ready(function($) {
     //RESIZE
     $(window).resize(function () {
         itemProductName.dotdotdot();
+        $('.benefits-grid .benefit .benefit-content').matchHeight();
 
         if ($(window).width() < 751) {
             $('.product-img-column').prepend($('.product-shop-heading'));

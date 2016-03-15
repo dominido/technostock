@@ -146,6 +146,14 @@
       width:(100% / 3);
       background: #e0e9f8;
 
+      @include bp(max-width, 991px) {
+        width: 100%;
+
+        .benefit-content {
+          height: auto !important;
+        }
+      }
+
       > a {
         font-size: 0;
         
@@ -168,7 +176,7 @@
       width: 90px;
       height: 90px;
       display: inline-block;
-      vertical-align: middle;
+      vertical-align: top;
       margin-right: 22px;
       margin-bottom: 0;
       padding: 0 23px;
@@ -192,17 +200,17 @@
     .benefit-content {
       font-size: 1rem;
       display: inline-block;
-      vertical-align: middle;
+      vertical-align: top;
       width: calc(100% - 112px);
     }
 
-    @include bp(max-width, $bp-desktop) {
-      .benefit-title,
-      .benefit-text {
-        font-size: 14px;
-        letter-spacing: -1px;
-      }
-    }
+    //@include bp(max-width, $bp-desktop) {
+    //  .benefit-title,
+    //  .benefit-text {
+    //    font-size: 14px;
+    //    letter-spacing: -1px;
+    //  }
+    //}
   }
 
   @include bp(max-width, $bp-tiny) {
@@ -250,6 +258,8 @@
 
   .img-box  {
     .more-images {
+      width: calc(100% - 90px);
+
       .thumbnails .item a {
         border: 2px solid transparent;
         margin: 0 2px;
@@ -262,6 +272,34 @@
 
         img {
           width: 100%;
+        }
+      }
+    }
+
+    .sticker-wrapper.top-right {
+      top: 0;
+      right: 0;
+    }
+
+    .sticker-wrapper.top-left {
+      top: 0;
+      left: 0;
+    }
+
+    .owl-controls {
+      .owl-buttons {
+        div {
+          width: 40px;
+          height: 40px;
+          color: #1938a5;
+          border-radius: 50%;
+          font-size: 30px;
+          line-height: 40px;
+          
+          &:hover {
+            background-color: #f3f7fd !important;
+            color: #1938a5 !important;
+          }
         }
       }
     }
@@ -291,6 +329,10 @@
     white-space: nowrap;
     float: left;
 
+    @include bp(max-width, 840px) {
+      margin-right: 5px;
+    }
+
     > * {
       display: inline-block;
       vertical-align: middle;
@@ -303,6 +345,7 @@
 
   .button.fastbuy-btn {
     display: table;
+    font-size: 1rem;
     margin-right: 0;
     border-color: #c3cee4;
     background: none;
@@ -310,13 +353,58 @@
 
     &:hover {
       border-color: #1938a5;
-      background: #1938a5;
+      background-color: #1938a5;
       color: $white;
     }
 
     span {
       display: table-cell;
       vertical-align: middle;
+      padding: 0;
+    }
+  }
+
+  .add-to-box {
+    float: left;
+    width: 475px;
+    margin: 0;
+
+    @include bp(max-width, 1099px) {
+      float: none;
+      width: 100%;
+    }
+  }
+
+  .social-list-holder {
+    float: right;
+    width: calc(100% - 475px);
+    padding: 24px 0;
+
+    @include bp(max-width, 1099px) {
+      float: none;
+      width: 100%;
+    }
+
+    .social-list {
+      @include cleaner;
+    }
+  }
+
+  .social-links {
+    li {
+      margin: 0 10px 10px;
+    }
+
+    .ib {
+      background: none !important;
+      border: 1px solid #bcc9e6;
+      color: #7e90c7;
+      @include trs(border-color .3s ease);
+
+      &:hover {
+        border-color: #1938a5;
+        color: #1938a5 !important;
+      }
     }
   }
 }
@@ -338,9 +426,9 @@
   .box-additional {
     display: table-cell;
     vertical-align: top;
-    width: 70%;
+    width: 68%;
     margin: 0;
-    background: #fffaf6;
+    background: #eef4fc;
     position: relative;
 
     @include bp(max-width, 991px) {
@@ -348,10 +436,10 @@
     }
 
     &.box-sidebar {
-      width: 30%;
-      padding-left: 70px;
+      width: 32%;
+      padding-left: 5%;
       box-sizing: border-box;
-      background: #f9f5f2;
+      background: none;
 
       @include bp(max-width, 1320px) {
         padding-left: 50px;
@@ -365,7 +453,7 @@
         width: 40%;
       }
 
-      @include bp(max-width, $bp-tiny) {
+      @include bp(max-width, 959px) {
         width: 100%;
         background: none;
 
@@ -374,18 +462,10 @@
         }
       }
 
-      &:after {
-        position: absolute;
-        content: '';
-        top: 0;
-        bottom: 0;
-        height: 100%;
-        width: 100px;
-        background: #f9f5f2;
-        right: -100px;
-      }
-
       .section-title {
+        font-size: 1.3125rem;
+        font-weight: 600;
+        color: #35426d;
         padding-top: 27px;
         padding-bottom: 26px;
 
@@ -400,50 +480,54 @@
       .itemslider-wrapper {
         .owl-buttons {
           top: -58px;
-
-          div {
-            background: none;
-          }
+          right: 0;
         }
       }
 
       .product {
+        margin-bottom: 34px;
+
         .product-image {
+          float: left;
           width: 100px;
-          border: 1px solid #e4e0e5;
-          @include trs(border-color .3s ease);
 
           img {
             width: 100%;
             height: auto;
           }
 
-          @include bp(max-width, $bp-tiny) {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 20px;
+          @include bp(max-width, 640px) {
+            width: 185px;
+
+            &+.product-details {
+              margin-left: 200px;
+            }
+          }
+
+          @include bp(max-width, 479px) {
+            width: 100px;
+
+            &+.product-details {
+              margin-left: 120px;
+            }
           }
         }
 
         .product-details {
           @include bp(max-width, $bp-tiny) {
-            margin-left: 0;
-            text-align: center;
-            
             .product-name {
-              font-size: 24px;
+              font-size: 1rem;
             }
           }
         }
 
-        &:hover {
-          .product-image {
-            border-color: $link-hover;
-          }
+        @include bp(max-width, 959px) {
+          padding: 0 5px;
         }
 
-        @include bp(max-width, $bp-tiny) {
+        @include bp(max-width, 647px) {
           margin-bottom: 40px;
+          padding: 0 1px;
         }
       }
 
@@ -469,7 +553,7 @@
       }
     }
 
-    @include bp(max-width, $bp-tiny) {
+    @include bp(max-width, 959px) {
       width: 100%;
       display: block;
     }
@@ -477,18 +561,19 @@
     .tabs {
       width: 100%;
       position: relative;
+      background: #e6effb;
 
       a {
-        font-size: 1rem;
-        line-height: 72px;
-        text-transform: uppercase;
+        font-size: 1.3125rem;
+        line-height: 76px;
+        background: none;
 
         &:after {
           position: absolute;
           content: '';
           width: 0;
           height: 3px;
-          background: $link-hover;
+          background: #1938a5;
           left: 0;
           bottom: 0;
           @include trs(width .3s ease);
@@ -501,58 +586,74 @@
           }
         }
       }
-
-      &:before {
-        position: absolute;
-        content: '';
-        top: 0;
-        bottom: 0;
-        height: 100%;
-        width: 100px;
-        background: #f8f1f0;
-        left: -100px;
-      }
-    }
-
-    &:not(.box-sidebar) {
-      &:before {
-        position: absolute;
-        content: '';
-        top: 0;
-        bottom: 0;
-        height: 100%;
-        width: 100px;
-        background: #fffaf6;
-        left: -100px;
-      }
     }
 
     .box-collateral {
       position: relative;
 
       .tabs-panels {
-        padding: 54px 54px 54px 0;
+        padding: 60px 65px;
+        border-top: 1px solid #d8e1f3;
+
+        @include bp(max-width, 959px) {
+          background: #e6effb;
+
+          .acctab {
+            text-align: center;
+            background: #e6effb;
+
+            &.current {
+              background: #eef4fc;
+
+              &+.panel {
+                background: #eef4fc;
+              }
+            }
+          }
+
+          .panel {
+            margin: 0;
+          }
+        }
 
         @include bp(max-width, $bp-tiny) {
           padding: 0;
           margin: 0 -15px;
-
-          .acctab {
-            background: #f8f1f0;
-            text-align: center;
-            border: none;
-          }
         }
       }
     }
   }
 }
 
-.gen-tabs .acctab {
-  &:hover,
-  &:focus,
-  &.current {
-    border-color: $link-hover;
+.box-sidebar {
+  .itemslider-related-wrapper {
+    @include bp(max-width, 959px) {
+      display: none;
+    }
+  }
+
+  .itemslider-related-mobile-wrapper {
+    display: none;
+
+    @include bp(max-width, 959px) {
+      display: block;
+    }
+  }
+}
+
+.gen-tabs {
+  .acctab {
+    &.current {
+      border-color: transparent;
+
+      .caret {
+        transform: rotate(180deg);
+      }
+    }
+
+    .caret {
+      border-top-color: #586589;
+    }
   }
 }
 
@@ -612,6 +713,10 @@
       background-size: 14px 62px;
     }
   }
+}
+
+#cboxTitle {
+  display: none !important;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), not all, not all, not all, not all {

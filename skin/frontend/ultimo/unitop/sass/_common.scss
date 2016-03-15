@@ -417,6 +417,14 @@ textarea {
 	.benefit {
 	  > a {
 		padding: 50px;
+
+		@include bp(max-width, $bp-tiny) {
+		  padding: 50px 40px;
+		}
+
+		@include bp(max-width, $bp-smallest) {
+		  padding: 30px 20px;
+		}
 	  }
 	}
   }
@@ -471,7 +479,6 @@ textarea {
 
 		@include bp(max-width, $bp-tiny) {
 		  width: 100%;
-		  text-align: center;
 		}
 	  }
 	}

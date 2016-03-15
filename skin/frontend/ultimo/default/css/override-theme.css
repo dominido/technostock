@@ -880,12 +880,12 @@
 }
 
 /* Upper part of the container */
-.product-view .product-type-data > .price-box {
-	border-top-style: solid;
-	border-top-width: 1px;
-	margin: 15px 0 0;
-	padding: 10px 0;
-}
+/*.product-view .product-type-data > .price-box {*/
+	/*border-top-style: solid;*/
+	/*border-top-width: 1px;*/
+	/*margin: 15px 0 0;*/
+	/*padding: 10px 0;*/
+/*}*/
 
 /* Other
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1028,21 +1028,21 @@
 	content: "/";
 }
 
-.gen-tabs .acctab:after,
-.sidebar .block .block-title:after,
-.block-layered-nav .block-title:after {
-	content: "\e260";
-	-webkit-transform: rotate(-90deg);
-	transform: rotate(-90deg);
-}
+/*.gen-tabs .acctab:after,*/
+/*.sidebar .block .block-title:after,*/
+/*.block-layered-nav .block-title:after {*/
+	/*content: "\e260";*/
+	/*-webkit-transform: rotate(-90deg);*/
+	/*transform: rotate(-90deg);*/
+/*}*/
 
-.gen-tabs .acctab.current:after,
-.sidebar .block .block-title.active:after,
-.block-layered-nav .block-title.active:after {
-	content: "\e260";
-	-webkit-transform: rotate(90deg);
-	transform: rotate(90deg);
-}
+/*.gen-tabs .acctab.current:after,*/
+/*.sidebar .block .block-title.active:after,*/
+/*.block-layered-nav .block-title.active:after {*/
+	/*content: "\e260";*/
+	/*-webkit-transform: rotate(90deg);*/
+	/*transform: rotate(90deg);*/
+/*}*/
 
 /* Other modifications %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
