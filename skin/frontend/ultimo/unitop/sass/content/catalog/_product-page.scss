@@ -184,6 +184,18 @@
       float: left;
       width:(100% / 3);
       background: #e0e9f8;
+
+      > a {
+        font-size: 0;
+        
+        &:hover {
+          color: #1938a5;
+
+          .img-wrap {
+            background: $link-hiver-light;
+          }
+        }
+      }
     }
 
     .benefit-heading {
@@ -192,17 +204,35 @@
     }
 
     .img-wrap {
-      width: 38px;
+      width: 90px;
+      height: 90px;
       display: inline-block;
       vertical-align: middle;
       margin-right: 22px;
       margin-bottom: 0;
+      padding: 0 23px;
+      box-sizing: border-box;
+      background: #e9f0fa;
+      border-radius: 50%;
+      overflow: hidden;
+      @include trs(background-color .3s ease);
 
-      &+.benefit-title {
+      .helper,
+      img {
         display: inline-block;
         vertical-align: middle;
-        margin-bottom: 0;
       }
+
+      .helper {
+        height: 100%;
+      }
+    }
+
+    .benefit-content {
+      font-size: 1rem;
+      display: inline-block;
+      vertical-align: middle;
+      width: calc(100% - 112px);
     }
 
     @include bp(max-width, $bp-desktop) {

@@ -399,13 +399,7 @@ textarea {
 
   .benefit-title {
 	display: block;
-	margin-bottom: 10px;
-	text-transform: uppercase;
-
-	b {
-	  font-weight: normal;
-	  line-height: 1.5;
-	}
+	margin-bottom: 15px;
   }
 
   .benefit-text {
@@ -421,14 +415,12 @@ textarea {
 
 	.benefit-title {
 	  margin-bottom: 8px;
-	  font-size: 16px;
+	  font-size: 1.125rem;
 	}
 
 	.benefit {
 	  > a {
 		padding: 50px;
-		font-size: 14px;
-		line-height: $lh-small;
 	  }
 	}
   }

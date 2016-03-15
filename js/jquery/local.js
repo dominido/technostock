@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
         min: 1
     });
 
-    $('.benefits-grid .benefit').matchHeight();
+    //$('.benefits-grid .benefit').matchHeight();
 
     $('.item .product-name').dotdotdot();
     $('.compare-table .product-name').dotdotdot();
