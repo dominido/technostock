@@ -12,7 +12,9 @@ jQuery(document).ready(function($) {
 
     //$('.benefits-grid .benefit').matchHeight();
 
-    $('.item .product-name').dotdotdot();
+    var itemProductName = $('.item .product-name');
+
+    itemProductName.dotdotdot();
     $('.compare-table .product-name').dotdotdot();
 
     //price slider for mobile fix
@@ -46,9 +48,24 @@ jQuery(document).ready(function($) {
         }
     });
 
+    //btn-cart hovered effect
+    $('.products-grid .item-inner').on('mouseenter', function() {
+        var $this = $(this);
+        $this.find('.btn-cart').on('mouseenter', function() {
+            $this.addClass('hovered');
+        });
+    }).on('mouseleave', function() {
+        var $this = $(this);
+        $this.find('.btn-cart').on('mouseleave', function() {
+            $this.removeClass('hovered');
+        });
+    });
+
+
+
     //RESIZE
     $(window).resize(function () {
-        $('.item .product-name').dotdotdot();
+        itemProductName.dotdotdot();
 
         if ($(window).width() < 751) {
             $('.product-img-column').prepend($('.product-shop-heading'));

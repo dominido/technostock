@@ -95,16 +95,16 @@ textarea {
   min-width: 130px;
   border: 2px solid $link-hover;
   color: #1938a5;
-  background: $link-hover;
+  background-color: $link-hover;
   font-weight: 600;
   letter-spacing: 1px;
   border-radius: 3px;
   box-sizing: border-box;
-  @include trs(background-color .3s ease, box-shadow .3s ease);
+  @include trs(background-color .3s ease, border-color .3s ease);
 
   &:hover {
-	background: none;
-	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	background-color: $link-hover-light;
+	border-color: $link-hover-light;
   }
 }
 
@@ -249,6 +249,10 @@ textarea {
 	  border-color: $link-hover;
 	}
 
+	&.hovered {
+	  border-color: $link-hover-light;
+	}
+
 	.price-holder {
 	  height: 70px;
 	  text-align: left;
@@ -280,8 +284,6 @@ textarea {
 		padding: 0;
 		border-radius: 10px 0 0;
 		text-indent: -9999em;
-		color: #1938a5;
-		background: $link-hover;
 		font-weight: normal;
 
 		&:after {
@@ -294,12 +296,6 @@ textarea {
 		  right: 0;
 		  top: 24px;
 		  text-indent: 0;
-		}
-
-		&:hover {
-		  background: $white;
-		  color: $link-hover;
-		  box-shadow: none;
 		}
 
 		@include bp(max-width, 1280px) {
@@ -594,8 +590,7 @@ textarea {
 	background: #d0e0f5;
 
 	&:hover {
-	  background: $link-hover;
-	  color: $white;
+	  background: #b4c7e6;
 	}
   }
 }
@@ -634,8 +629,8 @@ textarea {
 	  }
 
 	  &:hover {
-		background-color: $link-hover !important;
-		color: $white !important;
+		background-color: #f3f7fd !important;
+		color: $dark !important;
 	  }
 	}
   }

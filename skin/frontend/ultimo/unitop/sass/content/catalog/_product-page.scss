@@ -90,45 +90,6 @@
     }
   }
 
-  .button.btn-cart {
-    @extend %button;
-    min-width: 220px;
-    min-height: 60px;
-    margin-right: 30px;
-    margin-bottom: 10px;
-    font-size: 19px;
-    font-weight: 600;
-    letter-spacing: .25px;
-    white-space: nowrap;
-    float: left;
-
-    > * {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    span {
-      padding: 2px 0 0 14px;
-    }
-  }
-
-  .button.fastbuy-btn {
-    display: table;
-    margin-right: 0;
-    border-color: #c3cee4;
-    background: none;
-
-    &:hover {
-      border-color: $link-hover;
-      background: $link-hover;
-    }
-
-    span {
-      display: table-cell;
-      vertical-align: middle;
-    }
-  }
-
   .share-icons {
     @include bp(max-width, $bp-tiny) {
       text-align: center;
@@ -192,7 +153,7 @@
           color: #1938a5;
 
           .img-wrap {
-            background: $link-hiver-light;
+            background: $link-hover-light;
           }
         }
       }
@@ -313,6 +274,49 @@
         font-size: 1rem;
         text-transform: uppercase;
       }
+    }
+  }
+}
+
+.product-shop {
+  .button.btn-cart {
+    @extend %button;
+    min-width: 220px;
+    min-height: 60px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: .25px;
+    white-space: nowrap;
+    float: left;
+
+    > * {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    span {
+      padding: 2px 0 0 14px;
+    }
+  }
+
+  .button.fastbuy-btn {
+    display: table;
+    margin-right: 0;
+    border-color: #c3cee4;
+    background: none;
+    @include trs(color .3s ease);
+
+    &:hover {
+      border-color: #1938a5;
+      background: #1938a5;
+      color: $white;
+    }
+
+    span {
+      display: table-cell;
+      vertical-align: middle;
     }
   }
 }
