@@ -7,10 +7,10 @@
         box-sizing: border-box;
 
         > a {
-          font-size: 16px;
+          font-size: 1rem;
           padding-left: 65px;
           position: relative;
-          background: #132b7f;
+          background: #132b7f !important;
 
           > .caret {
             display: none;
@@ -117,6 +117,14 @@
         overflow: hidden;
         margin-bottom: 8px;
       }
+    }
+  }
+}
+
+.nav {
+  .inner-container {
+    @include bp(max-width, 1365px) {
+      padding: 0;
     }
   }
 }

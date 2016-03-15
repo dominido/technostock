@@ -5,6 +5,15 @@
 	margin-top: 10px;
   }
 
+  .nav-item {
+	&:hover {
+	  > a {
+		background-color: $link-hover;
+		color: #fff;
+	  }
+	}
+  }
+
   .nav-panel-inner {
 	padding: 0;
   }
@@ -193,6 +202,22 @@
   .the-slideshow {
 	@include bp(max-width, 959px) {
 	  width: 100%;
+	}
+  }
+}
+
+#nav {
+  > .nav-item {
+	> .level0 {
+	  >li {
+		background: #ecf3fc;
+
+		> a {
+		  font-size: 1rem;
+		  font-weight: 500;
+		  padding-left: 25px !important;
+		}
+	  }
 	}
   }
 }

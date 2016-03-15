@@ -67,20 +67,6 @@
   position: relative;
 }
 
-.nav-regular .nav-item.level0.active > a {
-  position: relative;
-
-  &:after {
-	position: absolute;
-	content: '';
-	width: 100%;
-	height: 3px;
-	bottom: 0;
-	left: 0;
-	background: $link-hover;
-  }
-}
-
 .nav-regular .simple > ul > li > a,
 .nav-regular .nav-submenu--mega > li > ul > li {
   &:after {
@@ -102,13 +88,12 @@
 
   &.active {
 	> a {
-	  background: none;
+	  background: #132b7f;
 	  color: #fff;
 	}
 
 	&:hover {
 	  > a {
-		background-color: #333333;
 		color: #f2f2f2;
 	  }
 	}
@@ -123,10 +108,11 @@
 	background: $gray;
 
 	> a {
-	  font-size: 14px;
+	  font-size: 1rem;
 	  font-weight: 500;
-	  padding-left: 32px;
+	  padding-left: 25px;
 	  color: #35426d;
+	  text-transform: none;
 
 	  @include bp(max-width, 1024px) {
 		padding-left: 15px;
@@ -134,13 +120,6 @@
 
 	  > .caret {
 		float: right;
-	  }
-	}
-
-	&:hover {
-	  > a {
-		background-color: $link-hover;
-		color: #fff;
 	  }
 	}
   }
