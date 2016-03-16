@@ -170,10 +170,9 @@
                     <?php endif; ?>
 
                     <?php
-                    if ($lc['addtolinks_simple'])
-                        echo $helpTemplate->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right');
-                    else
-                        echo $helpTemplate->getCategoryAddtoLinksComplex($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right');
+
+                    echo $helpTemplate->getCategoryAddtoWishLinks($_product,'addto-gaps-right');
+
                     ?>
                 </div>
             </div>
@@ -268,9 +267,11 @@
                             if ($gc['display_addtolinks'] != 0 && $gc['addtolinks_simple'])
                             {
                                 if ($gc['display_addtolinks'] == 1) //Display on hover
-                                    echo $helpTemplate->getCategoryAddtoLinksIcons($_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage display-onhover');
-                                else //Always display
-                                    echo $helpTemplate->getCategoryAddtoLinksIcons($_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage');
+                                    //echo $helpTemplate->getCategoryAddtoLinksIcons($_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage display-onhover');
+                                    echo $helpTemplate->getCategoryAddtoWishLinks($_product, 'addto-links-icons addto-onimage display-onhover');
+
+                                //else //Always display
+                                 //   echo $helpTemplate->getCategoryAddtoLinksIcons($_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage');
                             }
                         ?>
 
@@ -358,7 +359,7 @@
                         <?php //Add-to links
                             if ($gc['display_addtolinks'] != 0 && !$gc['addtolinks_simple'])
                             {
-                                echo $helpTemplate->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right');
+                                echo $helpTemplate->getCategoryAddtoWishLinks($_product,'addto-gaps-right');
                             }
                         ?>
                     </div> <!-- end: actions -->
