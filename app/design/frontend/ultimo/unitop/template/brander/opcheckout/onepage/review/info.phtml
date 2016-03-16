@@ -5,22 +5,24 @@
             <a href="<?php echo $_item->getProduct()->getProductUrl()?>" class="product-image">
                 <img src="<?php echo Mage::helper('catalog/image')->init($_item->getProduct(), 'small_image')->resize(100); ?>" alt="<?php echo $_item->getName() ?>"/>
             </a>
-            <div class="product-info">
-                <a class="product-name" href="<?php echo $_item->getProduct()->getProductUrl()?>">
-                    <?php echo $_item->getName() ?>
-                </a>
-                <span class="obj">
-                    <?php echo $this->__('Code of product: %s',$_item->getProduct()->getSku()) ?>
-                </span>
-                <a href="javascript:void(0)" data="<?php echo $_item->getId() ?>" title="<?php echo $this->__('Remove item')?>"
-                    class="btn-remove btn-remove2 opcheckout-item-remove">
-                    <?php echo $this->__('Remove item')?>
-                </a>
-            </div>
-            <div class="price-col">
-                <?php echo $this->helper('checkout')->formatPrice($_item->getRowTotal()) ?>
-                <div class="product-counter">
-                    <input id="opcheckout-item-qty-<?php echo $_item->getId() ?>" data="<?php echo $_item->getId() ?>" class="spinner opcheckout-item-qty" class="input-text" type="text" name="opcheckout-item-qty-<?php echo $_item->getId() ?>" value="<?php echo $_item->getQty() ?>" readonly />
+            <div class="checkout-item-details">
+                <div class="product-info">
+                    <a class="product-name" href="<?php echo $_item->getProduct()->getProductUrl()?>">
+                        <?php echo $_item->getName() ?>
+                    </a>
+                    <span class="obj">
+                        <?php echo $this->__('Code of product: %s',$_item->getProduct()->getSku()) ?>
+                    </span>
+                    <a href="javascript:void(0)" data="<?php echo $_item->getId() ?>" title="<?php echo $this->__('Remove item')?>"
+                        class="btn-remove btn-remove2 opcheckout-item-remove">
+                        <?php echo $this->__('Remove item')?>
+                    </a>
+                </div>
+                <div class="price-col">
+                    <?php echo $this->helper('checkout')->formatPrice($_item->getRowTotal()) ?>
+                    <div class="product-counter">
+                        <input id="opcheckout-item-qty-<?php echo $_item->getId() ?>" data="<?php echo $_item->getId() ?>" class="spinner opcheckout-item-qty" class="input-text" type="text" name="opcheckout-item-qty-<?php echo $_item->getId() ?>" value="<?php echo $_item->getQty() ?>" readonly />
+                    </div>
                 </div>
             </div>
         </div>

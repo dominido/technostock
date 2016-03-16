@@ -293,7 +293,7 @@
 
 	  &.active {
 		a {
-		  color: $link-hover;
+		  color: $dark;
 
 		  &:after {
 			width: 100%;
@@ -310,7 +310,7 @@
 	  position: relative;
 	  display: block;
 	  text-align: center;
-	  padding: 9px 30px;
+	  padding: 10px;
 	  font-size: 16px;
 	  line-height: 20px;
 
@@ -322,7 +322,7 @@
 		width: 0;
 		height: 3px;
 		margin-top: -2px;
-		background-color: $link-hover;
+		background-color: $dark;
 		@include trs(width .3s ease);
 	  }
 
@@ -837,8 +837,7 @@
 	  .price {
 		font-size: 1.3rem;
 		font-weight: bold;
-		color: $link-hover;
-		margin-right: 20px;
+		color: $dark;
 
 		.num {
 		  display: inline-block;
@@ -853,13 +852,16 @@
 	  }
 
 	  .btn-remove {
-		font-size: 24px;
-		color: #c4bec5;
-		width: 20px;
-		height: 20px;
+		font-size: 14px;
+		width: auto;
+		height: auto;
+
+		&:before {
+		  font-size: 1rem;
+		}
 
 		&:hover {
-		  color: $link-hover;
+		  color: $darkest;
 		}
 	  }
 
@@ -868,28 +870,24 @@
 		padding-top: 10px;
 	  }
 
-	  @include bp(max-width, $bp-medium) {
-		.product-info {
+	  .checkout-item-details {
+		float: left;
+		width: calc(100% - 120px);
+		@include cleaner;
+	  }
+
+	  .product-info {
+		@include bp(max-width, $bp-medium) {
 		  max-width: 175px;
+		}
+
+		@include bp(max-width, 1199px) {
+		  max-width: none;
 		}
 	  }
 
 	  @include bp(max-width, $bp-small) {
 		margin-bottom: 20px;
-
-		.product-image {
-		  display: none;
-		}
-
-		.product-info {
-		  max-width: none;
-		  width: percentage(175/280);
-		}
-
-		.price-col {
-		  width: percentage(105/280);
-		}
-
 		.price {
 		  .num {
 			font-size: 16px;
@@ -940,6 +938,11 @@
 		vertical-align: middle;
 		width: 50%;
 		padding-left: 15px;
+
+		@include bp(max-width, $bp-tiny) {
+		  width: 100%;
+		  padding-left: 0 !important;
+		}
 	  }
 
 	  .price {
@@ -994,7 +997,7 @@
 	  width: auto;
 	  padding: 3%;
 	  border: 0;
-	  background: #ebebeb;
+	  background: #d0e0f5;
 	}
   }
 }
