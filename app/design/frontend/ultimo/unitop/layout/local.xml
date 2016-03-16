@@ -563,12 +563,14 @@
 			<!-- Tabs. They are displayed inside the block with product collateral data. -->
 			<block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs" template="catalog/product/view/tabs.phtml" >
 				
+				<!-- Product description -->
+				<action method="addTab" translate="title" module="catalog"><alias>description</alias><title>Product Description</title><block>catalog/product_view_description</block><template>catalog/product/view/description.phtml</template></action>
 
 				<!-- Recurring profile -->
 				<action method="addTab" translate="title" module="payment"><alias>product.info.additional.recurring.schedule</alias><title>Recurring Profile</title><block>payment/catalog_product_view_profile</block><template>payment/catalog/product/view/profile/schedule.phtml</template></action>
 				
-				<!-- Product attributes -->
-				<action method="addTab" translate="title" module="catalog"><alias>additional</alias><title>Additional Information</title><block>brander_shop/catalog_product_view_attributes</block><template>catalog/product/view/attributes.phtml</template></action>
+				<!--&lt;!&ndash; Product attributes &ndash;&gt;-->
+				<!--<action method="addTab" translate="title" module="catalog"><alias>additional</alias><title>Additional Information</title><block>brander_shop/catalog_product_view_attributes</block><template>catalog/product/view/attributes.phtml</template></action>-->
 				
 				<!-- Reviews-->
 				<!-- Do not change 'tabreviews' alias. It is needed in JS scripts -->
