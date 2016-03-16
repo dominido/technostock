@@ -1035,6 +1035,21 @@ textarea {
   }
 }
 
+.link-wishlist {
+  position: relative;
+  font-size: 0;
+
+  &:before {
+	font-family: iconpack2;
+	content: "\e903";
+	font-size: 1rem;
+  }
+
+  &:hover {
+	color: $link-hover;
+  }
+}
+
 .sidebar {
   @include bp(max-width, $bp-tiny) {
 	.block-account {
