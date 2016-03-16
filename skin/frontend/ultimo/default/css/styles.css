@@ -1453,7 +1453,6 @@ ul.list13 li {
 
 /* Separator */
 ul .separator {
-	border-bottom: 1px solid #fff;
 	margin: 8px 1px;
 	overflow: hidden;
 }
