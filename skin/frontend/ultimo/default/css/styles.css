@@ -2501,14 +2501,16 @@ ul.disc ul li {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 .products-list .item {
-	border-top: 1px solid #d0e0f5;
-	padding-top: 20px;
-	padding-bottom: 20px;
 	background-color: #fff;
-	position: relative; /* For hover effect */
+	position: relative;
+	margin-bottom: 20px;
 
 	-webkit-transition: box-shadow 0ms ease-in;
 	transition: box-shadow 0ms ease-in;
+}
+
+.products-list .item:last-child {
+	margin-bottom: 0;
 }
 
 .products-list .product-shop-inner {

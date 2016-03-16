@@ -22,10 +22,13 @@
 
 .products-list {
   .item-inner {
+	padding: 20px;
+	border: 3px solid transparent;
+	@include trs(border-color .3s ease);
 	@include cleaner;
 
 	.product-image {
-	  border: 1px solid #e5e0e6;
+	  border: 1px solid #d0e0f5;
 	  overflow: hidden;
 
 	  img {
@@ -34,9 +37,7 @@
 	}
 
 	&:hover {
-	  .product-image {
-		border-color: $link-hover;
-	  }
+	  border-color: $link-hover;
 	}
 
 	.product-name {
@@ -49,12 +50,11 @@
 	  margin: 0 0 5px;
 
 	  a {
-		position: relative;
+		font-size: 1em;
 		padding-left: 25px;
-		text-transform: uppercase;
 
 		&:before {
-		  font-family: BaseIcons;
+		  //font-family: BaseIcons;
 		  position: absolute;
 		  top: -1px;
 		  left: 0;
