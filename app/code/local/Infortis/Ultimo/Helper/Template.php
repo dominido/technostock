@@ -127,4 +127,23 @@ class Infortis_Ultimo_Helper_Template extends Mage_Core_Helper_Abstract
 		return $this->getCategoryAddtoLinksIcons($_product, $_compareUrl, $wrapperClasses);
 	}
 
+	// only for wishlist icon
+	public function getCategoryAddtoWishLinks($_product, $wrapperClasses = '')
+	{
+		$html = '';
+
+		if (Mage::helper('wishlist')->isAllow())
+		{
+			$html .= '<li><a href="' . Mage::helper('wishlist')->getAddUrl($_product) . '" class="link-wishlist" title="' . $this->__('Add to Wishlist') . '">' . $this->__('Add to Wishlist') . '</a></li>';
+		}
+
+
+		//If any link rendered
+		if (!empty($html))
+		{
+			return '<ul class="add-to-links clearer '. $wrapperClasses .'">' . $html . '</ul>';
+		}
+		return $html;
+	}
+
 }
