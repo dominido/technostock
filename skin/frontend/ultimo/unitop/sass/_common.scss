@@ -1026,6 +1026,12 @@ textarea {
 }
 
 #scroll-to-top {
+  color: #163294;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  @include trs(color .3s ease);
+  @include trs(color .3s ease, background-color .3s ease);
+  
+  &:hover {
+	color: #163294;
+	background: #f3f7fd;
+  }
 }
