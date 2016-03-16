@@ -74,6 +74,12 @@
             </p>
         </div>
 
+        <?php if ($order->getOrderComment()): ?>
+            <p>
+                <?php echo $this->__('Your comment for order is ').$order->getOrderComment();  ?>
+            </p>
+        <?php endif ?>
+
         <div class="checkout-shopping-bag">
             <h2 class="bag-title"><?php echo $helper->__('Products in order')?></h2>
 

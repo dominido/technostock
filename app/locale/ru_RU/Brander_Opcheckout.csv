@@ -1,4 +1,4 @@
-"<a class="fancybox" href="#agreement-content-%s">Placing an order you agree to the terms of %s.</a>","<a class="fancybox" href="#agreement-content-%s">Оформляя заказ Вы соглашаетесь с условиями %s.</a>"
+еу"<a class="fancybox" href="#agreement-content-%s">Placing an order you agree to the terms of %s.</a>","<a class="fancybox" href="#agreement-content-%s">Оформляя заказ Вы соглашаетесь с условиями %s.</a>"
 "Shipping and payment","Доставка и оплата"
 "Confirm order","Подтвердить заказ"
 "Code of product: %s","Артикул: %s"
@@ -36,3 +36,4 @@
 "Discount (%s):", "Скидка (%s):"
 "Your Comment for this Order", "Ваш комментарий к этому заказу"
 "Applied discount coupon: ", "Применена скидка по купону: "
+"Your comment for order is ", "Ваш коментарий к заказу: "
