@@ -3120,7 +3120,8 @@ a.availability-only {
 /* If displayed on product image */
 .addto-links-icons.addto-onimage {
 	float: right;
-	margin-top: -40px; /* Move up */
+	margin-top: -30px;
+	margin-right: 10px;
 	position: relative;
 	z-index: 1;
 	padding-bottom: 4px; /* Use padding to cover the bottom part of the product image below icons */
