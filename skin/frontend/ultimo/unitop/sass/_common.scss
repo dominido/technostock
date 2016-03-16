@@ -113,7 +113,7 @@ textarea {
 .map-popup-close,
 .remember-me-popup-head .remember-me-popup-close,
 .btn-edit {
-  color: $link-hover;
+  color: $dark;
   line-height: 1;
 }
 
@@ -125,7 +125,12 @@ textarea {
 	  width: 36px;
 	  height: 36px;
 	  line-height: 36px;
-	  color: $link-hover;
+	  color: $dark;
+
+	  &:hover {
+		background: #f3f7fd;
+		color: $darkest;
+	  }
 	}
   }
 
@@ -138,15 +143,26 @@ textarea {
   }
 
 
-  .view-mode {
-	.ic {
-	  font-size: 20px;
-	  color: #dbd0db;
-	  @include trs(color .3s ease);
-	}
+  .sorter {
+	.view-mode {
+	  .ic {
+		font-size: 20px;
+		background: none;
+		color: $dark;
+		@include trs(color .3s ease);
 
-  	> label {
-	  display: none;
+		&:hover {
+		  color: $link-hover;
+		}
+	  }
+
+	  span.ic {
+		color: $link-hover;
+	  }
+
+	  > label {
+		display: none;
+	  }
 	}
   }
 }
@@ -249,9 +265,9 @@ textarea {
 	  border-color: $link-hover;
 	}
 
-	&.hovered {
-	  border-color: $link-hover-light;
-	}
+	//&.hovered {
+	//  border-color: $link-hover-light;
+	//}
 
 	.price-holder {
 	  height: 70px;

@@ -192,7 +192,7 @@
         //Assign number of items in a row to specific viewport width
         if ($imageCount >= 5)
         {
-                    $breakpoints = '[0, 1], [219, 2], [299, 3], [459, 4], [640, 5], [747, 3], [1259, 4]'; //All breakpoints -21px
+                    $breakpoints = '[0, 1], [320, 2], [480, 3], [767, 2], [1099, 3] ';
         }
         else
         {
@@ -320,10 +320,13 @@
             lazyLoad: true,
         <?php endif; ?>
 
-            responsive: true,
-            items: 3,
-            itemsCustom: [ [0, 1], [320, 2], [480, 3], [767, 2], [1099, 3] ],
+        <?php if(!$isResponsive): ?>
+            responsive: false,
+            items: <?php echo $showItems; ?>,
+        <?php else: ?>
+            itemsCustom: [ <?php echo $breakpoints; ?> ],
             responsiveRefreshRate: 50,
+        <?php endif; ?>
 
         <?php if ($speed): ?>
             slideSpeed: <?php echo $speed; ?>,

@@ -46,6 +46,7 @@ function layerednavigation_ajax_init(){
             });
         });
 
+    jQuery('.item .product-name').dotdotdot();
     //price slider for mobile fix
     var handle = jQuery( ".slider-wrap .handle" );
     handle.draggable({

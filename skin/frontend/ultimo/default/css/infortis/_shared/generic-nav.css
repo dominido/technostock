@@ -120,13 +120,16 @@
 	background-color: #fff;
 }
 
+.slider-arrows3 .owl-controls .owl-buttons div {
+	top: 50%;
+	margin-top: -20px;
+}
+
 .slider-arrows3 .owl-controls .owl-buttons .owl-prev {
-	top: 30%;
 	left: -44px;
 }
 
 .slider-arrows3 .owl-controls .owl-buttons .owl-next {
-	top: 30%;
 	right: -44px;
 }
 

@@ -49,17 +49,17 @@ jQuery(document).ready(function($) {
     });
 
     //btn-cart hovered effect
-    $('.products-grid .item-inner').on('mouseenter', function() {
-        var $this = $(this);
-        $this.find('.btn-cart').on('mouseenter', function() {
-            $this.addClass('hovered');
-        });
-    }).on('mouseleave', function() {
-        var $this = $(this);
-        $this.find('.btn-cart').on('mouseleave', function() {
-            $this.removeClass('hovered');
-        });
-    });
+    //$('.products-grid .item-inner').on('mouseenter', function() {
+    //    var $this = $(this);
+    //    $this.find('.btn-cart').on('mouseenter', function() {
+    //        $this.addClass('hovered');
+    //    });
+    //}).on('mouseleave', function() {
+    //    var $this = $(this);
+    //    $this.find('.btn-cart').on('mouseleave', function() {
+    //        $this.removeClass('hovered');
+    //    });
+    //});
 
 
 

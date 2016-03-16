@@ -166,7 +166,7 @@
                     <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                         <p><a title="<?php echo $this->__('View Details') ?>" class="button btn-cart" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a></p>
                     <?php else: ?>
-                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <p class="availability out-of-stock" title="<?php echo $this->__('Out of stock') ?>"></p>
                     <?php endif; ?>
 
                     <?php
@@ -306,15 +306,19 @@
 
 
 
-                    <?php if ($gc['display_price'] == 1): //Display on hover ?>
-                        <div class="display-onhover"><?php echo $this->getPriceHtml($_product, true); ?></div>
-                    <?php elseif ($gc['display_price'] == 2): //Always display ?>
-                        <?php echo $this->getPriceHtml($_product, true); ?>
-                    <?php endif; ?>
+                    <div class="price-holder">
+                        <?php if ($gc['display_price'] == 1): //Display on hover ?>
+                            <div class="display-onhover"><?php echo $this->getPriceHtml($_product, true); ?></div>
+                        <?php elseif ($gc['display_price'] == 2): //Always display ?>
+                            <?php echo $this->getPriceHtml($_product, true); ?>
+                        <?php endif; ?>
+                    </div>
 
                     <?php //TODO:: fix equal height ?>
                     <?php if (!$_product->isSaleable()): ?>
-                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <div class="actions">
+                            <p class="availability out-of-stock" title="<?php echo $this->__('Out of stock') ?>"></p>
+                        </div>
                     <?php /*
                     <?php elseif (!$_product->canConfigure()): ?>
                         <?php echo $this->getChild('qty_limit')->setProduct($_product)->toHtml(); ?>
@@ -360,7 +364,7 @@
                     </div> <!-- end: actions -->
                 </div>
             </li>
-        <?php endforeach; ?>    
+        <?php endforeach; ?>
     </ul>
     <?php endif; //end: if grid mode ?>
 

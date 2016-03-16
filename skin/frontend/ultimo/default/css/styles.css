@@ -547,7 +547,7 @@ p.control input.radio {
 }
 
 .form-list li.additional-row {
-	border-top: 1px solid #e5e5e5;
+	border-top: 1px solid #d0e0f5;
 	margin-top: 10px;
 }
 
@@ -690,7 +690,7 @@ p.control input.radio {
 	clear: both;
 	margin: 30px 0 0;
 	padding-top: 10px;
-	border-top: 1px solid #e5e5e5;
+	border-top: 1px solid #d0e0f5;
 }
 
 .buttons-set p.required {
@@ -959,8 +959,8 @@ p.required,
 .pager {
 	margin: 10px 0;
 	padding: 10px 0;
-	border-top: 1px solid #e5e5e5;
-	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #d0e0f5;
+	border-bottom: 1px solid #d0e0f5;
 }
 
 .pager .pages {
@@ -1000,8 +1000,8 @@ p.required,
 /* Toolbar. Pager and sorter inside toolbar
 -------------------------------------------------------------- */
 .toolbar {
-	border-top: 1px solid #e5e5e5;
-	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #d0e0f5;
+	border-bottom: 1px solid #d0e0f5;
 	margin-bottom: -1px;
 	position: relative;
 	z-index: 1;
@@ -1011,7 +1011,7 @@ p.required,
 .toolbar .pager {
 	margin: 0;
 	border-bottom: none;
-	border-top: 1px dashed #e5e5e5;
+	border-top: 1px dashed #d0e0f5;
 	text-align: center;
 }
 
@@ -1101,7 +1101,7 @@ p.required,
 
 .data-table thead {
 	background: none;
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 }
 
 .data-table thead th {
@@ -1150,7 +1150,7 @@ p.required,
 }
 
 .data-table tbody.odd tr.last {
-	border-bottom: #e5e5e5 solid 1px;
+	border-bottom: #d0e0f5 solid 1px;
 }
 
 .data-table tbody.even {
@@ -2023,7 +2023,7 @@ ul.disc ul li {
 .block-layered-nav .block-subtitle--filter {
 	display: none;
 	cursor: pointer;
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 	padding: 7px 10px 7px 25px;
 	margin-top: 10px;
 	position: relative;
@@ -2195,8 +2195,8 @@ ul.disc ul li {
 	position: absolute;
 	padding: 1em 0;
 	margin: -20px 0 0;
-	border-top: 1px solid #e5e5e5;
-	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #d0e0f5;
+	border-bottom: 1px solid #d0e0f5;
 	font-weight: normal;
 	z-index: 1;
 }
@@ -2501,7 +2501,7 @@ ul.disc ul li {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 .products-list .item {
-	border-top: 1px solid #e5e5e5;
+	border-top: 1px solid #d0e0f5;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	background-color: #fff;
@@ -2512,7 +2512,7 @@ ul.disc ul li {
 }
 
 .products-list .product-shop-inner {
-	border-right: 1px solid #e5e5e5;
+	border-right: 1px solid #d0e0f5;
 	padding-right: 15px
 }
 
@@ -2676,10 +2676,10 @@ ul.disc ul li {
 	text-overflow: ellipsis;
 }
 
-.products-grid.single-line-name .item:hover .product-name {
-	overflow: visible;
-	white-space: normal;
-}
+/*.products-grid.single-line-name .item:hover .product-name {*/
+	/*overflow: visible;*/
+	/*white-space: normal;*/
+/*}*/
 
 /* Align to the center
 	-------------------------------------------------------------- */
@@ -2710,11 +2710,7 @@ ul.disc ul li {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 .category-products-grid .item {
-	border-top: 1px solid #e5e5e5;
-	border-left: none;
-	border-right: none;
-	zoom: 1;
-
+	border: none;
 	padding-top: 2%;
 	padding-left: 1%;
 	padding-right: 1%;
@@ -2848,7 +2844,7 @@ ul.disc ul li {
 	display: inline-block;
 	vertical-align: middle;
 	text-indent: -9999px;
-	border-left: 1px solid #e5e5e5;
+	border-left: 1px solid #d0e0f5;
 	height: 13px;
 	width: 1px;
 	margin: 0 3px;
@@ -2915,7 +2911,7 @@ a.availability-only {
 }
 
 .availability-only-details thead {
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 }
 
 .availability-only-details th {
@@ -3390,7 +3386,7 @@ a.availability-only {
 .product-view .add-to-box {
 	padding: 0 0 15px;
 	margin: 0 0 15px;
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 }
 
 .product-view .container2-wrapper {
@@ -3635,7 +3631,7 @@ a.availability-only {
 .product-view .box-tags .product-tags li {
 	display: inline;
 	padding: 0 7px;
-	border-right: 1px solid #e5e5e5;
+	border-right: 1px solid #d0e0f5;
 }
 
 .product-view .box-tags .product-tags li.first {
@@ -3695,7 +3691,7 @@ a.availability-only {
 .product-view .box-reviews dd {
 	margin: 0 0 15px 15px;
 	padding-bottom: 15px;
-	border-bottom: 1px dashed #e5e5e5;
+	border-bottom: 1px dashed #d0e0f5;
 }
 
 .product-view .box-reviews dd:last-child {
@@ -3822,7 +3818,7 @@ a.availability-only {
 .product-view .section-title {
 	margin-bottom: 15px;
 	padding: 7px 0;
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 }
 
 /* Modify headings in specific cases
@@ -3981,7 +3977,7 @@ a.availability-only {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 .cart-table thead tr {
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 }
 
 .cart-table th.last {
@@ -4368,7 +4364,7 @@ a.availability-only {
 }
 
 .gift-messages-form {
-	border: 1px solid #e5e5e5;
+	border: 1px solid #d0e0f5;
 	padding: 20px;
 	position: relative;
 }
@@ -4640,7 +4636,7 @@ a.availability-only {
 }
 
 .opc .gift-messages-form {
-	border: solid #e5e5e5;
+	border: solid #d0e0f5;
 	border-width: 1px 0;
 }
 
@@ -4762,12 +4758,12 @@ a.availability-only {
 }
 
 .multiple-checkout .page-title {
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 	padding-bottom: 5px;
 }
 
 .multiple-checkout .buttons-set {
-	border-top: 1px solid #e5e5e5;
+	border-top: 1px solid #d0e0f5;
 	margin-top: 40px;
 	padding-top: 15px;
 }
@@ -4825,7 +4821,7 @@ a.availability-only {
 
 /* Step 2 */
 .checkout-multishipping-shipping .box-sp-methods {
-	border: 1px solid #e5e5e5;
+	border: 1px solid #d0e0f5;
 	padding: 15px;
 	margin-bottom: 0;
 	position: relative;
@@ -4898,7 +4894,7 @@ a.availability-only {
 }
 
 .box-account .box-head {
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 	margin: 0 0 10px;
 	padding-bottom: 5px;
 }
@@ -4916,7 +4912,7 @@ a.availability-only {
 }
 
 .box-account.box-info .col-1 {
-	border-right: 1px solid #e5e5e5;
+	border-right: 1px solid #d0e0f5;
 }
 
 .box-account.box-info .col-1 .box {
@@ -4927,7 +4923,7 @@ a.availability-only {
 	padding: 0 0 2px;
 	margin: 0 0 10px;
 	text-align: right;
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 }
 
 .dashboard .box .box-title h3,
@@ -5034,7 +5030,7 @@ a.availability-only {
 .addresses-list .addresses-additional .item {
 	padding: 15px;
 	margin: 0 0 10px;
-	border: 1px solid #e5e5e5;
+	border: 1px solid #d0e0f5;
 }
 
 .my-account .pager {
@@ -5098,7 +5094,7 @@ a.availability-only {
 }
 
 .order-info-box .col-1 {
-	border-right: #e5e5e5 solid 1px;
+	border-right: #d0e0f5 solid 1px;
 }
 
 .order-info-box .box-payment p {
@@ -5291,7 +5287,7 @@ a.availability-only {
 	display: block;
 	width: 97%;
 	height: 70px;
-	border: 1px solid #e5e5e5;
+	border: 1px solid #d0e0f5;
 }
 
 .my-wishlist .price-box {
@@ -5537,7 +5533,7 @@ a.availability-only {
 
 .remember-me-popup-head,
 .map-popup-heading {
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 	padding: 15px 45px 15px 20px;
 }
 
