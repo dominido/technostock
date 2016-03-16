@@ -194,13 +194,14 @@
                         {
                             if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
                             {
-                                echo $helpTemplate->getCategoryAddtoLinksIcons(
-                                $_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage visible-onhover');
+                                echo $helpTemplate->getCategoryAddtoWishLinks(
+                                $_product, 'addto-links-icons addto-onimage visible-onhover');
+
                             }
                             else //Always display
                             {
-                                echo $helpTemplate->getCategoryAddtoLinksIcons(
-                                $_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage');
+                                echo $helpTemplate->getCategoryAddtoWishLinks(
+                                $_product, 'addto-links-icons addto-onimage');
                             }
                         }
                     ?>
