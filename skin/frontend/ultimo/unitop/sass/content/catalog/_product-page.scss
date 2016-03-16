@@ -378,19 +378,27 @@
   .social-list-holder {
     float: right;
     width: calc(100% - 475px);
-    padding: 24px 0;
+    padding: 24px 0 24px 20px;
+    box-sizing: border-box;
 
     @include bp(max-width, 1099px) {
       float: none;
       width: 100%;
+      padding-left: 0;
     }
 
     .social-list {
       @include cleaner;
     }
+
+    &+.action-box {
+      margin-bottom: 30px;
+    }
   }
 
   .social-links {
+    margin: 0 -10px;
+
     li {
       margin: 0 10px 10px;
     }
@@ -405,6 +413,17 @@
         border-color: #1938a5;
         color: #1938a5 !important;
       }
+    }
+  }
+
+  .link-wishlist {
+    font-size: 1rem;
+    margin-bottom: 30px;
+
+    &:before {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 5px;
     }
   }
 }
