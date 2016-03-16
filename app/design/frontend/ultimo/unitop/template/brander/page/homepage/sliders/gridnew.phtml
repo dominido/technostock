@@ -11,6 +11,7 @@ if($_collectionSize = $_productCollection->getSize()): ?>
 
     $theme = $this->helper('ultimo');
     $helpImg = $this->helper('infortis/image');
+    $helpTemplate = $this->helper('ultimo/template');
     $helpLabels = $this->helper('brander_shop/labels');
     $productCountInSlide = 3; //Number of products displayed in a single slide
     $productCountInSlideMobile = 1;
@@ -88,6 +89,25 @@ if($_collectionSize = $_productCollection->getSize()): ?>
                                 <img src="<?php echo $helpImg->getImg($_item, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->escapeHtml($_item->getName()); ?>" />
                                 <?php echo $helpLabels->getLabels($_item); //Product labels ?>
                             </a>
+
+                            <?php //Add-to links
+                            if ($theme->getCfg('category_grid/display_addtolinks') != 0
+                                && $theme->getCfg('category_grid/addtolinks_simple'))
+                            {
+                                if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
+                                {
+                                    echo $helpTemplate->getCategoryAddtoWishLinks(
+                                        $_product, 'addto-links-icons addto-onimage visible-onhover');
+
+                                }
+                                else //Always display
+                                {
+                                    echo $helpTemplate->getCategoryAddtoWishLinks(
+                                        $_product, 'addto-links-icons addto-onimage');
+                                }
+                            }
+                            ?>
+
                         </div>
 
                         <div class="product-name">
@@ -199,6 +219,23 @@ if($_collectionSize = $_productCollection->getSize()): ?>
                                 <img src="<?php echo $helpImg->getImg($_item, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->escapeHtml($_item->getName()); ?>" />
                                 <?php echo $helpLabels->getLabels($_item); //Product labels ?>
                             </a>
+                            <?php //Add-to links
+                            if ($theme->getCfg('category_grid/display_addtolinks') != 0
+                                && $theme->getCfg('category_grid/addtolinks_simple'))
+                            {
+                                if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
+                                {
+                                    echo $helpTemplate->getCategoryAddtoWishLinks(
+                                        $_product, 'addto-links-icons addto-onimage visible-onhover');
+
+                                }
+                                else //Always display
+                                {
+                                    echo $helpTemplate->getCategoryAddtoWishLinks(
+                                        $_product, 'addto-links-icons addto-onimage');
+                                }
+                            }
+                            ?>
                         </div>
 
                         <div class="product-name">
