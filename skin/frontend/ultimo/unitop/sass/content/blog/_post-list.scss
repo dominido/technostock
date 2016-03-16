@@ -53,10 +53,10 @@ h3.post-name {
 	padding: 20px 1%;
 	margin-bottom: 20px;
 	background-color: #fff;
-	position: relative; /* For hover effect */
+	position: relative;
 	box-sizing: border-box;
 
-	@include trs(box-shadow 0ms ease-in, background 0s ease-out);
+	@include trs(background .3s ease);
 	@include cleaner;
 
 	&.archived {
@@ -79,6 +79,8 @@ h3.post-name {
 	}
 
 	&:hover {
+	  background: #d0e0f5;
+	  
 	  &.archived {
 		.archived-label {
 		  width: 65px;
@@ -94,6 +96,7 @@ h3.post-name {
 
   .post-name {
 	margin: 0 0 15px;
+	font-size: 1.625rem;
   }
 
   .post-image {
@@ -198,18 +201,27 @@ h3.post-name {
 
 .postscategory-list-item {
   box-sizing: border-box;
-  margin-bottom: 10px;
-  @include trs(box-shadow .4s ease-out, background .4s ease-out);
+  border-bottom: 1px solid #d0e0f5;
+  background: #2846b0;
+  @include trs(background .4s ease-out);
+
+  a {
+	color: $white;
+  }
 
   &:hover,
   &.active {
-	background: #fceee3;
-	-webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	background: #132b7f;
+	border-right-color: transparent;
+  }
+
+  &.active {
+	border-right: 3px solid #ff9732;
   }
 
   a {
-	padding: 5px 10px;
+	font-size: 1rem;
+	padding: 15px 10px 15px 20px;
 	display: block;
   }
 }
@@ -221,5 +233,43 @@ h3.post-name {
 	margin-bottom: 30px;
 	padding: 0 0 15px;
 	border-bottom: 2px solid #d8d8d8;
+  }
+}
+
+.brander-unitopblog-postscategory-index {
+  .sidebar {
+	border: none;
+	padding: 0;
+
+	.postscategory-title {
+	  display: none;
+	}
+  }
+}
+
+.author_name {
+  margin-bottom: 20px;
+}
+
+.post-shop-inner {
+  .bullet {
+	color: #b2a7b5;
+	margin-bottom: 15px;
+	@include cleaner;
+  }
+
+  dt {
+	float: left;
+	width: 25%;
+  }
+
+  dd {
+	float: left;
+	width: 75%;
+  }
+
+  .desc {
+	font-size: 1rem;
+	line-height: 1.625;
   }
 }

@@ -616,6 +616,23 @@ textarea {
 	  background: #b4c7e6;
 	}
   }
+
+  @include bp(max-width, $bp-smallest) {
+	&:after {
+	  display: none;
+	}
+
+	.news-link-holder {
+	  padding: 0;
+	  display: block;
+	}
+
+	a {
+	  min-width: 100%;
+	  width: 100%;
+	  box-sizing: border-box;
+	}
+  }
 }
 
 //owl carousel

@@ -18,95 +18,109 @@
 	float: left;
 	width: 364px;
 	margin: 0 20px 20px 0;
-	border: 1px solid #fceee3;
-	box-shadow: 13px 13px 0 #f2e6e2;
+	box-shadow: 13px 13px 0 #d0e0f5;
+
+	img {
+	  width: 100%;
+	  height: auto;
+	}
 
 	@include bp(max-width, $bp-tiny) {
 	  float: none;
-	  margin: 0 auto;
-	}
+	  margin: 0 auto 20px;
 
-	& + .post-details {
-	  float: left;
-	  width: calc(100% - 386px);
-	  padding-left: 74px;
 
-	  @include bp(max-width, $bp-tiny) {
+	  @include bp(max-width, $bp-smallest) {
 		width: 100%;
 	  }
+
+	  & + .post-details {
+		float: left;
+		width: calc(100% - 386px);
+		padding-left: 74px;
+
+		@include bp(max-width, $bp-small) {
+		  padding-left: 20px;
+		}
+
+		@include bp(max-width, $bp-tiny) {
+		  width: 100%;
+		  padding-left: 0;
+		}
+	  }
 	}
-  }
 
-  .post-details {
-	font-size: 1rem;
-	box-sizing: border-box;
+	.post-details {
+	  font-size: 1rem;
+	  box-sizing: border-box;
 
-	@include bp(max-width, 991px) {
-	  padding-left: 20px;
+	  @include bp(max-width, 991px) {
+		padding-left: 20px;
+	  }
+
+	  @include bp(max-width, $bp-tiny) {
+		padding: 40px 0 0;
+	  }
 	}
 
-	@include bp(max-width, $bp-tiny) {
-	  padding: 40px 0 0;
+	.post-title {
+	  margin-bottom: 40px;
+	  overflow: hidden;
+
+	  h1 {
+		min-height: 0;
+	  }
 	}
-  }
 
-  .post-title {
-	margin-bottom: 40px;
-	overflow: hidden;
-
-	h1 {
-	  min-height: 0;
+	.post-info {
+	  color: #b2a7b5;
 	}
-  }
 
-  .post-info {
-	color: #b2a7b5;
-  }
+	.post-post_content {
+	  margin-bottom: 60px;
+	  line-height: 1.8;
 
-  .post-post_content {
-	margin-bottom: 60px;
-	line-height: 1.8;
+	  p {
+		margin-bottom: 38px;
 
-	p {
-	  margin-bottom: 38px;
+		&:last-child {
+		  margin-bottom: 0;
+		}
+	  }
+	}
 
-	  &:last-child {
-		margin-bottom: 0;
+	.box-collateral {
+	  margin-bottom: 60px;
+	}
+
+	.form-add {
+	  margin-bottom: 60px;
+	  text-align: center;
+	}
+
+	h2 {
+	  text-align: center;
+	}
+
+	#comment-form {
+	  .buttons-set {
+		border: none;
+		margin: 0;
 	  }
 	}
   }
 
-  .box-collateral {
-	margin-bottom: 60px;
-  }
-
-  .form-add {
-	margin-bottom: 60px;
-	text-align: center;
-  }
-
-  h2 {
-	text-align: center;
-  }
-
-  #comment-form {
-	.buttons-set {
-	  border: none;
-	  margin: 0;
-	}
-  }
-}
-
-.post-list {
-  .item {
-	img {
-	  border: 1px solid #fceee3;
-	  @include trs(border-color .3s ease);
-	}
-	
-	&:hover {
+  .post-list {
+	.item {
 	  img {
-		border-color: $link-hover;
+		border: 1px solid #fceee3;
+		@include trs(border-color .3s ease);
+	  }
+
+	  &:hover {
+		img {
+		  border-color: $link-hover;
+		}
 	  }
 	}
   }
