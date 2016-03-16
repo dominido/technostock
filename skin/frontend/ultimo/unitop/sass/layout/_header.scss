@@ -30,12 +30,6 @@
     }
   }
 
-  .logo-wrapper {
-    .logo {
-      //max-width: 293px;
-    }
-  }
-
   .lang-switcher {
     &.dropdown {
       .dropdown-content {
@@ -344,6 +338,16 @@
     .logo {
       max-width: 474px;
       margin: 0 auto 40px;
+
+      @include bp(max-width, $bp-tiny) {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 

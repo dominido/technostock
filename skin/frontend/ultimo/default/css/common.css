@@ -26,7 +26,7 @@
 /* Page Heading
 -------------------------------------------------------------- */
 .my-account .page-title {
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 }
 
 /* Block titles and section headings
@@ -59,7 +59,7 @@
 .multiple-checkout .col2-set h2.legend,
 .info-set h2.legend {
 	padding-bottom: 7px;
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #d0e0f5;
 	font-weight: normal;
 	font-size: 1.5em; /*18px*/
 	line-height: 1.2222em; /*22px*/
@@ -72,7 +72,7 @@
 .my-account .page-title,
 .box-account .box-head,
 .dashboard .box .box-title {
-	border-color: #e5e5e5;
+	border-color: #d0e0f5;
 }
 
 /* Colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,7 +91,7 @@
 	/* Misc */
 .buttons-set,
 .toolbar {
-	border-color: #e5e5e5;
+	border-color: #d0e0f5;
 }
 
 /* Elements with horizontal border - lighter
@@ -118,7 +118,7 @@
 	/* Product page */
 .custom-sidebar-right .inner,
 .custom-sidebar-left .inner {
-	border-color: #e5e5e5;
+	border-color: #d0e0f5;
 }
 
 /* Elements with vertical border - lighter
@@ -131,7 +131,7 @@
 /* Other elements with border
 -------------------------------------------------------------- */
 .swatch-link {
-	border-color: #cccccc;
+	border-color: #d0e0f5;
 }
 
 /* Background colors
