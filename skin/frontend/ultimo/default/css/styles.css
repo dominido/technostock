@@ -1116,7 +1116,8 @@ p.required,
 
 .data-table tr.odd td,
 .data-table tr.odd th {
-	border-right: 1px solid #f5f5f5;
+	border-right: 1px solid #d0e0f5;
+	vertical-align: middle;
 }
 
 .data-table tr.odd td.last {
@@ -1124,12 +1125,12 @@ p.required,
 }
 
 .data-table tr.odd.last {
-	border-bottom: #eee solid 1px;
+	border-bottom: 1px solid #d0e0f5;
 }
 
 .data-table tr.even td,
 .data-table tr.even th {
-	border-right: 1px solid #f5f5f5;
+	border-right: 1px solid #d0e0f5;
 }
 
 .data-table tr.even td.last {

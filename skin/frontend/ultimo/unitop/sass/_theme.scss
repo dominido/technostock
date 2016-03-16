@@ -356,6 +356,20 @@
 	  }
 	}
   }
+
+  .col-edit {
+	a {
+	  position: relative;
+	  font-size: 0;
+
+	  &:before {
+		font-size: 14px;
+		font-family: BaseIcons;
+		display: inline-block;
+		content: "\e22e";
+	  }
+	}
+  }
 }
 
 //end cart
