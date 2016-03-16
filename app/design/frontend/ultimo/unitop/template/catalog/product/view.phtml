@@ -223,7 +223,14 @@
 			<?php endif; ?>
 			*/ ?>
 
-
+			<?php if ($addtoLinksHtml): //compare, wishlist, send to friend, share social ?>
+				<div class="action-box clearer">
+					<div class="fl">
+						<a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"
+						   class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+					</div>
+				</div>
+			<?php endif; ?>
 
 			<?php if ($socialShareHtml): //compare, wishlist, send to friend, share social ?>
 				<div class="action-box social-list-holder">
