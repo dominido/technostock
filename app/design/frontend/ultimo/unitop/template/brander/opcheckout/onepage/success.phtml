@@ -76,7 +76,8 @@
 
         <?php if ($order->getOrderComment()): ?>
             <p>
-                <?php echo $this->__('Your comment for order is ').$order->getOrderComment();  ?>
+                <span class="comment-title"><?php echo $this->__('Your comment for order is '); ?></span>
+                <?php echo $order->getOrderComment(); ?>
             </p>
         <?php endif ?>
 

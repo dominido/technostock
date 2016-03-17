@@ -241,7 +241,8 @@
 .coupon-opener {
   display: inline-block;
   font-weight: bold;
-  color: $link-hover;
+  color: $dark;
+  text-transform: uppercase;
 
   label {
 	cursor: pointer;
@@ -250,7 +251,7 @@
   .icon-arrow {
 	font-family: BaseIcons;
 	display: inline-block;
-	vertical-align: middle;
+	vertical-align: top;
 	font-size: 20px;
 	line-height: 1;
 	font-style: normal;
@@ -398,7 +399,7 @@
 		max-width: 100%;
 
 		.chosen-search input[type="text"] {
-		  min-height: 26px;
+		  height: 26px;
 		}
 	  }
 
@@ -766,6 +767,8 @@
 	  .product-info {
 		float: left;
 		max-width: 290px;
+		padding-right: 10px;
+		box-sizing: border-box;
 	  }
 
 	  .item-options {
@@ -811,6 +814,13 @@
 		  img {
 			border-color: $link-hover;
 		  }
+		}
+
+		@include bp(max-width, $bp-smallest) {
+		  display: block;
+		  float: none;
+		  margin: 0 0 20px;
+		  text-align: center;
 		}
 	  }
 
@@ -874,6 +884,11 @@
 		float: left;
 		width: calc(100% - 120px);
 		@include cleaner;
+
+		@include bp(max-width, $bp-smallest) {
+		  float: none;
+		  width: 100%;
+		}
 	  }
 
 	  .product-info {

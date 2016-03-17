@@ -92,8 +92,11 @@
   }
 }
 
+.nav-regular .nav-item.level0.first-regular {
+  width: 24%;
+}
+
 @include bp(min-width, 1366px) {
-  .nav-regular .nav-item.level0.first-regular,
   .no-gutter.grid12-3 {
 	width: 24%;
   }

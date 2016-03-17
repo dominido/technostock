@@ -5,6 +5,7 @@ $helper = Mage::helper('brander_opcheckout');
 $_item = $this->getItem() ?>
 <?php $_product = $_item->getProduct(); ?>
 <div class="order-product-item checkout-item">
+    <div class="item-inner">
     <?php if(!$this->getPrintOrder()): ?>
         <a class="product-image" href="<?php echo $_product->getProductUrl()?>">
             <img src="<?php echo Mage::helper('catalog/image')->init($_product, 'small_image')->resize(100,118); ?>" alt="<?php echo $_product->getName() ?>" title="<?php echo $_product->getName() ?>" />
@@ -138,4 +139,11 @@ $_item = $this->getItem() ?>
                 <?php endif; ?>
             </div>
     </div>
+    </div>
 </div>
+<script>
+    jQuery(function($) {
+        $('.success-bottom .product-name').matchHeight();
+        $('.success-bottom .item-inner .obj').matchHeight();
+    });
+</script>

@@ -35,8 +35,8 @@
 	border: 0;
 
 	.bag-title {
-	  margin-bottom: 25px;
-	  font-weight: $light;
+	  margin: 30px 0;
+	  text-align: center;
 	  font-size: 32px;
 	}
 
@@ -57,7 +57,7 @@
 
 .success-top {
   margin-bottom: 40px;
-  padding: 60px 0 80px;
+  padding: 0 0 80px;
   text-align: center;
 
   .notes-wrap {
@@ -66,6 +66,10 @@
 
   .note {
 	font-size: 24px;
+
+	strong {
+	  margin-left: 5px;
+	}
   }
 
   .order-num-wrap {
@@ -79,7 +83,7 @@
   }
 
   @include bp(max-width, $bp-small) {
-	padding: 30px 0 40px;
+	padding: 0 0 40px;
 
 	.notes-wrap {
 	  max-width: 290px;
@@ -96,8 +100,72 @@
 }
 
 .success-bottom {
-  max-width: 440px;
+  max-width: 460px;
   padding-bottom: 120px;
+  margin: 0 auto;
+
+  .comment-title {
+	display: block;
+	font-size: 1rem;
+	font-weight: 600;
+  }
+
+  .products-list {
+	margin: 0 -10px;
+	@include cleaner;
+  }
+
+  .item-inner {
+	padding: 10px;
+  }
+
+  .product-image {
+	text-align: center;
+	margin-bottom: 10px;
+	max-width: 100px;
+  }
+
+  .order-product-item {
+	float: left;
+	width: (100% / 3);
+	padding: 10px;
+	box-sizing: border-box;
+
+	@include bp(max-width, $bp-smallest) {
+	  width: 100%;
+	}
+
+	.product-name {
+	  font-size: 1rem;
+	  font-weight: 600;
+	  text-align: center;
+	  display: block;
+	}
+
+	.obj {
+	  display: block;
+	  margin-bottom: 10px;
+	}
+
+	.price-col {
+	  font-weight: 600;
+	}
+  }
+
+  .totals-wrap {
+	font-size: 2rem;
+	line-height: 1.2;
+	font-weight: 700;
+	
+	.totals-label {
+	  float: left;
+	  margin-right: 10px;
+	}
+
+	.totals-price {
+	  float: right;
+	}
+  }
 }
 
 .about-order {
@@ -112,7 +180,6 @@
 	display: inline-block;
 	margin-right: 30px;
 	font-size: 32px;
-	font-weight: $light;
   }
 
   .print-link {

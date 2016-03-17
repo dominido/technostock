@@ -10,8 +10,6 @@ jQuery(document).ready(function($) {
         min: 1
     });
 
-    //$('.benefits-grid .benefit').matchHeight();
-
     var itemProductName = $('.item .product-name');
 
     itemProductName.dotdotdot();
