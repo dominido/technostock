@@ -228,7 +228,14 @@
   }
 
   .ic-user {
+    display: inline-block;
+    vertical-align: middle;
     color: $link-hover;
+
+    &+.label {
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
 }
 

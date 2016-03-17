@@ -13,9 +13,9 @@ $topLoggedInPosition = array('primRightCol', 'primRightCol');
 if(!Mage::getSingleton('customer/session')->isLoggedIn() && in_array($accountPosition, $topLoggedInPosition)): ?>
 
     <div id="mini-account-wrapper-regular-slip">
-        <a href="<?php echo Mage::getUrl('customer/account/login'); ?>" title="<?php echo $this->__('Account'); ?>">
+        <a href="<?php echo Mage::getUrl('customer/account/login'); ?>" title="<?php echo $this->__('Account'); ?>" class="mini-account">
             <span class="icon ic ic-user"></span>
-            <?php echo $this->__('Sign Up'); ?>
+            <span class="label"><?php echo $this->__('Sign Up'); ?></span>
         </a>
     </div>
 
