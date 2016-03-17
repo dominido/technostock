@@ -195,19 +195,27 @@ $_products = $this->getProductCollection();
                     <?php $_product->load('media_gallery'); ?>
 
                     <div class="item">
-                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>" class="product-image">
+                        <div class="item-inner">
+                            <div class="product-image-wrapper">
+                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>" class="product-image">
 
-                            <?php if ($lazy): ?>
-                                <?php $label = $this->escapeHtml($_product->getName()) ?>
-                                <img class="lazyOwl" src="#" data-src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo ($label ? $label : 'product_image'); ?>" />
-                            <?php else: ?>
-                                <img src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->escapeHtml($_product->getName()) ?>" />
-                            <?php endif; ?>
-                            <?php echo $helpLabels->getLabels($_product); //Product labels ?>
-                        </a>
-                        <h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>"><?php echo $this->escapeHtml($_product->getName()) ?></a></h3>
-                        <?php //echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-                        <?php echo $this->getPriceHtml($_product, true, '-post') ?>
+                                    <?php if ($lazy): ?>
+                                        <?php $label = $this->escapeHtml($_product->getName()) ?>
+                                        <img class="lazyOwl" src="#" data-src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo ($label ? $label : 'product_image'); ?>" />
+                                    <?php else: ?>
+                                        <img src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->escapeHtml($_product->getName()) ?>" />
+                                    <?php endif; ?>
+                                    <?php echo $helpLabels->getLabels($_product); //Product labels ?>
+                                </a>
+                            </div>
+                            <div class="product-name">
+                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>"><?php echo $this->escapeHtml($_product->getName()) ?></a>
+                            </div>
+                            <?php //echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                            <div class="price-holder">
+                                <?php echo $this->getPriceHtml($_product, true, '-post') ?>
+                            </div>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div> <!-- end: itemslider -->
@@ -266,10 +274,12 @@ $_products = $this->getProductCollection();
                     <?php endif; ?>
 
                     navigation: true,
-                    navigationText: false
+                    navigationText: false,
 
+                    afterInit: function() {
+                        $('.item .product-name').dotdotdot();
+                    }
                 }); //end: owl
-
             });
             //]]>
         </script>

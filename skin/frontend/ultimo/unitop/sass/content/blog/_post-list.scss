@@ -245,6 +245,12 @@ h3.post-name {
 	  display: none;
 	}
   }
+
+  h1 {
+	@include bp(max-width, $bp-tiny) {
+	  margin: 30px 0 10px;
+	}
+  }
 }
 
 .author_name {

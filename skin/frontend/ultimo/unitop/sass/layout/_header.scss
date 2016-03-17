@@ -88,6 +88,7 @@
     @include bp(max-width, 1140px) {
       margin-top: 22px;
       min-width: 153px;
+      padding-top: 0;
     }
 
     a {
