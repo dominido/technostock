@@ -7,7 +7,7 @@ if ($accountPosition === 'mainMenu') {
     $accLabel = '';
 }
 $helper = $this->helper('brander_shop');
-$topLoggedInPosition = array('topLeft_1', 'topRight_1');
+$topLoggedInPosition = array('primRightCol', 'primRightCol');
 ?>
 <?php
 if(!Mage::getSingleton('customer/session')->isLoggedIn() && in_array($accountPosition, $topLoggedInPosition)): ?>
