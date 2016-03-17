@@ -73,9 +73,9 @@ textarea {
   }
 }
 
-.preface {
-  margin: 0 -15px;
-}
+//.preface {
+//  margin: 0 -15px;
+//}
 
 #root-wrapper {
   position: relative;
@@ -220,6 +220,10 @@ textarea {
 		font-size: 1.3rem;
 		letter-spacing: -1px;
 	  }
+
+	  .price-currency {
+		font-size: .7em;
+	  }
 	}
   }
 
@@ -357,6 +361,11 @@ textarea {
 
   .item-inner {
 	margin-bottom: 40px;
+  }
+
+  .owl-pagination {
+	position: relative;
+	top: -20px;
   }
 }
 
@@ -517,7 +526,7 @@ textarea {
   .sticker {
 	width: auto;
 	height: auto;
-	padding: 10px;
+	padding: 10px 18px;
 	border-radius: 0;
 	text-transform: uppercase;
 	font-size: 13px;
@@ -544,6 +553,10 @@ textarea {
 }
 
 .the-slideshow {
+  &.slider-pagination2 .owl-controls .owl-page span {
+	background-color: #1938a5;
+  }
+
   .item {
 	img {
 	  width: 100%;
@@ -567,18 +580,18 @@ textarea {
 
   &.padding-right {
 	padding-right: 100px !important;
-	padding-left: 10px;
 	text-transform: uppercase;
 	font-size: 28px;
-	letter-spacing: .25px;
-	color: $dark;
+	font-weight: 600;
+	letter-spacing: 1px;
+	color: $muddy;
   }
 }
 
 .news-link {
   position: relative;
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 72px;
 
   &:after {
 	position: absolute;
@@ -682,26 +695,36 @@ textarea {
 
 	.owl-page {
 	  span {
-		background-color: #47344c;
+		width: 8px;
+		height: 8px;
+		background-color: #1938a5;
 	  }
 
 	  &:hover span {
-		background-color: $link-hover;
+		width: 12px;
+		height: 12px;
+		background-color: #1938a5;
 	  }
 
 	  &.active {
 		&:hover span,
 		span {
-		  background-color: $link-hover;
+		  width: 12px;
+		  height: 12px;
+		  background-color: #1938a5;
 		}
 	  }
 	}
   }
 }
 
-.itemslider-wrapper .owl-controls .owl-buttons {
-  top: -48px;
-  right: 8px;
+.itemslider-wrapper {
+  margin: 0 -10px;
+
+  .owl-controls .owl-buttons {
+	top: -46px;
+	right: 8px;
+  }
 }
 
 .fl {

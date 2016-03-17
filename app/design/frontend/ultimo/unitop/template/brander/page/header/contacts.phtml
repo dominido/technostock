@@ -13,11 +13,11 @@
         <?php else: ?>
 
             <div class="dropdown header-contacts">
-                <a href="#" class="dropdown-heading cover">
+                <a href="tel:<?php echo $firstItem->getPhone(); ?>" class="dropdown-heading cover">
                     <span>
                         <span class="value">
                             <?php $first = true; ?>
-                            <span class="">&nbsp;&nbsp;<?php echo $firstItem->getPhone(); ?></span>
+                            <span>&nbsp;&nbsp;<?php echo $firstItem->getPhone(); ?></span>
                         </span>
                         <span class="caret">&nbsp;</span>
                     </span>
@@ -30,7 +30,7 @@
                             continue;
                         } ?>
                         <li>
-                            <a class="no-click" href="#">
+                            <a class="no-click" href="tel:<?php echo $_phoneItem->getPhone();?>">
                                 <span class="operator-icon">
                                     <img src="<?php echo $helperImage->init($_phoneItem, 'operator_icon')->resize(20,20); ?>" alt="<?php echo $_phoneItem->getTitle(); ?>"/>
                                 </span>

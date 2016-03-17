@@ -232,7 +232,7 @@ ul, ol {
 }
 
 .main {
-	padding: 20px 0;
+	padding: 20px 0 55px;
 	min-height: 370px;
 }
 
@@ -1652,7 +1652,7 @@ ul.disc ul li {
 .form-search .button {
 	position: absolute;
 	right: 0;
-	top: 4px;
+	top: 0;
 	margin: 0;
 	padding: 0;
 	background-color: transparent !important;
@@ -2593,7 +2593,7 @@ ul.disc ul li {
 -------------------------------------------------------------- */
 .products-grid .item {
 	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 	position: relative;
 }
 
@@ -2656,14 +2656,14 @@ ul.disc ul li {
 }
 
 /* Display grid item elements only on hover: fade-in (for sliders) */
-.products-grid .item .visible-onhover {
+.no-touch .products-grid .item .visible-onhover {
 	visibility: hidden;
 	opacity: 0;
 	-webkit-transition: visibility 0s ease-in-out 600ms, opacity 300ms ease-in-out 300ms;
 	transition: visibility 0s ease-in-out 600ms, opacity 300ms ease-in-out 300ms;
 }
 
-.products-grid .item:hover .visible-onhover {
+.no-touch .products-grid .item:hover .visible-onhover {
 	visibility: visible;
 	opacity: 1;
 	-webkit-transition: visibility 0s ease-in-out 0s, opacity 300ms ease-in-out 100ms;

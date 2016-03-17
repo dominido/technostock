@@ -48,6 +48,11 @@ jQuery(document).ready(function($) {
         }
     });
 
+    $(".header-contacts .dropdown-heading").on("click",function(){
+        var url = $(this).attr('href');
+        $(location).attr('href',url);
+    });
+
     //btn-cart hovered effect
     //$('.products-grid .item-inner').on('mouseenter', function() {
     //    var $this = $(this);
@@ -76,6 +81,11 @@ jQuery(document).ready(function($) {
             if(!footerAbout.hasClass('contactsCloned')) {
                 $('.header-top .header-contacts').clone().insertBefore($('.callback-footer'));
                 footerAbout.addClass('contactsCloned');
+
+                $(".callback-footer-holder .header-contacts .dropdown-heading").on("click",function(){
+                    var url = $(this).attr('href');
+                    $(location).attr('href',url);
+                });
             }
 
         } else {

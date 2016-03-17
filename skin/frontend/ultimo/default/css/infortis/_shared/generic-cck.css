@@ -66,9 +66,6 @@
 /* Links with separators (at the right side)
 -------------------------------------------------------------- */
 .links-wrapper-separators .links > li { margin-left:-1px; }
-.links-wrapper-separators .links > li > a {
-	background:url(../../../images/img/link-separator.png) no-repeat right center;
-}
 .links-wrapper-separators .links > li.last > a { background-image:none; }
 .links-wrapper-separators .links > li.hide-separator > a { background-image:none; }
 .links-wrapper-separators .links > li.separator-left > a { background-position:left center; }

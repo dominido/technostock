@@ -69,6 +69,7 @@
 
   .callback-footer {
 	font-size: 13px;
+	margin-top: 12px;
 	line-height: 36px;
 	font-weight: 500;
 	text-transform: uppercase;
@@ -85,13 +86,32 @@
   .footer-copyright {
 	font-size: 14px;
 
+	@include bp(max-width, $bp-tiny) {
+	  font-size: 1rem;
+	}
+  }
+
+  .developed-by {
+	font-weight: 500;
+	text-align: right;
+
 	.ic-brander {
-	  color: $link-hover;
+	  font-size: 10px;
 	  margin-left: 5px;
-	  font-size: 12px;
+	  color: $link-hover;
 
 	  &:hover {
 		color: $link-hover-light;
+	  }
+	}
+
+	@include bp(max-width, $bp-tiny) {
+	  font-size: 1rem;
+	  text-align: center;
+	  padding-top: 10px;
+
+	  .ic-brander {
+		font-size: 12px;
 	  }
 	}
   }
@@ -268,6 +288,12 @@
   }
 }
 
+.footer-primary {
+  @include bp(max-width, $bp-tiny) {
+	padding-bottom: 0;
+  }
+}
+
 .footer-primary-top {
   @include bp(max-width, $bp-tiny) {
 	text-align: center;
@@ -368,6 +394,9 @@
 
   @include bp(max-width, $bp-tiny) {
 	color: $white;
+
+	padding-top: 20px;
+	padding-bottom: 20px;
 
 	.item {
 	  float: none;

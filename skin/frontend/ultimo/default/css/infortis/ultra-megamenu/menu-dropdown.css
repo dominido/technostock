@@ -25,12 +25,11 @@
 }
 
 .nav-regular li.level0 > a {
-	padding: 0 12px;
+	padding: 0 20px;
 }
 
 .nav-regular li.level0 > a > span {
 	display: inline-block;
-	white-space: nowrap;
 }
 
 /* Top-level item on hover: pull up the link above the dropdown */

@@ -159,16 +159,8 @@
 		//Toggle mobile menu
 		jQuery('a.mobnav-trigger').on('click', function(e) {
 			e.preventDefault();
-			if (jQuery(this).hasClass('active'))
-			{
-				MegaMenuLeft.bar.removeClass('show');
-				jQuery(this).removeClass('active');
-			}
-			else
-			{
-				MegaMenuLeft.bar.addClass('show');
-				jQuery(this).addClass('active');
-			}
+
+			jQuery(this).toggleClass('active');
 		})<?php if (!$helper->getCfg('mobilemenu/collapsed')): ?>.click()<?php endif; //Menu initially collapsed/opened ?>;
 
 	<?php endif; //end: mode mobile or both  ?>

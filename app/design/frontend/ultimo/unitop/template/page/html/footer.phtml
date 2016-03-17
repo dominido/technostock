@@ -112,7 +112,7 @@
 			<div class="inner-container">
 
 				<?php if (!empty($b['primary_top'])): ?>
-				<div class="footer-primary-top grid12-12">
+				<div class="footer-primary-top">
 					<div class="<?php if(!empty($b['primary'])) echo 'footer-primary-top-spacing '; ?>clearer">
 						<?php echo $b['primary_top']['bottomContainer']; ?>
 					</div>
@@ -124,7 +124,7 @@
 					$spacing = '-spacing';
 				} ?>
 				<?php if (!empty($b['primary_uniblocks'])): ?>
-					<div class="footer-primary-top grid12-12">
+					<div class="footer-primary-top">
 						<div class="<?php if(!empty($b['primary_uniblocks'])) echo 'footer-primary-top'.$spacing; ?> clearer">
 							<?php echo $b['primary_uniblocks']; ?>
 						</div>
@@ -138,7 +138,7 @@
 				<?php endif; ?>
 				
 				<?php if (!empty($b['primary_bottom'])): ?>
-				<div class="footer-primary-bottom grid12-12">
+				<div class="footer-primary-bottom">
 					<div class="<?php if(!empty($b['primary'])) echo 'footer-primary-bottom-spacing '; ?>clearer">
 					
 						<?php if (!empty($b['primary_bottom']['left'])): ?>
@@ -215,15 +215,15 @@
 				<div class="clearer">
 				
 					<?php if (!empty($b['bottom']['copyright'])): ?>
-						<div class="item item-left">
+						<div class="item grid12-6">
 							<div class="footer-copyright">
 								<?php echo $b['bottom']['copyright']; ?>
 							</div>
 						</div>
 					<?php endif; ?>
 
-					<div class="item item-right">
-						<div class="footer-copyright">
+					<div class="item grid12-6">
+						<div class="developed-by">
 							<?php echo $this->__('Developed by') ?>
 							<?php if ($logo = $helperImg->checkImageExist($this->getSkinUrl('images/brander/brander.png'))): ?>
 							<a href="http://brander.ua" target="_blank" class="ic-brander"></a>

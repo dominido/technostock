@@ -35,10 +35,6 @@
 /* Caret
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
-/*.nav-regular .caret {*/
-	/*display: inline-block;*/
-	/*vertical-align: middle;*/
-/*}*/
 
 /* Only items with dropdown display the caret */
 .nav-regular .caret {
@@ -226,8 +222,7 @@ li.level2 > a > span > .cat-label {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 /* Top-level items and mobile menu trigger */
-.mobnav-trigger,
-.nav-regular .nav-item.level0 > a {
+.mobnav-trigger {
 	line-height: 50px;
 }
 

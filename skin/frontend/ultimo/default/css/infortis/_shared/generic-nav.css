@@ -69,13 +69,8 @@
 	overflow: hidden;
 	text-indent: -9999px;
 	background-color: transparent !important;
-	-webkit-transition: opacity .3s ease-in-out, color .3s ease-in-out;
-	transition: opacity .3s ease-in-out, color .3s ease-in-out;
-	opacity: 0;
-}
-
-.slider-arrows2:hover .owl-controls .owl-buttons div {
-	opacity: 1;
+	-webkit-transition: color .3s ease-in-out;
+	transition: color .3s ease-in-out;
 }
 
 .slider-arrows2 .owl-controls .owl-buttons .owl-prev {

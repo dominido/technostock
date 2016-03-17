@@ -325,8 +325,11 @@
 	position: absolute;
 	font-family: BaseIcons;
 	content: '\e222';
-	left: 20px;
-	top: 0;
+	font-size: 12px;
+	line-height: 1;
+	left: 23px;
+	top: 50%;
+	margin-top: -6px;
 }
 
 
