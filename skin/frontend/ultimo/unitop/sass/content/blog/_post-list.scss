@@ -1,7 +1,3 @@
-.post-list {
-  @include cleaner;
-}
-
 .post-list .post-name,
 .post-grid .post-name,
 h3.post-name {
@@ -37,6 +33,8 @@ h3.post-name {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 .post-list {
+  @include cleaner;
+
   &.list-mode {
 	.item {
 	  margin-bottom: 20px;
@@ -159,6 +157,8 @@ h3.post-name {
   }
 
   @include bp(max-width, $bp-tiny) {
+	text-align: center;
+
 	.item {
 	  margin-bottom: 20px;
 	}

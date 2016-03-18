@@ -190,11 +190,18 @@
 				<?php echo $priceProperties; ?>
 			</div> <?php //end: offers ?>
 
+			<?php $addtoLinksHtml = $this->getChildHtml('addto'); ?>
 
 			<?php if (!$this->hasOptions()): //add to cart when no options (e.g. simple products) ?>
 				<?php if($_product->isSaleable()): ?>
 					<div class="add-to-box">
 						<?php echo $this->getChildHtml('addtocart') ?>
+
+						<?php if ($addtoLinksHtml): //compare, wishlist, send to friend, share social ?>
+							<div class="wishlist-box">
+								<a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+							</div>
+						<?php endif; ?>
 					</div>
 				<?php endif; ?>
 				<?php echo $this->getChildHtml('extra_buttons') ?>
@@ -205,8 +212,6 @@
 					<div class="container1-wrapper"><?php echo $container1_html; ?></div>
 				<?php endif; ?>
 			<?php endif;?>
-
-			<?php $addtoLinksHtml = $this->getChildHtml('addto'); ?>
 
 			<?php $socialShareHtml = $this->getChildHtml('sharing_social'); ?>
 
@@ -227,12 +232,7 @@
 				<div class="action-box social-list-holder">
 					<?php echo $socialShareHtml; ?>
 				</div>
-			<?php endif; ?>
-
-			<?php if ($addtoLinksHtml): //compare, wishlist, send to friend, share social ?>
-				<div class="action-box">
-					<a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
-				</div>
+				<div class="clearer"></div>
 			<?php endif; ?>
 
 

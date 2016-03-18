@@ -58,7 +58,7 @@
 
 //Nav
 .nav-regular .classic > .nav-panel--dropdown li {
-  position: relative;
+  height: 50px;
 }
 
 .nav-regular .simple > ul > li > a,
@@ -96,12 +96,14 @@
   width: 24%;
 }
 
-@include bp(min-width, 1366px) {
-  .no-gutter.grid12-3 {
-	width: 24%;
-  }
-  .no-gutter.grid12-9 {
-	width: 76%;
+@include bp(min-width, 960px) {
+  .the-slideshow-wrapper {
+	.no-gutter.grid12-3 {
+	  width: 24%;
+	}
+	.no-gutter.grid12-9 {
+	  width: 76%;
+	}
   }
 }
 
@@ -131,15 +133,19 @@
 
 	li {
 	  padding: 0;
-	  height: 100%;
+	  height: 50px;
 
 	  a {
-		display: flex;
-		align-items: center;
-		min-height: 50px;
+		display: table;
 		width: 100%;
+		height: 100%;
 		padding: 0 20px;
 		box-sizing: border-box;
+
+		> span {
+		  display: table-cell;
+		  vertical-align: middle;
+		}
 	  }
 	}
   }

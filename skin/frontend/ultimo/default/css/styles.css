@@ -2213,7 +2213,7 @@ ul.disc ul li {
 }
 
 .block-related-thumbnails .product-details > * {
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 }
 
 .block-related-thumbnails .product-name,
@@ -3229,9 +3229,6 @@ a.availability-only {
 /* Product primary column
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
-.product-view .product-shop {
-	float: left;
-}
 
 .product-view .product-shop .product-name {
 	margin: 0 0 1.6666em; /*20px*/

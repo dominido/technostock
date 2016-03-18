@@ -238,7 +238,7 @@ textarea {
 
   .old-price {
 	.price {
-	  font-size: 1rem;
+	  font-size: 1em;
 	  color: #7b9ccf;
 
 	  @include bp(max-width, 1280px) {
@@ -395,7 +395,7 @@ textarea {
 
 .benefits-container,
 .homepage-benefits {
-  margin-bottom: 20px;
+  margin-bottom: 52px;
 
   .benefits-grid {
 	font-size: 0;
@@ -444,7 +444,7 @@ textarea {
 	}
 
 	.benefit-title {
-	  margin-bottom: 8px;
+	  margin-bottom: 15px;
 	  font-size: 1.125rem;
 	}
 
@@ -594,6 +594,7 @@ textarea {
 	font-weight: 600;
 	letter-spacing: 1px;
 	color: $muddy;
+	margin-bottom: 0;
   }
 }
 

@@ -192,13 +192,13 @@
         //Assign number of items in a row to specific viewport width
         if ($imageCount >= 5)
         {
-                    $breakpoints = '[0, 1], [320, 2], [480, 3], [767, 2], [1099, 3] ';
+                    $breakpoints = '[0, 1], [320, 2], [480, 3], [747, 2], [1099, 3]';
         }
         else
         {
             switch ($imageCount) {
                 case 4:
-                    $breakpoints = '[0, 1], [219, 2], [299, 3], [459, 4],           [747, 3], [1259, 4]';
+                    $breakpoints = '[0, 1], [299, 2], [459, 3], [747, 2], [1259, 3]';
                     break;
                 case 3:
                     $breakpoints = '[0, 1], [219, 2], [299, 3]';
@@ -342,13 +342,14 @@
 
             stopOnHover: true,
 
-        <?php if ($loop): ?>
-            rewindNav: true,
-            rewindSpeed: 600,
-        <?php else: ?>
-            rewindNav: false,
-        <?php endif; ?>
+<!--        --><?php //if ($loop): ?>
+//            rewindNav: true,
+//            rewindSpeed: 600,
+//        <?php //else: ?>
+//            rewindNav: false,
+//        <?php //endif; ?>
 
+            rewindNav: false,
             pagination: false,
             navigation: true,
             navigationText: false,
