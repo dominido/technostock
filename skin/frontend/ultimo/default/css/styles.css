@@ -493,7 +493,7 @@ p.control input.radio {
 
 .form-list label {
 	float: left;
-	font-weight: bold;
+	font-weight: 600;
 	position: relative;
 	z-index: 0;
 	margin: 0 0 2px 0;
@@ -1243,10 +1243,6 @@ tr.summary-details-excluded {
 	font-weight: bold;
 }
 
-.link-reorder {
-	font-weight: bold;
-}
-
 .link-print {
 	background: url(../images/i_print.gif) 0 center no-repeat;
 	padding: 2px 0 2px 25px;
@@ -1421,7 +1417,6 @@ ul.bullet {
 
 ul.bullet li {
 	background: url(../images/infortis/_shared/cck/list/bullet.png) 0 0 no-repeat;
-	padding-left: 25px;
 	-webkit-transition: background-position 150ms ease-out;
 	transition: background-position 150ms ease-out;
 }
@@ -1912,7 +1907,7 @@ ul.disc ul li {
 	margin: 5px 0 10px;
 	padding: 0;
 	font-size: 1em;
-	font-weight: bold;
+	font-weight: 600;
 }
 
 .block .block-content {
@@ -5100,6 +5095,10 @@ a.availability-only {
 	margin: 0 0 3px;
 }
 
+.order-info-box .box-payment p strong {
+	font-weight: normal;
+}
+
 .order-info-box .box-payment th {
 	font-weight: bold;
 	padding-right: 7px;
@@ -5309,8 +5308,8 @@ a.availability-only {
 	background: #f8f8f8;
 }
 
-.my-wishlist .btn-cart {
-	margin: 10px 0 5px;
+.my-wishlist input.qty {
+	margin: 0 0 5px;
 }
 
 /* My Tags

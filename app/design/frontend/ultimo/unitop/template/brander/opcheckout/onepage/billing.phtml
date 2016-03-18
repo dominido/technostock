@@ -83,7 +83,7 @@ $helper = Mage::helper('brander_shop');
 
             <div class="field">
                 <label for="billing:telephone" class="masked-telephone">
-                    <?php echo $this->__('Telephone') ?><span class="required">*</span>
+                    <?php echo $this->__('Telephone') ?><span class="required"></span>
                 </label>
                 <div class="input-box">
                     <?php if ($helper->getCfg('customer/telephone_settings')->getEnablePhoneMask()): ?>
@@ -145,7 +145,7 @@ $helper = Mage::helper('brander_shop');
 
             <div class="field">
                 <label for="billing:city">
-                    <?php echo $this->__('City') ?><span class="required">*</span>
+                    <?php echo $this->__('City') ?><span class="required"></span>
                 </label>
                 <div class="input-box">
                     <input type="text" name="billing[city]"  class="required-entry input-text normal-box" id="billing:city" value="<?php echo $city; ?>" onBlur="javascript: syncShipping(false)"/>

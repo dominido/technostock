@@ -66,6 +66,10 @@ textarea {
   }
 }
 
+textarea {
+  resize: vertical;
+}
+
 .inner-container {
   @include bp(min-width, 1366px) {
 	padding-left: 100px;
@@ -1081,6 +1085,30 @@ textarea {
 
 	.chosen-container {
 	  min-width: 100%;
+	}
+  }
+
+  .buttons-set2 {
+	button {
+	  margin-bottom: 5px;
+	}
+  }
+
+  .my-wishlist {
+	@include bp(max-width, $bp-tiny) {
+	  .btn-cart {
+		height: 36px;
+	  }
+
+	  .btn-remove {
+		width: auto;
+		height: auto;
+
+		&:before {
+		  display: inline-block;
+		  vertical-align: bottom;
+		}
+	  }
 	}
   }
 }
