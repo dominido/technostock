@@ -1157,6 +1157,35 @@ textarea {
   }
 }
 
+.cmsadvanced-page-view {
+  &.contacts {
+	table {
+	  margin-bottom: 30px;
+
+	  td + td {
+		padding-left: 50px;
+	  }
+
+	  @include bp(max-width, $bp-tiny) {
+		td {
+		  display: block;
+
+		  &+td {
+			padding-left: 0;
+		  }
+		}
+	  }
+
+	  strong {
+		display: block;
+		font-size: 1rem;
+		font-weight: 600;
+		margin-top: 15px;
+	  }
+	}
+  }
+}
+
 .cms-index-noroute {
   .sidebar {
 	border: none;
