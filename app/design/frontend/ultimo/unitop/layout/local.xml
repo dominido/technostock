@@ -562,7 +562,11 @@
 
 			<!-- Tabs. They are displayed inside the block with product collateral data. -->
 			<block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs" template="catalog/product/view/tabs.phtml" >
-				
+
+				<!-- Check aivalibility-->
+				<action method="addTab" translate="title" module="catalog"><alias>check availability</alias><title helper="ultimo/template_catalog_product_view/getCmsBlockTitle">Check availability</title><block>core/template</block><template>catalog/product/view/avaliability.phtml</template></action>
+
+
 				<!-- Product description -->
 				<action method="addTab" translate="title" module="catalog"><alias>description</alias><title>Product Description</title><block>catalog/product_view_description</block><template>catalog/product/view/description.phtml</template></action>
 
@@ -584,8 +588,6 @@
 				<!-- Custom blocks -->
 
 				<action method="addTab" translate="title" module="catalog"><alias>warranty</alias><title helper="ultimo/template_catalog_product_view/getCmsBlockTitle">Warranty</title><block>core/template</block><template>catalog/product/view/cms_block1.phtml</template></action>
-
-				<action method="addTab" translate="title" module="catalog"><alias>check availability</alias><title helper="ultimo/template_catalog_product_view/getCmsBlockTitle">Check availability</title><block>core/template</block><template>catalog/product/view/avaliability.phtml</template></action>
 
 
 				<!-- Related products -->
