@@ -2033,33 +2033,28 @@ ul.disc ul li {
 	user-select: none;
 }
 
-.block-layered-nav .block-subtitle--filter:after {
+.block-layered-nav .block-subtitle--filter:after,
+.block-layered-nav .block-content > dl > dt:before {
+	display: none;
 	content: '';
 	position: absolute;
 	width: 0;
 	height: 0;
-	display: block;
-	border-top: 5px solid transparent;
-	border-bottom: 5px solid transparent;
-	border-left: 5px solid #ddd;
-	border-right: none;
-	left: 6px;
-	top: 50%;
-	margin-top: -5px;
-}
-
-.block-layered-nav .block-subtitle--filter.active:after {
-	content: '';
-	position: absolute;
-	width: 0;
-	height: 0;
-	display: block;
 	border-right: 5px solid transparent;
 	border-left: 5px solid transparent;
-	border-top: 5px solid #ddd;
-	border-bottom: none;
+	border-top: 6px solid #163294;
+	border-radius: 3px;
+	left: 6px;
 	top: 50%;
 	margin-top: -3px;
+	-webkit-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+}
+
+.block-layered-nav .block-content.accordion-open > dl > dt.current:before,
+.block-layered-nav .block-subtitle--filter.active:after {
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
 }
 
 /* Attributes
@@ -2082,21 +2077,20 @@ ul.disc ul li {
 }
 
 .block-layered-nav .block-content > dl > dt:after {
-	display: none; /* Hide on desktop */
+	display: none;
 	content: '';
 	position: absolute;
 	width: 0;
 	height: 0;
-	border-right: 5px solid transparent;
-	border-left: 5px solid transparent;
-	border-top: 5px solid #ddd;
-	border-bottom: none;
-	left: 10px;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	border-top: 5px solid #163294;
+	border-radius: 3px;
+	left: 6px;
 	top: 50%;
 	margin-top: -3px;
-}
-
-.block-layered-nav .block-content > dl > dt:hover {
+	-webkit-transform: rotate(-90deg);
+	transform: rotate(-90deg);
 }
 
 .block-layered-nav .block-content > dl > dd {
@@ -2128,9 +2122,10 @@ ul.disc ul li {
 	width: 0;
 	height: 0;
 	border-right: none;
-	border-left: 4px solid #ddd;
+	border-left: 4px solid #163294;
 	border-top: 4px solid rgba(0, 0, 0, 0);
 	border-bottom: 4px solid rgba(0, 0, 0, 0);
+	border-radius: 3px;
 	left: 0;
 	top: 50%;
 	margin-top: -5px;
@@ -2167,12 +2162,13 @@ ul.disc ul li {
 }
 
 .block-layered-nav .currently ol li .value {
-	color: #d90000; /* TODO: move to common.css */
+	color: #d90000;
 }
 
 .block-layered-nav .currently .btn-remove {
 	float: left;
 	margin-right: 8px;
+	padding-top: 2px;
 }
 
 .block-layered-nav .actions {

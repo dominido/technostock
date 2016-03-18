@@ -180,14 +180,14 @@ div.block-layered-nav, div.layerednavigation-page-container, div.layerednavigati
 }
 
 div.layerednavigation-overlay {
-  background-color: #FFFFFF;
+  background-color: #fff;
   height: 100%;
   left: 0;
-  opacity: 0.5;
-  position: absolute;
+  opacity: .5;
+  position: fixed;
   top: 0;
   width: 100%;
-  z-index: 555;
+  z-index: 10000;
 }
 
 div.layerednavigation-overlay img {
@@ -198,7 +198,7 @@ div.layerednavigation-overlay img {
 }
 
 div.layerednavigation-overlay div {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   width: 100px;

@@ -198,6 +198,20 @@
   }
 }
 
-//@include bp(max-width, $bp-smallest) {
-//
-//}
+@include bp(max-width, $bp-tiny) {
+  .block-layered-nav .block-content > dl > dt:after,
+  .block-layered-nav .block-subtitle--filter:after,
+  .block-layered-nav .block-content > dl > dt:before {
+	display: block;
+  }
+
+  .block-layered-nav {
+	dl dd ol > li > a {
+	  background: none;
+	}
+
+	.block-content > dl > dt:after {
+	  display: none !important;
+	}
+  }
+}

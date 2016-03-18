@@ -136,6 +136,10 @@ textarea {
 
   .chosen-container {
 	margin-right: 22px;
+
+	@include bp(max-width, $bp-smallest) {
+	  margin-right: 10px;
+	}
   }
 
   .limiter {
@@ -151,6 +155,7 @@ textarea {
 		color: $dark;
 		@include trs(color .3s ease);
 
+		&.checked,
 		&:hover {
 		  color: $link-hover;
 		}
@@ -196,7 +201,7 @@ textarea {
 }
 
 #sh_button {
-  @include bp(max-width, 767px) {
+  @include bp(max-width, $bp-tiny) {
 	min-height: 0;
 
 	.sh_title_text {
@@ -812,6 +817,12 @@ textarea {
   .sort-by {
 	.chosen-container {
 	  min-width: 212px;
+	}
+
+	@include bp(max-width, $bp-smallest) {
+	  label {
+		display: none;
+	  }
 	}
   }
 

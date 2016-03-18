@@ -31,6 +31,10 @@ jQuery(document).ready(function($) {
 
     $('.vert-nav').parent().addClass('fixed-nav');
 
+    $('.pager li').click(function() {
+        $(this).addClass('current');
+    });
+
     //acc/tabs fix
     $(".acctab").click(function () {
 

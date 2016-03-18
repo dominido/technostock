@@ -22,10 +22,6 @@
 	margin-right: 4px;
   }
 
-  dl dd ol > li > a {
-	padding: 6px 0;
-  }
-
   #narrow-by-list {
 	.configurable-swatch-list {
 	  li {
@@ -39,21 +35,21 @@
   [class^='brander_layerednavigation-attr'] {
 	padding-left: 35px;
 	position: relative;
-	background: transparent url("../images/brander/layerednavigation/layerednavigation-cb2.png") no-repeat left center;
+	//background: transparent url("../images/brander/layerednavigation/layerednavigation-cb2.png") no-repeat left center;
 
-	&:hover,
-	&[class$='-selected'] {
-	  background: transparent url("../images/brander/layerednavigation/layerednavigation-cb1.png") no-repeat left center;
-	}
+	//&:hover,
+	//&[class$='-selected'] {
+	//  background: transparent url("../images/brander/layerednavigation/layerednavigation-cb1.png") no-repeat left center;
+	//}
   }
 
   .brander_layerednavigation-attr {
 	padding-left: 35px;
-	background: transparent url("../images/brander/layerednavigation/layerednavigation-cb2.png") no-repeat left center;
+	//background: transparent url("../images/brander/layerednavigation/layerednavigation-cb2.png") no-repeat left center;
 
-	&.checked {
-	  background-image: url("../images/brander/layerednavigation/layerednavigation-cb1.png");
-	}
+	//&.checked {
+	//  background-image: url("../images/brander/layerednavigation/layerednavigation-cb1.png");
+	//}
   }
 
   .inpts-wrap {
