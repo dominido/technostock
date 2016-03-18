@@ -40,6 +40,10 @@
   vertical-align: top;
   width: 360px;
 
+  @include bp(max-width, $bp-smallest) {
+    width: 100%;
+  }
+
   .input-box {
     margin-bottom: 20px;
   }

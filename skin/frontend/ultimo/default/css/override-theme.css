@@ -317,7 +317,6 @@
 	margin: 0 auto;
 }
 
-/* TODO: remove duplicated rule. Added temporarily to avoid conflicts with customized styles of search box. */
 .header-regular .central-column .form-search .input-text {
 	float: right;
 	width: 100%;
@@ -499,9 +498,6 @@
 	width: 100%;
 }
 
-/*.header-mobile .skip-cart { float: right; }
-.header-mobile .skip-compare { float: right; }*/
-
 /* Skip content
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
@@ -565,12 +561,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 .header-mobile .hp-blocks-holder .hp-block {
-	width: 100%; /* TODO: add "!important" to override units with "no-gutter"? */
+	width: 100%;
 	margin-left: 0;
 	margin-right: 0;
 }
 
-/* TODO: test */
 @media only screen and (max-width: 960px) {
 	/* If special class exists, 
 	   reset blocks below this breakpoint - blocks become full width and stack vertically. */
@@ -613,7 +608,7 @@
 }
 
 .header-mobile .skip-content .links > li > a {
-	background-image: none; /* Remove link separators */
+	background-image: none;
 }
 
 /* Logo and collateral elements
@@ -666,10 +661,6 @@
 
 /* Language/currency switcher
 -------------------------------------------------------------- */
-/*.header-mobile #lang-switcher-wrapper-regular,
-.header-mobile #currency-switcher-wrapper-regular {
-	display: none;
-}*/
 .header-mobile.move-switchers #lang-switcher-wrapper-regular,
 .header-mobile.move-switchers #currency-switcher-wrapper-regular {
 	display: none;
@@ -710,10 +701,6 @@
 	   We can reset here entire padding, because bottom padding is later re-applied in CSS generated
 	   via admin. Bottom padding is kept so that mobile header look more similar to regular header. */
 	padding: 0;
-
-	/* If needed, reset also other styles which are added to standard "skip-content" blocks */
-
-	/* Remove background color */
 	background-color: transparent;
 }
 
@@ -865,7 +852,7 @@
 /* Bundle product */
 .price-box-bundle {
 	border-bottom: 1px solid #e5e5e5;
-	margin: -10px 0 15px; /* Move up to align with the main price box */
+	margin: -10px 0 15px;
 	padding-bottom: 15px;
 }
 
@@ -878,14 +865,6 @@
 	height: 0;
 	line-height: 0;
 }
-
-/* Upper part of the container */
-/*.product-view .product-type-data > .price-box {*/
-	/*border-top-style: solid;*/
-	/*border-top-width: 1px;*/
-	/*margin: 15px 0 0;*/
-	/*padding: 10px 0;*/
-/*}*/
 
 /* Other
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -970,45 +949,8 @@
 /* Icons %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-/* Icons applied with icon codes
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-*/
-/* These icons needs to have the same basic styles as standard font icons.
-   Except line height - it would override individual size of each icon.
-*/
-/*.form-search .button:before,*/
-/*.buttons-set .back-link a:before,*/
-/*.btn-remove:before,*/
-/*.btn-remove2:before,*/
-/*.map-popup-close:before,*/
-/*.remember-me-popup-head .remember-me-popup-close:before,*/
-/*.btn-edit:before,*/
-/*.breadcrumbs .sep,*/
-	/*/!* Generic tabs - accordion *!/*/
-/*.gen-tabs .acctab:after,*/
-	/*/!* Collapsible block icon *!/*/
-/*.collapsible .block-title:after,*/
-/*.mobile-collapsible .block-title:after,*/
-/*.sidebar .block .block-title:after,*/
-/*.block-layered-nav .block-title:after {*/
-	/*display: inline-block;*/
-	/*font-family: ThemeIcons;*/
-	/*font-style: normal;*/
-	/*font-weight: normal;*/
-	/*font-variant: normal;*/
-	/*text-transform: none;*/
-	/*/!*line-height: 1em;*!/*/
-	/*/!* Important: don't overrid line height, it depends on the size of the icon *!/*/
-	/*-webkit-font-smoothing: antialiased;*/
-	/*-moz-osx-font-smoothing: grayscale;*/
-/*}*/
-
 /* Apply icon codes
 -------------------------------------------------------------- */
-/*.form-search .button:before {*/
-	/*content: "\e235";*/
-/*}*/
-
 .buttons-set .back-link a:before {
 	content: "\e22a";
 }
@@ -1027,22 +969,6 @@
 .breadcrumbs .sep:before {
 	content: "/";
 }
-
-/*.gen-tabs .acctab:after,*/
-/*.sidebar .block .block-title:after,*/
-/*.block-layered-nav .block-title:after {*/
-	/*content: "\e260";*/
-	/*-webkit-transform: rotate(-90deg);*/
-	/*transform: rotate(-90deg);*/
-/*}*/
-
-/*.gen-tabs .acctab.current:after,*/
-/*.sidebar .block .block-title.active:after,*/
-/*.block-layered-nav .block-title.active:after {*/
-	/*content: "\e260";*/
-	/*-webkit-transform: rotate(90deg);*/
-	/*transform: rotate(90deg);*/
-/*}*/
 
 /* Other modifications %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -1099,15 +1025,9 @@
 	color: #333;
 }
 
-/**
- *
- *
- * HIGH-RESOLUTION READY IMAGES (RETINA-READY)
- *
- *
- */
+/*RETINA*/
 
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (   min--moz-device-pixel-ratio: 1.5), only screen and (        min-device-pixel-ratio: 1.5) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and ( min--moz-device-pixel-ratio: 1.5), only screen and ( min-device-pixel-ratio: 1.5) {
 
 	/* Rating */
 	.rating-box,
@@ -1124,8 +1044,6 @@
 	/* Theme icons
 	   IMPORTANT: Deprecated: will be removed in next versions (sprite image icons were replaced with font icons).
 	-------------------------------------------------------------- */
-	/* To top */
-	#scroll-to-top,
 		/* Search button */
 	.header .form-search .button span,
 		/* All icons from icons-theme.css */
@@ -1216,7 +1134,4 @@
 		background-image: url(../images/sprite-icons-social@2x.png);
 		background-size: 500px 200px;
 	}
-
 }
-
-/* end: media query */
