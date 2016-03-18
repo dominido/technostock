@@ -42,6 +42,10 @@
 
 	.checkout-item .product-info {
 	  max-width: 190px;
+
+	  @include bp(max-width, $bp-smallest) {
+		max-width: 100%;
+	  }
 	}
 
 	@include bp(max-width, $bp-small) {
@@ -62,6 +66,7 @@
 
   .notes-wrap {
 	margin: 0 auto 35px;
+	line-height: 1.2;
   }
 
   .note {
@@ -131,6 +136,10 @@
 	padding: 10px;
 	box-sizing: border-box;
 
+	@include bp(max-width, 640px) {
+	  width: 50%;
+	}
+
 	@include bp(max-width, $bp-smallest) {
 	  width: 100%;
 	}
@@ -153,10 +162,20 @@
   }
 
   .totals-wrap {
-	font-size: 2rem;
 	line-height: 1.2;
 	font-weight: 700;
-	
+
+	.totals-item {
+	  font-size: 1.1rem;
+	  margin-bottom: 14px;
+	  @include cleaner;
+
+	  &:last-child {
+		font-size: 2rem;
+		margin-bottom: 0;
+	  }
+	}
+
 	.totals-label {
 	  float: left;
 	  margin-right: 10px;

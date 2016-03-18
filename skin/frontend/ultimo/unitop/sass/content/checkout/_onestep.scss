@@ -207,7 +207,11 @@
   }
 
   button {
-	width: 100%;
+	margin-bottom: 7px;
+
+	@include bp(max-width, $bp-smallest) {
+	  width: 100%;
+	}
   }
 
   @include bp(max-width, $bp-small) {
@@ -243,6 +247,7 @@
   font-weight: bold;
   color: $dark;
   text-transform: uppercase;
+  white-space: nowrap;
 
   label {
 	cursor: pointer;
@@ -400,6 +405,7 @@
 
 		.chosen-search input[type="text"] {
 		  height: 26px;
+		  padding: 4px 20px 4px 10px;
 		}
 	  }
 
@@ -739,7 +745,7 @@
 	padding: 60px;
 	box-sizing: border-box;
 	border: 1px solid #d7d7d7;
-	background: $gray;
+	background: $white;
 
 	.checkout-title {
 	  margin-bottom: 30px;
@@ -751,12 +757,6 @@
 		line-height: $lh-smallest;
 		border-bottom: 1px dashed;
 	  }
-	}
-
-	.btn-remove,
-	.btn-remove2 {
-	  //width: auto;
-	  //height: auto;
 	}
 
 	.checkout-item {
@@ -840,8 +840,13 @@
 	  }
 
 	  .price-col {
+		width: calc(100% - 180px);
 		float: right;
 		text-align: right;
+
+		@include bp(max-width, 1199px) {
+		  width: 100%;
+		}
 	  }
 
 	  .price {
@@ -868,6 +873,8 @@
 
 		&:before {
 		  font-size: 1rem;
+		  display: inline-block;
+		  vertical-align: bottom;
 		}
 
 		&:hover {
@@ -898,6 +905,7 @@
 
 		@include bp(max-width, 1199px) {
 		  max-width: none;
+		  padding-right: 0;
 		}
 	  }
 
@@ -1027,4 +1035,90 @@
 
 .order-product-item {
   margin-bottom: 20px;
+}
+
+//Spinner
+
+.ui-spinner {
+  border: none;
+  border-radius: 0;
+  > input {
+	font-size: 1rem;
+	width: 62px;
+	height: 30px;
+	border: none;
+	background: $gray;
+	text-align: center;
+	margin: 0;
+	padding: 5px 30px 5px 0;
+	color: $dark;
+	box-sizing: border-box;
+	box-shadow: none;
+  }
+
+  .ui-spinner-button {
+	border: none;
+	width: 30px;
+	height: 14px;
+	background: $gray;
+	border-left: 1px solid $white;
+	cursor: pointer;
+
+	&:hover {
+	  background: darken($gray, 10%);
+	}
+
+	span {
+	  padding: 0;
+	  display: block;
+	  height: 100%;
+	  width: 100%;
+	  text-align: center;
+	  background: none;
+	  position: relative;
+	  margin-top: 0;
+	  top: 0;
+	}
+
+	&:after {
+	  position: absolute;
+	  left: 0;
+	  right: 0;
+	  top: 0;
+	  font-size: 12px;
+	  line-height: 1;
+	  color: $link-hover;
+	}
+
+	&.ui-spinner-up {
+	  border-bottom: 1px solid $white;
+	  &:after {
+		content: '+';
+	  }
+	}
+	&.ui-spinner-down {
+	  &:after {
+		content: '-';
+	  }
+	}
+  }
+}
+
+.checkout-end {
+  @include bp(max-width, $bp-small) {
+	display: none;
+  }
+}
+
+.action-mobile {
+  display: none;
+  padding: 20px 0 0;
+
+  @include bp(max-width, $bp-small) {
+	display: block;
+
+	button {
+	  width: 100%;
+	}
+  }
 }

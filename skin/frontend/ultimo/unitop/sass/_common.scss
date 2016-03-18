@@ -764,7 +764,7 @@ textarea {
   left: 0;
   right: 0;
   background: url("../images/brander/opcheckout/ajax-loader-tr.gif") no-repeat 50% 50%;
-  z-index: 100;
+  z-index: 10000;
 
   &:after {
 	position: absolute;
@@ -1187,6 +1187,15 @@ textarea {
   &:hover {
 	color: #163294;
 	background: #f3f7fd;
+  }
+}
+
+.cart-table {
+  @include bp(max-width, $bp-smallest) {
+	.btn-inline {
+	  width: 100%;
+	  margin-bottom: 7px;
+	}
   }
 }
 
