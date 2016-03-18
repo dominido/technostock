@@ -112,6 +112,12 @@ $helperCheckout = Mage::helper('brander_opcheckout');
             <?php echo $this->getChildHtml('infox') ?>
         </div>
     </div>
+
+    <div class="action-mobile">
+        <button class="button btn-checkout" onclick="checkout.save();">
+            <?php echo $helperCheckout->__("Confirm order") ?>
+        </button>
+    </div>
 </div>
 <script type="text/javascript">
     var billingForm = $('co-billing-form');

@@ -207,6 +207,8 @@ textarea {
 #sh_button {
   @include bp(max-width, $bp-tiny) {
 	min-height: 0;
+	top: auto !important;
+	bottom: 20px;
 
 	.sh_title_text {
 	  display: none;
@@ -274,14 +276,6 @@ textarea {
 	  }
 	}
 
-	&:hover {
-	  border-color: $link-hover;
-	}
-
-	//&.hovered {
-	//  border-color: $link-hover-light;
-	//}
-
 	.price-holder {
 	  height: 70px;
 	  text-align: left;
@@ -348,6 +342,12 @@ textarea {
 
   .btn-cart {
 	@extend %button;
+  }
+}
+
+.no-touch {
+  .products-grid .item-inner:hover {
+	border-color: $link-hover;
   }
 }
 
@@ -545,6 +545,10 @@ textarea {
 	&.sale {
 	  font-size: 1rem;
 	  line-height: 1;
+	}
+
+	@include bp(max-width, $bp-small) {
+	  padding: 10px;
 	}
   }
 
@@ -760,7 +764,7 @@ textarea {
   left: 0;
   right: 0;
   background: url("../images/brander/opcheckout/ajax-loader-tr.gif") no-repeat 50% 50%;
-  z-index: 100;
+  z-index: 10000;
 
   &:after {
 	position: absolute;
@@ -1183,6 +1187,15 @@ textarea {
   &:hover {
 	color: #163294;
 	background: #f3f7fd;
+  }
+}
+
+.cart-table {
+  @include bp(max-width, $bp-smallest) {
+	.btn-inline {
+	  width: 100%;
+	  margin-bottom: 7px;
+	}
   }
 }
 
