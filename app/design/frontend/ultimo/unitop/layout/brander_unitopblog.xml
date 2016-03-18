@@ -42,7 +42,7 @@
     </customer_account>-->
     <brander_unitopblog_postscategory_index translate="label" module="brander_unitopblog">
         <label>Blog</label>
-        <update handle="page_two_columns_left"/>
+        <update handle="page_one_column"/>
         <reference name="head">
             <action method="addCss"><js>css/brander/unitopblog/tree.css</js></action>
             <action method="addItem" ifconfig="brander_unitopblog/postscategory/tree">
