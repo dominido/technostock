@@ -60,9 +60,9 @@
 
   .sku {
     margin-top: 0;
+    font-size: 1rem;
 
     .label {
-      font-size: 1rem;
       font-weight: normal;
     }
 
@@ -159,13 +159,9 @@
 
       > a {
         font-size: 0;
-        
-        &:hover {
-          color: #1938a5;
 
-          .img-wrap {
-            background: $link-hover-light;
-          }
+        &:hover {
+          color: $muddy;
         }
       }
     }
@@ -349,11 +345,11 @@
   .button.fastbuy-btn {
     display: table;
     font-size: 1rem;
+    color: #35426d;
     font-weight: 500;
     margin-right: 0;
     border-color: #c3cee4;
     background: none;
-    @include trs(color .3s ease);
 
     &:hover {
       border-color: #1938a5;
@@ -436,6 +432,7 @@
 
   @include bp(max-width, $bp-tiny) {
     display: block;
+    margin-bottom: 0;
   }
 
   .box-additionals-row {
@@ -477,6 +474,7 @@
       @include bp(max-width, 959px) {
         width: 100%;
         background: none;
+        padding-left: 0;
 
         &:after {
           display: none;
@@ -486,21 +484,28 @@
       .section-title {
         font-size: 1.3125rem;
         font-weight: 600;
-        color: #35426d;
+        color: $muddy;
         padding-top: 27px;
         padding-bottom: 26px;
 
-        @include bp(max-width, $bp-tiny) {
-          font-size: 26px;
-          padding-right: 0;
-          text-transform: none;
-          padding-bottom: 10px;
+        @include bp(max-width, 959px) {
+          padding-right: 100px !important;
+          font-size: 28px;
+          font-weight: 600;
+          letter-spacing: 1px;
+          margin-bottom: 0;
+          padding-top: 7px;
+          padding-bottom: 7px;
         }
       }
 
       .itemslider-wrapper {
         .owl-buttons {
           top: -60px;
+
+          @include bp(max-width, 959px) {
+            top: -46px;
+          }
         }
       }
 
@@ -599,8 +604,7 @@
           @include trs(width .3s ease);
         }
 
-        &.current,
-        &:hover {
+        &.current {
           &:after {
             width: 100%;
           }
@@ -661,10 +665,18 @@
   }
 }
 
-.gen-tabs {
+#product-tabs {
   .acctab {
-    &.current {
+    color: $muddy;
+
+    @include bp(max-width, 960px) {
+      background: #e6effb;
+    }
+
+    &.active {
+      color: #1938a5;
       border-color: transparent;
+      background: #eef4fc;
 
       .caret {
         transform: rotate(180deg);
@@ -672,9 +684,24 @@
     }
 
     .caret {
+      border-top-width: 8px;
+      border-left-width: 6px;
+      border-right-width: 6px;
       border-top-color: #586589;
+      margin-left: 5px;
+    }
+
+    &.active {
+      &+.panel {
+        display: block !important;
+      }
     }
   }
+
+  .panel {
+    display: none !important;
+  }
+
 }
 
 .product-shop-heading {
@@ -758,6 +785,13 @@
     textarea {
       width: 100%;
     }
+  }
+}
+
+@media only screen and (max-width: 959px) and (min-width: 768px) {
+  .block-related-thumbnails .product-details {
+    margin-left: 120px;
+    clear: none;
   }
 }
 
