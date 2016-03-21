@@ -54,7 +54,7 @@
         }
         else
         {
-            $html[] = '<li><a href="'. $_store->getCurrentUrl() .'"><span class="label dropdown-icon" '.'>&nbsp;</span>'. $storeName .'</a></li>';
+            $html[] = '<li><a href="'. $_store->getCurrentUrl() .'">'. $storeName .'</a></li>';
         }
     }
     $html[] = '</ul>';
@@ -62,10 +62,7 @@
     <div class="lang-switcher dropdown">
         <a href="#" class="dropdown-heading cover">
             <span>
-                <span class="label dropdown-icon flag">&nbsp;</span>
-                <?php /*?> <p class="label hide-below-1280"><?php echo $this->__('Language'); ?>:</p> <?php */?>
                 <span class="value"><?php echo $currStoreName; ?></span>
-                <span class="caret">&nbsp;</span>
             </span>
         </a>
         <?php echo implode('', $html); ?>
