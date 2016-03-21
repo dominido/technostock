@@ -10,6 +10,8 @@ $_collectionSize = count($this->getItemCollection()->getItems());
 	<?php
 	$theme = $this->helper('ultimo');
 	$helpImg = $this->helper('infortis/image');
+	$helpLabels = $this->helper('brander_shop/labels');
+	$helpTemplate = $this->helper('ultimo/template');
 	$sliderClasses = '';
 	$gridClasses = '';
 
@@ -103,6 +105,11 @@ $_collectionSize = count($this->getItemCollection()->getItems());
 										alt="<?php echo $this->escapeHtml($_product->getName()) ?>"/>
 								<?php endif; ?>
 
+								<?php if ($theme->getCfg('category/alt_image')): ?>
+									<?php echo $theme->getAltImgHtml($_product, $imgWidth, $imgHeight); ?>
+								<?php endif; ?>
+
+								<?php echo $helpLabels->getLabels($_product); //Product labels ?>
 							</a>
 
 							<div class="product-name">
@@ -111,6 +118,37 @@ $_collectionSize = count($this->getItemCollection()->getItems());
 							<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
 							<div class="price-holder">
 								<?php echo $this->getPriceHtml($_product, true, '-upsell') ?>
+							</div>
+
+							<div class="actions">
+								<?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+									<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+								<?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+									<a title="<?php echo $this->__('View Details') ?>" class="button btn-cart" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+								<?php else: ?>
+									<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+								<?php endif; ?>
+
+								<?php if (!$this->getHideButton()): ?>
+									<?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+										<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+									<?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+										<a title="<?php echo $this->__('View Details') ?>" class="button btn-cart" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+									<?php else: ?>
+										<p class="availability out-of-stock" title="<?php echo $this->__('Out of stock') ?>"></p>
+									<?php endif; ?>
+								<?php endif; ?>
+
+								<?php //Add-to links
+								if ($theme->getCfg('category_grid/display_addtolinks') != 0 && !$theme->getCfg('category_grid/addtolinks_simple'))
+								{
+									if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
+										echo $helpTemplate->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right addto-texticons display-onhover');
+									else //Always display
+										echo $helpTemplate->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right addto-texticons');
+								}
+								?>
+
 							</div>
 						</div>
 					</div>
