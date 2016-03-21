@@ -112,6 +112,24 @@ $_collectionSize = count($this->getItemCollection()->getItems());
 								<?php echo $helpLabels->getLabels($_product); //Product labels ?>
 							</a>
 
+							<?php //Add-to links
+							if ($theme->getCfg('category_grid/display_addtolinks') != 0
+								&& $theme->getCfg('category_grid/addtolinks_simple'))
+							{
+								if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
+								{
+									echo $helpTemplate->getCategoryAddtoWishLinks(
+										$_product, 'addto-links-icons addto-onimage visible-onhover');
+
+								}
+								else //Always display
+								{
+									echo $helpTemplate->getCategoryAddtoWishLinks(
+										$_product, 'addto-links-icons addto-onimage');
+								}
+							}
+							?>
+
 							<div class="product-name">
 								<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>"><?php echo $this->escapeHtml($_product->getName()) ?></a>
 							</div>
@@ -138,16 +156,6 @@ $_collectionSize = count($this->getItemCollection()->getItems());
 										<p class="availability out-of-stock" title="<?php echo $this->__('Out of stock') ?>"></p>
 									<?php endif; ?>
 								<?php endif; ?>
-
-								<?php //Add-to links
-								if ($theme->getCfg('category_grid/display_addtolinks') != 0 && !$theme->getCfg('category_grid/addtolinks_simple'))
-								{
-									if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
-										echo $helpTemplate->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right addto-texticons display-onhover');
-									else //Always display
-										echo $helpTemplate->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right addto-texticons');
-								}
-								?>
 
 							</div>
 						</div>
