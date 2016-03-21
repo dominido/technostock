@@ -49,7 +49,10 @@
             <div class="main container">
                 <div class="inner-container">
                     <?php echo $this->getChildHtml('breadcrumbs') ?>
-                    <div class="preface"><?php echo $this->getChildHtml('preface') ?></div>
+                    <?php $blockPreface = trim($this->getChildHtml('preface')); ?>
+                    <?php if (!empty($blockPreface)): ?>
+                        <div class="preface"><?php echo $blockPreface; ?></div>
+                    <?php endif; ?>
                     <div class="col-left sidebar grid12-3 grid-col2-sidebar no-gutter"><?php echo $this->getChildHtml('left') ?></div>
                     <div class="col-main grid12-9 grid-col2-main no-gutter">
                         <?php echo $this->getChildHtml('global_messages') ?>
