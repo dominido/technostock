@@ -876,11 +876,6 @@ textarea {
 	  margin-bottom: 20px;
 	  float: none;
 	}
-
-	#contactForm {
-	  display: table-footer-group;
-	  height: 1%;
-	}
   }
 
   h2.legend,
@@ -899,7 +894,7 @@ textarea {
   }
 
   .field {
-	margin-bottom: 8px;
+	margin-bottom: 21px;
   }
 
   .contacts-address {
@@ -925,6 +920,7 @@ textarea {
 
   .contacts-map-holder {
 	width: 500px;
+	padding-top: 32px;
 
 	@include bp(max-width, 850px) {
 	  width: 100%;
@@ -1211,18 +1207,28 @@ textarea {
 .cmsadvanced-page-view {
   &.contacts {
 	table {
+	  width: 100%;
 	  margin-bottom: 30px;
+	  table-layout: fixed;
 
-	  td + td {
-		padding-left: 50px;
+	  td {
+		width: 50%;
+		padding-right: 25px;
+
+		& + td {
+		  padding-right: 0;
+		  padding-left: 25px;
+		}
 	  }
 
 	  @include bp(max-width, $bp-tiny) {
 		td {
 		  display: block;
+		  width: 100%;
+		  padding: 0;
 
-		  &+td {
-			padding-left: 0;
+		  & + td {
+			padding: 0;
 		  }
 		}
 	  }
