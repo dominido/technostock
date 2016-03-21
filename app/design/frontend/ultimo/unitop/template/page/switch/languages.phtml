@@ -34,58 +34,41 @@
 ?>
 <?php if(count($this->getStores()) > 1): ?>
     <?php
-        $currStoreName = '';
-        $currStoreCode = '';
-        $localeCodeConfig = Mage::getStoreConfig('ultimo/header/locale_code_switchers');
+    $currStoreName = '';
+    $currStoreCode = '';
+    $html = array();
+    $html[] = '<ul class="dropdown-content left-hand">';
+    foreach($this->getStores() as $_store)
+    {
+        $storeName = $this->__($this->escapeHtml($_store->getName()));
+        $storeId = $_store->getId();
+        $storeCode = $_store->getCode(); //$storeCode = Mage::getStoreConfig('general/locale/code', $storeId);
 
-        $html = array();
-        $html[] = '<ul class="dropdown-content left-hand'. ($localeCodeConfig ? ' by-codes' : '') .'">';
-        foreach($this->getStores() as $_store)
+
+        if($storeId == $this->getCurrentStoreId())
         {
-            $storeName = $this->__($this->escapeHtml($_store->getName()));
-            $storeId = $_store->getId();
-            $storeCode = $_store->getCode(); //$storeCode = Mage::getStoreConfig('general/locale/code', $storeId);
-            if ($localeCodeConfig) {
-                $storeName = strtoupper($storeCode);
-            }
-
-            $flagHtml = ''; $css = '';
-            if ($needFlag = Mage::getStoreConfig('ultimo/header/national_flag_switchers')) {
-                $flagIco = $this->getSkinUrl('images/flags/'. $storeCode .'.png');
-
-                if (Mage::helper('brander_shop/image')->checkImageExist($flagIco)) {
-                    $css = 'style="background-image:url(' . $flagIco . ');"';
-                }
-                $flagHtml = '<span class="label dropdown-icon flag" '. $css .'>&nbsp;</span>';
-            }
-
-            if($storeId == $this->getCurrentStoreId()) {
-                $currStoreName = $storeName;
-                $currStoreCode = $storeCode;
-                $currFlagHtml = $flagHtml;
-                $html[] = '<li class="current">'. $flagHtml . '<span class="hide-below-768">' . $storeName . '</span><span class="show-below-768">' . strtoupper($storeCode) . '</span></li>';
-
-            } else {
-                $html[] = '<li><a href="'. $_store->getCurrentUrl() .'">'. $flagHtml . '<span class="hide-below-768">' . $storeName . '</span><span class="show-below-768">' . strtoupper($storeCode) . '</span></a></li>';
-            }
+            $currStoreName = $storeName;
+            $currStoreCode = $storeCode;
+            //hide active language from drodown list
+//                $html[] = '<li class="current"><span class="label dropdown-icon" '. $css .'>&nbsp;</span>'. $storeName .'</li>';
         }
-        $html[] = '</ul>';
+        else
+        {
+            $html[] = '<li><a href="'. $_store->getCurrentUrl() .'"><span class="label dropdown-icon" '.'>&nbsp;</span>'. $storeName .'</a></li>';
+        }
+    }
+    $html[] = '</ul>';
     ?>
     <div class="lang-switcher dropdown">
         <a href="#" class="dropdown-heading cover">
-            <span class="hide-below-768">
-                <?php if (isset($needFlag) && $needFlag): ?>
-                    <?php echo $currFlagHtml; ?>
-                <?php endif; ?>
+            <span>
+                <span class="label dropdown-icon flag">&nbsp;</span>
                 <?php /*?> <p class="label hide-below-1280"><?php echo $this->__('Language'); ?>:</p> <?php */?>
                 <span class="value"><?php echo $currStoreName; ?></span>
-                <span class="caret">&nbsp;</span>
-            </span>
-            <span class="show-below-768">
-                <span class="value"><?php echo strtoupper($currStoreCode); ?></span>
                 <span class="caret">&nbsp;</span>
             </span>
         </a>
         <?php echo implode('', $html); ?>
     </div>
+
 <?php endif; ?>
