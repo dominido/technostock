@@ -70,7 +70,11 @@
         margin-left: 5% !important;
       }
 
-      @include bp(max-width, 769px) {
+      @include bp(max-width, 991px) {
+        margin-left: 3% !important;
+      }
+
+      @include bp(max-width, 840px) {
         margin-left: 0 !important;
       }
     }
@@ -195,6 +199,10 @@
       line-height: 40px;
       text-transform: uppercase;
       margin-left: 5px;
+
+      @include bp(max-width, 991px) {
+        letter-spacing: 0;
+      }
     }
 
     &.open {
@@ -472,6 +480,14 @@
 
       @include bp(min-width, 1500px) {
         width: 244px;
+      }
+
+      @include bp(max-width, 800px) {
+        width: 180px;
+      }
+
+      @include bp(max-width, 769px) {
+        width: 100%;
       }
 
       & + button {

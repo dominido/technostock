@@ -192,6 +192,10 @@
                     }
                     tabOperator.$rootContainer.addClass("accor");
                     tabOperator.$panelsContainer.tabs(".tabs-panels .panel", {tabs: '.acctab', effect: tabOperator.accEffect, initialIndex: index});
+
+                    $(".acctab").click(function () {
+                        $(this).toggleClass('active');
+                    });
                 }
 
                 , hookToAccordionOnClick : function()

@@ -104,7 +104,7 @@ textarea {
   letter-spacing: 1px;
   border-radius: 3px;
   box-sizing: border-box;
-  @include trs(background-color .3s ease, border-color .3s ease);
+  @include trs(background-color .3s ease, border-color .3s ease, color .3s ease);
 
   &:hover {
 	background-color: $link-hover-light;
@@ -119,6 +119,15 @@ textarea {
 .btn-edit {
   color: $dark;
   line-height: 1;
+}
+
+.link-learn {
+  font-style: italic;
+  font-weight: 600;
+
+  &:hover {
+	color: $link-hover;
+  }
 }
 
 .toolbar {
@@ -533,8 +542,8 @@ textarea {
 
 .sticker-wrapper {
   .sticker {
-	width: auto;
-	height: auto;
+	width: auto !important;
+	height: auto !important;
 	padding: 10px 18px;
 	border-radius: 0;
 	text-transform: uppercase;

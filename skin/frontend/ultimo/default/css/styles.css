@@ -776,12 +776,12 @@ p.required,
 */
 .success {
 	color: #3d6611;
-	font-weight: bold;
+	font-weight: 600;
 }
 
 .error {
 	color: #ee001c;
-	font-weight: bold;
+	font-weight: 600;
 }
 
 .notice {
@@ -2063,7 +2063,7 @@ ul.disc ul li {
 	margin-top: 1px;
 	position: relative;
 	padding: 7px 0;
-	font-weight: bold;
+	font-weight: 600;
 	text-rendering: optimizeSpeed;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -5043,7 +5043,7 @@ a.availability-only {
 }
 
 .order-info dt {
-	font-weight: bold;
+	font-weight: 600;
 }
 
 .order-info li {
