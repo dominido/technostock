@@ -202,17 +202,14 @@
       vertical-align: top;
       width: calc(100% - 112px);
     }
-
-    //@include bp(max-width, $bp-desktop) {
-    //  .benefit-title,
-    //  .benefit-text {
-    //    font-size: 14px;
-    //    letter-spacing: -1px;
-    //  }
-    //}
   }
 
   @include bp(max-width, $bp-tiny) {
+    .product-img-column,
+    .img-box {
+      margin-bottom: 0;
+    }
+
     .add-to-cart {
       text-align: center;
 
@@ -234,7 +231,8 @@
       }
     }
 
-    .action-box {
+    .action-box,
+    .wishlist-box {
       text-align: center;
     }
   }
@@ -395,6 +393,10 @@
   .social-links {
     margin: 0 -10px;
     text-align: right;
+
+    @include bp(max-width, $bp-tiny) {
+      text-align: center;
+    }
 
     li {
       margin: 0 7px 10px;
