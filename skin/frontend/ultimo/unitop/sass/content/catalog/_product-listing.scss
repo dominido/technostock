@@ -72,6 +72,31 @@
 	  }
 	}
   }
+
+  .sticker-wrapper {
+	.sticker {
+	  padding: 10px;
+
+	  @include bp(max-width, 991px) {
+		padding: 5px;
+		letter-spacing: -1px;
+		font-weight: normal;
+		text-transform: none;
+	  }
+
+	  @include bp(max-width, $bp-tiny) {
+		text-transform: uppercase;
+		letter-spacing: 0;
+	 }
+	}
+  }
+
+  .button.btn-cart {
+	@include bp(max-width, 991px) {
+	  min-width: 100%;
+	  padding: 10px 5px;
+	}
+  }
 }
 
 .sidebar {

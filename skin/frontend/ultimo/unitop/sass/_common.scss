@@ -121,6 +121,15 @@ textarea {
   line-height: 1;
 }
 
+.link-learn {
+  font-style: italic;
+  font-weight: 600;
+
+  &:hover {
+	color: $link-hover;
+  }
+}
+
 .toolbar {
   .sort-by {
 	.category-asc,

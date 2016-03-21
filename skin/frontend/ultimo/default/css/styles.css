@@ -2063,7 +2063,7 @@ ul.disc ul li {
 	margin-top: 1px;
 	position: relative;
 	padding: 7px 0;
-	font-weight: bold;
+	font-weight: 600;
 	text-rendering: optimizeSpeed;
 	-moz-user-select: none;
 	-ms-user-select: none;
