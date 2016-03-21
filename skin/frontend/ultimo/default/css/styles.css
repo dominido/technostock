@@ -5043,7 +5043,7 @@ a.availability-only {
 }
 
 .order-info dt {
-	font-weight: bold;
+	font-weight: 600;
 }
 
 .order-info li {
