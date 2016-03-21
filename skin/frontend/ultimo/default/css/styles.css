@@ -4112,6 +4112,7 @@ a.availability-only {
 .cart .shipping .buttons-set button.button {
 	float: none;
 	margin-left: 0;
+	margin-bottom: 5px;
 }
 
 /* Discount Codes (coupons)
@@ -4848,8 +4849,9 @@ a.availability-only {
 }
 
 .account-login .buttons-set a {
-	float: right !important;
-	margin-bottom: 10px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 10px 0 0 10px;
 }
 
 /* My Account Dashboard
