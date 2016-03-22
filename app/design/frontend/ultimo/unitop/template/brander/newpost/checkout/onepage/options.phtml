@@ -4,20 +4,17 @@ $carrier = $this->getMethodInstance();
 $pickupData = $this->getQuote()->getPickupData();
 $_rate = $this->getRate();
 ?>
-
-<ul class="form-list shipping_newpost" id="shipping_form_<?php echo $_rate->getCode() ?>" style="display:none;">
-	<li>
-		<label><?php echo $this->__('Delivery department:') ?></label>
-		<div class="input-box">
-			<select class="select" name="shipping_newpost[address]">
-				<?php foreach($this->getAddressList() as $wh) {?>
-					<?php $wh = $new = htmlspecialchars($wh , ENT_QUOTES);?>
-					<option value="<?php echo $wh; ?>"><?php echo $wh; ?></option>
-				<?php } ?>
-			</select>
-		</div>
-	</li>
-</ul>
+<div class="field" id="shipping_form_<?php echo $_rate->getCode() ?>" style="display:none;">
+	<label for="newpost-warehouses"><?php echo $this->__('Warehouse')?>:</label>
+	<div class="input-box">
+		<select id="newpost-warehouses" class="select" name="shipping_newpost[address]">
+			<?php foreach($this->getAddressList() as $wh) {?>
+				<?php $wh = $new = htmlspecialchars($wh , ENT_QUOTES);?>
+				<option value="<?php echo $wh; ?>"><?php echo $wh; ?></option>
+			<?php } ?>
+		</select>
+	</div>
+</div>
 <script type="text/javascript">
 	(function (jQuery) {
 		jQuery.each(['show', 'hide'], function (i, ev) {
