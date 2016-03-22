@@ -16,11 +16,11 @@ var mapsInit = (function ($) {
                     title: locations[i][0]
                 });
                 bounds.extend(marker.position);
-                var contentString = '<div id="content">' +
-                    Translator.translate('name: ') + locations[i][0] + '</br>' +
-                    Translator.translate('phone: ') + locations[i][2] + '</br>' +
-                    Translator.translate('address: ') + locations[i][1] + '</br>' ;
-                    // if no image selected in admin form for store
+                var contentString = '<div id="content">';
+                    if (locations[i][0]) {contentString = contentString + Translator.translate('name: ') + locations[i][0] + '</br>' }
+                    if (locations[i][2]) {contentString = contentString + Translator.translate('phone: ') + locations[i][2] + '</br>' }
+                    if (locations[i][1]) {contentString = contentString + Translator.translate('address: ') + locations[i][1] + '</br>' }
+
                     if ((locations[i][5]) !== undefined) {
                         contentString = contentString +
                         '<img src="' + locations[i][5] + '"/>' +
