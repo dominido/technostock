@@ -72,7 +72,7 @@ $helper = Mage::helper('brander_shop');
             <?php if(!$this->isCustomerLoggedIn()): ?>
                 <div class="field">
                     <label for="billing:email">
-                        <?php echo $this->__('Email Address') ?><span class="required">*</span>
+                        <?php echo $this->__('Email Address') ?><span class="required"></span>
                     </label>
                     <div class="input-box">
                         <input name="billing[email]" type="text" id="billing:email" class="validate-email required-entry input-text normal-box"
