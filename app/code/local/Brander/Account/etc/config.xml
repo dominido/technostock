@@ -86,7 +86,7 @@
             <customer>
                 <args>
                     <modules>
-                        <Brander_Account before="Mage_Customer_Account">Brander_Customer</Brander_Account>
+                        <brander_account before="Mage_Customer">Brander_Account</brander_account>
                     </modules>
                 </args>
             </customer>
