@@ -63,6 +63,15 @@
                 </Brander_CmsHome>
             </modules>
         </translate>
+        <routers>
+            <checkout>
+                <args>
+                    <modules>
+                        <brander_cmshome before="Mage_Checkout">Brander_CmsHome</brander_cmshome>
+                    </modules>
+                </args>
+            </checkout>
+        </routers>
     </frontend>
     <admin>
         <routers>
