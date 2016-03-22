@@ -2647,14 +2647,14 @@ ul.disc ul li {
 }
 
 /* Display grid item elements only on hover: fade-in (for sliders) */
-.no-touch .products-grid .item .visible-onhover {
+.no-touch .products-grid .item-inner .visible-onhover {
 	visibility: hidden;
 	opacity: 0;
 	-webkit-transition: visibility 0s ease-in-out 600ms, opacity 300ms ease-in-out 300ms;
 	transition: visibility 0s ease-in-out 600ms, opacity 300ms ease-in-out 300ms;
 }
 
-.no-touch .products-grid .item:hover .visible-onhover {
+.no-touch .products-grid .item-inner:hover .visible-onhover {
 	visibility: visible;
 	opacity: 1;
 	-webkit-transition: visibility 0s ease-in-out 0s, opacity 300ms ease-in-out 100ms;

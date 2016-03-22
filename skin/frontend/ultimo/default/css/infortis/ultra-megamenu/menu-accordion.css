@@ -2,98 +2,100 @@
  * Mobile menu accordion
  */
 .acco {
-  list-style-type: none; }
+	list-style-type: none;
+}
 
 .acco li.nav-item {
-  list-style-type: none;
-  display: block;
-  float: left;
-  width: 100% !important;
-  /* Use "!important" to override grid units styling */
-  padding: 0 !important;
-  margin: 0 !important;
-  position: relative;
-  /* For opener positioning */ }
+	list-style-type: none;
+	display: block;
+	float: left;
+	width: 100% !important;
+	/* Use "!important" to override grid units styling */
+	padding: 0 !important;
+	margin: 0 !important;
+	position: relative;
+	/* For opener positioning */
+}
 
 .acco ul.nav-panel {
-  display: block;
-  float: left;
-  width: 100%;
-  padding: 0;
-  margin: 0; }
+	display: block;
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
 
 /* Items
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 /* Space for openner if item has children. Space has to be a few pixels wider than openner */
 .acco li.parent > a {
-  padding-right: 54px; }
+	padding-right: 54px;
+}
 
 /* All levels
 -------------------------------------------------------------- */
 .acco .nav-item > a {
-  display: block;
-  padding: 15px 10px;
-  /* Set default line height in pixels because font size will be changed via admin (and that would also change the line height) */
-  font-size: 16px;
-  /*1.3333em*/
-  line-height: 19px;
-  /*1.125em*/ }
+	display: block;
+	padding: 15px 10px;
+	font-size: 16px;
+	line-height: 19px;
+}
 
 /* Level 1
 -------------------------------------------------------------- */
 .acco li.level0 > a {
-  font-size: 18px;
-  text-transform: uppercase; }
+	font-size: 18px;
+	text-transform: uppercase;
+}
 
 /* Level 2
 -------------------------------------------------------------- */
 .acco li.level1 > a {
-  padding-left: 30px;
-  font-size: 16px;
-  text-transform: uppercase; }
+	padding-left: 30px;
+	font-size: 16px;
+	text-transform: uppercase;
+}
 
 /* Level 3
 -------------------------------------------------------------- */
 .acco li.level2 > a {
-  padding-left: 50px;
-  font-size: 16px;
-  text-transform: none; }
+	padding-left: 50px;
+	font-size: 16px;
+	text-transform: none;
+}
 
 /* Level 4
 -------------------------------------------------------------- */
 .acco li.level3 > a {
-  padding-left: 70px;
-  font-size: 14px;
-  text-transform: none; }
+	padding-left: 70px;
+	font-size: 14px;
+	text-transform: none;
+}
 
 /* Level 5+
 -------------------------------------------------------------- */
 .acco li.level3 .nav-item > a {
-  padding-left: 90px;
-  font-size: 12px;
-  text-transform: none; }
+	padding-left: 90px;
+	font-size: 12px;
+	text-transform: none;
+}
 
 /* Opener
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
 .acco .opener {
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: block;
-  cursor: pointer;
-  text-align: center;
-  width: 49px;
-  height: 49px;
-  line-height: 49px;
-  background: url(../../../images/infortis/_shared/accordion/opener.png) center center no-repeat; }
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+	cursor: pointer;
+	text-align: center;
+	width: 49px;
+	height: 49px;
+	line-height: 49px;
+}
 
 .acco .opener:hover {
-  background-color: rgba(0, 0, 0, 0.05); }
-
-/* Active */
-.acco li.item-active > .opener {
-  background-image: url(../../../images/infortis/_shared/accordion/opener-active.png); }
-
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lbnUtYWNjb3JkaW9uLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUNIO0VBQ0Usc0JBQXNCLEVBQUU7O0FBRTFCO0VBQ0Usc0JBQXNCO0VBQ3RCLGVBQWU7RUFDZixZQUFZO0VBQ1osdUJBQXVCO0VBQ3ZCLHFEQUFxRDtFQUNyRCxzQkFBc0I7RUFDdEIscUJBQXFCO0VBQ3JCLG1CQUFtQjtFQUNuQiw0QkFBNEIsRUFBRTs7QUFFaEM7RUFDRSxlQUFlO0VBQ2YsWUFBWTtFQUNaLFlBQVk7RUFDWixXQUFXO0VBQ1gsVUFBVSxFQUFFOztBQUVkOztFQUVFO0FBQ0YsNkZBQTZGO0FBQzdGO0VBQ0Usb0JBQW9CLEVBQUU7O0FBRXhCO2lFQUNpRTtBQUNqRTtFQUNFLGVBQWU7RUFDZixtQkFBbUI7RUFDbkIsZ0lBQWdJO0VBQ2hJLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1osa0JBQWtCO0VBQ2xCLFdBQVcsRUFBRTs7QUFFZjtpRUFDaUU7QUFDakU7RUFDRSxnQkFBZ0I7RUFDaEIsMEJBQTBCLEVBQUU7O0FBRTlCO2lFQUNpRTtBQUNqRTtFQUNFLG1CQUFtQjtFQUNuQixnQkFBZ0I7RUFDaEIsMEJBQTBCLEVBQUU7O0FBRTlCO2lFQUNpRTtBQUNqRTtFQUNFLG1CQUFtQjtFQUNuQixnQkFBZ0I7RUFDaEIscUJBQXFCLEVBQUU7O0FBRXpCO2lFQUNpRTtBQUNqRTtFQUNFLG1CQUFtQjtFQUNuQixnQkFBZ0I7RUFDaEIscUJBQXFCLEVBQUU7O0FBRXpCO2lFQUNpRTtBQUNqRTtFQUNFLG1CQUFtQjtFQUNuQixnQkFBZ0I7RUFDaEIscUJBQXFCLEVBQUU7O0FBRXpCOztFQUVFO0FBQ0Y7RUFDRSxtQkFBbUI7RUFDbkIsU0FBUztFQUNULE9BQU87RUFDUCxlQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLG1CQUFtQjtFQUNuQixZQUFZO0VBQ1osYUFBYTtFQUNiLGtCQUFrQjtFQUNsQiwrRkFBK0YsRUFBRTs7QUFFbkc7RUFDRSxzQ0FBc0MsRUFBRTs7QUFFMUMsWUFBWTtBQUNaO0VBQ0Usb0ZBQW9GLEVBQUUiLCJmaWxlIjoiaW5mb3J0aXMvdWx0cmEtbWVnYW1lbnUvbWVudS1hY2NvcmRpb24uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBNb2JpbGUgbWVudSBhY2NvcmRpb25cbiAqL1xuLmFjY28ge1xuICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7IH1cblxuLmFjY28gbGkubmF2LWl0ZW0ge1xuICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBmbG9hdDogbGVmdDtcbiAgd2lkdGg6IDEwMCUgIWltcG9ydGFudDtcbiAgLyogVXNlIFwiIWltcG9ydGFudFwiIHRvIG92ZXJyaWRlIGdyaWQgdW5pdHMgc3R5bGluZyAqL1xuICBwYWRkaW5nOiAwICFpbXBvcnRhbnQ7XG4gIG1hcmdpbjogMCAhaW1wb3J0YW50O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIC8qIEZvciBvcGVuZXIgcG9zaXRpb25pbmcgKi8gfVxuXG4uYWNjbyB1bC5uYXYtcGFuZWwge1xuICBkaXNwbGF5OiBibG9jaztcbiAgZmxvYXQ6IGxlZnQ7XG4gIHdpZHRoOiAxMDAlO1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IDA7IH1cblxuLyogSXRlbXNcbiUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlXG4qL1xuLyogU3BhY2UgZm9yIG9wZW5uZXIgaWYgaXRlbSBoYXMgY2hpbGRyZW4uIFNwYWNlIGhhcyB0byBiZSBhIGZldyBwaXhlbHMgd2lkZXIgdGhhbiBvcGVubmVyICovXG4uYWNjbyBsaS5wYXJlbnQgPiBhIHtcbiAgcGFkZGluZy1yaWdodDogNTRweDsgfVxuXG4vKiBBbGwgbGV2ZWxzXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSAqL1xuLmFjY28gLm5hdi1pdGVtID4gYSB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBwYWRkaW5nOiAxNXB4IDEwcHg7XG4gIC8qIFNldCBkZWZhdWx0IGxpbmUgaGVpZ2h0IGluIHBpeGVscyBiZWNhdXNlIGZvbnQgc2l6ZSB3aWxsIGJlIGNoYW5nZWQgdmlhIGFkbWluIChhbmQgdGhhdCB3b3VsZCBhbHNvIGNoYW5nZSB0aGUgbGluZSBoZWlnaHQpICovXG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgLyoxLjMzMzNlbSovXG4gIGxpbmUtaGVpZ2h0OiAxOXB4O1xuICAvKjEuMTI1ZW0qLyB9XG5cbi8qIExldmVsIDFcbi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICovXG4uYWNjbyBsaS5sZXZlbDAgPiBhIHtcbiAgZm9udC1zaXplOiAxOHB4O1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOyB9XG5cbi8qIExldmVsIDJcbi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICovXG4uYWNjbyBsaS5sZXZlbDEgPiBhIHtcbiAgcGFkZGluZy1sZWZ0OiAzMHB4O1xuICBmb250LXNpemU6IDE2cHg7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7IH1cblxuLyogTGV2ZWwgM1xuLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gKi9cbi5hY2NvIGxpLmxldmVsMiA+IGEge1xuICBwYWRkaW5nLWxlZnQ6IDUwcHg7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgdGV4dC10cmFuc2Zvcm06IG5vbmU7IH1cblxuLyogTGV2ZWwgNFxuLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gKi9cbi5hY2NvIGxpLmxldmVsMyA+IGEge1xuICBwYWRkaW5nLWxlZnQ6IDcwcHg7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgdGV4dC10cmFuc2Zvcm06IG5vbmU7IH1cblxuLyogTGV2ZWwgNStcbi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICovXG4uYWNjbyBsaS5sZXZlbDMgLm5hdi1pdGVtID4gYSB7XG4gIHBhZGRpbmctbGVmdDogOTBweDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICB0ZXh0LXRyYW5zZm9ybTogbm9uZTsgfVxuXG4vKiBPcGVuZXJcbiUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlXG4qL1xuLmFjY28gLm9wZW5lciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgcmlnaHQ6IDA7XG4gIHRvcDogMDtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB3aWR0aDogNDlweDtcbiAgaGVpZ2h0OiA0OXB4O1xuICBsaW5lLWhlaWdodDogNDlweDtcbiAgYmFja2dyb3VuZDogdXJsKC4uLy4uLy4uL2ltYWdlcy9pbmZvcnRpcy9fc2hhcmVkL2FjY29yZGlvbi9vcGVuZXIucG5nKSBjZW50ZXIgY2VudGVyIG5vLXJlcGVhdDsgfVxuXG4uYWNjbyAub3BlbmVyOmhvdmVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLCAwLCAwLCAwLjA1KTsgfVxuXG4vKiBBY3RpdmUgKi9cbi5hY2NvIGxpLml0ZW0tYWN0aXZlID4gLm9wZW5lciB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybCguLi8uLi8uLi9pbWFnZXMvaW5mb3J0aXMvX3NoYXJlZC9hY2NvcmRpb24vb3BlbmVyLWFjdGl2ZS5wbmcpOyB9XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0= */
+	background-color: rgba(0, 0, 0, 0.05);
+}

@@ -35,12 +35,6 @@ jQuery(document).ready(function($) {
         $(this).addClass('current');
     });
 
-    $(".header-contacts .dropdown-heading").on("click",function(){
-        var url = $(this).attr('href');
-        $(location).attr('href',url);
-    });
-
-
     //RESIZE
     $(window).resize(function () {
         itemProductName.dotdotdot();

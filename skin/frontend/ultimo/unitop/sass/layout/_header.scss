@@ -32,7 +32,7 @@
       .dropdown-content {
         min-width: 100%;
         box-sizing: border-box;
-        padding: 0 10px 10px;
+        padding: 0 10px 5px;
 
         > li .label {
           margin-right: 4px;
@@ -110,7 +110,7 @@
     .dropdown-content {
       min-width: 100%;
       box-sizing: border-box;
-      padding: 5px 13px 5px 15px;
+      padding: 2px 13px 2px 17px;
 
       li {
         margin-bottom: 8px;
@@ -393,7 +393,7 @@
   }
 
   .lang-switcher {
-    display: none;
+    top: -20px;
   }
 
   .logo-wrapper--mobile {
@@ -512,14 +512,16 @@
 
     .s_item {
       @include cleaner;
-      @include trs(opacity .3s ease, border-color .3s ease);
+      @include trs( border-color .3s ease);
       margin-bottom: 20px;
-      opacity: .65;
       border-bottom: 1px solid #333;
 
       &:hover {
-        opacity: 1;
-        border-color: #ffab00;
+        border-color: $link-hover;
+      }
+
+      &:last-child {
+        margin-bottom: 10px;
       }
     }
 
@@ -540,7 +542,7 @@
       display: inline-block;
 
       .s_item_name {
-        color: #333;
+        color: $muddy;
         font-size: 16px;
         line-height: 1.2;
         margin-bottom: 10px;
@@ -557,11 +559,14 @@
 }
 
 .search-autocomplete {
-  min-width: 250px;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
 
   @include bp(max-width, $bp-tiny) {
     right: 0;
+  }
+
+  .search-more {
+    color: $dark;
   }
 }
 
