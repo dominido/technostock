@@ -25,10 +25,10 @@
 
                 <ul class="dropdown-content left-hand" style="display: none;">
                     <?php foreach ($collection as $_phoneItem): ?>
-                        <?php if ($first) {
+                        <?php/* if ($first) {
                             $first = false;
                             continue;
-                        } ?>
+                        } */?>
                         <li>
                             <a class="no-click" href="tel:<?php echo $_phoneItem->getPhone();?>">
                                 <span class="operator-icon">

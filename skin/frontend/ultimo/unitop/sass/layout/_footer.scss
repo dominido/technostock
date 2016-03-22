@@ -37,6 +37,10 @@
 	  display: inline-block;
 	  vertical-align: top;
 	  margin-bottom: 12px;
+
+	  @include bp(max-width, $bp-tiny) {
+		margin-bottom: 0;
+	  }
 	}
 
 	.footer-logo {
@@ -80,6 +84,11 @@
 
 	&:hover {
 	  color: $link-hover-light;
+	}
+
+	@include bp(max-width, $bp-tiny) {
+	  margin-top: 0;
+	  margin-bottom: 0;
 	}
   }
 
@@ -323,7 +332,11 @@
 	  .dropdown-content {
 		min-width: 100%;
 		box-sizing: border-box;
-		padding: 8px 17px;
+		padding: 2px 17px;
+
+		li {
+		  margin-bottom: 8px;
+		}
 
 		.operator-icon {
 		  display: none;
@@ -390,6 +403,10 @@
 		font-size: 10px;
 	  }
 	}
+  }
+
+  .clearer {
+	margin: 0 -1%;
   }
 
   @include bp(max-width, $bp-tiny) {
