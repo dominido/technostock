@@ -1782,13 +1782,13 @@ ul.disc ul li {
 	padding: 0;
 	margin: 0 0 20px;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 600;
 }
 
 .mini-cart .mini-cart-content .subtotal {
 	margin: 20px 0;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 600;
 }
 
 .mini-cart .mini-cart-content .mini-products-list li {
@@ -4851,7 +4851,7 @@ a.availability-only {
 .account-login .buttons-set a {
 	display: inline-block;
 	vertical-align: middle;
-	margin: 10px 0 0 10px;
+	margin: 10px 0 10px 10px;
 }
 
 /* My Account Dashboard

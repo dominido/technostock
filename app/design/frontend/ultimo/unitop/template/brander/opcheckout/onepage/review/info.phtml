@@ -11,7 +11,8 @@
                         <?php echo $_item->getName() ?>
                     </a>
                     <span class="obj">
-                        <?php echo $this->__('Code of product: %s',$_item->getProduct()->getSku()) ?>
+                        <?php echo $this->__('Code of product:'); ?>
+                        <span><?php echo $_item->getProduct()->getSku(); ?></span>
                     </span>
                     <a href="javascript:void(0)" data="<?php echo $_item->getId() ?>" title="<?php echo $this->__('Remove item')?>"
                         class="btn-remove btn-remove2 opcheckout-item-remove">

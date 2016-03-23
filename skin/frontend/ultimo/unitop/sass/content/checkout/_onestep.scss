@@ -384,7 +384,7 @@
 	> label {
 	  display: inline-block;
 	  vertical-align: middle;
-	  width: percentage(130/400);
+	  width: 150px;
 	  padding-right: 20px;
 	  font-size: 16px;
 	  line-height: 1.2em;
@@ -395,7 +395,8 @@
 	  display: inline-block;
 	  vertical-align: middle;
 	  position: relative;
-	  width: percentage(270/400);
+	  width: calc(100% - 150px);
+	  max-width: 440px;
 	  font-size: 16px;
 	  @include cleaner;
 
