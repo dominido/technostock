@@ -351,9 +351,9 @@
 						<div id="user-menu-wrapper-mobile"></div>
 					<?php endif; ?>
 
-					<?php if ($move['account']): //Mini compare on mobile devices ?>
+					<?php //if ($move['account']): //Mini compare on mobile devices ?>
 						<div id="mini-account-wrapper-mobile"></div>
-					<?php endif; ?>
+					<?php //endif; ?>
 
 					<?php if ($move['compare']): //Mini compare on mobile devices ?>
 						<div id="mini-compare-wrapper-mobile"></div>
@@ -474,11 +474,11 @@
 				jQuery('#mini-compare-wrapper-mobile').prepend(jQuery('#mini-compare'));
 			<?php endif; ?>
 
-			<?php if ($move['account']): ?>
+			<?php //if ($move['account']): ?>
 				//Move account
 				jQuery('#mini-account-wrapper-regular-slip').hide();
 				jQuery('#mini-account-wrapper-mobile').prepend(jQuery('#mini-account'));
-			<?php endif; ?>
+			<?php //endif; ?>
 
 				//Reset active state
 				jQuery('.skip-active').removeClass('skip-active');
@@ -522,11 +522,11 @@
 				jQuery('#mini-compare-wrapper-regular').prepend(jQuery('#mini-compare'));
 			<?php endif; ?>
 
-			<?php if ($move['account']): ?>
+			<?php //if ($move['account']): ?>
 				//Move account
 				jQuery('#mini-account-wrapper-regular-slip').show();
 				jQuery('#mini-account-wrapper-regular').prepend(jQuery('#mini-account'));
-			<?php endif; ?>
+			<?php //endif; ?>
 
 				//Reset active state
 				jQuery('.skip-active').removeClass('skip-active');
