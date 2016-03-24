@@ -1,13 +1,14 @@
 .footer-container {
+.footer-about.contactsCloned{
+	.block-footer-contacts{display:none;}
+}
   .block-footer-contacts {
 	margin-bottom: 10px;
 	font-size: 14px;
 	color: #e5e1e1;
 	line-height: 2;
 
-	@include bp(max-width, $bp-tiny) {
-	  display: none;
-	}
+
 
 	.content {
 	  overflow: hidden;

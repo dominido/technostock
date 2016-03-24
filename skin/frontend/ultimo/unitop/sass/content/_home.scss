@@ -77,3 +77,25 @@
 .preface {
   margin-bottom: 48px;
 }
+@include bp(max-width, 980px) {
+   .products-grid{
+		.item{
+		    .add-to-links {
+		        display: block!important;
+		        visibility: visible!important;
+	    		opacity: 1!important;
+		    }
+		}
+	}
+}
+.touch{
+	.products-grid{
+		.item{
+		    .add-to-links {
+		        display: block!important;
+		        visibility: visible!important;
+	    		opacity: 1!important;
+		    }
+		}
+	}
+}

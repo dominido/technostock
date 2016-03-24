@@ -34,6 +34,18 @@ jQuery(document).ready(function($) {
     $('.pager li').click(function() {
         $(this).addClass('current');
     });
+    //header
+     $('.touch .header-top').find(".header-contacts").on("click",function(){
+        if($(this).hasClass("open")){
+            $(this).removeClass('open');
+            $(this).find(".dropdown-content").css("display","none");
+        }
+        else{
+            $(this).addClass('open');
+            $(this).find(".dropdown-content").css("display","block");
+        }
+    });
+
 
     //RESIZE
     $(window).resize(function () {
