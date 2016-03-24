@@ -196,7 +196,7 @@ New customer registration
             </action>
         </reference>
         <reference name="content">
-            <block type="customer/account_changeforgotten" name="changeForgottenPassword" template="customer/form/resetforgottenpassword.phtml"/>
+            <block type="customer/account_changeforgotten" name="changeForgottenPassword" template="customer/form/forgotpassword.phtml"/>
         </reference>
     </customer_account_changeforgotten>
 
