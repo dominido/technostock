@@ -35,7 +35,8 @@ jQuery(document).ready(function($) {
         $(this).addClass('current');
     });
     //header
-     $('.touch .header-top').find(".header-contacts").on("click",function(){
+    setTimeout(function() {
+     $('.touch').find(".dropdown.header-contacts").on("click",function(){
         if($(this).hasClass("open")){
             $(this).removeClass('open');
             $(this).find(".dropdown-content").css("display","none");
@@ -45,14 +46,29 @@ jQuery(document).ready(function($) {
             $(this).find(".dropdown-content").css("display","block");
         }
     });
+    },500);
+    //product
+     scrollSizeDetect();
+    function scrollSizeDetect(){
+        // Create the measurement node
+        var scrollDiv = document.createElement("div");
+        scrollDiv.className = "scrollbar-measure";
+        document.body.appendChild(scrollDiv);
 
+        // Get the scrollbar width
+        var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth; 
+        // Delete the DIV
+         document.body.removeChild(scrollDiv);
+
+        return scrollbarWidth;
+    }
 
     //RESIZE
     $(window).resize(function () {
         itemProductName.dotdotdot();
         $('.benefits-grid .benefit .benefit-content').matchHeight();
 
-        if ($(window).width() < 751) {
+        if ($(window).width() < 768 - scrollSizeDetect()) {
             $('.product-img-column').prepend($('.product-shop-heading'));
 
             var footerAbout = $('.footer-about');

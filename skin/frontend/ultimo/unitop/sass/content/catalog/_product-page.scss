@@ -4,6 +4,16 @@
       overflow: hidden;
     }
   }
+  .fancybox-wrap{
+    .success{
+      color:#1938a5;
+    }
+  }
+  .breadcrumbs{
+     @include bp(max-width, $bp-tiny) {
+      text-align: left;
+    }
+  }
 }
 
 .product-view {
@@ -695,7 +705,7 @@
   }
 
   .panel {
-    display: none !important;
+    display: none;
   }
 
 }
