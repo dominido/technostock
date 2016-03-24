@@ -52,6 +52,12 @@
         //<![CDATA[
         Event.observe(document, 'dom:loaded', function () {
             var fastbuyForm = new AjaxForm('webform_3', true);
+
+            jQuery(".fancybox").fancybox({
+                afterLoad : function() {
+                    this.tpl.closeBtn = '<a title="<?php echo $this->__("Close");?>" class="fancybox-item fancybox-close" href="javascript:;"></a>'
+                } // afterLoad
+            }); // fancybox
         });
 
 
