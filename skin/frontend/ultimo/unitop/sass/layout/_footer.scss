@@ -1,6 +1,11 @@
 .footer-container {
 .footer-about.contactsCloned{
 	.block-footer-contacts{display:none;}
+	.header-contacts{
+		>a{
+			pointer-events: none;
+		}
+	}
 }
   .block-footer-contacts {
 	margin-bottom: 10px;
