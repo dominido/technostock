@@ -61,5 +61,14 @@
 		}
 		return true;
 	});
+
+	Event.observe(document, 'dom:loaded', function () {
+
+		jQuery(".fancybox").fancybox({
+			afterLoad : function() {
+				this.tpl.closeBtn = '<a title="<?php echo $this->__("Close");?>" class="fancybox-item fancybox-close" href="javascript:;"></a>'
+			} // afterLoad
+		}); // fancybox
+	});
 	//]]>
 </script>
