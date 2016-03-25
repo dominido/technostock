@@ -1262,3 +1262,21 @@ textarea {
     position: absolute;
     top: -9999px;
 }
+.fancybox-inner{
+	 @include bp(max-width, $bp-tiny) {
+		height:auto!important;
+		.callbacks_loader{
+		    padding: 10px 0;
+		    color: #163294;
+		    top: 50%;
+		    background-color: #d0e0f5;
+		    position: absolute;
+		    left: 50%;
+		    border: 0;
+		    transform: translate(-50% , -50%);
+		    width: 90%;
+		    text-align: center;
+		}
+	}
+
+}
