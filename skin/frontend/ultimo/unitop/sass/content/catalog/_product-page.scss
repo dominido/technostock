@@ -849,3 +849,10 @@
     background-size: 18px 62px;
   }
 }
+  .fancybox-wrap{
+    position: fixed!important;
+    top:50%!important;
+    left:50%!important;
+    transform:translate(-50% , -50%);
+  }
+
