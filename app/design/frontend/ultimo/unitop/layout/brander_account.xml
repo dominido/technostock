@@ -26,6 +26,15 @@
         </reference>
     </customer_account_navigation>
 
+
+        <customer_account_changeforgotten translate="label">
+    <label>Reset a Password</label>
+
+    <reference name="content">
+                    <block type="customer/account_changeforgotten" name="changeForgottenPassword" template="customer/form/resetforgottenpassword.phtml"/>
+    </reference>
+        </customer_account_changeforgotten>
+
     <default>
         <reference name="top.links">
             <action method="addLink" translate="label title" module="brander_account">

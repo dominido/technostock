@@ -39,7 +39,7 @@
                 <input type="textarea" name="comment" id="field[13]" class="input-text" value="" placeholder="<?php echo $this->__("Comment"); ?>">
             </div>
             <div class="btn-holder">
-                <button type="submit" class="button btn-cart" id="webform_3_submit_button" title="submit">
+                <button type="submit" class="button btn-cart" id="webform_3_submit_button" title="<?php echo $this->__('submit') ?>">
                 <span>
                     <span><?php echo $this->__("Buy"); ?></span>
                 </span>
@@ -52,6 +52,12 @@
         //<![CDATA[
         Event.observe(document, 'dom:loaded', function () {
             var fastbuyForm = new AjaxForm('webform_3', true);
+
+            jQuery(".fancybox").fancybox({
+                afterLoad : function() {
+                    this.tpl.closeBtn = '<a title="<?php echo $this->__("Close");?>" class="fancybox-item fancybox-close" href="javascript:;"></a>'
+                } // afterLoad
+            }); // fancybox
         });
 
 
