@@ -226,3 +226,22 @@
 	}
   }
 }
+.catalog-product-view{
+	@media only screen and (max-width: 660px) and (min-width: 630px) {
+		#itemslider-related-mobile{
+			.owl-item{
+				a.product-image{width:100px;}
+				.product-details{margin-left:110px;}
+			}
+		}
+	}
+	@media only screen and (max-width: 959px){
+		.box-additionals-holder{
+			.box-additional.box-sidebar{
+				.product{
+					padding:0 10px;
+				}
+			}
+		}
+	}
+}
