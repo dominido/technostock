@@ -278,6 +278,9 @@ textarea {
 	  a {
 		color: #35426d;
 		display: block;
+		white-space: nowrap; 
+	    overflow: hidden; 
+	    text-overflow: ellipsis; 
 
 		&:hover {
 		  color: $dark;
