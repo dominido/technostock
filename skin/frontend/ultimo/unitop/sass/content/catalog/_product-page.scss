@@ -15,8 +15,27 @@
     }
   }
 }
-
+#fastbuy_form{
+  @include bp(max-width, $bp-tiny) {
+    button[type="submit"]{
+      width:100%!important;
+    }
+  }
+}
 .product-view {
+  >form{
+    margin-bottom: 55px;
+    &:after{
+      clear: both;content: "";display: block;
+    }
+  }
+  .product-image.zoom-inside{
+    max-width:100%!important;
+    img.gallery-image{
+      width:100%;
+      object-fit: cover;
+    }
+  }
   .product-shop {
     margin-bottom: 45px;
 
@@ -152,7 +171,11 @@
       float: left;
       width:(100% / 3);
       background: #e0e9f8;
-
+      .benefit-content {
+          .benefit-text{
+            color:#687496;
+          }
+      }
       @include bp(max-width, 991px) {
         width: 100%;
 
@@ -352,6 +375,7 @@
     margin-right: 0;
     border-color: #c3cee4;
     background: none;
+    height:60px;
 
     &:hover {
       border-color: #1938a5;
@@ -493,7 +517,9 @@
         color: $muddy;
         padding-top: 27px;
         padding-bottom: 26px;
-
+        @include bp(max-width, 1040px) {
+          padding-top:0;
+        }
         @include bp(max-width, 959px) {
           padding-right: 100px !important;
           font-size: 28px;
@@ -521,7 +547,7 @@
         .product-image {
           float: left;
           width: 100px;
-
+          
           img {
             width: 100%;
             height: auto;
@@ -593,7 +619,24 @@
       width: 100%;
       position: relative;
       background: #e6effb;
-
+      li{
+        margin-left:90px;
+        &:first-child{
+          margin-left:70px;
+        }
+         @include bp(max-width, 1700px) {
+            margin-left:60px;
+            &:first-child{
+              margin-left:40px;
+            }
+         }
+          @include bp(max-width, 1500px) {
+            margin-left:5px;
+            &:first-child{
+              margin-left:0;
+            }
+         }
+      }
       a {
         font-size: 1.3125rem;
         line-height: 76px;
