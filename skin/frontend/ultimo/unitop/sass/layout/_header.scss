@@ -1,3 +1,9 @@
+#top{
+  .header-primary-container{
+    position: relative;
+    z-index: 1000;
+  }
+}
 .header-container {
   .nav-regular {
     > .nav-item.first {
@@ -150,6 +156,8 @@
 
 .header-regular {
   .central-column {
+    position: relative;
+    z-index: 10;
     @include bp(min-width, 1500px) {
       right: -5%;
     }
