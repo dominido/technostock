@@ -731,6 +731,9 @@
 
     @include bp(max-width, 960px) {
       background: #e6effb;
+      .panel {
+        display: none!important;
+      }
     }
 
     &.active {
@@ -758,9 +761,8 @@
       }
     }
   }
-
   .panel {
-    display: none!important;
+    display: none;
   }
 
 }
