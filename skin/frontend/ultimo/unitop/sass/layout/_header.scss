@@ -2,6 +2,29 @@
   .header-primary-container{
     position: relative;
     z-index: 1000;
+    #mini-account-wrapper-regular{
+      .links{
+        li{
+          a{
+            font-size:12px;
+          }
+        }
+      }
+    }
+  }
+}
+#top.header-mobile{
+  .header-primary-container{
+    #mini-account-wrapper-regular{
+      .links{
+        li{
+          a{
+            line-height: 44px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
   }
 }
 .header-container {
@@ -610,3 +633,25 @@
     }
   }
 }
+
+    #header-cart{
+      @include bp(max-width, 1200px) {
+        .actions{
+          button{
+            float:none!important;
+            display: block;
+            margin:0;
+            &:first-child{
+              margin-bottom:10px!important;
+            }
+          }
+        }
+      }
+       @include bp(max-width, 800px) {
+          .actions{
+          button{
+           width:100%;
+          }
+        }
+       }
+    }
