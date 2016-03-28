@@ -65,6 +65,7 @@
 "Coupon code ""%s"" is not valid.","Код сертифікату ""%s"" недійсний."
 "Coupon code ""%s"" was applied successfully.","Coupon code ""%s"" was applied successfully."
 "Coupon code was canceled successfully.","Код сертифікату був успішно відмінений."
+"Coupon code was canceled.","Код купона було деактивовано"
 "Create Billing Address","Нова адреса оплати"
 "Create Shipping Address","Нова адреса доставки"
 "Customer Address is not valid.","Адреса клієнту не діє."
@@ -246,8 +247,7 @@
 "напишите email в поддержку","напишіть e-mail в техпідтримку"
 "или позвоните","або зателефонуйте"
 "Продолжить увлекательные покупки!","Продовжити цікаві покупки!"
-
-
+"Coupon code ""%s"" was applied.","Код купона ""%s"" застосований."
 "Continue", "Далi"
 "View all items in your shopping cart", " Переглянути всі товари в кошику"
 "Proceed to Checkout", "Оформити замовлення"
