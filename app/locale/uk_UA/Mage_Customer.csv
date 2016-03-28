@@ -427,6 +427,7 @@
 "By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.","Зареєструвавшись на нашому сайті, ви зможете робити замовлення швидше, зберігати кілька адрес доставки, переглядати і відслідковувати стан замовлення та багато іншого."
 "Registered Customers","для зареєстрованих користувачів"
 "If you have an account with us, please log in.","Якщо у вас є акаунт, будь ласка увійдіть."
+"If there is an account associated with %s you will receive an email with a link to reset your password.","Якщо на сайтi iснує обліковий запис, пов'язана з %s ви отримаєте повідомлення електронної пошти з посиланням для відновлення пароля."
 "Email Address","E-mail"
 "Password","Пароль"
 "* Required Fields","* обов'язкові поля"
