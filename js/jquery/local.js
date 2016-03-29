@@ -62,6 +62,16 @@ jQuery(document).ready(function($) {
 
         return scrollbarWidth;
     }
+     //contact
+
+        var lend = $('.contacts').find("#messages_product_view ul").length;
+        if (lend == 0) {
+        } 
+        else{
+             jQuery(window).scrollTop(jQuery('#messages_product_view').offset().top,"slow");
+
+        }
+
 
     //RESIZE
     $(window).resize(function () {
