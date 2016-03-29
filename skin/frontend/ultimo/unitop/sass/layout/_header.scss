@@ -12,6 +12,24 @@
       }
     }
   }
+   @include bp(max-width, 1500px) {
+        .nav-regular{
+          li.level0{
+            >a{
+                padding: 0 20px!important;
+            }
+          }
+        } 
+    }
+     @include bp(max-width, 1500px) {
+        .nav-regular{
+          li.level0{
+            >a{
+                padding: 0 11px!important;
+            }
+          }
+        } 
+    }
 }
 #top.header-mobile{
   .header-primary-container{
