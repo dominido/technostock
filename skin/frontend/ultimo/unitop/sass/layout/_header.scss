@@ -544,8 +544,11 @@
 
     .input-text {
       font-size: 13px;
-      border-width: 0 0 1px;
+      border-width: 0;
       border-radius: 0;
+      padding-left: 10px;
+      color: #fff;
+      background:#a3afdb!important;
       background: none;
       @include trs(color .15s ease-in-out);
 
