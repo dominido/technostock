@@ -42,11 +42,12 @@
 <?php $tabs = $this->getTabs(); ?>
 <?php foreach ($tabs as $_index => $_tab): ?>
     <?php
-        if($tmpBlock = $this->getChildHtml($_tab['alias']))
-        {
-            $_panes .= '<h2 class="acctab" id="acctab-'. $_tab['alias'] .'">'. $_tab['title'] .' <span class="caret"></span></h2>';
-            $_panes .= '<div class="panel">'. $tmpBlock .'</div>';
-        }
+    if($tmpBlock = trim($this->getChildHtml($_tab['alias']))) {
+        $_panes .= '<h2 class="acctab" id="acctab-'. $_tab['alias'] .'">'. $_tab['title'] .'</h2>';
+        $_panes .= '<div class="panel">'. $tmpBlock .'</div>';
+    } else {
+        unset($tabs[$_index]);
+    }
     ?>
 <?php endforeach; ?>
 
