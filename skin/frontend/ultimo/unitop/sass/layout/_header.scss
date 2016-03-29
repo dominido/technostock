@@ -17,15 +17,37 @@
           li.level0{
             >a{
                 padding: 0 20px!important;
+                &.no-click{padding:0 0 0 50px!important;}
             }
           }
         } 
     }
-     @include bp(max-width, 1500px) {
+     @include bp(max-width, 1300px) {
         .nav-regular{
           li.level0{
             >a{
-                padding: 0 8px!important;
+                padding: 0 25px!important;
+                &.no-click{padding:0 0 0 50px!important;}
+            }
+          }
+        } 
+    }
+     @include bp(max-width, 1200px) {
+        .nav-regular{
+          li.level0{
+            >a{
+                padding: 0 15px!important;
+                &.no-click{padding:0 0 0 50px!important;}
+            }
+          }
+        } 
+    }
+    @include bp(max-width, 1100px) {
+        .nav-regular{
+          li.level0{
+            >a{
+                padding: 0 10px!important;
+                &.no-click{padding:0 0 0 50px!important;}
             }
           }
         } 
