@@ -12,7 +12,7 @@
       }
     }
   }
-   @include bp(max-width, 1500px) {
+   @include bp(max-width, 1600px) {
         .nav-regular{
           li.level0{
             >a{
