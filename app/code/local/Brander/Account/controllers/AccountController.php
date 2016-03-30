@@ -9,6 +9,8 @@
 
 class Brander_Account_AccountController extends Mage_Core_Controller_Front_Action
 {
+    const CUSTOMER_ID_SESSION_NAME = "customerId";
+    const TOKEN_SESSION_NAME = "token";
     /**
      * Action list where need check enabled cookie
      *
@@ -722,18 +724,16 @@ class Brander_Account_AccountController extends Mage_Core_Controller_Front_Actio
      */
     public function resetPasswordAction()
     {
-        $resetPasswordLinkToken = (string) $this->getRequest()->getQuery('token');
-        $customerId = (int) $this->getRequest()->getQuery('id');
         try {
+            $customerId = (int)$this->getRequest()->getQuery("id");
+            $resetPasswordLinkToken = (string)$this->getRequest()->getQuery('token');
+
             $this->_validateResetPasswordLinkToken($customerId, $resetPasswordLinkToken);
-            $this->loadLayout();
-            // Pass received parameters to the reset forgotten password form
-            $this->getLayout()->getBlock('resetPassword')
-                ->setCustomerId($customerId)
-                ->setResetPasswordLinkToken($resetPasswordLinkToken);
-            $this->renderLayout();
+            $this->_saveRestorePasswordParameters($customerId, $resetPasswordLinkToken)
+                ->_redirect('*/*/changeforgotten');
+
         } catch (Exception $exception) {
-            $this->_getSession()->addError( $this->_getHelper('customer')->__('Your password reset link has expired.'));
+            $this->_getSession()->addError($this->_getHelper('customer')->__('Your password reset link has expired.'));
             $this->_redirect('*/*/forgotpassword');
         }
     }
@@ -744,15 +744,14 @@ class Brander_Account_AccountController extends Mage_Core_Controller_Front_Actio
      */
     public function resetPasswordPostAction()
     {
-        $resetPasswordLinkToken = (string) $this->getRequest()->getQuery('token');
-        $customerId = (int) $this->getRequest()->getQuery('id');
-        $password = (string) $this->getRequest()->getPost('password');
-        $passwordConfirmation = (string) $this->getRequest()->getPost('confirmation');
+        list($customerId, $resetPasswordLinkToken) = $this->_getRestorePasswordParameters($this->_getSession());
+        $password = (string)$this->getRequest()->getPost('password');
+        $passwordConfirmation = (string)$this->getRequest()->getPost('confirmation');
 
         try {
             $this->_validateResetPasswordLinkToken($customerId, $resetPasswordLinkToken);
         } catch (Exception $exception) {
-            $this->_getSession()->addError( $this->_getHelper('customer')->__('Your password reset link has expired.'));
+            $this->_getSession()->addError($this->_getHelper('customer')->__('Your password reset link has expired.'));
             $this->_redirect('*/*/');
             return;
         }
@@ -776,10 +775,7 @@ class Brander_Account_AccountController extends Mage_Core_Controller_Front_Actio
             foreach ($errorMessages as $errorMessage) {
                 $this->_getSession()->addError($errorMessage);
             }
-            $this->_redirect('*/*/resetpassword', array(
-                'id' => $customerId,
-                'token' => $resetPasswordLinkToken
-            ));
+            $this->_redirect('*/*/changeforgotten');
             return;
         }
 
@@ -789,14 +785,15 @@ class Brander_Account_AccountController extends Mage_Core_Controller_Front_Actio
             $customer->setRpTokenCreatedAt(null);
             $customer->cleanPasswordsValidationData();
             $customer->save();
-            $this->_getSession()->addSuccess( $this->_getHelper('customer')->__('Your password has been updated.'));
+
+            $this->_getSession()->unsetData(self::TOKEN_SESSION_NAME);
+            $this->_getSession()->unsetData(self::CUSTOMER_ID_SESSION_NAME);
+
+            $this->_getSession()->addSuccess($this->_getHelper('customer')->__('Your password has been updated.'));
             $this->_redirect('*/*/login');
         } catch (Exception $exception) {
             $this->_getSession()->addException($exception, $this->__('Cannot save a new password.'));
-            $this->_redirect('*/*/resetpassword', array(
-                'id' => $customerId,
-                'token' => $resetPasswordLinkToken
-            ));
+            $this->_redirect('*/*/changeforgotten');
             return;
         }
     }
@@ -972,5 +969,20 @@ class Brander_Account_AccountController extends Mage_Core_Controller_Front_Actio
     protected function _isVatValidationEnabled($store = null)
     {
         return  $this->_getHelper('customer/address')->isVatValidationEnabled($store);
+    }
+    protected function _saveRestorePasswordParameters($customerId, $resetPasswordLinkToken)
+    {
+        $this->_getSession()
+            ->setData(self::CUSTOMER_ID_SESSION_NAME, $customerId)
+            ->setData(self::TOKEN_SESSION_NAME, $resetPasswordLinkToken);
+
+        return $this;
+    }
+    protected function _getRestorePasswordParameters(Mage_Customer_Model_Session $session)
+    {
+        return array(
+            (int) $session->getData(self::CUSTOMER_ID_SESSION_NAME),
+            (string) $session->getData(self::TOKEN_SESSION_NAME)
+        );
     }
 }
