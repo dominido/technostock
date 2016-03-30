@@ -72,7 +72,9 @@ jQuery(document).ready(function($) {
 
         }
 
-
+    jQuery('body').bind('focusin focus', function(e){
+        e.preventDefault();
+    });
     //RESIZE
     $(window).resize(function () {
         itemProductName.dotdotdot();
