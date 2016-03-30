@@ -192,22 +192,22 @@
         //Assign number of items in a row to specific viewport width
         if ($imageCount >= 5)
         {
-                    $breakpoints = '[0, 1], [320, 2], [480, 3], [747, 2], [1099, 3]';
+                    $breakpoints = '[0, 3], [320, 3], [480, 3], [747, 2], [1099, 3]';
         }
         else
         {
             switch ($imageCount) {
                 case 4:
-                    $breakpoints = '[0, 1], [299, 2], [459, 3], [747, 2], [1259, 3]';
+                    $breakpoints = '[0, 3], [299, 3], [459, 3], [747, 2], [1259, 3]';
                     break;
                 case 3:
-                    $breakpoints = '[0, 1], [219, 2], [299, 3]';
+                    $breakpoints = '[0, 3], [219, 3], [299, 3]';
                     break;
                 case 2:
-                    $breakpoints = '[0, 1], [219, 2]';
+                    $breakpoints = '[0, 3], [219, 3]';
                     break;
                 case 1:
-                    $breakpoints = '[0, 1]';
+                    $breakpoints = '[0, 3]';
                     break;
             }
         }
