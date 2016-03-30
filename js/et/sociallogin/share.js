@@ -57,7 +57,6 @@ Share = {
     google: function (purl, ptitle, pimg, text) {
         url = 'https://plus.google.com/share?';
         url += 'url=' + encodeURIComponent(purl);
-        url += '&imageurl=' + encodeURIComponent(pimg);
         Share.popup(url)
     },
 
