@@ -292,14 +292,16 @@
   .img-box  {
     .more-images {
       width: calc(100% - 120px);
+      max-width:100%;
+      .thumbnails .item{
 
+      }
       .thumbnails .item a {
 
-        
+        border: 1px solid #fff;
         margin: 0 2px;
         overflow: hidden;
         transform: scale(0.9, 0.9);
-        margin:0!important;
         @include trs(border-color .3s ease);
         &:before{
           content: '';
@@ -307,21 +309,21 @@
           display: block;
           width: 100%;
         }
-        &:hover img,
-        &.active img{
-          border-color: $link-hover;
+        &:hover,
+        &.active{
+           border: 3px solid $link-hover;
         }
+
 
         img {
           height: 100%;
           width: auto;
           position: absolute;
-          border: 3px solid transparent;
           left: 0;
          
           top: 0;
           object-fit: cover;
-          border: 1px solid #fff;
+
         }
       }
     }
