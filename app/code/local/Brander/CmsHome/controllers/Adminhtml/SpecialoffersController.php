@@ -23,4 +23,10 @@ class Brander_CmsHome_Adminhtml_SpecialoffersController extends Mage_Adminhtml_C
         $this->loadLayout();
         $this->renderLayout();
     }
+
+    public function gridAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
 }

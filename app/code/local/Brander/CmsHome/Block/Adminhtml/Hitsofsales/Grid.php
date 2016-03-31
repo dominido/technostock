@@ -24,7 +24,7 @@ class Brander_CmsHome_Block_Adminhtml_Hitsofsales_Grid extends Mage_Adminhtml_Bl
         $this->setDefaultSort('entity_id');
         $this->setDefaultDir('DESC');
         $this->setSaveParametersInSession(true);
-        $this->setUseAjax(false);
+        $this->setUseAjax(true);
     }
 
     protected function _getStore()

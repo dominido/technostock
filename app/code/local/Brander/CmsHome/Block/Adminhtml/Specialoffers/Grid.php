@@ -174,9 +174,28 @@ class Brander_CmsHome_Block_Adminhtml_Specialoffers_Grid extends Mage_Adminhtml_
         return parent::_prepareColumns();
     }
 
+    /**
+     * get the row url
+     *
+     * @access public
+     * @return string
+
+     */
     public function getRowUrl($row)
     {
         return '';
+    }
+
+    /**
+     * get the grid url
+     *
+     * @access public
+     * @return string
+
+     */
+    public function getGridUrl()
+    {
+        return $this->getUrl('*/*/grid', array('_current'=>true));
     }
 
 }

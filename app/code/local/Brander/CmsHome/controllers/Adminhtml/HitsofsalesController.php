@@ -23,4 +23,10 @@ class Brander_CmsHome_Adminhtml_HitsofsalesController extends Mage_Adminhtml_Con
         $this->loadLayout();
         $this->renderLayout();
     }
+
+    public function gridAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
 }
