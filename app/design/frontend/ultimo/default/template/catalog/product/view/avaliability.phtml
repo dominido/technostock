@@ -1,11 +1,13 @@
+<div><?php echo $this->__('The condition and packaging of goods can be found at the Sellers Store , in which the product or after placing the order you will be contacted by the manager') ?>
+</div>
 <?php echo $this->__('Located at:') ?>
-<div>
+
 	<?php
 	$product = Mage::registry('current_product');
 	if ($product) //sometimes need check for instanse, use instanseof
 	{
 		// attribute with name of shop will be brented here
-	echo 	$product->getSku();
+	$city = Mage::getModel('eav/config')->getAttribute('catalog_product', 'city')->getSource()->getOptionText($product->getCity());
+	echo $city;
 	}
-	?>
-</div>
+
