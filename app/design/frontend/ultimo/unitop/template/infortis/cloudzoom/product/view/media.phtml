@@ -14,8 +14,8 @@
     $imgHeight      = intval($helpZoom->getCfg('images/main_height'));
     $bigImageWidth  = intval($helpZoom->getCfg('general/big_image_width'));
     $bigImageHeight = intval($helpZoom->getCfg('general/big_image_height'));
-    $thumbImgWidth  = 77; //intval($helpZoom->getCfg('images/thumbnail_width'));
-    $thumbImgHeight = 77; //intval($helpZoom->getCfg('images/thumbnail_height'));
+    $thumbImgWidth  = 128; //intval($helpZoom->getCfg('images/thumbnail_width'));
+    $thumbImgHeight = 128; //intval($helpZoom->getCfg('images/thumbnail_height'));
     
     //If main image width is not specified, use default values
     if ($imgWidth <= 0)
@@ -228,7 +228,7 @@
                         rel="useZoom:'zoom1', smallImage: '<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'image', $_image->getFile()); ?>'">
                         <?php if ($lazy): ?>
                             <?php $label = $this->escapeHtml($_image->getLabel()); ?>
-                            <img class="lazyOwl" src="#" data-src="<?php echo $helpImg->getImg($_product, $thumbImgWidth, $thumbImgHeight, 'thumbnail', $_image->getFile()); ?>" alt="<?php echo ($label ? $label : 'thumbnails'); ?>"/>
+                            <img class="lazyOwl" src="#" data-src="<?php echo $helpImg->getImg($_product, $thumbImgWidth, $thumbImgHeight, 'image', $_image->getFile()); ?>" alt="<?php echo ($label ? $label : 'thumbnails'); ?>"/>
                         <?php else: ?>
                             <img src="<?php echo $helpImg->getImg($_product, $thumbImgWidth, $thumbImgHeight, 'thumbnail', $_image->getFile()); ?>" alt="<?php echo $this->escapeHtml($_image->getLabel()); ?>"/>
                         <?php endif; ?>
