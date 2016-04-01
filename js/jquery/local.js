@@ -71,7 +71,11 @@ jQuery(document).ready(function($) {
              jQuery(window).scrollTop(jQuery('#messages_product_view').offset().top,"slow");
 
         }
-
+        //lang
+        jQuery(document).ready(function($) {
+            var langActive = $(".lang-switcher ").find(".cover span.value").html();
+            $("body").addClass(langActive);
+        });
     jQuery('body').bind('focusin focus', function(e){
         e.preventDefault();
     });
