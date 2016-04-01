@@ -35,13 +35,20 @@
   .zoom-inside{
     #wrap{
       margin-bottom:20px;
+      #cloud-zoom-big{
+        background-repeat:no-repeat;
+        background-color:#fff;
+        transform:translate(-50%, -50%);
+        left:50%!important;
+        top:50%!important;
+        background-position: 50% 50%;
+      }
     }
   }
   .product-image.zoom-inside{
     max-width:100%!important;
     img.gallery-image{
-      width:100%;
-      object-fit: cover;
+      margin: 0 auto;
     }
   }
   .product-shop {
@@ -904,12 +911,14 @@
     background-size: 18px 62px;
   }
 }
+@media only screen and (min-width: 1200px) {
   .fancybox-wrap{
     position: fixed!important;
     top:50%!important;
     left:50%!important;
     transform:translate(-50% , -50%);
   }
+}
 .catalog-product-view{
   .owl-controls{
   }
