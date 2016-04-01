@@ -35,15 +35,7 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_associatedProducts = $this->getAssociatedProducts(); ?>
 <?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
-<?php //if ($this->displayProductStockStatus()): ?>
-    <?php if ($_product->isAvailable() && $_hasAssociatedProducts): ?>
-        <p class="availability in-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('In stock') ?></span></p>
-        <meta itemprop="availability" content="http://schema.org/InStock">
-    <?php else: ?>
-        <p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('Out of stock') ?></span></p>
-        <meta itemprop="availability" content="http://schema.org/OutOfStock">
-    <?php endif; ?>
-<?php //endif; ?>
+
 <?php echo $this->getChildHtml('product_type_data_extra') ?>
 <table class="data-table grouped-items-table" id="super-product-table">
     <col />
@@ -52,6 +44,7 @@
     <thead>
         <tr>
             <th><?php echo $this->__('Product Name') ?></th>
+            <th><?php echo $this->__('Condition: ') ?></th>
             <?php if ($this->getCanShowProductPrice($_product)): ?>
             <th class="a-right"><?php echo $this->__('Price') ?></th>
             <?php endif; ?>
@@ -75,13 +68,13 @@
                 if ($cityCode = $this->htmlEscape($_item->getCity())) {
 
                     $city = Mage::getModel('eav/config')->getAttribute('catalog_product', 'city')->getSource()->getOptionText($cityCode);
-                    echo $city;
+                    echo $this->__('City: ').$city;
                 }
                 ?>
 
                 <?php
                 if ($condition = $this->htmlEscape($_item->getCondition())) {
-                    echo "</br>".$condition;
+                    echo "</br>".$this->__('Condition: ').$condition;
                 }
                 ?>
                 </div>
