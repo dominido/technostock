@@ -40,8 +40,6 @@ class ET_SocialLogin_Block_Meta extends Mage_Core_Block_Template
         $helper = Mage::helper('et_sociallogin');
         if ($this->getRequest()->getControllerName() == 'product') {
             $product = Mage::registry('product');
-            $id = $product->getId();
-            $product = Mage::getModel('catalog/product')->load($id);
 
             return array(
                 'og:title' => $this->getLayout()->getBlock('head')->getTitle(),
