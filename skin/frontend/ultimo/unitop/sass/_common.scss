@@ -1280,3 +1280,25 @@ textarea {
 	}
 
 }
+/* ukr */
+.RU{
+	#header-cart{
+        .actions{
+          button{
+            float:none!important;
+            display: block;
+            margin:0;
+            &:first-child{
+              margin-bottom:10px!important;
+            }
+          }
+        }
+      }
+       @include bp(max-width, 800px) {
+          .actions{
+          button{
+           width:100%;
+          }
+        }
+       }
+}
