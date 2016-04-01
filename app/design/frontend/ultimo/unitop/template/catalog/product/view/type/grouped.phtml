@@ -72,7 +72,9 @@
 
                 <?php
                 //SHOULD BE REPLACED WITH CITY LABEL
-                if ($city = $this->htmlEscape($_product->getCity())) {
+                if ($cityCode = $this->htmlEscape($_product->getCity())) {
+
+                    $city = Mage::getModel('eav/config')->getAttribute('catalog_product', 'city')->getSource()->getOptionText($cityCode);
                     echo $city;
                 }
                 ?>
