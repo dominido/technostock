@@ -43,14 +43,6 @@
     <col width="1" />
     <thead>
         <tr>
-            <th><?php echo $this->__('Product Name') ?></th>
-            <th><?php echo $this->__('Condition: ') ?></th>
-            <?php if ($this->getCanShowProductPrice($_product)): ?>
-            <th class="a-right"><?php echo $this->__('Price') ?></th>
-            <?php endif; ?>
-            <?php if ($_product->isSaleable()): ?>
-            <th class="a-center"></th>
-            <?php endif; ?>
         </tr>
     </thead>
     <tbody>

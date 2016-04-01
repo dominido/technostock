@@ -427,6 +427,7 @@ $_specialPriceStoreLabel = '';//$this->getProductAttribute('special_price')->get
         $_exclTax = $_taxHelper->getPrice($_product, $_minimalPriceValue);
         $_inclTax = $_taxHelper->getPrice($_product, $_minimalPriceValue, true);
         $price = $showMinPrice ? $_minimalPriceValue : 0;
+        $maxPrice = $_product->getMax_price();
     } else {
         $price = $_convertedFinalPrice;
         $_exclTax = $_taxHelper->getPrice($_product, $price);
@@ -437,7 +438,7 @@ $_specialPriceStoreLabel = '';//$this->getProductAttribute('special_price')->get
         <div class="price-box">
             <p<?php if ($showMinPrice): ?> class="minimal-price"<?php endif ?>>
                 <?php if ($showMinPrice): ?>
-                    <span class="price-label"><?php echo $this->__('Starting at:') ?></span>
+                    <span class="price-label"><?php echo $this->__('From:') ?></span>
                 <?php endif ?>
                 <?php if ($_taxHelper->displayBothPrices()): ?>
                     <span class="price-excluding-tax">
@@ -464,6 +465,7 @@ $_specialPriceStoreLabel = '';//$this->getProductAttribute('special_price')->get
                     <span class="price" id="product-minimal-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->formatPrice($_showPrice, false) ?>
                 </span>
+                    <span class="price-label"><?php echo $this->__('To :') ?> <?php echo $_coreHelper->formatPrice($maxPrice, false); ?></span>
                 <?php endif; ?>
             </p>
         </div>
