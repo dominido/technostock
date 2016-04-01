@@ -60,3 +60,10 @@ $iconsClass = $helper->getSocialIconsClass($storeId, 'share');
         </ul>
      </div>
 <?php endif; ?>
+
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        Share.updateCacheFb('<?php echo $item['url']; ?>');
+        Share.updateCacheVk('<?php echo $item['url']; ?>');
+    });
+</script>
