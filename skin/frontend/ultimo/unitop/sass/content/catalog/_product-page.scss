@@ -937,7 +937,16 @@
   color:#000;
 }
 .catalog-product-view{
+  @media only screen and (min-width: 800px) {
+    .box-additional.grid12-12 {
+      margin-bottom:20px;
+    }
+  }
   @media only screen and (max-width: 800px) {
+   .box-additional.grid12-12 {
+    padding-top: 30px;
+    .owl-controls{margin-top:30px;}
+  }
     .col-main{
       margin:0;
     }
