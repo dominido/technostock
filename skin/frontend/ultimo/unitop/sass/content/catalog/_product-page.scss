@@ -495,7 +495,6 @@
 .box-additionals-holder {
   display: table;
   table-layout: fixed;
-  margin-bottom: 38px;
 
   @include bp(max-width, $bp-tiny) {
     display: block;
@@ -542,7 +541,6 @@
         width: 100%;
         background: none;
         padding-left: 0;
-
         &:after {
           display: none;
         }
@@ -780,7 +778,18 @@
         display: none!important;
       }
     }
-
+    @include bp(max-width, 640px) {
+      padding-left:15px;
+      padding-right:15px;
+       >span{
+          font-size: 1.2em;
+       }
+    }
+    @include bp(max-width, 480px) {
+       >span{
+          font-size: 1.1em;
+       }
+    }
     &.active {
       color: #1938a5;
       border-color: transparent;
@@ -911,14 +920,12 @@
     background-size: 18px 62px;
   }
 }
-@media only screen and (min-width: 1200px) {
   .fancybox-wrap{
     position: fixed!important;
     top:50%!important;
     left:50%!important;
     transform:translate(-50% , -50%);
   }
-}
 .catalog-product-view{
   .owl-controls{
   }
@@ -946,9 +953,18 @@
   color:#000;
 }
 .catalog-product-view{
+  .box-additional.grid12-12 {
+      margin:0;
+      .block-upsell{
+          margin:20px 0;
+      }
+    }
   @media only screen and (min-width: 800px) {
     .box-additional.grid12-12 {
-      margin-bottom:20px;
+      margin:0;
+      .block-upsell{
+          margin:20px 0;
+      }
     }
   }
   @media only screen and (max-width: 800px) {
