@@ -52,24 +52,24 @@
         <tr>
             <td><a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(50) ?>" width="50" height="50" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a></td>
             <td>
-                <div>
-                <?php echo $this->escapeHtml($_item->getName()) ?>
+                <div class="description">
+                <span class="title attr"><?php echo $this->escapeHtml($_item->getName()) ?> </span>
 
-                <?php
+               <strong class="city attr"> <?php
                 //SHOULD BE REPLACED WITH CITY LABEL
                 if ($cityCode = $this->htmlEscape($_item->getCity())) {
 
                     $city = Mage::getModel('eav/config')->getAttribute('catalog_product', 'city')->getSource()->getOptionText($cityCode);
-                    echo $this->__('City: ').$city;
+                    echo $this->__('<span>Город:</span> ').$city;
                 }
-                ?>
+                ?> </strong>
 
-                <?php
+                <strong class="condition attr"><?php
                 if ($condition = $this->htmlEscape($_item->getCondition())) {
-                    echo "</br>".$this->__('Condition: ').$condition;
+                    echo "</br>".$this-> __('<span>Состояние:</span> ').$condition;
                 }
-                ?>
-                </div>
+                ?></strong>
+                </div> 
             </td>
             <?php if ($this->getCanShowProductPrice($_product)): ?>
             <td class="a-right">
@@ -80,7 +80,7 @@
 
                     <?php if ($_item->isSaleable()) : ?>
                         <input type="hidden" name="super_group[<?php echo $_item->getId() ?>]" maxlength="12" value="<?php echo $_item->getQty()*1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
-                        <button type="button" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>' + 'qty/' + $(this).previous().value)">Add to cart</button>
+                        <button type="button" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>' + 'qty/' + $(this).previous().value)"><i class="ic-cart"></i><span>В корзину</span></button>
                     <?php else: ?>
                         <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                     <?php endif; ?>
