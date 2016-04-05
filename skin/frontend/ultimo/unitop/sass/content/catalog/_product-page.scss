@@ -1,4 +1,11 @@
 .catalog-product-view {
+  #cboxClose{
+    padding-left: 30px;
+    &:before{
+      position: relative;
+      left: -23px;
+    }
+  }
   .main {
     .inner-container {
       overflow: hidden;
