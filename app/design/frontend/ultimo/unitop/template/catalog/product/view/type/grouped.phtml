@@ -50,7 +50,7 @@
     <?php foreach ($_associatedProducts as $_item): ?>
         <?php $_finalPriceInclTax = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), true) ?>
         <tr>
-            <td><a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(50) ?>" width="50" height="50" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a></td>
+            <td><a href="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(250) ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="lightbox-group-table cboxElement"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(150) ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a></td>
             <td>
                 <div class="description">
                 <span class="title attr"><?php echo $this->escapeHtml($_item->getName()) ?> </span>
