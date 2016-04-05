@@ -11,6 +11,10 @@
       overflow: hidden;
     }
   }
+  #stock-qty-25{display:none;}
+  #cboxOverlay{
+    opacity: 0.5!important;
+  }
   .fancybox-wrap{
     .success{
       color:#1938a5;
