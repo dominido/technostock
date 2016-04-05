@@ -50,7 +50,7 @@
     <?php foreach ($_associatedProducts as $_item): ?>
         <?php $_finalPriceInclTax = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), true) ?>
         <tr>
-            <td><a href="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail') ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="fancybox" rel="fancybox-thumb" ><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail') ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a></td>
+            
                 <?php /* old one image output with old classes
 
                 <td><a href="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(250) ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="lightbox-group-table cboxElement"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(150) ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a></td>
@@ -60,10 +60,10 @@
                 <!-- new icons for slider -->
                 <?php $_images = Mage::getModel('catalog/product')->load($_item->getId())->getMediaGalleryImages(); ?>
 
-                <td><ul>
+                <td><ul class="image-list">
                 <?php  foreach($_images as $_image): { ?>
                 <li>
-                <a href="<?=$this->helper('catalog/image')->init($_item, 'thumbnail', $_image->getFile()) ; ?>" class="fancybox" rel="fancybox-thumb<?php echo $_item->getId() ?>">
+                <a href="<?=$this->helper('catalog/image')->init($_item, 'thumbnail', $_image->getFile()) ; ?>" class="fancybox" rel="fancybox-thumb <?php echo $_item->getId() ?>">
                     <img src="<?=$this->helper('catalog/image')->init($_item, 'thumbnail', $_image->getFile()) ; ?>"alt="<?=$this->htmlEscape($_image->getLabel());?>" title="<?=$this->htmlEscape($_image->getLabel());?> " />
                 </a>
                 </li>
