@@ -63,7 +63,7 @@
                 <td><ul>
                 <?php  foreach($_images as $_image): { ?>
                 <li>
-                <a href="<?=$this->helper('catalog/image')->init($_item, 'thumbnail', $_image->getFile()) ; ?>" class="fancybox" rel="fancybox-thumb<?php echo $_image->getFile() ?>">
+                <a href="<?=$this->helper('catalog/image')->init($_item, 'thumbnail', $_image->getFile()) ; ?>" class="fancybox" rel="fancybox-thumb<?php echo $_item->getId() ?>">
                     <img src="<?=$this->helper('catalog/image')->init($_item, 'thumbnail', $_image->getFile()) ; ?>"alt="<?=$this->htmlEscape($_image->getLabel());?>" title="<?=$this->htmlEscape($_image->getLabel());?> " />
                 </a>
                 </li>
