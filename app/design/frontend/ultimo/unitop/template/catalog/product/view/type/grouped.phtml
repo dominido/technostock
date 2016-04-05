@@ -55,20 +55,23 @@
                 <div class="description">
                 <span class="title attr"><?php echo $this->escapeHtml($_item->getName()) ?> </span>
 
-               <strong class="city attr"> <?php
-                //SHOULD BE REPLACED WITH CITY LABEL
-                if ($cityCode = $this->htmlEscape($_item->getCity())) {
+               <strong class="city attr">
 
+                <?php if ($cityCode = $this->htmlEscape($_item->getCity())) {
                     $city = Mage::getModel('eav/config')->getAttribute('catalog_product', 'city')->getSource()->getOptionText($cityCode);
-                    echo $this->__('<span>Город:</span> ').$city;
-                }
-                ?> </strong>
+                    ?>
+                    <span><?php echo $this->__('City: '); ?> </span> <?php echo $city ?>
 
-                <strong class="condition attr"><?php
-                if ($condition = $this->htmlEscape($_item->getCondition())) {
-                    echo "</br>".$this-> __('<span>Состояние:</span> ').$condition;
-                }
-                ?></strong>
+               <?php }  ?>
+               </strong>
+
+                <strong class="condition attr">
+                <?php if ($condition = $this->htmlEscape($_item->getCondition())) { ?>
+
+                <span><?php echo "</br>".$this->__('Condition: ');?></span> <?php echo $condition;?>
+
+                    <?php } ?>
+                </strong>
                 </div> 
             </td>
             <?php if ($this->getCanShowProductPrice($_product)): ?>
