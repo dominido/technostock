@@ -50,7 +50,24 @@
     <?php foreach ($_associatedProducts as $_item): ?>
         <?php $_finalPriceInclTax = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), true) ?>
         <tr>
-            <td><a href="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(250) ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="lightbox-group-table cboxElement"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(150) ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a></td>
+                <?php /* old one image output with old classes
+
+                <td><a href="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(250) ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="lightbox-group-table cboxElement"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(150) ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a></td>
+
+                */?>
+
+                <!-- new icons for slider -->
+                <?php $_images = Mage::getModel('catalog/product')->load($_item->getId())->getMediaGalleryImages(); ?>
+
+                <td>
+                <?php  foreach($_images as $_image): { ?>
+                <a href="#">
+                    <img src="<?=$this->helper('catalog/image')->init($_item, 'thumbnail', $_image->getFile())->resize(250) ; ?>"alt="<?=$this->htmlEscape($_image->getLabel());?>" title="<?=$this->htmlEscape($_image->getLabel());?> " />
+                </a>
+                <?php } endforeach; ?>
+                </td>
+                <!-- new icons for slider  -->
+
             <td>
                 <div class="description">
                 <span class="title attr"><?php echo $this->escapeHtml($_item->getName()) ?> </span>
