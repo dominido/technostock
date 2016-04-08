@@ -5,7 +5,17 @@
 	padding: 20px 10px 0;
   }
 }
-
+.catalog-category-view{
+	#narrow-by-list{
+		ol{
+			li{
+				a.brander_layerednavigation-attr-selected{
+					background: url(../images/arrow_mini.png) 20px 50% no-repeat;
+				}
+			}
+		}
+	}
+}
 .products-list {
   .item-inner {
 	padding: 20px;
@@ -227,6 +237,11 @@
   }
 }
 .catalog-product-view{
+	.price-box{
+			@include bp(max-width, 1100px) {
+				font-size: 0.8em!important;
+			}
+	}
 	@media only screen and (max-width: 660px) and (min-width: 630px) {
 		#itemslider-related-mobile{
 			.owl-item{

@@ -48,6 +48,10 @@ jQuery(document).ready(function($) {
     });
     },500);
     //product
+     $('.touch').find("#callbacks .buttons-set").on("click",function(){
+        $(this).parents(".fancybox-wrap").addClass("center-fix");
+    });
+
      scrollSizeDetect();
     function scrollSizeDetect(){
         // Create the measurement node
@@ -71,7 +75,11 @@ jQuery(document).ready(function($) {
              jQuery(window).scrollTop(jQuery('#messages_product_view').offset().top,"slow");
 
         }
-
+        //lang
+        jQuery(document).ready(function($) {
+            var langActive = $(".lang-switcher ").find(".cover span.value").html();
+            $("body").addClass(langActive);
+        });
     jQuery('body').bind('focusin focus', function(e){
         e.preventDefault();
     });

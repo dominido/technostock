@@ -17,3 +17,8 @@ function chosenInit() {
     }
     return results;
 }
+ jQuery(document).ready(function() {
+    jQuery('body').bind('focusin focus', function(e){
+      e.preventDefault();
+    })
+});

@@ -195,13 +195,24 @@
 			<?php if (!$this->hasOptions()): //add to cart when no options (e.g. simple products) ?>
 				<?php if($_product->isSaleable()): ?>
 					<div class="add-to-box">
-						<?php echo $this->getChildHtml('addtocart') ?>
 
-						<?php if ($addtoLinksHtml): //compare, wishlist, send to friend, share social ?>
-							<div class="wishlist-box">
-								<a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
-							</div>
+						<?php // hide add to cart button and wish list for grouped products
+						$productTypeId = $_product->getTypeId();
+						$productTypeClasses = '';
+						?>
+
+						<?php if ($productTypeId !== 'grouped'): ?>
+
+							<?php echo $this->getChildHtml('addtocart'); ?>
+
+							<?php if ($addtoLinksHtml): //compare, wishlist, send to friend, share social ?>
+								<div class="wishlist-box">
+									<a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+								</div>
+							<?php endif; ?>
+
 						<?php endif; ?>
+
 					</div>
 				<?php endif; ?>
 				<?php echo $this->getChildHtml('extra_buttons') ?>

@@ -147,7 +147,8 @@ function layerednavigation_ajax_request(url){
                         throw new EventException('Invalid data structure in response');
                     }
                     layerednavigation_ajax_update(data);
-
+                    //scroll to top after ajax request
+                    window.scrollTo(500, 0);
                 } catch (e) {
                     console.log(e.message);
                     setLocation(url);

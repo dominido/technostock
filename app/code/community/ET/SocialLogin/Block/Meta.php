@@ -45,8 +45,8 @@ class ET_SocialLogin_Block_Meta extends Mage_Core_Block_Template
                 'og:title' => $this->getLayout()->getBlock('head')->getTitle(),
                 'og:type' => 'website',
                 'og:url' => $helper->getCurrentUrlWithStorePort(),
-                'og:image' => (isset($product) && $product->getId()) ? $product->getImageUrl()
-                        : $helper->getStoreLogo(),
+                'og:image' => (isset($product) && $product->getId()) ? Mage::getModel('catalog/product_media_config')->getMediaUrl(Mage::registry('product')->getSmallImage())
+                    : $helper->getStoreLogo(),
                 'og:description' => htmlspecialchars(strip_tags((isset($product) && $product->getId())
                     ? htmlspecialchars(str_replace(array("'", "\r", "\n"), array("\'", " ", " "),
                         $product->getShortDescription()))
