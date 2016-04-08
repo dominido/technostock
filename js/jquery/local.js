@@ -48,6 +48,10 @@ jQuery(document).ready(function($) {
     });
     },500);
     //product
+     $('.touch').find("#callbacks .buttons-set").on("click",function(){
+        $(this).parents(".fancybox-wrap").addClass("center-fix");
+    });
+
      scrollSizeDetect();
     function scrollSizeDetect(){
         // Create the measurement node
