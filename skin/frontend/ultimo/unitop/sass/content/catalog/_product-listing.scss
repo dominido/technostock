@@ -252,3 +252,10 @@
 		}
 	}
 }
+.products-list{
+	.price-box{
+		@include bp(max-width, 1100px) {
+			font-size: 0.8em!important;
+		}
+	}
+}
