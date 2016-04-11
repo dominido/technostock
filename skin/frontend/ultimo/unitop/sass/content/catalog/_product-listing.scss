@@ -5,16 +5,8 @@
 	padding: 20px 10px 0;
   }
 }
-.catalog-category-view{
-	#narrow-by-list{
-		ol{
-			li{
-				a.brander_layerednavigation-attr-selected{
-					background: url(../images/arrow_mini.png) 20px 50% no-repeat;
-				}
-			}
-		}
-	}
+.brander_layerednavigation-attr-selected{
+	background: url(../images/arrow_mini.png) 20px 50% no-repeat;
 }
 .products-list {
   .item-inner {
