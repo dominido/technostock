@@ -1051,7 +1051,10 @@ textarea {
 	}
   }
 }
-
+.webforms-callback input.input-text{
+	line-height: 36px;
+    overflow: hidden;
+}
 @include bp(max-width, $bp-smallest) {
   .webforms-callback input.input-text {
 	width: 100%;

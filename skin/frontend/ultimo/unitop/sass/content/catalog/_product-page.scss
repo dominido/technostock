@@ -535,6 +535,18 @@
     .more-images {
       width: calc(100% - 120px);
       max-width:100%;
+      @include bp(max-width, 1000px) {
+         width: 100%;
+      }
+       @include bp(max-width, 767px) {
+             width: calc(100% - 120px);
+         }
+      .owl-wrapper{
+        min-width:100%!important;
+         @include bp(max-width, 767px) {
+            min-width:0!important;
+         }
+      }
       .thumbnails .item{
 
       }
@@ -734,6 +746,7 @@
   @include bp(max-width, $bp-tiny) {
     display: block;
     margin-bottom: 0;
+    padding:0 25px;
   }
 
   .box-additionals-row {
@@ -970,10 +983,21 @@
     }
   }
 }
+.block.block-viewed.grid12-12{
+   @include bp(max-width, $bp-tiny) {
+    .section-title,.itemslider-wrapper{
+      padding:0 25px 0;
+    }
+  }
+
+}
 .catalog-product-view{
   .block-viewed{
     @include bp(max-width, $bp-tiny) {
-      padding-top:50px;  
+      padding-top:50px;
+        
+
+      .owl-pagination{margin-top:40px;}
     } 
   } 
 }
@@ -996,8 +1020,7 @@
 #product-tabs {
   .acctab {
     color: $muddy;
-    @include bp(max-width, 960px) {
-      background: #e6effb;
+    @include bp(max-width, 1037px) {
       >span{
         position: relative;
         &:after{
@@ -1012,6 +1035,9 @@
       &+.panel {
         display: none!important;
       }
+    }
+    @include bp(max-width, 960px) {
+      background: #e6effb;
     }
     @include bp(max-width, 640px) {
       padding-left:15px;
