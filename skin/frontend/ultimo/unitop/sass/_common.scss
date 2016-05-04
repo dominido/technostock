@@ -9,6 +9,7 @@
   font-weight: 300;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'exo_2';
   src: url('fonts/exo2-regular-webfont.eot');
@@ -20,6 +21,7 @@
   font-weight: 400;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'exo_2';
   src: url('fonts/exo2-medium-webfont.eot');
@@ -31,6 +33,7 @@
   font-weight: 500;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'exo_2';
   src: url('fonts/exo2-semibold-webfont.eot');
@@ -42,6 +45,7 @@
   font-weight: 600;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'exo_2';
   src: url('fonts/exo2-bold-webfont.eot');
@@ -53,7 +57,6 @@
   font-weight: 700;
   font-style: normal;
 }
-
 
 input.input-text,
 select,
@@ -159,7 +162,6 @@ textarea {
 	display: none;
   }
 
-
   .sorter {
 	.view-mode {
 	  .ic {
@@ -263,7 +265,7 @@ textarea {
   .item-inner {
 	border: 3px solid transparent;
 	@include trs(border-color .3s ease);
-	
+
 	.product-image {
 	  img {
 		width: 100%;
@@ -278,9 +280,9 @@ textarea {
 	  a {
 		color: #35426d;
 		display: block;
-		white-space: nowrap; 
-	    overflow: hidden; 
-	    text-overflow: ellipsis; 
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 
 		&:hover {
 		  color: $dark;
@@ -293,7 +295,7 @@ textarea {
 	  text-align: left;
 
 	  .price-box {
-		padding-right: 50px;
+		padding-right: 70px;
 		margin: 0;
 
 		.regular-price {
@@ -429,9 +431,9 @@ textarea {
 
   $class-name: "benefits-per-row";
   //@for $i from 1 through 10 {
-	//.#{$class-name}-#{$i} .benefit {
-	//  width: (100% / $i);
-	//}
+  //.#{$class-name}-#{$i} .benefit {
+  //  width: (100% / $i);
+  //}
   //}
 
   .img-wrap {
@@ -761,7 +763,6 @@ textarea {
   float: right;
 }
 
-
 #uni-main-loader-checkout,
 #sub-loader {
   position: fixed;
@@ -799,7 +800,7 @@ textarea {
 	  width: 36px;
 	  height: 100%;
 	  top: 0;
-	  
+
 	  &:after {
 		position: absolute;
 		font-family: BaseIcons;
@@ -948,7 +949,7 @@ textarea {
 	cursor: pointer;
 	z-index: 2;
 
-	&+.label {
+	& + .label {
 	  position: relative;
 	  margin-left: 0;
 	  padding-left: 36px;
@@ -988,7 +989,7 @@ textarea {
 
 	&:hover,
 	&:checked {
-	  &+.label {
+	  & + .label {
 		&:before {
 		  opacity: 1;
 		  visibility: visible;
@@ -1003,7 +1004,7 @@ textarea {
 	opacity: 0;
 	display: none;
 
-	&+label {
+	& + label {
 	  position: relative;
 	  margin-left: 0;
 	  padding-left: 32px;
@@ -1041,7 +1042,7 @@ textarea {
 
 	}
 
-	&+label:hover,
+	& + label:hover,
 	&:checked + label {
 	  &:after {
 		opacity: 1;
@@ -1051,10 +1052,12 @@ textarea {
 	}
   }
 }
-.webforms-callback input.input-text{
-	line-height: 36px;
-    overflow: hidden;
+
+.webforms-callback input.input-text {
+  line-height: 36px;
+  overflow: hidden;
 }
+
 @include bp(max-width, $bp-smallest) {
   .webforms-callback input.input-text {
 	width: 100%;
@@ -1185,7 +1188,7 @@ textarea {
 }
 
 .fancybox-lock {
-  #sh_button{
+  #sh_button {
 	right: 17px;
   }
 }
@@ -1194,7 +1197,7 @@ textarea {
   color: #163294;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   @include trs(color .3s ease, background-color .3s ease);
-  
+
   &:hover {
 	color: #163294;
 	background: #f3f7fd;
@@ -1258,50 +1261,53 @@ textarea {
 	font-size: 1rem;
   }
 }
+
 .scrollbar-measure {
-    width: 100px;
-    height: 100px;
-    overflow: scroll;
-    position: absolute;
-    top: -9999px;
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
 }
-.fancybox-inner{
-	 @include bp(max-width, $bp-tiny) {
-		height:auto!important;
-		.callbacks_loader{
-		    padding: 10px 0;
-		    color: #163294;
-		    top: 50%;
-		    background-color: #d0e0f5;
-		    position: absolute;
-		    left: 50%;
-		    border: 0;
-		    transform: translate(-50% , -50%);
-		    width: 90%;
-		    text-align: center;
-		}
+
+.fancybox-inner {
+  @include bp(max-width, $bp-tiny) {
+	height: auto !important;
+	.callbacks_loader {
+	  padding: 10px 0;
+	  color: #163294;
+	  top: 50%;
+	  background-color: #d0e0f5;
+	  position: absolute;
+	  left: 50%;
+	  border: 0;
+	  transform: translate(-50%, -50%);
+	  width: 90%;
+	  text-align: center;
 	}
+  }
 
 }
+
 /* ukr */
-.UA{
-	#header-cart{
-        .actions{
-          button{
-            float:none!important;
-            display: block;
-            margin:0;
-            &:first-child{
-              margin-bottom:10px!important;
-            }
-          }
-        }
-      }
-       @include bp(max-width, 800px) {
-          .actions{
-          button{
-           width:100%;
-          }
-        }
-       }
+.UA {
+  #header-cart {
+	.actions {
+	  button {
+		float: none !important;
+		display: block;
+		margin: 0;
+		&:first-child {
+		  margin-bottom: 10px !important;
+		}
+	  }
+	}
+  }
+  @include bp(max-width, 800px) {
+	.actions {
+	  button {
+		width: 100%;
+	  }
+	}
+  }
 }

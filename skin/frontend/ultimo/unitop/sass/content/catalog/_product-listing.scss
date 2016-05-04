@@ -65,6 +65,10 @@
 
 	  &:first-child {
 		margin-right: 20px;
+
+		@include bp(max-width, $bp-tiny) {
+		  margin-right: 0;
+		}
 	  }
 	}
   }

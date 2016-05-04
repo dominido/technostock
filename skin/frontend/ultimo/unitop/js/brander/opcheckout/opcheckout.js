@@ -337,9 +337,6 @@ ShippingMethodStep.prototype = {
         }
         checkout.setLoadWaiting(false);
         reviewStep.getReview();
-        jQuery("#co-shipping-method-form select").each(function(){
-            setSelect2(this);
-        });
     },
     loadShippingMethods: function() {
         checkout.setLoadWaiting(true);
@@ -515,10 +512,6 @@ Payment.prototype = {
             resetPaymentEvents();
         }
         reviewStep.getReview();
-
-        jQuery("#opcheckout-payment-method select").each(function(){
-            setSelect2(this);
-        });
 
         jQuery(".radio-label").radioEmu();
     }
@@ -725,15 +718,6 @@ function resetPaymentEvents() {
     }
     $$('.cvv-what-is-this').each(function(element) {
         Event.observe(element, 'click', toggleToolTip);
-    });
-}
-
-function setSelect2(elem){
-    var $elem = jQuery(elem);
-
-    $elem.select2({
-        width         : "100%",
-        dropdownParent: $elem.parent()
     });
 }
 

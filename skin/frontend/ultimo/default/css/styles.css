@@ -2526,8 +2526,6 @@ ul.disc ul li {
 
 .products-list .price-box {
 	margin: 0 0 15px;
-	font-size: 1.3333em;
-	line-height: 1.25;
 }
 
 .products-list .ratings {
@@ -2969,6 +2967,11 @@ a.availability-only {
 
 .minimal-price {
 	margin: 0 0 5px;
+	font-size: 1rem;
+}
+
+.minimal-price .price + .price-label {
+	display: block;
 }
 
 .minimal-price-link,
