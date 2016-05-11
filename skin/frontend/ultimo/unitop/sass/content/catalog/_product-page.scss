@@ -753,8 +753,12 @@
 }
 
 .box-additionals-holder {
-  display: table;
-  table-layout: fixed;
+  margin-bottom: 30px;
+
+  @include bp(min-width, 960px) {
+	display: table;
+	table-layout: fixed;
+  }
 
   @include bp(max-width, $bp-tiny) {
 	display: block;
@@ -762,19 +766,18 @@
 	padding: 0 25px;
   }
 
-  .box-additionals-row {
-	display: table-row;
-  }
-
   @include cleaner;
 
   .box-additional {
-	display: table-cell;
-	vertical-align: top;
 	width: 68%;
 	margin: 0;
 	background: #eef4fc;
 	position: relative;
+
+	@include bp(min-width, 960px) {
+	  display: table-cell;
+	  vertical-align: top;
+	}
 
 	@include bp(max-width, 991px) {
 	  width: 60%;
