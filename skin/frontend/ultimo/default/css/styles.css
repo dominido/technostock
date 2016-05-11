@@ -4928,6 +4928,12 @@ a.availability-only {
 	margin: 0;
 }
 
+.dashboard .box .box-title > a {
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 6px;
+}
+
 /* Block: Account Information */
 .dashboard .box-info h4 {
 	font-weight: normal;

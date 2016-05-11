@@ -35,21 +35,6 @@ jQuery(document).ready(function ($) {
 		$(this).addClass('current');
 	});
 
-	//header
-	//setTimeout(function () {
-	//	$('.touch').find(".dropdown.header-contacts").on("click", function () {
-	//		if ($(this).hasClass("open")) {
-	//			$(this).removeClass('open');
-	//			$(this).find(".dropdown-content").css("display", "none");
-	//		}
-	//		else {
-	//			$(this).addClass('open');
-	//			$(this).find(".dropdown-content").css("display", "block");
-	//		}
-	//	});
-	//}, 500);
-
-
 	//product
 	$('.touch').find("#callbacks .buttons-set").on("click", function () {
 		$(this).parents(".fancybox-wrap").addClass("center-fix");
