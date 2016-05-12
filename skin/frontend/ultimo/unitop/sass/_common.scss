@@ -1094,6 +1094,20 @@ textarea {
 	}
   }
 
+  @include bp(max-width, 991px) {
+	.addresses-additional {
+	  .item {
+		a {
+		  display: block;
+		}
+
+		.separator {
+		  display: none;
+		}
+	  }
+	}
+  }
+
   @include bp(max-width, $bp-smallest) {
 	.form-list {
 	  .field,
