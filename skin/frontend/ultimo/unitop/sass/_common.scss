@@ -1185,6 +1185,18 @@ textarea {
 	  white-space: normal !important;
 	}
   }
+
+  @include bp(max-width, 900px) {
+	font-size: 12px;
+
+	td {
+	  padding: 5px;
+	}
+  }
+
+  @include bp(max-width, $bp-tiny) {
+	font-size: 16px;
+  }
 }
 
 .fancybox-lock {
