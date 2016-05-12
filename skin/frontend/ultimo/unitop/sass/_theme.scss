@@ -386,3 +386,45 @@
 	}
   }
 }
+
+
+#multiship-addresses-table {
+  @include bp(max-width, $bp-tiny) {
+	display: block;
+
+	tbody,
+	tfoot,
+	tr,
+	td {
+	  display: block;
+	  border: none;
+	  text-align: center;
+	}
+
+	h3 {
+	  a {
+		font-size: 16px;
+	  }
+	}
+
+	thead {
+	  display: none;
+	}
+
+	.chosen-container {
+	  width: 100% !important;
+	}
+
+	.btn-remove2 {
+	  font-size: 24px;
+	  width: 24px;
+	  height: 24px;
+	}
+  }
+
+  @include bp(max-width, $bp-smallest) {
+	button {
+	  width: 100%;
+	}
+  }
+}
