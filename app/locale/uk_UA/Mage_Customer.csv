@@ -240,7 +240,7 @@
 "Password fields can't be empty.","Поле Паролю не може бути порожнім."
 "Password forgotten","Забули пароль"
 "Password minimal length must be more %s","Мінімальна довжина паролю повинна бути більше %s"
-"Password must have at least 6 characters. Leading or trailing spaces will be ignored.","Пароль має складатись щонайменше з 6-ти знаків. Пробіли, проставлені спереду та ззаду враховуватись не будуть."
+"Password must have at least 6 characters. Leading or trailing spaces will be ignored.","Пароль має складатись щонайменше з 6-ти знаків. Пробіли, проставлені спереду та ззаду, враховуватись не будуть."
 "Paused","Призупинено"
 "Payment Method","Спосіб оплати"
 "Pending","В очікуванні"
