@@ -53,13 +53,22 @@ class Brander_CommerceML_Model_Import_Product_Attribute extends Varien_Object
         }
 
         if (Mage::getModel('eav/entity_attribute')->load($params->getCode(), 'attribute_code')->getId()) {
+            try {
+                $setup = Mage::getModel("Brander_CommerceML_Model_Import_Product_Attribute_Setup", "core_setup");
+                if ($setup instanceof Mage_Eav_Model_Entity_Setup) {
+                    $setup->updateAttributeGroups('catalog_product', $params->getCode(), $params->getGroups());
+                }
+            } catch (Exception $e) {
+                Mage::helper('brandercml/import')->log($e->getMessage());
+                return false;
+            }
             return true;
         }
 
         $attrModel = Mage::getModel('eav/config');
 
         try {
-            $setup = Mage::getModel("eav/entity_setup", "core_setup");
+            $setup = Mage::getModel("Brander_CommerceML_Model_Import_Product_Attribute_Setup", "core_setup");
             if ($setup instanceof Mage_Eav_Model_Entity_Setup) {
                 $attrData = array(
                     'group'                      => 'General',
@@ -70,22 +79,32 @@ class Brander_CommerceML_Model_Import_Product_Attribute extends Varien_Object
                     'backend'                    => '',
                     'visible'                    => '1',
                     'user_defined'               => '1',
-                    'comparable'                 => '0',
-                    'visible_on_front'           => '1',
-                    'is_visible_on_front'        => '1',
-                    'visible_in_advanced_search' => '0',
-                    'is_html_allowed_on_front'   => '1',
+                    'comparable'                 => '1',
                     'global'                     => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
                 );
+                if ($params->getOption()) {
+                    $attrData['option'] = $params->getOption();
+                }
                 
                 $type = $this->_type[$params->getInput()];
                 $attrData = array_merge($attrData, $type);
 
-                $setup->addAttribute('catalog_product', $params->getCode(), $attrData);
-                $attrModel->getAttribute('catalog_product', $params->getCode())
-                    ->setIsSearchable($params->getSearchable())
-                    ->setIsFilterable($params->getFilterable())
+                $setup->addAttribute('catalog_product', $params->getCode(), $attrData, $params->getGroups());
+
+                $attribute = $attrModel->getAttribute('catalog_product', $params->getCode());
+                if ($params->getInput() == 'select') {
+                    $attribute->setIsSearchable($params->getSearchable())
+                        ->setIsFilterable(1)
+                        ->setIsFilterableInSearch(1);
+                }
+
+                $attribute->setVisibleOnFront(1)
+                    ->setIsVisibleOnFront(1)
+                    ->setVisibleInAdvancedSearch(1)
+                    ->setIsHtmlAllowedOnFront(1)
+                    ->setUsedInProductListing(1)
                     ->setIsConfigurable(0)
+                    ->setPosition(2)
                     ->save();
                 return true;
             }

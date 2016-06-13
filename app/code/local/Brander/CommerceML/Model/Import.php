@@ -205,7 +205,18 @@ class Brander_CommerceML_Model_Import extends Varien_Object
 //                $attributes = $xml->getXpath('Классификатор/Свойства/Свойство');
 //            }
 //        }
-        
+
+        $attributes = array();
+
+        $cities = $xml->getXpath('Commodity/City');
+        $shops = $xml->getXpath('Commodity/Magazine');
+        $brands = $xml->getXpath('Commodity/Brand');
+
+
+        foreach ( $cities as $city ) {
+
+
+        }
 
         if ($attributes && count($attributes)) {
             foreach ($attributes as $attribute) {
