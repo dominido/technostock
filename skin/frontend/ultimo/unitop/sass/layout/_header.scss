@@ -554,7 +554,7 @@
 	  font-size: 13px;
 	  border-width: 0 0 1px;
 	  border-radius: 0;
-	  background: none;
+	  //background: none;
 	  @include trs(color .15s ease-in-out);
 
 	  @include bp(min-width, 1500px) {
