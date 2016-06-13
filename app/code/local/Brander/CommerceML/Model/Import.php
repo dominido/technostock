@@ -164,7 +164,7 @@ class Brander_CommerceML_Model_Import extends Varien_Object
         Mage::dispatchEvent('brandercml_import_start', array('status' => 'start', 'data' => $this));
         if ($this->_loadSourceFile()) {
             if ($node = $this->getXml()->getNode()) {
-                $helper->log("File \"".$this->getXmlPath()."\" loaded.\r\nВерсияСхемы: ".$node->getAttribute('ВерсияСхемы')."\r\nДатаФормирования: ".$node->getAttribute('ДатаФормирования'), false);
+                $helper->log("File \"".$this->getXmlPath()."\" loaded.\r\n", false);
                 switch ($this->getImportType()) {
                     case 'catalog':
                         if (!Mage::getStoreConfig(self::IMPORT_WITHOUT_ATTRIBUTES)) {
@@ -172,9 +172,9 @@ class Brander_CommerceML_Model_Import extends Varien_Object
                         }
                         $this->processProducts();
                         break;
-                    case 'offers':
-                        $this->processOffers();
-                        break;
+//                    case 'offers':
+//                        $this->processOffers();
+//                        break;
                 }
             }
         }
@@ -187,24 +187,25 @@ class Brander_CommerceML_Model_Import extends Varien_Object
         if (!$xml = $this->getXml()) {
             return false;
         }
-
-        if ($this->getClearAttributes()) {
-            $removed = $this->getAttribute()->removeAllCreatedAttributes();
-        }
+        
+//        if ($this->getClearAttributes()) {
+//            $removed = $this->getAttribute()->removeAllCreatedAttributes();
+//        }
 
         $helper     = Mage::helper('brandercml/import');
         $attr       = $this->getAttribute();
         $mapper     = $this->getAttributeMapper();
         $prefix     = $attr->getPrefix() ? $attr->getPrefix() : '';
 
-        if (Mage::getStoreConfig(self::USE_ATTR_DATA_FROM_PRODUCT)) {
-            $attributes = $xml->getXpath('Каталог/Товары/Товар/ХарактеристикиТовара/ХарактеристикаТовара');
-        } else {
-            $attributes = $xml->getXpath('Классификатор/Свойства/СвойствоНоменклатуры');
-            if (!$attributes) {
-                $attributes = $xml->getXpath('Классификатор/Свойства/Свойство');
-            }
-        }
+//        if (Mage::getStoreConfig(self::USE_ATTR_DATA_FROM_PRODUCT)) {
+//            $attributes = $xml->getXpath('Каталог/Товары/Товар/ХарактеристикиТовара/ХарактеристикаТовара');
+//        } else {
+//            $attributes = $xml->getXpath('Классификатор/Свойства/СвойствоНоменклатуры');
+//            if (!$attributes) {
+//                $attributes = $xml->getXpath('Классификатор/Свойства/Свойство');
+//            }
+//        }
+        
 
         if ($attributes && count($attributes)) {
             foreach ($attributes as $attribute) {
