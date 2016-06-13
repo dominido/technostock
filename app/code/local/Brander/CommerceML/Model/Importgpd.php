@@ -47,6 +47,8 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         self::TYPE_MESSAGE_NEW => array(),
         self::TYPE_MESSAGE_UPDATE => array()
     );
+    protected $_groupedItems   = array();
+    protected $_groupedItemsGroupItemsList   = array();
     protected $_attributeSets   = array();
     protected $_offers          = array();
     protected $_allSku          = array();
@@ -60,21 +62,46 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
     );
 
     protected $_attributeBlackList = array(
-        'Фото №3',
-        'Фото №4'
+
     );
 
     protected $_superAttr       = array();
 
-    const NODE_BASE_NODE        = 'Классификатор';
+    const NODE_BASE_NODE        = 'TehnoStok';
     //additional XML config
     // product node
-    const NODE_CATALOG_PRODUCTS  = 'Товары/Товар';
-    const NODE_PRODUCT_SKU      = 'Ид';
+
+    const NODE_CATALOG_PRODUCTS = 'Commodity';
+
+    
+    const NODE_PRODUCT_GROUPED          = 'Nomenklatura';
+    const NODE_PRODUCT_GROUPED_NAME     = 'Name';
+    const NODE_PRODUCT_GROUPED_SKU      = 'id';
+    const NODE_PRODUCT_GROUPED_SKU_1C           = 'Cod';
+    const NODE_PRODUCT_GROUPED_CATEGORY_PATH    = 'Patch';
+    const NODE_PRODUCT_GROUPED_IMG_URL          = 'PicturesURL';
+    const NODE_PRODUCT_GROUPED_DESCRIPTION      = 'Description';
+
+    // simples list
+    
+    const NODE_PRODUCT_QTY          = 'Amount';
+    const NODE_PRODUCT_PRICE        = 'Price';
+    const NODE_PRODUCT_CITY         = 'City/Name';
+    const NODE_PRODUCT_MAGAZINE     = 'Magazine/Name';
+    const NODE_PRODUCT_BRAND        = 'Brand/Name';
+    const NODE_PRODUCT_SKU          = 'id';
+    const NODE_PRODUCT_SKU_1C       = 'Cod';
+    const NODE_PRODUCT_NAME         = 'Name';
+
+    const NODE_ATTRIBUTE_SET = 'TypeNomenklatura';
+    const NODE_PRODUCT_DESCRIPTION = 'Description';
+
+
+/*    const NODE_CATALOG_PRODUCTS  = 'Товары/Товар';
+    
     const NODE_PRODUCT_CATEGORY = 'ГруппаИд';
-    const NODE_PRODUCT_NAME     = 'Наименование';
-    const NODE_PRODUCT_QTY      = 'Количество';
-    const NODE_PRODUCT_PRICE    = 'ЦенаЗаЕдиницу';
+
+
     const NODE_NEW_FROM         = 'НовинкаС';
     const NODE_NEW_TO           = 'НовинкаПо';
     const NODE_PRODUCT_IN_SALE              = 'ВПродаже';
@@ -86,18 +113,19 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
     const NODE_PRODUCT_MANUFACTURER         = 'Производитель';
     const NODE_PRODUCT_MANUFACTURER_SKU     = 'Артикул';
     const NODE_PRODUCT_ATTRIBUTES_LIST_SELECT       = 'ЗначенияАтрибутов/ЗначениеАтрибутов';
-    const NODE_PRODUCT_ATTRIBUTES_LIST_TEXT         = 'ЗначенияСвойств/ЗначениеСвойства';
+    const NODE_PRODUCT_ATTRIBUTES_LIST_TEXT         = 'ЗначенияСвойств/ЗначениеСвойства';*/
 
     // product images node
     const NODE_PRODUCT_IMAGES   = 'Картинки/Картинка';
 
-    // category node
+/*    // category node
     const NODE_CATALOG_CATEGORIES       = 'Группы/Группа';
     const NODE_CATALOG_CATEGORY_ID      = 'Ид';
     const NODE_CATALOG_CATEGORY_NAME    = 'Наименование';
-    const HOME_CATALOG_CATEGORY         = 'Каталог';
+    const HOME_CATALOG_CATEGORY         = 'Каталог';*/
 
     // attributes node
+    const NODE_PRODUCT_ATTRIBUTES_LIST_TEXT = 'Characteristic';
     const NODE_ATTRIBUTE_ID      = 'Ид';
     const NODE_ATTRIBUTE_VALUE   = 'Значение';
     
@@ -118,12 +146,15 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
             if ($node = $this->getXml()->getNode()) {
                 //$this->getLogHelper()->logMessage("File \"".$this->getXmlPath()."\" loaded.\r\nВерсияСхемы: ".$node->getAttribute('ВерсияСхемы')."\r\nДатаФормирования: ".$node->getAttribute('ДатаФормирования'), false);
 
-                $this->getCategoryList();
+                //$this->getCategoryList();
                 $this->getAllSkus();
                 if (!Mage::getStoreConfig(self::IMPORT_WITHOUT_ATTRIBUTES)) {
                     //$this->processAttributes();
                 }
-                $this->processProducts();
+                $this->prepareData();
+                //$this->processAttributesAndSets();
+                //$this->processSimpleProducts();
+                //$this->processGroupedProducts();
                 //$this->processOffers();
             }
         }
@@ -205,7 +236,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         }
     }
 
-    public function processProducts()
+    public function prepareData()
     {
         if (!$xml = $this->getXml()) {
             return false;
@@ -214,41 +245,70 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         $helper     = $this->getHelper(); $attributeSetList = array();
         //$mapper     = $this->getAttributeMapper();
 
-        if (($products = $xml->getXpath(self::NODE_BASE_NODE . DS . self::NODE_CATALOG_PRODUCTS)) && $xml->getNode(self::NODE_BASE_NODE . DS . self::NODE_CATALOG_PRODUCTS)->count()) {
+        if (($products = $xml->getXpath(self::NODE_CATALOG_PRODUCTS)) && $xml->getNode(self::NODE_CATALOG_PRODUCTS)->count()) {
             $counter = 0;
 
             foreach ($products as $key => $product) {
-                $item = array();
+                $item = array(); $groupedItem = null; $_groupedItem = null;
                 if (!(string)$product->{self::NODE_PRODUCT_SKU} || !(string)$product->{self::NODE_PRODUCT_NAME}) {
                     continue;
                 }
 
-                $description            = (string)$product->{self::NODE_PRODUCT_DESCRIPTION};
-                $short_description      = (string)$product->{self::NODE_PRODUCT_SHORT_DESCRIPTION};
-                $sku                    = (string)$product->{self::NODE_PRODUCT_SKU};
+                $sku                    = trim((string)$product->{self::NODE_PRODUCT_SKU});
+                $sku1C                    = trim((string)$product->{self::NODE_PRODUCT_SKU_1C});
                 $name                   = (string)$product->{self::NODE_PRODUCT_NAME};
-                $manufacturerSku        = (string)$product->{self::NODE_PRODUCT_MANUFACTURER_SKU};
-                $manufacturer           = (string)$product->{self::NODE_PRODUCT_MANUFACTURER};
-                $newItemFrom            = (string)$product->{self::NODE_NEW_FROM};
-                $newItemTo              = (string)$product->{self::NODE_NEW_TO};
-                $warrantyTerm           = (string)$product->{self::NODE_PRODUCT_WARRANTY};
+                $brand                  = (string)$product->{self::NODE_PRODUCT_BRAND};
+                $city                   = (string)$product->{self::NODE_PRODUCT_CITY};
+                $magazin                = (string)$product->{self::NODE_PRODUCT_MAGAZINE};
 
-                if (!isset($this->_categories[(string)$product->{self::NODE_PRODUCT_CATEGORY}])) {
+                /*if (!isset($this->_categories[(string)$product->{self::NODE_PRODUCT_CATEGORY}])) {
                     continue;
+                }*/
+
+                $_groupedItem = $product->{self::NODE_PRODUCT_GROUPED};
+
+
+                $attributeSet   = (string)$_groupedItem->{self::NODE_ATTRIBUTE_SET};
+                $description     = (string)$_groupedItem->{self::NODE_PRODUCT_DESCRIPTION};
+                $_groupedItemSku = (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU};
+
+                if (!isset($this->_groupedItems[$_groupedItemSku])) {
+                    $groupedItem = array(
+                        'sku'               => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU},
+                        'internal_sku'      => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU_1C},
+                        'name'              => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_NAME},
+                        'product_name'      => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_NAME},
+                        'type'              => 'grouped',
+                        'product_type_id'   => 'grouped',
+                        'description'       => $description ? $description : '&nbsp;',
+                        'short_description' => '&nbsp;',
+                        'status'            => '1',
+                        'visibility'        => '4',
+                        'tax_class_id'      => '0',
+                        'price'             => '0.00',
+                        'attribute_set'     => $attributeSet,
+                        'categories'        => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_CATEGORY_PATH},
+                        'brand'             => $brand
+                    );
+                    $this->_groupedItems[$_groupedItemSku] = $groupedItem;
                 }
-                $attributeSet           = $this->_categories[(string)$product->{self::NODE_PRODUCT_CATEGORY}];
-                $attributeSetList[$attributeSet['id']]     = $attributeSet['name'];
-                $this->_attributeSets[$attributeSet['name']] = array();
-                
+
+                $this->_groupedItemsGroupItemsList[$_groupedItemSku][$sku] = $sku;
+
+                $attributeSetList[$attributeSet]     = $attributeSet;
+                $this->_attributeSets[$attributeSet['name']] = $attributeSet;
+
+
                 $item = array(
-                    'sku'               => (string)$product->{self::NODE_PRODUCT_SKU},
+                    'sku'               => $sku,
+                    'commerceml_id'     => $sku1C,
                     'name'              => $name,
                     'product_name'      => $name,
                     'url'               => $this->getUrlFrontName($name),
                     'type'              => 'simple',
                     'product_type_id'   => 'simple',
                     'description'       => $description ? $description : '&nbsp;',
-                    'short_description' => $short_description ? $short_description : '&nbsp;',
+                    'short_description' => '&nbsp;',
                     'weight'            => '0',
                     'status'            => '1',
                     'visibility'        => '4',
@@ -258,26 +318,15 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                     'qty'               => '0',
                     'min_qty'           => '1',
                     'attribute_set'     => $attributeSet['name'],
-                    'categories'        => $attributeSet['path']
+                    'categories'        => $attributeSet['path'],
+                    'brand'             => $brand,
+                    'city'              => $city,
+                    'magazin'           => $magazin
                 );
 
-                if ($manufacturerSku) {
-                    $item['manufacturer_sku'] = $manufacturerSku;
-                }
-                if ($manufacturer) {
-                    $item['manufacturer'] = $manufacturer;
-                }
-
-                if ($warrantyTerm) {
-                    $item['warranty'] = $warrantyTerm;
-                }
 
                 if ((string)$product->{self::NODE_PRODUCT_PRICE}) {
                     $item['price'] = (string)$product->{self::NODE_PRODUCT_PRICE};
-                }
-
-                if ((string)$product->{self::NODE_PRODUCT_SPECIAL_PRICE}) {
-                    $item['special_price'] = (string)$product->{self::NODE_PRODUCT_SPECIAL_PRICE};
                 }
 
                 if ((int)$product->{self::NODE_PRODUCT_QTY}) {
@@ -285,21 +334,10 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 } else {
                     $item['qty'] = 0;
                 }
-                
-                if ((int)$product->{self::NODE_PRODUCT_IN_SALE}) {
-                    $item['is_in_stock'] = (int)$product->{self::NODE_PRODUCT_IN_SALE};
-                }
-
-                if ($newItemFrom) {
-                    $item['news_from_date'] = $newItemFrom;
-                }
-                if ($newItemTo) {
-                    $item['news_to_date'] = $newItemTo;
-                }
 
 
                 // IMAGES
-                $image = null;
+/*                $image = null;
                 if (($images = $product->xpath(self::NODE_PRODUCT_IMAGES)) && count($images)) {
                     $image = (string)$images[0] ? '/' . (string)$images[0] : '';
                 }
@@ -310,26 +348,9 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                     $item['small_image']    = $image;
                     $item['thumbnail']      = $image;
                     $item['media_gallery']  = $helper->prepareProductMediaGallery($images);
-                }
+                }*/
 
                 // add attribute values
-                $options = $product->xpath(self::NODE_PRODUCT_ATTRIBUTES_LIST_SELECT);
-                if ((!empty($options)) && count($options)) {
-                    foreach ($options as $option) {
-                        $productAttrId  = (string)$option->{self::NODE_ATTRIBUTE_ID};
-                        $value = (string)$option->{self::NODE_ATTRIBUTE_VALUE};
-                        if (in_array($productAttrId, $this->_attributeBlackList)) {
-                            continue;
-                        }
-                        if (!empty($value)) {
-                            $this->_attributes['select'][$productAttrId]['attributeSets'][$attributeSet['name']] = $attributeSet['name'];
-                            $option['value'] = $value;
-                            //$this->_attributes['select'][$productAttrId]['values'][$value] = $value;
-                            $item[$this->getAttributeCodeFromName($productAttrId)] = $value;
-                            //$this->_attributeSets[$attributeSet['name']][$productAttrId] = $productAttrId;
-                        }
-                    }
-                }
 
                 $options = $product->xpath(self::NODE_PRODUCT_ATTRIBUTES_LIST_TEXT);
                 if ((!empty($options)) && count($options)) {
@@ -369,7 +390,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
             $this->getLogHelper()->logMessage('== START PRODUCTS IMPORT PROCESS ==');
 
             //process attributes
-            $this->processAttributes();
+            //$this->processAttributes();
             
             // update layered navigation
             if (Mage::helper('brander_layerednavigation')) {
@@ -378,14 +399,14 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
 
             if ($newProductsCount = count($this->_products[self::TYPE_MESSAGE_NEW])) {
                 $this->getLogHelper()->logMessage('start create new products');
-                $this->getMagmi()->importProducts($this->_products[self::TYPE_MESSAGE_NEW]);
+                //$this->getMagmi()->importProducts($this->_products[self::TYPE_MESSAGE_NEW]);
                 $this->_statuses[self::TYPE_MESSAGE_NEW] = $newProductsCount;
                 $this->getLogHelper()->logMessage('create new ' . $newProductsCount . ' products complete');
             }
 
             if ($updateProductsCount = count($this->_products[self::TYPE_MESSAGE_UPDATE])) {
                 $this->getLogHelper()->logMessage('start update products');
-                $this->getMagmi()->importProducts($this->_products[self::TYPE_MESSAGE_UPDATE]);
+                //$this->getMagmi()->importProducts($this->_products[self::TYPE_MESSAGE_UPDATE]);
                 $this->_statuses[self::TYPE_MESSAGE_UPDATE] = $updateProductsCount;
                 $this->getLogHelper()->logMessage('update ' . $updateProductsCount . ' products complete');
             }
@@ -604,11 +625,11 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
     public function getAllSkus()
     {
         $resource = Mage::getSingleton('core/resource');
-        $writeConnection = $resource->getConnection('core_write');
+        $readConnection = $resource->getConnection('core_read');
         $table = $resource->getTableName('catalog_product_entity');
 
         $query = "SELECT `sku` FROM {$table}";
-        $this->_allSku = array_flip($writeConnection->fetchCol($query));
+        $this->_allSku = array_flip($readConnection->fetchCol($query));
 
         return true;
     }
