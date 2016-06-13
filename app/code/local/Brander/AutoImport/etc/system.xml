@@ -1,0 +1,299 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander AutoImport extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        AutoImport
+ * @copyright      Copyright (c) 2014-2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         AlexVegas (Alexandr Belyaev) <alexandr.belyaev.only@gmail.com>
+ */
+-->
+<config>
+    <sections>
+        <brander_auto_import>
+            <label>Auto Import</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>45</sort_order>
+            <show_in_default>1</show_in_default>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+
+                        <autoimport_enable translate="label">
+                            <label>Enable AutoImport module</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </autoimport_enable>
+
+                        <autoimport_getfile_load translate="label">
+                            <label>Enable load file from external source</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_getfile_load>
+
+                        <autoimport_enable_ip_authorize translate="label">
+                            <label>Enable authorize by IP</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_enable_ip_authorize>
+                        <autoimport_ip_authorize translate="label">
+                            <label>Permitted IP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>User form listed IP can start import process. for example: 127.0.0.1 or 127.0.0.1;127.0.0.2 - if need add list of IP</comment>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_ip_authorize>1</autoimport_enable_ip_authorize>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_ip_authorize>
+
+                        <autoimport_secret_phrase translate="label">
+                            <label>Secret phrase</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_secret_phrase>
+
+                        <autoimport_enable_auto_getfile translate="label">
+                            <label>Enable get file via FTP connection</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_enable_auto_getfile>
+                        <autoimport_delete_ftpfile translate="label">
+                            <label>Delete FTP import file after load</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_delete_ftpfile>
+                        <autoimport_getfile_host translate="label">
+                            <label>1C server hostname (or IP)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>for example: brander.com or 127.0.0.1</comment>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_host>
+                        <autoimport_getfile_port translate="label">
+                            <label>1C server host port</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>23</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>for example: 21, if blank use port: 21</comment>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_port>
+                        <autoimport_getfile_username translate="label">
+                            <label>1C server user name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>24</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_username>
+                        <autoimport_getfile_userpass translate="label">
+                            <label>1C server user pass</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_userpass>
+                        <autoimport_getfile_path translate="label">
+                            <label>File Path on 1C server</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>26</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[for example: <b>path/to/file/</b>   if blank path is "/" - home directory]]></comment>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_path>
+                        <autoimport_getfile_filenames translate="label">
+                            <label>Files Name on 1C server</label>
+                            <comment><![CDATA[separate with comma]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>27</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_filenames>
+
+                        <autoimport_enable_logging translate="label">
+                            <label>Enable logging</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[files saves at var/log/import with filename "import-date/time.log"]]></comment>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_enable_logging>
+
+                        <autoimport_enable_autostart_import translate="label">
+                            <label>Enable import process</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_enable_autostart_import>
+
+                        <autoimport_enable_delete_importfile translate="label">
+                            <label>Delete import file after process</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_autostart_import>1</autoimport_enable_autostart_import>
+                            </depends>
+                        </autoimport_enable_delete_importfile>
+
+                        <autoimport_enable_autostart_reindex translate="label">
+                            <label>Enable reindex process</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable_autostart_import>1</autoimport_enable_autostart_import>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_enable_autostart_reindex>
+
+                        <autoimport_enable_autodump_db translate="label">
+                            <label>Enable auto create dump database before import</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable_autostart_import>1</autoimport_enable_autostart_import>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_enable_autodump_db>
+                    </fields>
+                </general>
+
+                <stages translate="label">
+                    <label>Items Remove and Items Stages Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <enable_stages translate="label">
+                            <label>Enable Stages Process</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                        </enable_stages>
+                        <stage1 translate="label">
+                            <label>Stage 1 Items</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enable_stages>1</enable_stages>
+                            </depends>
+                        </stage1>
+                        <stage2 translate="label">
+                            <label>Stage 2 Items</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enable_stages>1</enable_stages>
+                            </depends>
+                        </stage2>
+                        <stage3 translate="label">
+                            <label>Stage 3 Items</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enable_stages>1</enable_stages>
+                            </depends>
+                        </stage3>
+                        <enable_removal translate="label">
+                            <label>Enable Removal Process with 3rd Stage Items</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>50</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enable_stages>1</enable_stages>
+                            </depends>
+                        </enable_removal>
+                    </fields>
+                </stages>
+            </groups>
+        </brander_auto_import>
+    </sections>
+</config>

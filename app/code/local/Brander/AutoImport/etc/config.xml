@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander AutoImport extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        AutoImport
+ * @copyright      Copyright (c) 2014-2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         AlexVegas (Alexandr Belyaev) <alexandr.belyaev.only@gmail.com>
+ */
+-->
+<config>
+    <modules>
+        <Brander_AutoImport>
+            <version>3.0.0</version>
+        </Brander_AutoImport>
+    </modules>
+
+    <global>
+        <blocks>
+            <autoimport>
+                <class>Brander_AutoImport_Block</class>
+            </autoimport>
+        </blocks>
+        <helpers>
+            <autoimport>
+                <class>Brander_AutoImport_Helper</class>
+            </autoimport>
+        </helpers>
+        <models>
+            <autoimport>
+                <class>Brander_AutoImport_Model</class>
+                <resourceModel>autoimport_resource</resourceModel>
+            </autoimport>
+            <autoimport_resource>
+                <class>Brander_AutoImport_Model_Resource</class>
+                <entities>
+                    <importgrid>
+                        <table>autoimport_importgrid</table>
+                    </importgrid>
+                </entities>
+            </autoimport_resource>
+        </models>
+        <resources>
+            <brander_autoimport_setup>
+                <setup>
+                    <module>Brander_AutoImport</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </brander_autoimport_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <autoimport before="Mage_Adminhtml">Brander_AutoImport_Adminhtml</autoimport>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+        <routers>
+            <autoimport>
+                <use>standard</use>
+                <args>
+                    <module>Brander_AutoImport</module>
+                    <frontName>autoimport</frontName>
+                </args>
+            </autoimport>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Brander_AutoImport>
+                    <files>
+                        <default>Brander_AutoImport.csv</default>
+                    </files>
+                </Brander_AutoImport>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <auto_import>
+                    <file>brander_autoimport.xml</file>
+                </auto_import>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <crontab>
+        <jobs>
+            <autoimport_start>
+                <schedule>
+                    <cron_expr>*/10 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>autoimport/import::cronImportStart</model>
+                </run>
+            </autoimport_start>
+        </jobs>
+    </crontab>
+
+    <default>
+        <brander_auto_import>
+            <general>
+                <autoimport_enable>1</autoimport_enable>
+                <autoimport_file_folder>var/import</autoimport_file_folder>
+                <autoimport_getfile_load>0</autoimport_getfile_load>
+                <autoimport_enable_logging>1</autoimport_enable_logging>
+                <autoimport_enable_autostart_import>1</autoimport_enable_autostart_import>
+                <autoimport_enable_delete_importfile>1</autoimport_enable_delete_importfile>
+                <autoimport_enable_autostart_reindex>1</autoimport_enable_autostart_reindex>
+                <autoimport_enable_autodump_db>1</autoimport_enable_autodump_db>
+            </general>
+            <stages>
+                <enable_removal>0</enable_removal>
+                <stage1>60</stage1>
+                <stage2>120</stage2>
+                <stage3>150</stage3>
+            </stages>
+        </brander_auto_import>
+    </default>
+
+</config>
