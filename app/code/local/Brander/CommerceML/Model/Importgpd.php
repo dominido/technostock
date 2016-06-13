@@ -86,9 +86,9 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
     
     const NODE_PRODUCT_QTY          = 'Amount';
     const NODE_PRODUCT_PRICE        = 'Price';
-    const NODE_PRODUCT_CITY         = 'City/Name';
-    const NODE_PRODUCT_MAGAZINE     = 'Magazine/Name';
-    const NODE_PRODUCT_BRAND        = 'Brand/Name';
+    const NODE_PRODUCT_CITY         = 'City';
+    const NODE_PRODUCT_MAGAZINE     = 'Magazine';
+    const NODE_PRODUCT_BRAND        = 'Brand';
     const NODE_PRODUCT_SKU          = 'id';
     const NODE_PRODUCT_SKU_1C       = 'Cod';
     const NODE_PRODUCT_NAME         = 'Name';
@@ -126,8 +126,9 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
 
     // attributes node
     const NODE_PRODUCT_ATTRIBUTES_LIST_TEXT = 'Characteristic';
-    const NODE_ATTRIBUTE_ID      = 'Ид';
-    const NODE_ATTRIBUTE_VALUE   = 'Значение';
+    const NODE_ATTRIBUTE_ID      = 'id';
+    const NODE_ATTRIBUTE_NAME    = 'Name';
+    const NODE_ATTRIBUTE_VALUE   = 'Value';
     
     protected function getHelper()
     {
@@ -255,11 +256,11 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 }
 
                 $sku                    = trim((string)$product->{self::NODE_PRODUCT_SKU});
-                $sku1C                    = trim((string)$product->{self::NODE_PRODUCT_SKU_1C});
+                $sku1C                  = trim((string)$product->{self::NODE_PRODUCT_SKU_1C});
                 $name                   = (string)$product->{self::NODE_PRODUCT_NAME};
-                $brand                  = (string)$product->{self::NODE_PRODUCT_BRAND};
-                $city                   = (string)$product->{self::NODE_PRODUCT_CITY};
-                $magazin                = (string)$product->{self::NODE_PRODUCT_MAGAZINE};
+                $brand                  = (string)$product->{self::NODE_PRODUCT_BRAND}->{'Name'};
+                $city                   = (string)$product->{self::NODE_PRODUCT_CITY}->{'Name'};
+                $magazin                = (string)$product->{self::NODE_PRODUCT_MAGAZINE}->{'Name'};
 
                 /*if (!isset($this->_categories[(string)$product->{self::NODE_PRODUCT_CATEGORY}])) {
                     continue;
@@ -282,6 +283,10 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                         'product_type_id'   => 'grouped',
                         'description'       => $description ? $description : '&nbsp;',
                         'short_description' => '&nbsp;',
+                        'weight'            => '0',
+                        'height'            => '0',
+                        'depth'             => '0',
+                        'width'             => '0',
                         'status'            => '1',
                         'visibility'        => '4',
                         'tax_class_id'      => '0',
@@ -310,15 +315,17 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                     'description'       => $description ? $description : '&nbsp;',
                     'short_description' => '&nbsp;',
                     'weight'            => '0',
+                    'height'            => '0',
+                    'depth'             => '0',
+                    'width'             => '0',
                     'status'            => '1',
-                    'visibility'        => '4',
+                    'visibility'        => '1',
                     'tax_class_id'      => '0',
                     'price'             => '0.00',
                     'special_price'     => null,
                     'qty'               => '0',
                     'min_qty'           => '1',
-                    'attribute_set'     => $attributeSet['name'],
-                    'categories'        => $attributeSet['path'],
+                    'attribute_set'     => $attributeSet,
                     'brand'             => $brand,
                     'city'              => $city,
                     'magazin'           => $magazin
@@ -352,18 +359,19 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
 
                 // add attribute values
 
-                $options = $product->xpath(self::NODE_PRODUCT_ATTRIBUTES_LIST_TEXT);
+                $options = $product->{self::NODE_PRODUCT_ATTRIBUTES_LIST_TEXT};
                 if ((!empty($options)) && count($options)) {
                     foreach ($options as $option) {
                         $productAttrId  = (string)$option->{self::NODE_ATTRIBUTE_ID};
-                        $value = (string)$option->{self::NODE_ATTRIBUTE_VALUE};
+                        $attributeName  = (string)$option->{self::NODE_ATTRIBUTE_NAME};
+                        $attributeValue = (string)$option->{self::NODE_ATTRIBUTE_VALUE};
                         if (in_array($productAttrId, $this->_attributeBlackList)) {
                             continue;
                         }
-                        if (!empty($value)) {
-                            $this->_attributes['text'][$productAttrId]['attributeSets'][$attributeSet['name']] = $attributeSet['name'];
+                        if (!empty($attributeValue) && $productAttrId) {
+                            $this->_attributes['text'][$attributeName]['attributeSets'][$attributeSet] = $attributeSet;
                             //$this->_attributes['text'][$productAttrId]['values'] = array();
-                            $item[$this->getAttributeCodeFromName($productAttrId)] = $value;
+                            $item[$this->getAttributeCodeFromName($attributeName)] = $attributeValue;
                             //$this->_attributeSets[$attributeSet['name']][$productAttrId] = $productAttrId;
                         }
                     }
@@ -390,7 +398,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
             $this->getLogHelper()->logMessage('== START PRODUCTS IMPORT PROCESS ==');
 
             //process attributes
-            //$this->processAttributes();
+            $this->processAttributes();
             
             // update layered navigation
             if (Mage::helper('brander_layerednavigation')) {
@@ -410,6 +418,21 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 $this->_statuses[self::TYPE_MESSAGE_UPDATE] = $updateProductsCount;
                 $this->getLogHelper()->logMessage('update ' . $updateProductsCount . ' products complete');
             }
+            
+            $groupedItems = array();
+            foreach ($this->_groupedItems as $groupedItem) {
+                $simplesList = $this->_groupedItemsGroupItemsList[$groupedItem['sku']];
+                $groupedItem['qty'] = count($simplesList);
+                $groupedItem['grouped_skus'] = implode(',', $simplesList);
+                $groupedItems[] = $groupedItem;
+            }
+
+            if ($updateProductsCount = count($groupedItems)) {
+                $this->getLogHelper()->logMessage('update grouped items');
+                $this->getMagmi()->importProducts($groupedItems);
+                $this->getLogHelper()->logMessage('update ' . $updateProductsCount . ' grouped products complete');
+            }
+            
         }
         return true;
     }
@@ -473,37 +496,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         $mapper     = $this->getAttributeMapper();
 
         // start add select attributes
-        if (count($this->_attributes['select'])) {
-            //foreach attribute set
-            foreach ($this->_attributes['select'] as $_attributeName => $_attributeInfo) {
-                $_attribute = array();
-                $attributeModel = Mage::getModel('brandercml/import_product_attribute');
-                $_attributeCode = $this->getAttributeCodeFromName($_attributeName);
-                $_attribute['label']        = $_attributeName;
-                $_attribute['code']         = $_attributeCode;
-                $_attribute['input']        = 'select';
-                $_attribute['required']     = 0;
-                $_attribute['filterable']   = true;
-                $_attribute['global']       = Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE;
-                $_attribute['visible']      = true;
-                $_attribute['visible_on_front'] = true;
-                $_attribute['groups']       = $_attributeInfo['attributeSets'];
-                //$_attribute['option']       = $_attributeInfo['values'];
-                
-                
-                $params = new Varien_Object($_attribute);
-                $attributeModel->push($_attributeCode, $params);
-                $attributeModel->createAttribute($_attributeCode, $params);
-                
-                /*foreach ($_attributeInfo['values'] as $option) {
-                    $id = Mage::getModel('eav/entity_attribute')->load($params->getCode(), 'attribute_code')->getId();
-                    $setup = Mage::getModel('eav/entity_setup', 'core_setup');
-                    $option['attribute_id'] = $id;
-                    $setup->addAttributeOption($option);
-                }*/
-                
-            }
-        }
+        
 
         if (count($this->_attributes['text'])) {
             //foreach attribute set
