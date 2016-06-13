@@ -131,6 +131,25 @@ class Brander_AutoImport_Model_Import extends Varien_Object
 
     public function importStart()
     {
+        /* TEMPORARY HARDCODED ALLOW TO START from CRON START MODE*/
+        $autoTask = Mage::getModel('autoimport/importgrid');
+        $config = $this->getHelper()->getImportConfig();
+
+        $data['planned_at'] = $this->getHelper()->convertTimeNowToGmt(date("Y-m-d H:i:s", self::$_importTime));
+        $data['import_status'] = self::TASK_STATUS_SCHEDULED;
+        if ($config->getAutoimportGetfileLoad()) {
+            $data['file_type'] = Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_AUTO_LOAD;
+        } else {
+            $data['file_type'] = Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_LOADED;
+        }
+        $data['import_type'] = Brander_AutoImport_Model_Source_Importtype::IMPORT_TYPE_CRON_MODE;
+
+        $autoTask->addData($data);
+        $autoTask->save();
+        self::$_currentTask = $autoTask;
+
+        /* TEMPORARY HARDCODED ALLOW TO START from CRON START MODE*/
+        
         $this->getLogHelper()->logMessage('process starts at: ' . $this->getImportStartTime());
 
         //$this->_config = $this->getHelper()->getImportConfig()->getData();
@@ -336,10 +355,10 @@ class Brander_AutoImport_Model_Import extends Varien_Object
 
         //CommerceML XML format
         $import = Mage::getModel('brandercml/import')
-            ->setSourceFile('komtek-import.xml', 'catalog')
-            ->setSourceFile('komtek-offers.xml', 'offers')
-            ->setBasePriceName('Цена нал.')
-            ->setSpecialPriceName('Нал. со скидкой')
+            ->setSourceFile('tehnostok-import.xml', 'catalog')
+//            ->setSourceFile('komtek-offers.xml', 'offers')
+            ->setBasePriceName('Price')
+//            ->setSpecialPriceName('Нал. со скидкой')
             ->setConsoleLog(true)
             ->setLogFile($this->getLogHelper()->getLogFilename())
             ->clearCatalog(false)
