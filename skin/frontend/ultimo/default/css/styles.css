@@ -1638,7 +1638,7 @@ ul.disc ul li {
 	display: block;
 	height: 30px;
 	line-height: 30px;
-	padding: 0 35px 0 0;
+	padding: 0 35px 0 5px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
@@ -1647,7 +1647,7 @@ ul.disc ul li {
 .form-search .button {
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: 1px;
 	margin: 0;
 	padding: 0;
 	background-color: transparent !important;
