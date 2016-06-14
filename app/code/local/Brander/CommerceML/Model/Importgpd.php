@@ -95,35 +95,10 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
 
     const NODE_ATTRIBUTE_SET = 'TypeNomenklatura';
     const NODE_PRODUCT_DESCRIPTION = 'Description';
-
-
-/*    const NODE_CATALOG_PRODUCTS  = 'Товары/Товар';
     
-    const NODE_PRODUCT_CATEGORY = 'ГруппаИд';
-
-
-    const NODE_NEW_FROM         = 'НовинкаС';
-    const NODE_NEW_TO           = 'НовинкаПо';
-    const NODE_PRODUCT_IN_SALE              = 'ВПродаже';
-    const NODE_PRODUCT_SPECIAL_PRICE        = 'ЦенаЗаЕдиницуАкция';
-    const NODE_PRODUCT_CURRENCY             = 'Валюта';
-    const NODE_PRODUCT_WARRANTY             = 'Гарантия';
-    const NODE_PRODUCT_DESCRIPTION          = 'Описание';
-    const NODE_PRODUCT_SHORT_DESCRIPTION    = 'КраткоеОписание';
-    const NODE_PRODUCT_MANUFACTURER         = 'Производитель';
-    const NODE_PRODUCT_MANUFACTURER_SKU     = 'Артикул';
-    const NODE_PRODUCT_ATTRIBUTES_LIST_SELECT       = 'ЗначенияАтрибутов/ЗначениеАтрибутов';
-    const NODE_PRODUCT_ATTRIBUTES_LIST_TEXT         = 'ЗначенияСвойств/ЗначениеСвойства';*/
-
     // product images node
     const NODE_PRODUCT_IMAGES   = 'Картинки/Картинка';
-
-/*    // category node
-    const NODE_CATALOG_CATEGORIES       = 'Группы/Группа';
-    const NODE_CATALOG_CATEGORY_ID      = 'Ид';
-    const NODE_CATALOG_CATEGORY_NAME    = 'Наименование';
-    const HOME_CATALOG_CATEGORY         = 'Каталог';*/
-
+    
     // attributes node
     const NODE_PRODUCT_ATTRIBUTES_LIST_TEXT = 'Characteristic';
     const NODE_ATTRIBUTE_ID      = 'id';
@@ -149,20 +124,9 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
 
                 //$this->getCategoryList();
                 $this->getAllSkus();
-                if (!Mage::getStoreConfig(self::IMPORT_WITHOUT_ATTRIBUTES)) {
-                    //$this->processAttributes();
-                }
                 $this->prepareData();
-                //$this->processAttributesAndSets();
-                //$this->processSimpleProducts();
-                //$this->processGroupedProducts();
-                //$this->processOffers();
             }
         }
-
-
-        // run stage three
-        //$this->stageThereeProcess();
 
         Mage::register('item_statuses', json_encode($this->_statuses));
         return Brander_AutoImport_Model_Import::TASK_STATUS_IMPORT__PRODUCTS_COMPLETE;
@@ -196,47 +160,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         }
         return $this->_magmi;
     }
-
-    public function getCategoryList()
-    {
-        if (!$xml = $this->getXml()) {
-            return false;
-        }
-        $mainCategoriesNodes = $xml->getXpath(self::NODE_BASE_NODE . DS . self::NODE_CATALOG_CATEGORIES);
-        foreach ($mainCategoriesNodes as $_categoryNode) {
-            $this->getCategory($_categoryNode);
-        }
-
-        return $this->_categories;
-    }
-
-    public function getCategory($categoryNode, $parentId = null)
-    {
-        $id = (string)$categoryNode->{self::NODE_CATALOG_CATEGORY_ID};
-        
-        if (!array_key_exists($id, $this->_categories) && $id) {
-            
-            $category = array();
-            $category['id']         = $id;
-            $category['parent_id']  = $parentId;
-            $category['name']       = trim((string)$categoryNode->{self::NODE_CATALOG_CATEGORY_NAME});
-            
-            if ($parentId) {
-                $category['path'] = trim($this->_categories[$parentId]['path'] . DS . $category['name']);
-            } else {
-                $category['path'] =  trim(self::HOME_CATALOG_CATEGORY . DS . $category['name']);
-            }
-
-            $this->_categories[$id] = $category;
-            
-            if ($childCategories = $categoryNode->xpath(self::NODE_CATALOG_CATEGORIES)) {
-                foreach ($childCategories as $_childCategory) {
-                    $this->getCategory($_childCategory, $id);
-                }    
-            }
-        }
-    }
-
+    
     public function prepareData()
     {
         if (!$xml = $this->getXml()) {
@@ -436,32 +360,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         }
         return true;
     }
-
-    /*protected function stageThereeProcess()
-    {
-        $oldProducts = array();
-        if (Mage::helper('autoimport/stages')->getEnabled()) {
-            $collection = Mage::getModel('autoimport/source_stages_stageThree')->getCollection();
-            if ($collection->getSize()) {
-                foreach ($collection as $product) {
-                    $oldProducts[] = array(
-                            'sku' => $product->getSku(),
-                            'name' => $product->getName(),
-                        );
-                    }
-                Mage::helper('autoimport/log')->logMessage('STAGE 3-RD START: prepare to remove products');
-                $this->getMagmi()->deleteProducts($oldProducts);
-                Mage::helper('autoimport/report')->saveProductsReport($oldProducts, self::TYPE_MESSAGE_REMOVE);
-                $this->_statuses[self::TYPE_MESSAGE_REMOVE] = count($oldProducts);
-                Mage::helper('autoimport/log')->logMessage('STAGE 3-RD COMPLETE: removed ' . count($oldProducts) . ' product(s)');
-
-            } else {
-                Mage::helper('autoimport/log')->logMessage('NO 3-RD STAGE PRODUCTS: skip stage');
-            }
-        }
-
-    }*/
-
+    
     protected function _preparePrice($price)
     {
         return str_replace(',', '.', $price);
@@ -580,7 +479,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         return $this;
     }
 
-    function createAttributeSet($setName, $copyGroupsFromID = -1)
+    function createAttributeSet($setName)
     {
         $entityTypeId = Mage::getModel('eav/entity')
             ->setType('catalog_product')

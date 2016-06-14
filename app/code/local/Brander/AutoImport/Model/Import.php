@@ -14,14 +14,15 @@
  * @package        AutoImport
  * @copyright      Copyright (c) 2014-2016
  * @license        http://opensource.org/licenses/mit-license.php MIT License
- * @author         AlexVegas (Alexandr Belyaev) <alexandr.belyaev.only@gmail.com>
+ * @author         AlexVegas (Oleksandr Beliaiev) <alexvegas.developer@gmail.com>
  */
 
-class Brander_AutoImport_Model_Import extends Varien_Object
+class Brander_AutoImport_Model_Import extends Mage_Core_Model_Abstract
 {
     static    $_currentTask     = null;
     static    $_importTime      = null;
     static    $_importTimeGmt   = null;
+    static    $_config          = null;
 
     const     TASK_STATUS_SCHEDULED         = 'scheduled';
     const     TASK_STATUS_STARTED           = 'started';
@@ -44,35 +45,44 @@ class Brander_AutoImport_Model_Import extends Varien_Object
         self::TASK_STATUS_FAILED,
         self::TASK_STATUS_DUMP_DB_FAIL,
         self::TASK_STATUS_FILE_CHECK_FAIL,
-        self::TASK_STATUS_FILE_DOWNLOAD_SKIP
+        self::TASK_STATUS_FILE_DOWNLOAD_SKIP,
+        self::TASK_IMPORT_SKIPPED
     );
 
     protected $_importFiles     = array();
     protected $_dumpDbDir       = 'var/dumpdb';
     protected $_filetype        = null;
 
-
-
+    
     public function cronImportStart()
     {
         // check for non complete tasks
         // check for scheduled tasks
+        Mage::dispatchEvent('brander_avtoimport_cron_start', array('data' => $this));
 
         self::$_importTime = Mage::getModel('core/date')->timestamp(time());
         self::$_importTimeGmt = $this->getHelper()->convertTimeNowToGmt(date("Y-m-d H:i:s", self::$_importTime));
+        self::$_config = $this->getHelper()->getImportConfig();
 
-        $config = $this->getHelper()->getImportConfig();
-
-        if ($config->getAutoimportEnable() == 0) {
+        if (self::$_config->getAutoimportEnable() == 0) {
             //module disabled, process skipped
             return true;
         }
 
-        if (!$this->isAllowToStart()) {return false;}
-        if (!$lastTask = self::$_currentTask) {return false;}
+        if (!$allowToStart = $this->isAllowToStart()) {$allowToStart = false;}
+        if (!$lastTask = self::$_currentTask) {$lastTask = false;}
 
-        $this->importStart();
-        $this->getLogHelper()->logMessage('STATUS MESSAGE: Import process finished');
+        if ($allowToStart !== false && $lastTask !== false) {
+
+            Mage::dispatchEvent('brander_avtoimport_import_before', array('data' => $this));
+                $this->importStart();
+            Mage::dispatchEvent('brander_avtoimport_import_after', array('data' => $this));
+
+            $this->getLogHelper()->logMessage('STATUS MESSAGE: Import process finished');
+        } else {
+            $this->getLogHelper()->logMessage('STATUS MESSAGE: Import skipped');
+        }
+        
         return true;
     }
 
@@ -83,7 +93,6 @@ class Brander_AutoImport_Model_Import extends Varien_Object
         $finishedTasks = $this->getFinishedLasHourTasks();
 
         if ($startedTask->getSize() || $finishedTasks->getSize()) {
-            // TODO :: good check
             $this->getLogHelper()->logMessage('WARNING MESSAGE: Not started. Another task already running this hour');
             return false;
         }
@@ -96,25 +105,24 @@ class Brander_AutoImport_Model_Import extends Varien_Object
                     return true;
                 }
             }
-            $this->getLogHelper()->logMessage('ABORT: you has other tasks scheduled this on this hour');
+            $this->getLogHelper()->logMessage('ABORT: you has other tasks scheduled this this hour');
             return false;
         }
 
         // add new task for avtoimport process
         $autoTask = Mage::getModel('autoimport/importgrid');
-        $config = $this->getHelper()->getImportConfig();
 
         $data['planned_at'] = $this->getHelper()->convertTimeNowToGmt(date("Y-m-d H:i:s", self::$_importTime));
         $data['import_status'] = self::TASK_STATUS_SCHEDULED;
-        if ($config->getAutoimportGetfileLoad()) {
+
+        if (self::$_config->getAutoimportGetfileLoad()) {
             $data['file_type'] = Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_AUTO_LOAD;
         } else {
             $data['file_type'] = Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_LOADED;
         }
+        $this->_filetype = $data['file_type'];
         $data['import_type'] = Brander_AutoImport_Model_Source_Importtype::IMPORT_TYPE_CRON_MODE;
-
-
-
+        
         try {
             $autoTask->addData($data);
             $autoTask->save();
@@ -131,33 +139,11 @@ class Brander_AutoImport_Model_Import extends Varien_Object
     }
 
 
-    public function importStart()
+    protected function importStart()
     {
-        /* TEMPORARY HARDCODED ALLOW TO START from CRON START MODE*/
-        $autoTask = Mage::getModel('autoimport/importgrid');
-        $config = $this->getHelper()->getImportConfig();
-
-        $data['planned_at'] = $this->getHelper()->convertTimeNowToGmt(date("Y-m-d H:i:s", self::$_importTime));
-        $data['import_status'] = self::TASK_STATUS_SCHEDULED;
-        if ($config->getAutoimportGetfileLoad()) {
-            $data['file_type'] = Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_AUTO_LOAD;
-        } else {
-            $data['file_type'] = Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_LOADED;
-        }
-        $data['import_type'] = Brander_AutoImport_Model_Source_Importtype::IMPORT_TYPE_CRON_MODE;
-
-        $autoTask->addData($data);
-        $autoTask->save();
-        self::$_currentTask = $autoTask;
-
-        /* TEMPORARY HARDCODED ALLOW TO START from CRON START MODE*/
-        
         $this->getLogHelper()->logMessage('process starts at: ' . $this->getImportStartTime());
-
-        //$this->_config = $this->getHelper()->getImportConfig()->getData();
-        $config = $this->getHelper()->getImportConfig();
-
-        if (!$config->getAutoimportEnable()) {
+        
+        if (!self::$_config->getAutoimportEnable()) {
             $this->getLogHelper()->logMessage('Check configuration, auto import has disable status', 'error');
             //$this->stopProcess();
             return 'Autoimport disabled';
@@ -169,7 +155,7 @@ class Brander_AutoImport_Model_Import extends Varien_Object
         try {
 
             // do database backup
-            if ($config->getAutoimportEnableAutodumpDb()) {
+            if (self::$_config->getAutoimportEnableAutodumpDb()) {
                 $this->dumpDB();
             }
 
@@ -177,18 +163,19 @@ class Brander_AutoImport_Model_Import extends Varien_Object
 
             if ($this->getFile()) {
                 if ($this->checkFile()) {
-                    if ($config->getAutoimportEnableAutostartImport()) {
-                        $importResult = $this->importProcess();
+                    if (self::$_config->getAutoimportEnableAutostartImport()) {
+                        $importResult = $this->importProcessRun();
                         if ($importResult == false) {
                             $this->getLogHelper()->logMessage('import is not complete. Check import file');
                         }
                         else {
-                            if ($config->getAutoimportEnableDeleteImportfile()) {
+                            if (self::$_config->getAutoimportEnableDeleteImportfile()) {
                                 $this->deleteLocalImportFile();
                             }
                         }
-                        if ($config->getAutoimportEnableAutostartReindex()) {
+                        if (self::$_config->getAutoimportEnableAutostartReindex()) {
                             $this->startReindex();
+                            $this->updateCacheFiles();
                         }
                     }
                     else {
@@ -243,49 +230,63 @@ class Brander_AutoImport_Model_Import extends Varien_Object
 
     protected function getFile()
     {
-        $config = $this->getHelper()->getImportConfig();
-        $task = self::$_currentTask;
+        Mage::dispatchEvent('brander_avtoimport_download_files_before', array('data' => $this));
 
-        if ($task->getFileType() != Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_AUTO_LOAD) {
-            return false;
+        if ($this->_filetype == Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_LOADED) {
+            if ($localFileNames = self::$_config->getAutoimportGetfileFilenamesLocal()) {
+                $localFiles = explode(',', $localFileNames);
+                foreach ($localFiles as $_localFile) {
+                    $fileData = array();
+                    $fileData['file_name'] = $_localFile;
+                    $fileData['file_path'] = $this->getHelper()->getImportFolder().DS;
+                    $fileData['file_load_time'] = Mage::getSingleton('core/date')->gmtDate();
+                    $fileData['file_size'] = $this->getUploadHelper()->formatSizeUnits(filesize($this->getHelper()->getImportFolder().DS.$_localFile));
+                    $this->_importFiles[] = $fileData;
+                }
+
+                return true;
+            }
+            $this->getLogHelper()->logMessage('task has manual file upload configuration, FTP load file missed');
+            $this->updateImportGrid('missed FTP file upload (manual loaded)');
+            return true;
         }
 
-        if (!$config->getAutoimportGetfileLoad()) {
+        if ($this->_filetype == Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_MANUAL_LOAD) {
+            $manualFile = self::$_currentTask->getFileName(); // TODO :: check attribute name
+            $fileData['file_name'] = $manualFile;
+            $fileData['file_path'] = $this->getHelper()->getImportFolder().DS;
+            $fileData['file_load_time'] = Mage::getSingleton('core/date')->gmtDate();
+            $fileData['file_size'] = $this->getUploadHelper()->formatSizeUnits(filesize($this->getHelper()->getImportFolder().DS.$manualFile));
+            $this->_importFiles[] = $fileData;
+            return true;
+        }
+        
+        if (!self::$_config->getAutoimportGetfileLoad()) {
             $this->getLogHelper()->logMessage('using external source file disables. Check configuration');
             return false;
         }
-        if (!$config->getAutoimportEnableAutoGetfile()) {
+        if (!self::$_config->getAutoimportEnableAutoGetfile()) {
             $this->getLogHelper()->logMessage('get file via FTP connection disabled. Check configuration');
             return false;
         }
-        if (!$config->getAutoimportGetfileHost() ||
-            !$config->getAutoimportGetfileUsername() ||
-            !$config->getAutoimportGetfileUserpass()) {
+        if (!self::$_config->getAutoimportGetfileHost() ||
+            !self::$_config->getAutoimportGetfileUsername() ||
+            !self::$_config->getAutoimportGetfileUserpass()) {
             $this->getLogHelper()->logMessage('check 1C server connection configuration');
             return false;
         }
 
-        if ($this->_filetype == Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_LOADED) {
-            $this->getLogHelper()->logMessage('task has manual file upload configuration, FTP load file missed');
-            $this->updateImportGrid('missed FTP file upload (manual loaded)');
-            return false;
-        }
+        
 
-        if ($this->_filetype == Brander_AutoImport_Model_Source_Filetype::FILE_TYPE_MANUAL_LOAD) {
-            return false;
-        }
-
-        if (!$port = $config->getAutoimportGetfilePort()) {
+        if (!$port = self::$_config->getAutoimportGetfilePort()) {
             $port = 21;
         }
 
         if (!is_dir($this->getHelper()->getImportFolder())) {
             mkDir($this->getHelper()->getImportFolder());
         }
-        setlocale(LC_ALL, "ru_RU.UTF-8");
-
-
-        $getFileNames = explode(',', str_replace(' ', '', $config->getAutoimportGetfileFilenames()));
+        setlocale(LC_ALL, "ru_RU.UTF-8");  // ? 
+        $getFileNames = explode(',', str_replace(' ', '', self::$_config->getAutoimportGetfileFilenames()));
 
         foreach ($getFileNames as $getFileName) {
 
@@ -293,21 +294,27 @@ class Brander_AutoImport_Model_Import extends Varien_Object
             $this->updateImportGrid(self::TASK_STATUS_DOWNLOADING);
 
             $url = "ftp://" .
-                $config->getAutoimport_getfile_username() . ":" .
-                $config->getAutoimport_getfile_userpass() . "@" .
-                $config->getAutoimport_getfile_host() . ":" .
-                $config->getAutoimport_getfile_port() . "/" .
-                $config->getAutoimport_getfile_path() .
+                self::$_config->getAutoimport_getfile_username() . ":" .
+                self::$_config->getAutoimport_getfile_userpass() . "@" .
+                self::$_config->getAutoimport_getfile_host() . ":" .
+                self::$_config->getAutoimport_getfile_port() . "/" .
+                self::$_config->getAutoimport_getfile_path() .
                 $getFileName;
 
-            $host = "ftp://" . $config->getAutoimportGetfileHost();
+            $host = "ftp://" . self::$_config->getAutoimportGetfileHost();
 
-            $access = $config->getAutoimportGetfileUsername() . ":" . $config->getAutoimportGetfileUserpass();
-            $remoteFile = $config->getAutoimportGetfilePath() . $getFileName;
+            $access = self::$_config->getAutoimportGetfileUsername() . ":" . self::$_config->getAutoimportGetfileUserpass();
 
+            $remotePath = '/';
+            if (self::$_config->getAutoimportGetfilePath()) {
+                $remotePath = self::$_config->getAutoimportGetfilePath();
+            }
+            $remoteFile = $remotePath . $getFileName;
+            
             $curl = curl_init();
-
-            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_URL, $host . $remoteFile);
+            curl_setopt($curl, CURLOPT_PORT, $port);
+            curl_setopt($curl, CURLOPT_USERPWD, $access);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             $result = curl_exec($curl);
 
@@ -317,12 +324,13 @@ class Brander_AutoImport_Model_Import extends Varien_Object
                 return false;
             }
 
-            $file = fopen($this->getHelper()->getImportFolder() . DS . $getFileName, "w");
+            $fileNameWithPath = $this->getHelper()->getImportFolder() . DS . $getFileName;
+            $file = fopen($fileNameWithPath, "w");
             fwrite($file, $result);
             fclose($file);
             curl_close($curl);
 
-            if ($config->getAutoimportDeleteFtpfile()) {
+            if (self::$_config->getAutoimportDeleteFtpfile()) {
                 try {
                     $curl = curl_init();
                     curl_setopt($curl, CURLOPT_URL, $host);
@@ -335,78 +343,89 @@ class Brander_AutoImport_Model_Import extends Varien_Object
                     curl_close($curl);
                     $this->getLogHelper()->logMessage('1C import file deleted: ' . $getFileName);
                 } catch (Exception $e) {
+                    $this->updateImportGrid(self::TASK_STATUS_FAILED);
+                    $this->updateImportGrid('download import file ' . $getFileName . 'FAIL');
                     $this->getLogHelper()->logMessage($e->getMessage());
                 }
             }
             $fileData['file_name'] = $getFileName;
             $fileData['file_path'] = $remoteFile;
             $fileData['file_load_time'] = Mage::getSingleton('core/date')->gmtDate();
-            $fileData['file_size'] = '1.3Mb';
+            $fileData['file_size'] = $this->getUploadHelper()->formatSizeUnits(filesize($fileNameWithPath));
 
             $this->_importFiles[] = $fileData;
         }
         $this->getLogHelper()->logMessage('file download from FTP and save complete');
-        $this->updateImportGrid('import file dowloaded from FTP');
+        $this->updateImportGrid('import file downloaded from FTP');
+        Mage::dispatchEvent('brander_avtoimport_download_files_after', array('data' => $this));
         return true;
     }
 
-    protected function importProcess()
+    protected function importProcessRun()
     {
-	    $this->updateImportGrid(self::TASK_STATUS_IN_PROGRESS);
+        Mage::dispatchEvent('brander_avtoimport_import_process_before', array('data' => $this));
 
-        //CommerceML XML format
-        $import = Mage::getModel('brandercml/import')
-            ->setSourceFileName('tehnostok-import.xml')
-            ->setSourceFilePath('var/import/')
-            ->setBasePriceName('Price')
-//            ->setSpecialPriceName('Нал. со скидкой')
-            ->setConsoleLog(true)
-            ->setLogFile($this->getLogHelper()->getLogFilename())
-            //->clearCatalog(false)
-            ->run()
-        ;
+        $this->updateImportGrid(self::TASK_STATUS_IN_PROGRESS);
+        if (!$config = self::$_config) {
+            self::$_config = $config = $this->getHelper()->getImportConfig();
+        }
+        if (!count($this->_importFiles)) {
+            self::$_config->getAutoimportGetfileFilenames();
+            $this->_importFiles = explode(',', self::$_config->getAutoimportGetfileFilenames());
+        }
 
-	    $this->updateImportGrid('Product Import Finished');
+        //CommerceML XML 1 file MODE
+        foreach ($this->_importFiles as $_importFile) {
+            Mage::getModel('brandercml/importgpd')
+                ->setSourceFileName($_importFile['file_name'])
+                ->setSourceFilePath($this->getHelper()->getImportFolder().DS)
+                ->setConsoleLog(true)
+                ->setLogFile($this->getLogHelper()->getLogFilename())
+                ->run();
+        }
+	    $this->updateImportGrid(self::TASK_STATUS_IMPORT__PRODUCTS_COMPLETE);
+        $this->getLogHelper()->logMessage(self::TASK_STATUS_IMPORT__PRODUCTS_COMPLETE);
 
-        $this->getLogHelper()->logMessage('COMPLETE');
-
+        Mage::dispatchEvent('brander_avtoimport_import_process_after', array('data' => $this));
         return true;
     }
 
-    public function startReindex()
+    protected function startReindex()
     {
+        Mage::dispatchEvent('brander_avtoimport_reindex_before', array('data' => $this));
         $this->getLogHelper()->logMessage('START REINDEX ALL');
-	    $this->updateImportGrid(self::TASK_STATUS_REINDEXING);
+	    $this->updateImportGrid('reindexing');
         $indexCollection = Mage::getModel('index/process')->getCollection();
         foreach ($indexCollection as $index) {
             $index->reindexAll();
         }
 
-        try {
-            $this->getLogHelper()->logMessage('START UPDATE PRO LABELS');
-            $this->updateImportGrid('updating pro labels ...');
-            $labelsModel = Mage::getResourceModel('prolabels/label');
-            if ($labelsModel) {
-                $labelsModel->deleteAllLabelIndex();
-                $labelsModel->reindexAllSystemLabels();
-                $labelModel = Mage::getModel('prolabels/label');
-                $labelModel->applyAll();
-            }
-            $this->getLogHelper()->logMessage('COMPLETE UPDATE PRO LABELS');
-        } catch (Exception $e) {
-            $this->getLogHelper()->logMessage($e->getMessage());
+        $labelsModel = Mage::getResourceModel('prolabels/label');
+        if ($labelsModel) {
+            $labelsModel->reindexAllSystemLabels();
+            $labelModel = Mage::getModel('prolabels/label');
+            $labelModel->applyAll();
         }
 
         $this->getLogHelper()->logMessage('REINDEX COMPLETE');
 	    $this->updateImportGrid(self::TASK_STATUS_REINDEX_COMPLETE);
+        Mage::dispatchEvent('brander_avtoimport_reindex_after', array('data' => $this));
         return true;
     }
 
+    protected function updateCacheFiles()
+    {
+        Mage::dispatchEvent('brander_avtoimport_cleancache_before', array('data' => $this));
+        Mage::app()->cleanCache();
+        Mage::dispatchEvent('brander_avtoimport_cleancache_before', array('data' => $this));
+    }
+    
     protected function dumpDB()
     {
+        Mage::dispatchEvent('brander_avtoimport_dumpdb_before', array('data' => $this));
 	    $this->updateImportGrid(self::TASK_STATUS_DUMPING_DB);
         $this->getLogHelper()->logMessage('START DB BACK-UP PROCESS');
-        //error_reporting(E_ALL ^ E_NOTICE);
+        error_reporting(E_ALL ^ E_NOTICE);
 
         // get Magento config
         $configDb  = Mage::getConfig()->getResourceConnectionConfig("default_setup");
@@ -442,10 +461,12 @@ class Brander_AutoImport_Model_Import extends Varien_Object
 	        $this->updateImportGrid(self::TASK_STATUS_DUMP_DB_FAIL);
         }
         $this->getLogHelper()->logMessage('DATABASE BACK-UP SAVED');
+        Mage::dispatchEvent('brander_avtoimport_dumpdb_after', array('data' => $this));
     }
 
-	protected function updateImportGrid($status)
+	protected function updateImportGrid($status, $data = array())
     {
+        Mage::dispatchEvent('brander_avtoimport_update_importgrid_before', array('data' => $this));
         $importgrid = self::$_currentTask;
 		$now = Mage::getSingleton('core/date')->gmtDate();
 
@@ -467,7 +488,11 @@ class Brander_AutoImport_Model_Import extends Varien_Object
 
         try {
             $importgrid->addData($data);
+
+            Mage::dispatchEvent('brander_avtoimport_update_importgrid_save_before', array('data' => $this));
             $importgrid->save();
+            Mage::dispatchEvent('brander_avtoimport_update_importgrid_save_after', array('data' => $this));
+
             self::$_currentTask = $importgrid;
             return true;
         } catch (Mage_Core_Exception $e) {
@@ -546,6 +571,11 @@ class Brander_AutoImport_Model_Import extends Varien_Object
     protected function getReportHelper()
     {
         return Mage::helper('autoimport/report');
+    }
+    
+    protected function getUploadHelper()
+    {
+        return Mage::helper('autoimport/upload');
     }
 
 }
