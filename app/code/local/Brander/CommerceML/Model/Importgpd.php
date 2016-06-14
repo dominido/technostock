@@ -555,6 +555,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
 
     protected function disableOldItems()
     {
+        $oldProducts = array();
         $skusExclude = array_keys($this->_skus);
         $productsToOuStockCollection = Mage::getResourceModel('catalog/product_collection')
             ->addAttributeToSelect('*')
@@ -566,7 +567,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 'product_id=entity_id',
                 'is_in_stock=1',
                 '{{table}}.stock_id=1',
-                'left');;
+                'left');
 
         if ($productsToOuStockCollection->getSize()) {
             $productsToOuStockCollection->load();
@@ -574,16 +575,21 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 $oldProducts[] = array(
                     'sku' => $productToOoStosk->getSku(),
                     'name' => $productToOoStosk->getName(),
-                    'status' => 0,
                     'is_in_stock' => '0',
+                    'qty' => '0'
                 );
+                if ($productToOoStosk->getTypeId() == 'simple') {
+                    $oldProducts['status'] = 2;
+                }
             }
-            $this->getLogHelper()->logMessage('disable' . count($oldProducts) . ' product(s)');
+            $this->getLogHelper()->logMessage('disable ' . count($oldProducts) . ' product(s)');
             $this->getMagmi()->updateProducts($oldProducts);
             $this->_statuses[self::TYPE_MESSAGE_OLD] = count($oldProducts);
             return true;
         }
+        return false;
     }
+
     protected function uploadItemsImages() 
     {
         $mediaDir = Mage::getBaseDir().DS.$this->_mediaDir;
