@@ -116,7 +116,7 @@ class Brander_AutoImport_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getImportStartMinutesPeriod()
     {
-        return 60;
+        return 120;
     }
 
     public function getImportFolder()

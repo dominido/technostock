@@ -82,6 +82,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
     const NODE_PRODUCT_GROUPED_SKU      = 'id';
     const NODE_PRODUCT_GROUPED_SKU_1C           = 'Cod';
     const NODE_PRODUCT_GROUPED_CATEGORY_PATH    = 'Patch';
+    const NODE_PRODUCT_GROUPED_BASE_CATEGORY    = 'baseCategory';
     const NODE_PRODUCT_GROUPED_IMG_URL          = 'PicturesURL';
     const NODE_PRODUCT_GROUPED_DESCRIPTION      = 'Description';
 
@@ -189,6 +190,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 $city                   = (string)$product->{self::NODE_PRODUCT_CITY}->{'Name'};
                 $magazin                = (string)$product->{self::NODE_PRODUCT_MAGAZINE}->{'Name'};
 
+                $this->_skus[$sku] = $sku;
                 /*if (!isset($this->_categories[(string)$product->{self::NODE_PRODUCT_CATEGORY}])) {
                     continue;
                 }*/
@@ -200,11 +202,20 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 $description     = (string)$_groupedItem->{self::NODE_PRODUCT_DESCRIPTION};
                 $_groupedItemSku = (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU};
                 $imgUrl          = (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_IMG_URL};
-                $categoryPath    = $this->_baseCategory . '/'. (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_CATEGORY_PATH};
+
+                $baseCategory           = $this->_baseCategory . '/';
+                $baseProductCategory    = (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_BASE_CATEGORY};
+
+                if ($baseProductCategory) {
+                    $baseCategory .=  $baseProductCategory . '/';
+                }
+
+                $categoryPath    = $baseCategory . (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_CATEGORY_PATH};
                 
                 if (!isset($this->_groupedItems[$_groupedItemSku])) {
+                    $gruppedSku = (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU};
                     $groupedItem = array(
-                        'sku'               => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU},
+                        'sku'               => $gruppedSku,
                         'internal_sku'      => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU_1C},
                         'name'              => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_NAME},
                         'product_name'      => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_NAME},
@@ -225,6 +236,8 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                         'categories'        => $categoryPath,
                         'manufacturer'      => $brand
                     );
+
+                    $this->_skus[$gruppedSku] = $gruppedSku;
 
                     if ($imgUrl) {
                         $image = basename($imgUrl);
@@ -370,7 +383,8 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 $this->getMagmi()->importProducts($groupedItems);
                 $this->getLogHelper()->logMessage('update ' . $updateProductsCount . ' grouped products complete');
             }
-            
+
+            $this->disableOldItems();
         }
         return true;
     }
@@ -539,6 +553,37 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         return true;
     }
 
+    protected function disableOldItems()
+    {
+        $skusExclude = array_keys($this->_skus);
+        $productsToOuStockCollection = Mage::getResourceModel('catalog/product_collection')
+            ->addAttributeToSelect('*')
+            ->addAttributeToFilter('sku', array('nin' => $skusExclude))
+            ->addAttributeToFilter('status', 1)
+            ->joinField('is_in_stock',
+                'cataloginventory/stock_item',
+                'is_in_stock',
+                'product_id=entity_id',
+                'is_in_stock=1',
+                '{{table}}.stock_id=1',
+                'left');;
+
+        if ($productsToOuStockCollection->getSize()) {
+            $productsToOuStockCollection->load();
+            foreach ($productsToOuStockCollection as $productToOoStosk) {
+                $oldProducts[] = array(
+                    'sku' => $productToOoStosk->getSku(),
+                    'name' => $productToOoStosk->getName(),
+                    'status' => 0,
+                    'is_in_stock' => '0',
+                );
+            }
+            $this->getLogHelper()->logMessage('disable' . count($oldProducts) . ' product(s)');
+            $this->getMagmi()->updateProducts($oldProducts);
+            $this->_statuses[self::TYPE_MESSAGE_OLD] = count($oldProducts);
+            return true;
+        }
+    }
     protected function uploadItemsImages() 
     {
         $mediaDir = Mage::getBaseDir().DS.$this->_mediaDir;
