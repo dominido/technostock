@@ -30,21 +30,6 @@
                             <sort_order>10</sort_order>
                             <action>adminhtml/autoimport_importgrid</action>
                         </brander_autoimport_reports>
-                        <brander_autoimport_products_level1 translate="title">
-                            <title>Stage One Products Updates</title>
-                            <sort_order>20</sort_order>
-                            <action>adminhtml/autoimport_stageone</action>
-                        </brander_autoimport_products_level1>
-                        <brander_autoimport_products_level2 translate="title">
-                            <title>Stage Two Products Updates</title>
-                            <sort_order>30</sort_order>
-                            <action>adminhtml/autoimport_stagetwo</action>
-                        </brander_autoimport_products_level2>
-                        <brander_autoimport_products_level3 translate="title">
-                            <title>Stage Three Products Updates</title>
-                            <sort_order>40</sort_order>
-                            <action>adminhtml/autoimport_stagethree</action>
-                        </brander_autoimport_products_level3>
                         <settings translate="title">
                             <title>Settings</title>
                             <action>adminhtml/system_config/edit/section/brander_auto_import</action>
@@ -65,20 +50,6 @@
                     <import_service translate="title" module="autoimport">
                         <title>Import Reports and Tasks</title>
                         <sort_order>10</sort_order>
-                        <children>
-                            <brander_autoimport_products_level1 translate="title" module="autoimport">
-                                <title>Stage One Products Updates</title>
-                                <sort_order>20</sort_order>
-                            </brander_autoimport_products_level1>
-                            <brander_autoimport_products_level2 translate="title" module="autoimport">
-                                <title>Stage Two Products Updates</title>
-                                <sort_order>30</sort_order>
-                            </brander_autoimport_products_level2>
-                            <brander_autoimport_products_level3 translate="title" module="autoimport">
-                                <title>Stage Three Products Updates</title>
-                                <sort_order>40</sort_order>
-                            </brander_autoimport_products_level3>
-                        </children>
                     </import_service>
                     <system>
                         <children>

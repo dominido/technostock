@@ -241,58 +241,6 @@
                     </fields>
                 </general>
 
-                <stages translate="label">
-                    <label>Items Remove and Items Stages Settings</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>20</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <fields>
-                        <enable_stages translate="label">
-                            <label>Enable Stages Process</label>
-                            <frontend_type>select</frontend_type>
-                            <sort_order>10</sort_order>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <show_in_default>1</show_in_default>
-                        </enable_stages>
-                        <stage1 translate="label">
-                            <label>Stage 1 Items</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>20</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <depends>
-                                <enable_stages>1</enable_stages>
-                            </depends>
-                        </stage1>
-                        <stage2 translate="label">
-                            <label>Stage 2 Items</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>30</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <depends>
-                                <enable_stages>1</enable_stages>
-                            </depends>
-                        </stage2>
-                        <stage3 translate="label">
-                            <label>Stage 3 Items</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>40</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <depends>
-                                <enable_stages>1</enable_stages>
-                            </depends>
-                        </stage3>
-                        <enable_removal translate="label">
-                            <label>Enable Removal Process with 3rd Stage Items</label>
-                            <frontend_type>select</frontend_type>
-                            <sort_order>50</sort_order>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <show_in_default>1</show_in_default>
-                            <depends>
-                                <enable_stages>1</enable_stages>
-                            </depends>
-                        </enable_removal>
-                    </fields>
-                </stages>
             </groups>
         </brander_auto_import>
     </sections>

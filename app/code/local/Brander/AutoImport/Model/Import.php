@@ -31,12 +31,14 @@ class Brander_AutoImport_Model_Import extends Varien_Object
     const     TASK_STATUS_DUMPING_DB        = 'dumping db';
     const     TASK_STATUS_DUMP_DB_COMPLETE  = 'dump db complete';
     const     TASK_STATUS_DUMP_DB_FAIL      = 'dump db fail';
+    const     TASK_STATUS_IMPORT__PRODUCTS_COMPLETE = 'import products complete';
     const     TASK_STATUS_FINISHED          = 'finished';
     const     TASK_STATUS_FAILED            = 'failed';
     const     TASK_STATUS_FILE_CHECKED      = 'file checked';
     const     TASK_STATUS_FILE_CHECK_FAIL   = 'file check fail';
     const     TASK_STATUS_FILE_DOWNLOAD_SKIP   = 'skipped download files';
     const     TASK_STATUS_DOWNLOADING       = 'downloading files';
+    const     TASK_IMPORT_SKIPPED           = 'no import data, skipped';
 
     protected $_stopListStatuses = array(
         self::TASK_STATUS_FAILED,
@@ -350,24 +352,22 @@ class Brander_AutoImport_Model_Import extends Varien_Object
 
     protected function importProcess()
     {
-        $limit = ini_get('memory_limit'); ini_set('memory_limit', '-1');
 	    $this->updateImportGrid(self::TASK_STATUS_IN_PROGRESS);
 
         //CommerceML XML format
         $import = Mage::getModel('brandercml/import')
-            ->setSourceFile('tehnostok-import.xml', 'catalog')
-//            ->setSourceFile('komtek-offers.xml', 'offers')
+            ->setSourceFileName('tehnostok-import.xml')
+            ->setSourceFilePath('var/import/')
             ->setBasePriceName('Price')
 //            ->setSpecialPriceName('Нал. со скидкой')
             ->setConsoleLog(true)
             ->setLogFile($this->getLogHelper()->getLogFilename())
-            ->clearCatalog(false)
+            //->clearCatalog(false)
             ->run()
         ;
 
 	    $this->updateImportGrid('Product Import Finished');
 
-        ini_set('memory_limit', $limit);
         $this->getLogHelper()->logMessage('COMPLETE');
 
         return true;
@@ -407,8 +407,6 @@ class Brander_AutoImport_Model_Import extends Varien_Object
 	    $this->updateImportGrid(self::TASK_STATUS_DUMPING_DB);
         $this->getLogHelper()->logMessage('START DB BACK-UP PROCESS');
         //error_reporting(E_ALL ^ E_NOTICE);
-        //ini_set('display_errors', 1);
-        //ini_set('memory_limit', '512M');
 
         // get Magento config
         $configDb  = Mage::getConfig()->getResourceConnectionConfig("default_setup");
