@@ -268,9 +268,8 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                     'price'             => '0.00',
                     'special_price'     => null,
                     'qty'               => '0',
-                    'min_qty'           => '1',
                     'attribute_set'     => $attributeSet,
-                    'manufacturer'             => $brand,
+                    'manufacturer'      => $brand,
                     'city'              => $city,
                     'magazin'           => $magazin
                 );
@@ -410,7 +409,6 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         $mapper     = $this->getAttributeMapper();
 
         // start add select attributes
-        
 
         if (count($this->_attributes['text'])) {
             //foreach attribute set
@@ -553,7 +551,6 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
             foreach ($images as $_imageUrl) {
                 $name = basename($_imageUrl);
                 if ($this->checkFile($name)) {
-
                     file_put_contents($mediaDir.DS.$name, file_get_contents($_imageUrl));
                     $counter++;
                 }
