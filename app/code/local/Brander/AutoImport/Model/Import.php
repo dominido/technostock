@@ -51,6 +51,7 @@ class Brander_AutoImport_Model_Import extends Mage_Core_Model_Abstract
 
     protected $_importFiles     = array();
     protected $_dumpDbDir       = 'var/dumpdb';
+    protected $_mediaDir        = 'media/import';
     protected $_filetype        = null;
 
     
@@ -374,6 +375,8 @@ class Brander_AutoImport_Model_Import extends Mage_Core_Model_Abstract
             $this->_importFiles = explode(',', self::$_config->getAutoimportGetfileFilenames());
         }
 
+        $this->getHelper()->chkDir(Mage::getBaseDir().DS.$this->_mediaDir);
+        
         //CommerceML XML 1 file MODE
         foreach ($this->_importFiles as $_importFile) {
             Mage::getModel('brandercml/importgpd')

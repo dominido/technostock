@@ -168,7 +168,7 @@
                             </depends>
                         </autoimport_getfile_path>
                         <autoimport_getfile_filenames translate="label comment" module="autoimport">
-                            <label>Files Name on 1C server</label>
+                            <label>Files Names with Items</label>
                             <comment><![CDATA[separate with comma]]></comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>27</sort_order>
@@ -184,11 +184,10 @@
                             <label>Files Name on Local server</label>
                             <comment><![CDATA[separate with comma, if some]]></comment>
                             <frontend_type>text</frontend_type>
-                            <sort_order>27</sort_order>
+                            <sort_order>28</sort_order>
                             <show_in_default>1</show_in_default>
                             <depends>
                                 <autoimport_enable>1</autoimport_enable>
-                                <autoimport_enable_auto_getfile>0</autoimport_enable_auto_getfile>
                             </depends>
                         </autoimport_getfile_filenames_local>
                         <autoimport_enable_logging translate="label comment" module="autoimport">

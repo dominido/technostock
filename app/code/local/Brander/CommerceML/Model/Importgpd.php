@@ -49,6 +49,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
     );
     protected $_groupedItems   = array();
     protected $_groupedItemsGroupItemsList   = array();
+    protected $_imagesList      = array();
     protected $_attributeSets   = array();
     protected $_offers          = array();
     protected $_allSku          = array();
@@ -60,6 +61,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         'simple'        => 0,
         'configurable'  => 0
     );
+    protected $_mediaDir        = 'media/import';
 
     protected $_attributeBlackList = array(
 
@@ -196,7 +198,9 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 $attributeSet   = (string)$_groupedItem->{self::NODE_ATTRIBUTE_SET};
                 $description     = (string)$_groupedItem->{self::NODE_PRODUCT_DESCRIPTION};
                 $_groupedItemSku = (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU};
+                $imgUrl          = (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_IMG_URL};
 
+                
                 if (!isset($this->_groupedItems[$_groupedItemSku])) {
                     $groupedItem = array(
                         'sku'               => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU},
@@ -205,6 +209,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                         'product_name'      => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_NAME},
                         'type'              => 'grouped',
                         'product_type_id'   => 'grouped',
+                        'url'               => $this->getUrlFrontName((string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_NAME}),
                         'description'       => $description ? $description : '&nbsp;',
                         'short_description' => '&nbsp;',
                         'weight'            => '0',
@@ -217,9 +222,23 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                         'price'             => '0.00',
                         'attribute_set'     => $attributeSet,
                         'categories'        => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_CATEGORY_PATH},
-                        'brand'             => $brand
+                        'manufacturer'             => $brand
                     );
+
+                    if ($imgUrl) {
+                        $image = basename($imgUrl);
+                        $this->_imagesList[] = $imgUrl;
+
+                        if (isset($image) && $image) {
+                            $groupedItem['image']          = '+' . $image;
+                            $groupedItem['small_image']    = $image;
+                            $groupedItem['thumbnail']      = $image;
+                            $groupedItem['media_gallery']  = $image;
+                        }
+                    }
+
                     $this->_groupedItems[$_groupedItemSku] = $groupedItem;
+
                 }
 
                 $this->_groupedItemsGroupItemsList[$_groupedItemSku][$sku] = $sku;
@@ -250,7 +269,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                     'qty'               => '0',
                     'min_qty'           => '1',
                     'attribute_set'     => $attributeSet,
-                    'brand'             => $brand,
+                    'manufacturer'             => $brand,
                     'city'              => $city,
                     'magazin'           => $magazin
                 );
@@ -267,19 +286,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 }
 
 
-                // IMAGES
-/*                $image = null;
-                if (($images = $product->xpath(self::NODE_PRODUCT_IMAGES)) && count($images)) {
-                    $image = (string)$images[0] ? '/' . (string)$images[0] : '';
-                }
 
-                if (isset($image) && $image) {
-                    $image = $helper->prepareProductImage($image);
-                    $item['image']          = '+' . $image;
-                    $item['small_image']    = $image;
-                    $item['thumbnail']      = $image;
-                    $item['media_gallery']  = $helper->prepareProductMediaGallery($images);
-                }*/
 
                 // add attribute values
 
@@ -311,6 +318,9 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
 
             }
 
+            $this->getLogHelper()->logMessage('== START PRODUCTS IMPORT PROCESS ==');
+
+            $this->getLogHelper()->logMessage('create attribute sets in progress');
             // create attribute sets
             if (count($attributeSetList)) {
                 $attributeSetList = array_unique($attributeSetList);
@@ -319,11 +329,17 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 }
             }
 
-            $this->getLogHelper()->logMessage('== START PRODUCTS IMPORT PROCESS ==');
+            $this->getLogHelper()->logMessage('create attribute sets COMPLETE');
+
+            $this->getLogHelper()->logMessage('upload images in progress');
+            $this->uploadItemsImages();
+            $this->getLogHelper()->logMessage('upload images COMPLETE');
 
             //process attributes
+            $this->getLogHelper()->logMessage('create attributes in progress');
             $this->processAttributes();
-            
+            $this->getLogHelper()->logMessage('create attributes COMPLETE');
+
             // update layered navigation
             if (Mage::helper('brander_layerednavigation')) {
                 Mage::app()->getCacheInstance()->invalidateType('brander_layerednavigation');
@@ -331,14 +347,14 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
 
             if ($newProductsCount = count($this->_products[self::TYPE_MESSAGE_NEW])) {
                 $this->getLogHelper()->logMessage('start create new products');
-                //$this->getMagmi()->importProducts($this->_products[self::TYPE_MESSAGE_NEW]);
+                $this->getMagmi()->importProducts($this->_products[self::TYPE_MESSAGE_NEW]);
                 $this->_statuses[self::TYPE_MESSAGE_NEW] = $newProductsCount;
                 $this->getLogHelper()->logMessage('create new ' . $newProductsCount . ' products complete');
             }
 
             if ($updateProductsCount = count($this->_products[self::TYPE_MESSAGE_UPDATE])) {
                 $this->getLogHelper()->logMessage('start update products');
-                //$this->getMagmi()->importProducts($this->_products[self::TYPE_MESSAGE_UPDATE]);
+                $this->getMagmi()->importProducts($this->_products[self::TYPE_MESSAGE_UPDATE]);
                 $this->_statuses[self::TYPE_MESSAGE_UPDATE] = $updateProductsCount;
                 $this->getLogHelper()->logMessage('update ' . $updateProductsCount . ' products complete');
             }
@@ -526,4 +542,37 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
         return true;
     }
 
+    protected function uploadItemsImages() 
+    {
+        $mediaDir = Mage::getBaseDir().DS.$this->_mediaDir;
+        if (!is_dir($mediaDir)) {
+            mkDir($mediaDir);
+        }
+        $images = $this->_imagesList;
+        if (count($images)) {
+            $counter = 0;
+            foreach ($images as $_imageUrl) {
+                $name = basename($_imageUrl);
+                if ($this->checkFile($name)) {
+
+                    file_put_contents($mediaDir.DS.$name, file_get_contents($_imageUrl));
+                    $counter++;
+                }
+            }
+            if ($counter) {
+                $this->getLogHelper()->logMessage('upload new '. $counter . 'images');
+            }
+        }
+    }
+
+    protected function checkFile($fileName)
+    {
+        $imagesDir = Mage::getBaseDir().DS.$this->_mediaDir.DS;
+        $filePath = $imagesDir.$fileName;
+
+        if (is_file($filePath) && is_readable($filePath)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -87,7 +87,7 @@ class Brander_CommerceML_Helper_Import extends Mage_Core_Helper_Abstract
 
     public function prepareProductImage($image)
     {
-        $pregfilter     = Mage::getStoreConfig(Brander_CommerceML_Model_Import::PROD_IMAGE_PATH_PREGFILTER);
+        $pregfilter     = Mage::getStoreConfig(self::PROD_IMAGE_PATH_PREGFILTER);
         $replacewith    = Mage::getStoreConfig(Brander_CommerceML_Model_Import::PROD_IMAGE_PATH_REPLACEWITH);
         $exclude        = Mage::getStoreConfig(Brander_CommerceML_Model_Import::EXCLUDE_BASE_IMAGE);
 
