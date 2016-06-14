@@ -63,6 +63,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
     );
     protected $_mediaDir        = 'media/import';
 
+    protected $_baseCategory    = 'Каталог';
     protected $_attributeBlackList = array(
 
     );
@@ -199,7 +200,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 $description     = (string)$_groupedItem->{self::NODE_PRODUCT_DESCRIPTION};
                 $_groupedItemSku = (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU};
                 $imgUrl          = (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_IMG_URL};
-
+                $categoryPath    = $this->_baseCategory . '/'. (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_CATEGORY_PATH};
                 
                 if (!isset($this->_groupedItems[$_groupedItemSku])) {
                     $groupedItem = array(
@@ -221,8 +222,8 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                         'tax_class_id'      => '0',
                         'price'             => '0.00',
                         'attribute_set'     => $attributeSet,
-                        'categories'        => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_CATEGORY_PATH},
-                        'manufacturer'             => $brand
+                        'categories'        => $categoryPath,
+                        'manufacturer'      => $brand
                     );
 
                     if ($imgUrl) {
@@ -284,8 +285,6 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                 } else {
                     $item['qty'] = 0;
                 }
-
-
 
 
                 // add attribute values
