@@ -35,7 +35,7 @@
                 <h3 class="title"><?php echo $helper->__('About order'); ?></h3>
 
                 <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) : ?>
-                    <a href="<?php echo $this->getPrintUrl() ?>" onclick="this.target=\'_blank\'" class="print-link">
+                    <a href="<?php echo $this->getPrintUrl() ?>" onclick="this.target='_blank';" class="print-link">
                         <span class="text">
                             <?php echo $helperCore->__('Print') ?>
                         </span>
