@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<config>
+	<sections>
+		<brandercml translate="label" module="brandercml">
+			<label>CommerceML (1C)</label>
+			<tab>brander</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>100</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General</label>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<sort_order>10</sort_order>
+					<fields>
+						<active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+					</fields>
+				</general>
+                <options translate="label">
+                    <label>Options</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>20</sort_order>
+                    <fields>
+                        <advanced_attr_data translate="label">
+                            <label>Use Attributes Data from Product</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[Если да, то парсер будет искать аттрибуты товара в <ХарактеристикиТовара> и на их основе создаст аттрибуты.]]></comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </advanced_attr_data>
+                        <default_attr_type translate="label">
+                            <label>Default Product Attributes Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>brandercml/system_config_source_attrtype</source_model>
+                            <comment><![CDATA[Тип создаваемого аттрибута по умолчанию.]]></comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_attr_type>
+                        <created_attr_prefix translate="label">
+                            <label>Created Attributes Prefix</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Префикс для автоматически созданных аттрибутов.]]></comment>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </created_attr_prefix>
+                        <is_in_stock translate="label">
+                            <label>Set Product is in Stock if Qty More Than Zero</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[Принудительно устанавливать "Товар есть в наличии" если кол-во больше нуля.]]></comment>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </is_in_stock>
+                        <without_attr translate="label">
+                            <label>Import Products Without Attributes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[Импортировать только товары, без аттрибутов.]]></comment>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </without_attr>
+                    </fields>
+                </options>
+                <images translate="label">
+                    <label>Images</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>30</sort_order>
+                    <fields>
+                        <exclude_base_image>
+                            <label>Exclude Base Image From Gallery</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[Если да, то базовое изображение продукта будет исключено из медиа галереи.]]></comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </exclude_base_image>
+                        <pregfilter translate="label">
+                            <label>Replace Product Images Path</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Регулярное выражение на основании которого формируется путь к картинке продукта для импорта.]]></comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pregfilter>
+                        <replacewith translate="label">
+                            <label>Replace With</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Чем заменить найденное совпадение (для регулярного выражения указанного выше).]]></comment>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </replacewith>
+                    </fields>
+                </images>
+                <mapper translate="label">
+                    <label>Mapper</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>40</sort_order>
+                    <fields>
+                        <attributes_map translate="label">
+                            <label>Product Attributes Map</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Ключ и значение разделяется двоеточием, пара ключ:значение разделяется запятой "data1:value1,data2:value2". Префикс игнорируется.]]></comment>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </attributes_map>
+                    </fields>
+                </mapper>
+			</groups>
+		</brandercml>
+	</sections>
+</config>

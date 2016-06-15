@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander AutoImport extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        AutoImport
+ * @copyright      Copyright (c) 2014-2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         AlexVegas (Alexandr Belyaev) <alexandr.belyaev.only@gmail.com>
+ */
+-->
+<config>
+    <menu>
+        <system>
+            <children>
+                <import_service translate="title" module="autoimport">
+                    <title>Products Import Services</title>
+                    <sort_order>15</sort_order>
+                    <children>
+                        <brander_autoimport_reports translate="title">
+                            <title>Import Reports and Tasks</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/autoimport_importgrid</action>
+                        </brander_autoimport_reports>
+                        <settings translate="title">
+                            <title>Settings</title>
+                            <action>adminhtml/system_config/edit/section/brander_auto_import</action>
+                            <sort_order>50</sort_order>
+                        </settings>
+                    </children>
+                </import_service>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <import_service translate="title" module="autoimport">
+                        <title>Import Reports and Tasks</title>
+                        <sort_order>10</sort_order>
+                    </import_service>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <brander_auto_import translate="title" module="autoimport">
+                                        <title>Auto Import</title>
+                                        <sort_order>999</sort_order>
+                                    </brander_auto_import>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

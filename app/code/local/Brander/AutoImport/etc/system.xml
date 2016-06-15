@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander AutoImport extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Brander
+ * @package        AutoImport
+ * @copyright      Copyright (c) 2014-2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ * @author         AlexVegas (Oleksandr Beliaiev) <alexvegas.developer@gmail.com>
+ */
+-->
+<config>
+    <sections>
+        <brander_auto_import>
+            <label>Auto Import</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>45</sort_order>
+            <show_in_default>1</show_in_default>
+            <groups>
+                <general translate="label comment" module="autoimport">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+
+                        <autoimport_enable translate="label comment" module="autoimport">
+                            <label>Enable AutoImport module</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </autoimport_enable>
+
+                        <autoimport_getfile_load translate="label comment" module="autoimport">
+                            <label>Enable load file from external source</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_getfile_load>
+
+                        <autoimport_enable_ip_authorize translate="label comment" module="autoimport">
+                            <label>Enable authorize by IP</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_enable_ip_authorize>
+                        <autoimport_ip_authorize translate="label comment" module="autoimport">
+                            <label>Permitted IP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>User form listed IP can start import process. for example: 127.0.0.1 or 127.0.0.1;127.0.0.2 - if need add list of IP</comment>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_ip_authorize>1</autoimport_enable_ip_authorize>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_ip_authorize>
+
+                        <autoimport_secret_phrase translate="label comment" module="autoimport">
+                            <label>Secret phrase</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_secret_phrase>
+
+                        <autoimport_enable_auto_getfile translate="label comment" module="autoimport">
+                            <label>Enable get file via FTP connection</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_enable_auto_getfile>
+                        <autoimport_delete_ftpfile translate="label comment" module="autoimport">
+                            <label>Delete FTP import file after load</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_delete_ftpfile>
+                        <autoimport_getfile_host translate="label comment" module="autoimport">
+                            <label>1C server hostname (or IP)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>for example: brander.com or 127.0.0.1</comment>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_host>
+                        <autoimport_getfile_port translate="label comment" module="autoimport">
+                            <label>1C server host port</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>23</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>for example: 21, if blank use port: 21</comment>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_port>
+                        <autoimport_getfile_username translate="label comment" module="autoimport">
+                            <label>1C server user name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>24</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_username>
+                        <autoimport_getfile_userpass translate="label comment" module="autoimport">
+                            <label>1C server user pass</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_userpass>
+                        <autoimport_getfile_path translate="label comment" module="autoimport">
+                            <label>File Path on 1C server</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>26</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[for example: <b>path/to/file/</b>   if blank path is "/" - home directory]]></comment>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_path>
+                        <autoimport_getfile_filenames translate="label comment" module="autoimport">
+                            <label>Files Names with Items</label>
+                            <comment><![CDATA[separate with comma]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>27</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_auto_getfile>1</autoimport_enable_auto_getfile>
+                                <autoimport_getfile_load>1</autoimport_getfile_load>
+                            </depends>
+                        </autoimport_getfile_filenames>
+
+                        <autoimport_getfile_filenames_local>
+                            <label>Files Name on Local server</label>
+                            <comment><![CDATA[separate with comma, if some]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>28</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_getfile_filenames_local>
+                        <autoimport_enable_logging translate="label comment" module="autoimport">
+                            <label>Enable logging</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[files saves at var/log/import with filename "import-date/time.log"]]></comment>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_enable_logging>
+
+                        <autoimport_enable_autostart_import translate="label comment" module="autoimport">
+                            <label>Enable import process</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_enable_autostart_import>
+
+                        <autoimport_enable_delete_importfile translate="label comment" module="autoimport">
+                            <label>Delete import file after process</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable>1</autoimport_enable>
+                                <autoimport_enable_autostart_import>1</autoimport_enable_autostart_import>
+                            </depends>
+                        </autoimport_enable_delete_importfile>
+
+                        <autoimport_enable_autostart_reindex translate="label comment" module="autoimport">
+                            <label>Enable reindex process</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable_autostart_import>1</autoimport_enable_autostart_import>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_enable_autostart_reindex>
+
+                        <autoimport_enable_autodump_db translate="label comment" module="autoimport">
+                            <label>Enable auto create dump database before import</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <autoimport_enable_autostart_import>1</autoimport_enable_autostart_import>
+                                <autoimport_enable>1</autoimport_enable>
+                            </depends>
+                        </autoimport_enable_autodump_db>
+                    </fields>
+                </general>
+
+            </groups>
+        </brander_auto_import>
+    </sections>
+</config>
