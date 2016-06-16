@@ -86,9 +86,9 @@
                </strong>
 
                 <strong class="condition attr">
-                <?php if ($condition = $this->htmlEscape($_item->getCondition())) { ?>
+                   <?php if ( $location = Mage::getModel('eav/config')->getAttribute('catalog_product', 'magazin')->getSource()->getOptionText($_item->getMagazin()))  { ?>
 
-                <span><?php echo "</br>".$this->__('Condition: ');?></span> <?php echo $condition;?>
+                <span><?php echo "</br>".$this->__('Address: ');?></span> <?php echo $location;?>
 
                     <?php } ?>
                 </strong>
