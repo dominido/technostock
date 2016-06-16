@@ -181,6 +181,28 @@
 				</div>
 			<?php endif;?>
 
+			<?php $socialShareHtml = $this->getChildHtml('sharing_social'); ?>
+
+			<?php /* TODO:: UNITOP uncomment
+			<?php if ($addtoLinksHtml || $socialShareHtml): //compare, wishlist, send to friend, share social ?>
+				<div class="action-box clearer">
+					<div class="fl">
+						<?php echo $addtoLinksHtml; ?>
+					</div>
+					<div class="fl">
+						<?php echo $socialShareHtml; ?>
+					</div>
+				</div>
+			<?php endif; ?>
+			*/ ?>
+
+			<?php if ($socialShareHtml): //compare, wishlist, send to friend, share social ?>
+				<div class="action-box social-list-holder">
+					<?php echo $socialShareHtml; ?>
+				</div>
+				<div class="clearer"></div>
+			<?php endif; ?>
+
 
 			<div <?php if ($useRichSnippets) echo $helperSnippets->getOfferItemscope(); ?>>
 				<div class="product-type-data<?php echo $productTypeClasses; ?>">
@@ -224,27 +246,7 @@
 				<?php endif; ?>
 			<?php endif;?>
 
-			<?php $socialShareHtml = $this->getChildHtml('sharing_social'); ?>
 
-			<?php /* TODO:: UNITOP uncomment
-			<?php if ($addtoLinksHtml || $socialShareHtml): //compare, wishlist, send to friend, share social ?>
-				<div class="action-box clearer">
-					<div class="fl">
-						<?php echo $addtoLinksHtml; ?>
-					</div>
-					<div class="fl">
-						<?php echo $socialShareHtml; ?>
-					</div>
-				</div>
-			<?php endif; ?>
-			*/ ?>
-
-			<?php if ($socialShareHtml): //compare, wishlist, send to friend, share social ?>
-				<div class="action-box social-list-holder">
-					<?php echo $socialShareHtml; ?>
-				</div>
-				<div class="clearer"></div>
-			<?php endif; ?>
 
 
 			<?php if ($extrahint_html = $this->getChildHtml('extrahint')): //qty increments ?>
