@@ -79,10 +79,10 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
     
     const NODE_PRODUCT_GROUPED          = 'Nomenklatura';
     const NODE_PRODUCT_GROUPED_NAME     = 'Name';
-    const NODE_PRODUCT_GROUPED_SKU      = 'id';
-    const NODE_PRODUCT_GROUPED_SKU_1C           = 'Cod';
+    const NODE_PRODUCT_GROUPED_SKU      = 'Cod';
+    const NODE_PRODUCT_GROUPED_SKU_1C           = 'id';
     const NODE_PRODUCT_GROUPED_CATEGORY_PATH    = 'Patch';
-    const NODE_PRODUCT_GROUPED_BASE_CATEGORY    = 'baseCategory';
+    const NODE_PRODUCT_GROUPED_BASE_CATEGORY    = 'TypeNomenklatura';
     const NODE_PRODUCT_GROUPED_IMG_URL          = 'PicturesURL';
     const NODE_PRODUCT_GROUPED_DESCRIPTION      = 'Description';
 
@@ -216,7 +216,7 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                     $gruppedSku = (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU};
                     $groupedItem = array(
                         'sku'               => $gruppedSku,
-                        'internal_sku'      => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU_1C},
+                        'commerceml_id'      => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_SKU_1C},
                         'name'              => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_NAME},
                         'product_name'      => (string)$_groupedItem->{self::NODE_PRODUCT_GROUPED_NAME},
                         'type'              => 'grouped',
