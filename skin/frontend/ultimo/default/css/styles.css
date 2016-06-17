@@ -346,6 +346,10 @@ input, select, textarea, button {
 	vertical-align: middle;
 }
 
+select {
+	max-width: 100%;
+}
+
 /* Fix: remove default formatting on iOS (e.g. rounded corners) */
 input.input-text, textarea {
 	-webkit-appearance: none;
