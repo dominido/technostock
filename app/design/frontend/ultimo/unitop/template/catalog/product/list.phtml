@@ -352,7 +352,19 @@
 
                         <?php if ($gc['display_addtocart'] != 0): //Cart button ?>
 
-                            <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                            <?php
+                            if ($_product->getTypeId() == 'grouped') {
+
+                                $groupedIsSallable = false;
+                                $childProducts = $_product->getTypeInstance(true)->getAssociatedProducts($_product);
+
+                                foreach ($childProducts as $_item) {
+                                    if ($_item->isSaleable())
+                                        $groupedIsSallable = true;
+                                }
+                            }
+                            ?>
+                            <?php if($groupedIsSallable && $_product->isSaleable()): ?>
                                 <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
                             <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                                 <a title="<?php echo $this->__('Out of stock') ?>" class="availability out-of-stock" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('Out of stock') ?></a>
