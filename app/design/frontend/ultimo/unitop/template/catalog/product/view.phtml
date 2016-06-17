@@ -173,7 +173,7 @@
 			<?php if (isset($p['primCol_1'])) echo $p['primCol_1']; ?>
 			<?php echo $this->getChildHtml('alert_urls'); //alerts ?>
 
-			<?php if ($shortDescription): ?>
+			<?php if ($shortDescription && trim($shortDescription) !== "&nbsp;"): ?>
 				<div class="short-description">
 					<div class="std" itemprop="description">
 						<?php echo $shortDescription; ?>

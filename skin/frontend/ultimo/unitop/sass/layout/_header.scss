@@ -1,213 +1,215 @@
 #top {
   .header-primary-container {
-	position: relative;
-	z-index: 1000;
-	#mini-account-wrapper-regular {
-	  .links {
-		li {
-		  a {
-			font-size: 12px;
-		  }
-		}
-	  }
-	}
+    position: relative;
+    z-index: 1000;
+    #mini-account-wrapper-regular {
+      .links {
+        li {
+          a {
+            font-size: 12px;
+          }
+        }
+      }
+    }
   }
   @include bp(max-width, 1600px) {
-	.nav-regular {
-	  li.level0 {
-		> a {
-		  padding: 0 20px !important;
-		  &.no-click {
-			padding: 0 0 0 50px !important;
-		  }
-		}
-	  }
-	}
+    .nav-regular {
+      li.level0 {
+        > a {
+          padding: 0 20px !important;
+        }
+        &.first {
+          > a {
+            padding: 0 0 0 50px !important;
+          }
+        }
+      }
+    }
   }
   @include bp(max-width, 1300px) {
-	.nav-regular {
-	  li.level0 {
-		> a {
-		  &.no-click {
-			padding: 0 0 0 50px !important;
-		  }
-		}
-	  }
-	}
+    .nav-regular {
+      li.level0 {
+        > a {
+          &.no-click {
+            padding: 0 0 0 50px !important;
+          }
+        }
+      }
+    }
   }
   @include bp(max-width, 1200px) {
-	.nav-regular {
-	  li.level0 {
-		> a {
-		  padding: 0 15px !important;
-		  &.no-click {
-			padding: 0 0 0 50px !important;
-		  }
-		}
-	  }
-	}
+    .nav-regular {
+      li.level0 {
+        > a {
+          padding: 0 15px !important;
+          &.no-click {
+            padding: 0 0 0 50px !important;
+          }
+        }
+      }
+    }
   }
   @include bp(max-width, 1100px) {
-	.nav-regular {
-	  li.level0 {
-		> a {
-		  padding: 0 10px !important;
-		  &.no-click {
-			padding: 0 0 0 50px !important;
-		  }
-		}
-	  }
-	}
+    .nav-regular {
+      li.level0 {
+        > a {
+          padding: 0 10px !important;
+          &.no-click {
+            padding: 0 0 0 50px !important;
+          }
+        }
+      }
+    }
   }
 }
 
 #top.header-mobile {
   .header-primary-container {
-	#mini-account-wrapper-regular {
-	  .links {
-		li {
-		  a {
-			line-height: 44px;
-			font-size: 16px;
-		  }
-		}
-	  }
-	}
+    #mini-account-wrapper-regular {
+      .links {
+        li {
+          a {
+            line-height: 44px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
   }
 }
 
 .header-container {
   .nav-regular {
-	> .nav-item.first {
-	  position: relative;
+    > .nav-item.first {
+      position: relative;
 
-	  @include bp(min-width, 800px) {
-		box-sizing: border-box;
+      @include bp(min-width, 800px) {
+        box-sizing: border-box;
 
-		> a {
-		  font-size: 1rem;
-		  line-height: 1.4;
-		  letter-spacing: 2px;
-		  padding-left: 50px;
-		  box-sizing: border-box;
-		  position: relative;
-		  background: #132b7f !important;
+        > a {
+          font-size: 1rem;
+          line-height: 1.4;
+          letter-spacing: 2px;
+          padding-left: 50px;
+          box-sizing: border-box;
+          position: relative;
+          background: #132b7f !important;
 
-		  > .caret {
-			display: none;
-		  }
-		}
+          > .caret {
+            display: none;
+          }
+        }
 
-		> ul {
-		  width: 100%;
-		}
-	  }
-	}
+        > ul {
+          width: 100%;
+        }
+      }
+    }
   }
 
   .lang-switcher {
-	&.dropdown {
-	  .dropdown-content {
-		min-width: 100%;
-		box-sizing: border-box;
-		padding: 0 10px 5px;
+    &.dropdown {
+      .dropdown-content {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px 5px;
 
-		> li .label {
-		  margin-right: 4px;
-		}
-	  }
-	}
+        > li .label {
+          margin-right: 4px;
+        }
+      }
+    }
 
-	.caret {
-	  &:before {
-		display: none;
-	  }
-	}
+    .caret {
+      &:before {
+        display: none;
+      }
+    }
   }
 
   .hp-block.right-column {
-	.item {
-	  &:nth-child(2) {
-		float: left;
-		margin-left: 20%;
+    .item {
+      &:nth-child(2) {
+        float: left;
+        margin-left: 20%;
 
-		@include bp(min-width, 1560px) {
-		  margin-left: 26%;
-		}
+        @include bp(min-width, 1560px) {
+          margin-left: 26%;
+        }
 
-		@include bp(max-width, 1199px) {
-		  margin-left: 15%;
-		}
+        @include bp(max-width, 1199px) {
+          margin-left: 15%;
+        }
 
-		@include bp(max-width, 769px) {
-		  float: none;
-		}
-	  }
+        @include bp(max-width, 769px) {
+          float: none;
+        }
+      }
 
-	  @include bp(max-width, 1140px) {
-		margin-left: 5% !important;
-	  }
+      @include bp(max-width, 1140px) {
+        margin-left: 5% !important;
+      }
 
-	  @include bp(max-width, 991px) {
-		margin-left: 3% !important;
-	  }
+      @include bp(max-width, 991px) {
+        margin-left: 3% !important;
+      }
 
-	  @include bp(max-width, 840px) {
-		margin-left: 0 !important;
-	  }
-	}
+      @include bp(max-width, 840px) {
+        margin-left: 0 !important;
+      }
+    }
   }
 
   .dropdown.header-contacts {
-	padding-top: 10px;
+    padding-top: 10px;
 
-	@include bp(max-width, 1140px) {
-	  margin-top: 22px;
-	  min-width: 153px;
-	  padding-top: 0;
-	}
+    @include bp(max-width, 1140px) {
+      margin-top: 22px;
+      min-width: 153px;
+      padding-top: 0;
+    }
 
-	a {
-	  font-size: 1rem;
-	  letter-spacing: 1px;
-	  font-weight: 500;
-	  cursor: auto;
+    a {
+      font-size: 1rem;
+      letter-spacing: 1px;
+      font-weight: 500;
+      cursor: auto;
 
-	  @include bp(max-width, 991px) {
-		letter-spacing: 0;
-	  }
-	}
+      @include bp(max-width, 991px) {
+        letter-spacing: 0;
+      }
+    }
 
-	.caret {
-	  &:before {
-		display: none;
-	  }
-	}
+    .caret {
+      &:before {
+        display: none;
+      }
+    }
 
-	.dropdown-content {
-	  min-width: 100%;
-	  box-sizing: border-box;
-	  padding: 2px 13px 2px 17px;
+    .dropdown-content {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 2px 13px 2px 17px;
 
-	  li {
-		margin-bottom: 8px;
-		white-space: normal;
-		clear: both;
-		padding-left: 2px;
-	  }
+      li {
+        margin-bottom: 8px;
+        white-space: normal;
+        clear: both;
+        padding-left: 2px;
+      }
 
-	  .operator-icon {
-		display: none;
-		float: left;
-		margin: 0 8px 8px 0;
-	  }
+      .operator-icon {
+        display: none;
+        float: left;
+        margin: 0 8px 8px 0;
+      }
 
-	  .content {
-		display: block;
-		overflow: hidden;
-		margin-bottom: 8px;
-	  }
-	}
+      .content {
+        display: block;
+        overflow: hidden;
+        margin-bottom: 8px;
+      }
+    }
   }
 }
 
@@ -221,103 +223,103 @@
 
 .vert-nav {
   @include bp(max-width, 959px) {
-	display: none;
+    display: none;
   }
 }
 
 .header-regular {
   .central-column {
-	position: relative;
-	z-index: 10;
-	@include bp(min-width, 1500px) {
-	  right: -5%;
-	}
+    position: relative;
+    z-index: 10;
+    @include bp(min-width, 1500px) {
+      right: -5%;
+    }
   }
 
   .hp-block.right-column {
-	padding-top: 16px;
+    padding-top: 16px;
   }
 
   #mini-cart {
-	min-width: 175px;
+    min-width: 175px;
 
-	.label {
-	  margin-right: 12px;
-	}
+    .label {
+      margin-right: 12px;
+    }
 
-	&.open {
-	  .count {
-		background: #333;
-		color: $white;
-	  }
+    &.open {
+      .count {
+        background: #333;
+        color: $white;
+      }
 
-	  .ic-cart {
-		color: #333;
-	  }
-	}
+      .ic-cart {
+        color: #333;
+      }
+    }
   }
 
   #lang-switcher-wrapper-regular {
-	@include bp(max-width, 1140px) {
-	  position: absolute;
-	  right: 0;
-	  top: 0;
-	  margin-top: -5px;
-	}
+    @include bp(max-width, 1140px) {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin-top: -5px;
+    }
   }
 
   .mini-account {
-	@include bp(max-width, 1140px) {
-	  margin-top: 10px;
-	}
+    @include bp(max-width, 1140px) {
+      margin-top: 10px;
+    }
 
-	.label {
-	  font-size: 13px;
-	  letter-spacing: .5px;
-	  font-weight: 500;
-	  line-height: 40px;
-	  text-transform: uppercase;
-	  margin-left: 5px;
+    .label {
+      font-size: 13px;
+      letter-spacing: .5px;
+      font-weight: 500;
+      line-height: 40px;
+      text-transform: uppercase;
+      margin-left: 5px;
 
-	  @include bp(max-width, 991px) {
-		letter-spacing: 0;
-	  }
-	}
+      @include bp(max-width, 991px) {
+        letter-spacing: 0;
+      }
+    }
 
-	&.open {
-	  .ic-user {
-		color: #333;
-	  }
-	}
+    &.open {
+      .ic-user {
+        color: #333;
+      }
+    }
   }
 
   #mini-cart-heading {
-	display: block;
+    display: block;
   }
 
   .ic-cart {
-	margin-right: 12px;
-	color: $link-hover;
+    margin-right: 12px;
+    color: $link-hover;
   }
 
   .count {
-	width: auto;
-	min-width: 18px;
-	background: #20388d;
-	border-radius: 50%;
-	padding: 4px;
-	line-height: 1.4;
+    width: auto;
+    min-width: 18px;
+    background: #20388d;
+    border-radius: 50%;
+    padding: 4px;
+    line-height: 1.4;
   }
 
   .ic-user {
-	display: inline-block;
-	vertical-align: middle;
-	color: $link-hover;
+    display: inline-block;
+    vertical-align: middle;
+    color: $link-hover;
 
-	& + .label {
-	  display: inline-block;
-	  vertical-align: middle;
-	}
+    & + .label {
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
 }
 
@@ -333,60 +335,60 @@
   margin-right: 0 !important;
 
   @include bp(max-width, 1500px) {
-	right: -60px;
+    right: -60px;
   }
 
   @include bp(max-width, 1140px) {
-	right: auto;
-	left: 20px;
-	top: 0;
-	margin-top: -5px;
+    right: auto;
+    left: 20px;
+    top: 0;
+    margin-top: -5px;
   }
 
   li {
-	a {
-	  padding-top: 3px;
-	  color: $link-hover;
-	  font-weight: 500;
-	  letter-spacing: .5px;
+    a {
+      padding-top: 3px;
+      color: $link-hover;
+      font-weight: 500;
+      letter-spacing: .5px;
 
-	  &:hover {
-		color: $link-hover-light !important;
-	  }
-	}
+      &:hover {
+        color: $link-hover-light !important;
+      }
+    }
   }
 
   .callback-title {
-	display: block;
+    display: block;
   }
 }
 
 .user-menu {
   [id$="-wrapper-regular"] {
-	float: right;
+    float: right;
 
-	@include bp(max-width, 769px) {
-	  float: none;
-	}
+    @include bp(max-width, 769px) {
+      float: none;
+    }
   }
 
   .dropdown {
-	&.is-not-empty {
-	  color: $link-hover;
-	}
+    &.is-not-empty {
+      color: $link-hover;
+    }
 
-	.dropdown-heading {
-	  font-size: 1.125rem;
-	  max-height: none;
+    .dropdown-heading {
+      font-size: 1.125rem;
+      max-height: none;
 
-	  .caret {
-		display: none;
-	  }
+      .caret {
+        display: none;
+      }
 
-	  .ic {
-		font-size: 1.7rem;
-	  }
-	}
+      .ic {
+        font-size: 1.7rem;
+      }
+    }
   }
 }
 
@@ -394,244 +396,244 @@
   background: #2846b0;
 
   .mini-cart-heading {
-	font-size: 13px;
-	letter-spacing: .5px;
+    font-size: 13px;
+    letter-spacing: .5px;
   }
 
   .mini-cart-content {
-	.actions {
-	  button {
-		font-size: 1rem;
-		text-transform: none;
-		padding: 0 5px;
+    .actions {
+      button {
+        font-size: 1rem;
+        text-transform: none;
+        padding: 0 5px;
 
-		&:last-child {
-		  float: right;
-		}
-	  }
-	}
+        &:last-child {
+          float: right;
+        }
+      }
+    }
 
-	.btn-edit {
-	  font-size: 1rem;
-	}
+    .btn-edit {
+      font-size: 1rem;
+    }
 
-	.btn-remove {
-	  font-size: 1.3rem;
-	  margin-top: -2px;
-	}
+    .btn-remove {
+      font-size: 1.3rem;
+      margin-top: -2px;
+    }
   }
 }
 
 .header {
   .hp-block {
-	@include bp(max-width, $bp-desktop) {
-	  &.right-column {
-		.item-left {
-		  margin-right: 0;
-		}
-	  }
-	}
+    @include bp(max-width, $bp-desktop) {
+      &.right-column {
+        .item-left {
+          margin-right: 0;
+        }
+      }
+    }
   }
 }
 
 .header-mobile {
   .header-primary {
-	width: 100%;
+    width: 100%;
   }
 
   .nav {
-	.inner-container {
-	  padding: 0;
-	}
+    .inner-container {
+      padding: 0;
+    }
   }
 
   .hp-block {
-	@include bp(max-width, 769px) {
-	  width: 100%;
-	  float: none;
-	  margin: 0;
-	  @include cleaner;
-	}
+    @include bp(max-width, 769px) {
+      width: 100%;
+      float: none;
+      margin: 0;
+      @include cleaner;
+    }
   }
 
   .logo-wrapper--mobile {
-	.logo {
-	  max-width: 474px;
-	  margin: 0 auto 40px;
+    .logo {
+      max-width: 474px;
+      margin: 0 auto 40px;
 
-	  @include bp(max-width, $bp-tiny) {
-		padding-left: 30px;
-		padding-right: 30px;
-	  }
+      @include bp(max-width, $bp-tiny) {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
 
-	  img {
-		width: 100%;
-		height: auto;
-	  }
-	}
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
   }
 
   .lang-switcher {
-	top: -20px;
+    top: -20px;
   }
 
   .logo-wrapper--mobile {
-	width: 100%;
+    width: 100%;
   }
 
   .header-top {
-	.container_header_primary_central_1 {
-	  display: block;
-	}
+    .container_header_primary_central_1 {
+      display: block;
+    }
 
-	.dropdown.header-contacts {
-	  margin-top: 0;
-	}
+    .dropdown.header-contacts {
+      margin-top: 0;
+    }
 
-	.callback-header {
-	  position: static;
-	  float: right;
-	  margin-top: 0;
-	}
+    .callback-header {
+      position: static;
+      float: right;
+      margin-top: 0;
+    }
   }
 
   .header {
-	> .inner-container {
-	  padding: 0;
-	}
+    > .inner-container {
+      padding: 0;
+    }
   }
 
   #header-nav {
-	.nav {
-	  width: 100%;
-	}
+    .nav {
+      width: 100%;
+    }
   }
 
   .user-menu {
-	border: none;
+    border: none;
   }
 
   #mini-cart {
-	.count {
-	  width: auto;
-	  padding: 4px;
-	  border-radius: 50%;
-	  background: #122876;
-	  min-width: 18px;
-	  color: $white;
-	  font-weight: 600;
-	  line-height: 1.3;
-	}
+    .count {
+      width: auto;
+      padding: 4px;
+      border-radius: 50%;
+      background: #122876;
+      min-width: 18px;
+      color: $white;
+      font-weight: 600;
+      line-height: 1.3;
+    }
   }
 
   @include bp(max-width, 769px) {
-	.hp-block {
-	  .item-right {
-		float: none;
-		margin-left: 0;
-		text-align: left;
-	  }
-	}
+    .hp-block {
+      .item-right {
+        float: none;
+        margin-left: 0;
+        text-align: left;
+      }
+    }
   }
 
   @include bp(max-width, $bp-tiny) {
-	.skip-link {
-	  font-size: 16px;
-	}
+    .skip-link {
+      font-size: 16px;
+    }
   }
 }
 
 // SEARCH AUTOCOMPLETE
 .search-wrapper {
   .reset-button {
-	display: none;
+    display: none;
   }
 
   #search_mini_form {
-	@include cleaner;
+    @include cleaner;
 
-	.input-text {
-	  font-size: 13px;
-	  border-width: 0 0 1px;
-	  border-radius: 0;
-	  //background: none;
-	  @include trs(color .15s ease-in-out);
+    .input-text {
+      font-size: 13px;
+      border-width: 0 0 1px;
+      border-radius: 0;
+      //background: none;
+      @include trs(color .15s ease-in-out);
 
-	  @include bp(min-width, 1500px) {
-		width: 244px;
-	  }
+      @include bp(min-width, 1500px) {
+        width: 244px;
+      }
 
-	  @include bp(max-width, 800px) {
-		width: 180px;
-	  }
+      @include bp(max-width, 800px) {
+        width: 180px;
+      }
 
-	  @include bp(max-width, 769px) {
-		width: 100%;
-	  }
+      @include bp(max-width, 769px) {
+        width: 100%;
+      }
 
-	  & + button {
-		font-size: 20px;
-		color: $link-hover;
+      & + button {
+        font-size: 20px;
+        color: $link-hover;
 
-		&:hover {
-		  color: $white;
-		}
-	  }
-	}
+        &:hover {
+          color: $white;
+        }
+      }
+    }
   }
 
   .searchautocomplete-search {
-	border: 1px solid #d5d5d5;
-	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-	padding: 10px;
-	right: 0;
-	text-align: center;
+    border: 1px solid #d5d5d5;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    right: 0;
+    text-align: center;
 
-	.s_item {
-	  @include cleaner;
-	  @include trs(border-color .3s ease);
-	  margin-bottom: 20px;
-	  border-bottom: 1px solid #333;
+    .s_item {
+      @include cleaner;
+      @include trs(border-color .3s ease);
+      margin-bottom: 20px;
+      border-bottom: 1px solid #333;
 
-	  &:hover {
-		border-color: $link-hover;
-	  }
+      &:hover {
+        border-color: $link-hover;
+      }
 
-	  &:last-child {
-		margin-bottom: 10px;
-	  }
-	}
+      &:last-child {
+        margin-bottom: 10px;
+      }
+    }
 
-	.s_icon {
-	  margin-bottom: 10px;
-	}
+    .s_icon {
+      margin-bottom: 10px;
+    }
 
-	.s_details {
-	  padding-bottom: 10px;
-	  box-sizing: border-box;
-	}
+    .s_details {
+      padding-bottom: 10px;
+      box-sizing: border-box;
+    }
 
-	.s_description {
-	  display: none;
-	}
+    .s_description {
+      display: none;
+    }
 
-	a {
-	  display: inline-block;
+    a {
+      display: inline-block;
 
-	  .s_item_name {
-		color: $muddy;
-		font-size: 16px;
-		line-height: 1.2;
-		margin-bottom: 10px;
-		@include trs(color .3s ease);
-	  }
+      .s_item_name {
+        color: $muddy;
+        font-size: 16px;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        @include trs(color .3s ease);
+      }
 
-	  &:hover {
-		.s_item_name {
-		  color: $dark;
-		}
-	  }
-	}
+      &:hover {
+        .s_item_name {
+          color: $dark;
+        }
+      }
+    }
   }
 }
 
@@ -639,65 +641,65 @@
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
 
   @include bp(max-width, $bp-tiny) {
-	right: 0;
+    right: 0;
   }
 
   .search-more {
-	color: $dark;
+    color: $dark;
   }
 }
 
 .callback-header {
   a {
-	font-size: 13px;
-	text-transform: uppercase;
+    font-size: 13px;
+    text-transform: uppercase;
   }
 }
 
 [id^="mini-account"] {
   > a {
-	display: inline-block;
-	vertical-align: middle;
-	padding-right: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 12px;
   }
 }
 
 #mini-account {
   .caret {
-	display: none;
+    display: none;
   }
 
   .mini-account-content {
-	padding: 0;
-	width: 100%;
-	margin: 0;
+    padding: 0;
+    width: 100%;
+    margin: 0;
 
-	a {
-	  &:hover {
-		background: $link-hover;
-	  }
-	}
+    a {
+      &:hover {
+        background: $link-hover;
+      }
+    }
   }
 }
 
 #header-cart {
   @include bp(max-width, 1200px) {
-	.actions {
-	  button {
-		float: none !important;
-		display: block;
-		margin: 0;
-		&:first-child {
-		  margin-bottom: 10px !important;
-		}
-	  }
-	}
+    .actions {
+      button {
+        float: none !important;
+        display: block;
+        margin: 0;
+        &:first-child {
+          margin-bottom: 10px !important;
+        }
+      }
+    }
   }
   @include bp(max-width, 800px) {
-	.actions {
-	  button {
-		width: 100%;
-	  }
-	}
+    .actions {
+      button {
+        width: 100%;
+      }
+    }
   }
 }
