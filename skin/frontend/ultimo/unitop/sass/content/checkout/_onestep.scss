@@ -1021,6 +1021,7 @@
   margin-bottom: 20px;
 }
 
+
 //Spinner
 
 .ui-spinner {
@@ -1091,6 +1092,13 @@
 .checkout-end {
   @include bp(max-width, $bp-small) {
 	display: none;
+  }
+}
+
+@include bp(max-width, $bp-smallest) {
+  .checkout-progress li {
+    width: 100%;
+    float: none;
   }
 }
 
