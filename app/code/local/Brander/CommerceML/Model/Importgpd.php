@@ -93,8 +93,8 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
     const NODE_PRODUCT_CITY         = 'City';
     const NODE_PRODUCT_MAGAZINE     = 'Magazine';
     const NODE_PRODUCT_BRAND        = 'Brand';
-    const NODE_PRODUCT_SKU          = 'id';
-    const NODE_PRODUCT_SKU_1C       = 'Cod';
+    const NODE_PRODUCT_SKU          = 'Cod';
+    const NODE_PRODUCT_SKU_1C       = 'id';
     const NODE_PRODUCT_NAME         = 'Name';
 
     const NODE_ATTRIBUTE_SET = 'TypeNomenklatura';
