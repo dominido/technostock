@@ -125,3 +125,4 @@
 "Unable to add the following product(s) to shopping cart: %s.", "Невозможно доваить товар(ы) в корзину: %s."
 "Nothing found", "Ничего не найдено"
 "Address: ", "Адрес: "
+"Sku: ", "Код товара: "
