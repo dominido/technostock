@@ -7,7 +7,7 @@ class Mage_Shell_Start_Import extends Mage_Shell_Abstract
 
     public function run()
     {
-        //$import = Mage::getModel('autoimport/import')->cronImportStart();
+        $import = Mage::getModel('autoimport/import')->cronImportStart();
         
        /* Mage::getModel('brandercml/importgpd')
             ->setSourceFileName('tehnostok-import.xml')
