@@ -103,7 +103,7 @@
                             $value = $attribute->getFrontend()->getValue($_item);
 
                             if (!$_item->hasData($attribute->getAttributeCode())) {
-                                $value = Mage::helper('catalog')->__('N/A');
+                                $value = ""; // leave empty, will not show it later
                             } elseif ((string)$value == '') {
                                 $value = ""; // leave empty, will not show it later
                             } elseif ($attribute->getFrontendInput() == 'price' && is_string($value)) {
