@@ -307,10 +307,10 @@ class Brander_CommerceML_Model_Importgpd extends Varien_Object
                         $productAttrId  = (string)$option->{self::NODE_ATTRIBUTE_ID};
                         $attributeName  = (string)$option->{self::NODE_ATTRIBUTE_NAME};
                         $attributeValue = (string)$option->{self::NODE_ATTRIBUTE_VALUE};
-                        if (in_array($productAttrId, $this->_attributeBlackList)) {
+                        /*if (in_array($productAttrId, $this->_attributeBlackList)) {
                             continue;
-                        }
-                        if (!empty($attributeValue) && $productAttrId) {
+                        }*/
+                        if (!empty($attributeValue)) {
                             $this->_attributes['text'][$attributeName]['attributeSets'][$attributeSet] = $attributeSet;
                             //$this->_attributes['text'][$productAttrId]['values'] = array();
                             $item[$this->getAttributeCodeFromName($attributeName)] = $attributeValue;
