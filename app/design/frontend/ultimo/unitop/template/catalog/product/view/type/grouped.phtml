@@ -80,18 +80,52 @@
                 <?php if ($cityCode = $this->htmlEscape($_item->getCity())) {
                     $city = Mage::getModel('eav/config')->getAttribute('catalog_product', 'city')->getSource()->getOptionText($cityCode);
                     ?>
-                    <span><?php echo $this->__('City: '); ?> </span> <?php echo $city ?>
+                    <p><?php echo $this->__('City: '); ?> <?php echo $city ?> </p>
 
-               <?php }  ?>
+                <?php }  ?>
                </strong>
 
                 <strong class="condition attr">
-                   <?php if ( $location = Mage::getModel('eav/config')->getAttribute('catalog_product', 'magazin')->getSource()->getOptionText($_item->getMagazin()))  { ?>
+                    <?php if ( $location = Mage::getModel('eav/config')->getAttribute('catalog_product', 'magazin')->getSource()->getOptionText($_item->getMagazin()))  { ?>
+                <p><?php echo $this->__('Address: ');?><?php echo $location;?> </p>
 
-                <span><?php echo "</br>".$this->__('Address: ');?></span> <?php echo $location;?>
-
-                    <?php } ?>
+                   <?php } ?>
                 <span><p><?php echo $this->__('Sku: ');?></span> <?php echo $_item->getSku();?></p>
+
+                    <?php
+
+                    // exclude from all list for special position in list
+                    $excludeAttr = array('city', 'magazin', 'weight');
+
+                    $attributes = $_item->getAttributes();
+                    foreach ($attributes as $attribute) {
+                        if ($attribute->getIsVisibleOnFront() && !in_array($attribute->getAttributeCode(), $excludeAttr)) {
+                            $value = $attribute->getFrontend()->getValue($_item);
+
+                            if (!$_item->hasData($attribute->getAttributeCode())) {
+                                $value = Mage::helper('catalog')->__('N/A');
+                            } elseif ((string)$value == '') {
+                                $value = ""; // leave empty, will not show it later
+                            } elseif ($attribute->getFrontendInput() == 'price' && is_string($value)) {
+                                $value = Mage::app()->getStore()->convertPrice($value, true);
+                            }
+
+                            if (is_string($value) && strlen($value)) {
+                                $data[$attribute->getAttributeCode()] = array(
+                                    'label' => $attribute->getStoreLabel(),
+                                    'value' => $value,
+                                    'code'  => $attribute->getAttributeCode()
+                                );
+                                // skip empty attributes
+                                if (strlen($value) > 1) {
+
+                                echo "<p>".$attribute->getStoreLabel().' : '.$value. "</p>";
+                                }
+                            }
+                        }
+                    }
+                    ?>
+
                 </strong>
                 </div> 
             </td>
