@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_Prepaid>
+            <version>0.1.0</version>
+        </Brander_Prepaid>
+    </modules>
+    <global>
+        <models>
+            <brander_prepaid>
+                <class>Brander_Prepaid_Model</class>
+            </brander_prepaid>
+        </models>
+        <blocks>
+            <brander_prepaid>
+                <class>Brander_Prepaid_Block</class>
+            </brander_prepaid>
+        </blocks>
+        <helpers>
+            <brander_prepaid>
+                <class>Brander_Prepaid_Helper</class>
+            </brander_prepaid>
+        </helpers>
+    </global>
+    <default>
+        <payment>
+            <prepaid>
+                <model>brander_prepaid/prepaid</model>// very important thing, here you select the model for your payment method
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title>Preorder</title>
+                <payment_action>sale</payment_action>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </prepaid>
+        </payment>
+    </default>
+</config>
