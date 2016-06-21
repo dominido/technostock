@@ -75,7 +75,6 @@ class Brander_CmsMenu_Block_NavigationLeft extends Mage_Catalog_Block_Navigation
         }
         $x1f = ($x1d && $x1e);
         $x20 = array();
-        // здесь второй уровень вложености
         foreach ($x1d as $x21) {
             if ($x21->getIsActive()) {
                 $x20[] = $x21;
@@ -177,7 +176,6 @@ class Brander_CmsMenu_Block_NavigationLeft extends Mage_Catalog_Block_Navigation
         $x3d = '';
         $x3e = '';
         $x38[] = $x2d;
-       // class="nav-item level0 nav-1
         $x38[] = "nav-" . $this->_getItemPosition($x14);
         if ($this->isCategoryActive($x13)) {
             $x38[] = "active";
@@ -187,7 +185,6 @@ class Brander_CmsMenu_Block_NavigationLeft extends Mage_Catalog_Block_Navigation
         }
         if ($x17 && $x18) {
             $x38[] = $x18;
-            // class="nav-item level0 nav-1 level top    
             $x39[] = $x18;
         }
         if ($x16) {
@@ -269,7 +266,7 @@ class Brander_CmsMenu_Block_NavigationLeft extends Mage_Catalog_Block_Navigation
 
             $x38[] = "parent";
             if (false === $this->p0c) {
-//                $x3e = '<span class="caret">&nbsp;</span>';
+                $x3e = '<span class="caret">&nbsp;</span>';
             }
         }
         $x43 = '';
@@ -299,7 +296,6 @@ class Brander_CmsMenu_Block_NavigationLeft extends Mage_Catalog_Block_Navigation
                 $x1c .= '<div class="nav-block nav-block--top std">' . $x29[0] . '</div>';
             }
         }
-        // Создание ссылки
         $x1c .= '<a href="' . $x46 . '"' . ($x39 ? ' class="' . implode(" ", $x39) . '"' : '') . '>';
         $x1c .= '<span>' . $this->escapeHtml($x13->getName()) . $x43 . $x44 . '</span>' . $x3e;
         $x1c .= '</a>';
@@ -310,7 +306,7 @@ class Brander_CmsMenu_Block_NavigationLeft extends Mage_Catalog_Block_Navigation
             $x48++;
 
         }
-        if ((!empty($x47) || $x2c) && ( filter_var($x2d, FILTER_SANITIZE_NUMBER_INT) <= 2 )) {
+        if (!empty($x47) || $x2c) {
             $x1c .= '<span class="opener"></span>';
             if (!empty($x3a)) {
                 $x1c .= '<div class="' . implode(' ', $x3a) . '"' . $x3c . '><div class="nav-panel-inner">';
