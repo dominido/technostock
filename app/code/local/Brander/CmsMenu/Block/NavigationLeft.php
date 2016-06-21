@@ -75,6 +75,7 @@ class Brander_CmsMenu_Block_NavigationLeft extends Mage_Catalog_Block_Navigation
         }
         $x1f = ($x1d && $x1e);
         $x20 = array();
+        // здесь второй уровень вложености
         foreach ($x1d as $x21) {
             if ($x21->getIsActive()) {
                 $x20[] = $x21;
@@ -265,7 +266,7 @@ class Brander_CmsMenu_Block_NavigationLeft extends Mage_Catalog_Block_Navigation
 
 
             $x38[] = "parent";
-            if (false === $this->p0c) {
+            if ((false === $this->p0c) && (filter_var($x2d, FILTER_SANITIZE_NUMBER_INT) <= 1 )) {
                 $x3e = '<span class="caret">&nbsp;</span>';
             }
         }
@@ -306,7 +307,7 @@ class Brander_CmsMenu_Block_NavigationLeft extends Mage_Catalog_Block_Navigation
             $x48++;
 
         }
-        if (!empty($x47) || $x2c) {
+        if ((!empty($x47) || $x2c) && ( filter_var($x2d, FILTER_SANITIZE_NUMBER_INT) <= 1 )) {
             $x1c .= '<span class="opener"></span>';
             if (!empty($x3a)) {
                 $x1c .= '<div class="' . implode(' ', $x3a) . '"' . $x3c . '><div class="nav-panel-inner">';
