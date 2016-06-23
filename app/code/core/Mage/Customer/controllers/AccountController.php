@@ -297,7 +297,6 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
             $errors = $this->_getCustomerErrors($customer);
 
             if (empty($errors)) {
-                $customer->cleanPasswordsValidationData();
                 $customer->save();
                 $this->_dispatchRegisterSuccess($customer);
                 $this->_successProcessRegistration($customer);
@@ -349,6 +348,8 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
             $session->setCustomerAsLoggedIn($customer);
             $url = $this->_welcomeCustomer($customer);
         }
+        $customer->cleanPasswordsValidationData();
+
         $this->_redirectSuccess($url);
         return $this;
     }
