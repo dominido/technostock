@@ -265,7 +265,7 @@ class Brander_Account_AccountController extends Mage_Core_Controller_Front_Actio
             $errors = $this->_getCustomerErrors($customer);
 
             if (empty($errors)) {
-                $customer->cleanPasswordsValidationData();
+//                $customer->cleanPasswordsValidationData();
                 $customer->save();
                 $this->_dispatchRegisterSuccess($customer);
                 $this->_successProcessRegistration($customer);
@@ -318,6 +318,8 @@ class Brander_Account_AccountController extends Mage_Core_Controller_Front_Actio
             $session->setCustomerAsLoggedIn($customer);
             $url = $this->_welcomeCustomer($customer);
         }
+        $customer->cleanPasswordsValidationData();
+
         $this->_redirectSuccess($url);
         return $this;
     }

@@ -88,9 +88,9 @@ $helper = Mage::helper('brander_shop');
                 <div class="input-box">
                     <?php if ($helper->getCfg('customer/telephone_settings')->getEnablePhoneMask()): ?>
                         <?php $mask = $helper->getCfg('customer/telephone_settings')->getPhoneMask(); ?>
-                        <input name="billing[telephone]" data-format="<?php echo $mask; ?>" type="text" id="billing:telephone" class="required-entry input-text normal-box form-control bfh-phone validate-phone-no-empty" value="<?php echo $telephone; ?>" onblur="javascript: syncShipping(false)"/>
+                        <input name="billing[telephone]" data-format="<?php echo $mask; ?>" type="text" id="billing:telephone" class="required-entry validate-length minimum-length-17 input-text normal-box form-control bfh-phone validate-phone-no-empty" value="<?php echo $telephone; ?>" onblur="javascript: syncShipping(false)"/>
                     <?php else: ?>
-                        <input name="billing[telephone]" type="text" id="billing:telephone" class="required-entry input-text normal-box bfh-phone validate-phone-no-empty" value="<?php echo $telephone; ?>" onblur="javascript: syncShipping(false)"/>
+                        <input name="billing[telephone]" type="text" id="billing:telephone" class="required-entry validate-length minimum-length-17 input-text normal-box bfh-phone validate-phone-no-empty" value="<?php echo $telephone; ?>" onblur="javascript: syncShipping(false)"/>
                     <?php endif;?>
                 </div>
             </div>
