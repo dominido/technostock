@@ -35,6 +35,7 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_associatedProducts = $this->getAssociatedProducts(); ?>
 <?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
+<?php $counter = 0; ?>
 
 <?php echo $this->getChildHtml('product_type_data_extra') ?>
 <table class="data-table grouped-items-table" id="super-product-table">
@@ -48,6 +49,10 @@
     <tbody>
     <?php if ($_hasAssociatedProducts): ?>
     <?php foreach ($_associatedProducts as $_item): ?>
+            <?php if (!$_item->isSalable()) {
+                continue;
+            } ?>
+        <?php $counter++; ?>
         <?php $_finalPriceInclTax = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), true) ?>
         <tr>
             
@@ -147,11 +152,13 @@
 
             </td>
             <?php endif; ?>
-
-
-
         </tr>
     <?php endforeach; ?>
+        <?php if (empty($counter)): ?>
+            <tr>
+                <td colspan="<?php if ($_product->isSaleable()): ?>4<?php else : ?>3<?php endif; ?>"><?php echo $this->__('No options of this product are available.') ?></td>
+            </tr>
+        <?php endif; ?>
     <?php else: ?>
        <tr>
            <td colspan="<?php if ($_product->isSaleable()): ?>4<?php else : ?>3<?php endif; ?>"><?php echo $this->__('No options of this product are available.') ?></td>
