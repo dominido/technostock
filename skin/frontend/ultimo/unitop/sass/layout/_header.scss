@@ -160,6 +160,16 @@
     }
   }
 
+  .header-contacts {
+    padding-top: 10px;
+    font-size: 1rem;
+  }
+
+  .hp-block.central-column {
+    width: 18%;
+    padding-left: 20px;
+  }
+
   .dropdown.header-contacts {
     padding-top: 5px;
 
@@ -170,7 +180,7 @@
     }
 
     a {
-      font-size: 1.1rem;
+      font-size: 1rem;
       letter-spacing: 1px;
       font-weight: 500;
       cursor: auto;
