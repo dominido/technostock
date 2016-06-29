@@ -2114,8 +2114,8 @@ ul.disc ul li {
 	padding: 3px 0 3px 12px;
 }
 
-.block-layered-nav dl dd ol > li > a:before {
-	display: block; /* Show on desktop */
+/* .block-layered-nav dl dd ol > li > a:before {
+	display: block; Show on desktop
 	content: '';
 	position: absolute;
 	width: 0;
@@ -2130,7 +2130,7 @@ ul.disc ul li {
 	margin-top: -5px;
 	-webkit-transition: left 150ms ease-in-out;
 	transition: left 150ms ease-in-out;
-}
+} */
 
 .block-layered-nav dl dd ol > li > a:hover:before {
 	left: 3px;
