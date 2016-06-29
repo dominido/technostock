@@ -1089,11 +1089,22 @@
   }
 }
 
-.checkout-end {
+@include bp(max-width, $bp-small) {
+  .checkout-end {
+  	display: none;
+  }
+  .checkout-progress {
+  	padding: 0px;
+  }
+  .checkout-progress li {
+  	word-wrap: break-word;
+  }
+}
+/* .checkout-end {
   @include bp(max-width, $bp-small) {
 	display: none;
   }
-}
+} */
 
 @include bp(max-width, $bp-smallest) {
   .checkout-progress li {
