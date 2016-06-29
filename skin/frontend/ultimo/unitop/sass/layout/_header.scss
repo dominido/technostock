@@ -161,7 +161,7 @@
   }
 
   .dropdown.header-contacts {
-    padding-top: 10px;
+    padding-top: 5px;
 
     @include bp(max-width, 1140px) {
       margin-top: 22px;
@@ -170,7 +170,7 @@
     }
 
     a {
-      font-size: 1rem;
+      font-size: 1.1rem;
       letter-spacing: 1px;
       font-weight: 500;
       cursor: auto;
@@ -329,7 +329,7 @@
 
 .callback-header {
   position: absolute;
-  right: -10px;
+  right: -20px;
   top: 50%;
   margin-top: -16px;
   margin-right: 0 !important;
