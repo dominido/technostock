@@ -354,7 +354,7 @@
 "Template Settings","Настройки шаблона"
 "Template Variables","Переменные шаблона"
 "Templates","Шаблоны"
-"Text length does not satisfy specified text range.","Длинна текста не удовлетворяет указанному диапазону текста."
+"Text length does not satisfy specified text range.","Длинна номера не удовлетворяет указанному диапазону."
 "The %s you entered is invalid. Please make sure that it follows ""http://domain.com/"" format.","Вы ввели что-то непонятное: %s. Убедитесь, что введённое Вами соответствует формату ""http://domain.com/""."
 "The From Date value should be less than or equal to the To Date value.","Значение поля С даты должно быть меньше или равным значению поля По дату"
 "The model collection resource name is not defined.","Название ресурса модели коллекций не определено."
