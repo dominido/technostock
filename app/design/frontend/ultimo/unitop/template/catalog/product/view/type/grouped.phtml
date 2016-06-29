@@ -132,7 +132,17 @@
                     ?>
 
                 </strong>
-                </div> 
+                </div>
+
+                <span class="city attr">
+
+                    <?php if ($cityCode = $_item->getShort_description()) {
+                        $description = $_item->getShort_description();
+                        ?>
+                        <p><?php echo $this->__('Description: '); ?> <?php echo $description ?> </p>
+
+                    <?php }  ?>
+                </span>
             </td>
             <?php if ($this->getCanShowProductPrice($_product)): ?>
             <td class="a-right">
