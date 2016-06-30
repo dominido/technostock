@@ -283,7 +283,6 @@
 					//Additional blocks, if needed, can be added inside columns (left, central, righ).
 				?>
 				<div class="hp-blocks-holder<?php if($hpClasses) echo $hpClasses; ?> skip-links--<?php echo $skipLinksCount; ?>">
-
 					<?php if ($hasHeaderCollateral && $mobileHeaderMode && $moveSwitchers): ?>
 						<!-- Mobile header collaterals -->
 						<div id="header-collateral" class="header-collateral">
@@ -358,45 +357,47 @@
 					<?php if ($move['compare']): //Mini compare on mobile devices ?>
 						<div id="mini-compare-wrapper-mobile"></div>
 					<?php endif; ?>
+					<div class="header-primary-left-half">
+						<!-- Primary columns -->
 
-					<!-- Primary columns -->
+						<?php if (isset($grid['primLeftCol'])): ?>
+							<!-- Left column -->
+							<div class="hp-block logo_block">
+								<?php echo $this->getChildHtml('container_header_primary_left_1'); ?>
+								<?php if (isset($html['primLeftCol'])): ?>
+									<?php foreach ($html['primLeftCol'] as $element): ?>
+										<div class="item"><?php echo $element; ?></div>
+									<?php endforeach; ?>
+								<?php endif; ?>
+							</div> <!-- end: left column -->
+						<?php endif; ?>
 
-					<?php if (isset($grid['primLeftCol'])): ?>
-						<!-- Left column -->
-						<div class="hp-block left-column <?php echo $grid['primLeftCol']; ?>">
-							<?php echo $this->getChildHtml('container_header_primary_left_1'); ?>
-							<?php if (isset($html['primLeftCol'])): ?>
-								<?php foreach ($html['primLeftCol'] as $element): ?>
-									<div class="item"><?php echo $element; ?></div>
-								<?php endforeach; ?>
-							<?php endif; ?>
-						</div> <!-- end: left column -->
-					<?php endif; ?>
-
-					<?php if (isset($grid['primCentralCol'])): ?>
-						<!-- Central column -->
-						<div class="hp-block central-column <?php echo $grid['primCentralCol']; ?>">
-							<?php echo $this->getChildHtml('container_header_primary_central_1'); ?>
-							<?php if (isset($html['primCentralCol'])): ?>
-								<?php foreach ($html['primCentralCol'] as $element): ?>
-									<div class="item"><?php echo $element; ?></div>
-								<?php endforeach; ?>
-							<?php endif; ?>
-						</div> <!-- end: central column -->
-					<?php endif; ?>
-
-					<?php if (isset($grid['primRightCol'])): ?>
-						<!-- Right column -->
-						<div class="hp-block right-column <?php echo $grid['primRightCol']; ?>">
-							<?php if (isset($html['primRightCol'])): ?>
-								<?php foreach ($html['primRightCol'] as $element): ?>
-									<div class="item item-right"><?php echo $element; ?></div>
-								<?php endforeach; ?>
-							<?php endif; ?>
-							<div id="lang-switcher-wrapper-regular" class="item item-right"><?php echo $languageSwitcher; ?></div>
-							<?php echo $this->getChildHtml('container_header_primary_right_1'); ?>
-						</div> <!-- end: right column -->
-					<?php endif; ?>
+						<?php if (isset($grid['primCentralCol'])): ?>
+							<!-- Central column -->
+							<div class="hp-block left-right-column">
+								<?php echo $this->getChildHtml('container_header_primary_central_1'); ?>
+								<?php if (isset($html['primCentralCol'])): ?>
+									<?php foreach ($html['primCentralCol'] as $element): ?>
+										<div class="item"><?php echo $element; ?></div>
+									<?php endforeach; ?>
+								<?php endif; ?>
+							</div> <!-- end: central column -->
+						<?php endif; ?>
+					</div>
+					<div class="header-primary-right-half">
+						<?php if (isset($grid['primRightCol'])): ?>
+							<!-- Right column -->
+							<div class="hp-block right-column <?php echo $grid['primRightCol']; ?>">
+								<?php if (isset($html['primRightCol'])): ?>
+									<?php foreach ($html['primRightCol'] as $element): ?>
+										<div class="item item-right"><?php echo $element; ?></div>
+									<?php endforeach; ?>
+								<?php endif; ?>
+								<div id="lang-switcher-wrapper-regular" class="item item-right"><?php echo $languageSwitcher; ?></div>
+								<?php echo $this->getChildHtml('container_header_primary_right_1'); ?>
+							</div> <!-- end: right column -->
+						<?php endif; ?>
+					</div>
 				</div> <!-- end: hp-blocks-holder -->
 			</div>
 		</div> <!-- end: header-primary -->

@@ -2,6 +2,141 @@
   .header-primary-container {
     position: relative;
     z-index: 1000;
+
+    //header------------
+    .hp-blocks-holder {
+
+      .header-primary-left-half {
+        width: 60%;
+        height: 60px;
+        display: table-cell;
+        vertical-align: middle;
+
+
+        .logo_block, .left-right-column {
+          height: 100%;
+          display: block;
+          float: left;
+          box-sizing: border-box;
+        }
+        .logo_block {
+          width: 45%;
+        }
+        .left-right-column {
+          width: 55%;
+        }
+
+        .left-right-column {
+          .container_header_primary_central_1 {
+            float: none;
+            width: 55%;
+            display: block;
+            float: left;
+            position: relative;
+            right: 0;
+            top: 0;
+            margin: 0;
+
+            @include bp(max-width, 1140px) {
+              width: 100% !important;
+
+              &.callback-header {
+                position: absolute;
+                left: 0px;
+                top: 0;
+                text-indent: 20px;
+                padding-top: 0 !important;
+              }
+              .header-contacts.dropdown {
+                top: 0 !important;
+              }
+            }
+
+            .header-contacts.dropdown {
+              padding: 0;
+              top: 19px;
+
+              &.dropdown .dropdown-content {
+                right: auto;
+                left: 0;
+                top: 0;
+                max-width: 100%;
+                min-width: auto;
+                padding: 2px 25px 2px 17px;
+              }
+            }
+
+            .header-contacts:not(.dropdown) {
+              span {
+                line-height: 36px;
+                padding: 2px 25px 2px 17px;
+                position: relative;
+                top: 12px;
+              }
+            }
+
+            &.callback-header {
+              width: 45%;
+              padding-top: 24px;
+              .links {
+                float: left;
+
+                .nav-item {
+                  line-height: 24px;
+                }
+              }
+            }
+          }
+        }
+
+        &:after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+      }
+
+      .header-primary-right-half {
+        width: 40%;
+        height: 60px;
+        display: table-cell;
+        vertical-align: middle;
+
+        .hp-block{
+          .item:nth-child(2) {
+            margin-left: 0;
+          }
+        }
+      }
+
+      @include bp(max-width, 1140px) {
+        .header-primary-left-half {
+          width: 50%;
+
+          .logo_block {
+            width: 52%;
+          }
+          .left-right-column {
+            width: 48%;
+          }
+        }
+        .header-primary-right-half {
+          width: 50%;
+        }
+      }
+      @include bp(max-width, 769px) {
+        .header-primary-left-half {
+          display: none;
+        }
+        .header-primary-right-half {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+    //------------header
+
     #mini-account-wrapper-regular {
       .links {
         li {
@@ -166,8 +301,8 @@
   }
 
   .hp-block.central-column {
-    width: 18%;
-    padding-left: 20px;
+    //width: 18%;
+    //padding: 0 20px;
   }
 
   .dropdown.header-contacts {
