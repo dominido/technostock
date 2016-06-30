@@ -135,8 +135,8 @@
                 </div>
 
                 <span class="city attr">
-
-                    <?php if ($cityCode = $_item->getShort_description()) {
+                    <!--  &nbsp was default value when import run                       -->
+                    <?php if (($cityCode = $_item->getShort_description()) && ($cityCode != '&nbsp;') ) {
                         $description = $_item->getShort_description();
                         ?>
                         <p><?php echo $this->__('Description: '); ?> <?php echo $description ?> </p>
