@@ -1089,7 +1089,7 @@
   }
 }
 
-@include bp(max-width, $bp-small) {
+@include bp(max-width, $bp-smallest) {
   .checkout-end {
   	display: none;
   }
@@ -1106,7 +1106,7 @@
   }
 } */
 
-@include bp(max-width, $bp-smallest) {
+@include bp(max-width, $bp-small) {
   .checkout-progress li {
     width: 100%;
     float: none;
