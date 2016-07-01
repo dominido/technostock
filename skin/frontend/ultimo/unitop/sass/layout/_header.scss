@@ -633,6 +633,14 @@
     .dropdown.header-contacts {
       margin-top: 0;
     }
+    .header-contacts:not(.dropdown) {
+      padding-left: 10px;
+      padding-top: 4px;
+
+      a {
+        color: #fff;
+      }
+    }
 
     .callback-header {
       position: static;
