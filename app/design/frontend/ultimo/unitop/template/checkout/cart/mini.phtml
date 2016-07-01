@@ -88,8 +88,25 @@
                     <?php if ($canApplyMsrp): ?>
                         <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
                     <?php else: ?>
-                        <span class="label"><?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
-                        <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                        <span class="label"><?php echo $this->__('Cart Subtotal:') ?></span>
+
+                        <?php if (is_null($this->getSubtotal())) { ?>
+
+                            <?php
+                            $cart = Mage::getModel('checkout/cart')->getQuote();
+                            $fakeTotals;  // can't get real totals on multishipping when address not selected
+                            foreach ($cart->getAllItems() as $item) {
+                            $productId = $item->getProduct()->getId();
+                            $priceWithDiscount  = $item->getProduct()->getPrice() - $_item->getDiscount_amount();
+                            $fakeTotals += $priceWithDiscount ;
+                            }
+                            ?>
+                        <?php echo Mage::helper('checkout')->formatPrice($fakeTotals); ?>
+                        <?php } else { ?>
+                            <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()); ?>
+                        <?php } ?>
+
+                    <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
                             <br />
                             <span class="incl-tax">(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)</span>
                         <?php endif; ?>
