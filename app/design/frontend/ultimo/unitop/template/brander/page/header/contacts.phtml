@@ -8,7 +8,9 @@
 
         <?php if ($collection->getSize() == 1): ?>
             <div class="header-contacts">
-                <span class=""><?php echo $firstItem->getPhone();?></span>
+                <a href="tel:<?php echo $firstItem->getPhone();?>">
+                    <span class=""><?php echo $firstItem->getPhone();?></span>
+                </a>
             </div>
         <?php else: ?>
 
