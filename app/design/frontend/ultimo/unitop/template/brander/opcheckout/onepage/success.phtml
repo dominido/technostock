@@ -103,7 +103,7 @@
                         </div>
                     </li>
                 <?php endif; ?>
-                <?php /* if (($discount = $order->getDiscountAmount()) < 0): ?>
+                <?php  if (($discount = $order->getDiscountAmount()) != 0): ?>
                     <li class="totals-item">
                         <div class="totals-label">
                             <?php echo $helper->__('Discount (%s):', $order->getDiscountDescription()) ?>
@@ -112,7 +112,7 @@
                             <?php echo $helperCore->formatPrice($discount); ?>
                         </div>
                     </li>
-                <?php endif; */?>
+                <?php endif; ?>
                 <li class="totals-item">
                     <div class="totals-label">
                         <?php echo $helper->__('Total:') ?>
