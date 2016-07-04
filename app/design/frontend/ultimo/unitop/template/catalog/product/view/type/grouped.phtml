@@ -37,6 +37,16 @@
 <?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
 <?php $counter = 0; ?>
 
+
+<?php
+// get list of SKU products currently in Cart
+$itemsInCart = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+$skuInCart = array();
+foreach ($itemsInCart as $_item) {
+    $skuInCart[] = $_item->getSku();
+}
+?>
+
 <?php echo $this->getChildHtml('product_type_data_extra') ?>
 <table class="data-table grouped-items-table" id="super-product-table">
     <col />
@@ -49,7 +59,13 @@
     <tbody>
     <?php if ($_hasAssociatedProducts): ?>
     <?php foreach ($_associatedProducts as $_item): ?>
-            <?php if (!$_item->isSalable()) {
+            <?php if (!$_item->isSalable() ) {
+                continue;
+            } ?>
+
+            <?php
+            // if product already in cart skip showing it
+            if ( in_array($_item->getSku(),$skuInCart )) {
                 continue;
             } ?>
         <?php $counter++; ?>

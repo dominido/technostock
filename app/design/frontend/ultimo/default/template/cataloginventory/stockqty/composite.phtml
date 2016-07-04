@@ -28,11 +28,29 @@
  * @see Mage_CatalogInventory_Block_Stockqty_Composite
  */
 ?>
-<?php if($this->isMsgVisible()): ?>
 
-	<a class="availability-only product-action feature feature-icon-hover" href="#" id="<?php echo $this->getPlaceholderId() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Only %s left', ($this->getStockQty()))) ?>">
+<?php
+// get list of SKU products currently in Cart
+$itemsInCart = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+$skuInCart = array();
+foreach ($itemsInCart as $_item) {
+    $skuInCart[] = $_item->getSku();
+}
+
+$skuChild = array();
+foreach ($this->getChildProducts() as $childProduct) {
+    $skuChild[] = $childProduct->getSku();
+}
+
+$availableQty =  count($skuChild) - count(array_intersect($skuChild, $skuInCart));
+?>
+
+<?php if($this->isMsgVisible() and $availableQty): ?>
+
+
+	<a class="availability-only product-action feature feature-icon-hover" href="#" id="<?php echo $this->getPlaceholderId() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Only %s left', ($availableQty))) ?>">
         <span class="ic ic-lowstock icon-color-productview"></span>
-		<span class="label"><?php echo $this->__('Only %s left', "<strong>{$this->getStockQty()}</strong>") ?><div class="caret">&nbsp;</div></span>
+		<span class="label"><?php echo $this->__('Only %s left', "<strong>{$availableQty}</strong>") ?><div class="caret">&nbsp;</div></span>
 	</a>
 	<table id="<?php echo $this->getDetailsPlaceholderId() ?>" class="availability-only-details no-display">
         <col />
@@ -46,7 +64,7 @@
         <tbody>
         <?php foreach ($this->getChildProducts() as $childProduct) : ?>
             <?php $childProductStockQty = $this->getProductStockQty($childProduct); ?>
-            <?php if ($childProductStockQty > 0) : ?>
+            <?php if (($childProductStockQty > 0) and !(in_array($childProduct->getSku(),$skuInCart ))) : ?>
                 <tr>
                     <td><?php echo $childProduct->getName() ?></td>
                     <td class="a-center"><?php echo $childProductStockQty ?></td>
