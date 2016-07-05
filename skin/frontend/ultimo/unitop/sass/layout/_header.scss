@@ -808,8 +808,12 @@
     right: 0;
   }
 
-  .search-more {
+  a.search-more {
     color: $dark;
+
+    &:hover {
+      color: $link-hover;
+    }
   }
 }
 

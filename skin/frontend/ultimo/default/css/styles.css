@@ -1680,6 +1680,7 @@ ul.disc ul li {
 /* Search autocomplete */
 .form-search .search-autocomplete {
 	left: 0 !important; /*Fix for IE*/
+	right: 0;
 	top: 42px !important;
 	position: relative;
 	z-index: 4100 !important;

@@ -974,6 +974,8 @@
         @include bp(max-width, 959px) {
           background: #e6effb;
           margin-bottom: 20px;
+          padding: 0;
+
           .acctab {
             text-align: center;
             background: #e6effb;
@@ -993,8 +995,7 @@
         }
 
         @include bp(max-width, $bp-tiny) {
-          padding: 0;
-          margin: 0 -15px 70px;
+          margin: 0 -15px;
         }
       }
     }
@@ -1012,8 +1013,6 @@
 .catalog-product-view {
   .block-viewed {
     @include bp(max-width, $bp-tiny) {
-      padding-top: 50px;
-
       .owl-pagination {
         margin-top: 40px;
       }

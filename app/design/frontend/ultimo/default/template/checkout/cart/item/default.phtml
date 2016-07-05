@@ -36,8 +36,8 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 $haveParent = Mage::getModel('catalog/product_type_grouped')->getParentIdsByChild($_item->getProduct()->getId());
 
 //Default image size
-$imgWidth = 168;
-$imgHeight = 168;
+$imgWidth = 100;
+$imgHeight = 100;
 
     //Image aspect ratio
     if ($this->helper('ultimo')->getCfg('category/aspect_ratio'))
@@ -46,7 +46,7 @@ $imgHeight = 168;
     }
 ?>
 <tr>
-    <td><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->resize(168); ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
+    <td><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->resize($imgWidth, $imgHeight); ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
     <td>
     <?php /* TODO
     <td class="col-img"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->helper('infortis/image')->getImg($_item->getProduct(), $imgWidth, $imgHeight, 'thumbnail'); ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
