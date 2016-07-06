@@ -39,7 +39,9 @@ foreach ($itemsInCart as $_item) {
 
 $skuChild = array();
 foreach ($this->getChildProducts() as $childProduct) {
-    $skuChild[] = $childProduct->getSku();
+    if ($childProduct->isSalable()) {
+        $skuChild[] = $childProduct->getSku();
+    }
 }
 
 $availableQty =  count($skuChild) - count(array_intersect($skuChild, $skuInCart));
