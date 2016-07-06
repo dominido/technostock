@@ -46,6 +46,8 @@
             <?php $shippingMethodTitle = $order->getShippingDescription();
                   $paymentMethodTitle = $order->getPayment()->getMethodInstance()->getTitle();
                   $streets = $shipping->getStreet();
+                  $city = $shipping->getCity();
+
             ?>
 
             <p class="about-line">
@@ -61,6 +63,7 @@
                     <?php echo $helper->__('Shipping by address:') ?>
                 </span>
                 <strong class="about-val">
+                    <?php echo $city.","; ?>
                     <?php foreach($streets as $street) echo $street; ?>
                 </strong>
             </p>
