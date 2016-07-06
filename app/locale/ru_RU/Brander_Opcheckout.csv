@@ -25,7 +25,7 @@
 "Sorry, no quotes are available for this order at this time.", "Извините, в данный момент нет доступных вариантов выбора."
 "Coupon code ""%s"" was applied successfully.", "Скидочный купон %s успешно применен."
 "Coupon code ""%s"" is not valid.", "Скидочный купон %s не действительный."
-"Coupon code was canceled successfully.", "Скидочный купон успешно применен."
+"Coupon code was canceled successfully.", "Скидочный купон успешно отменён."
 "Can not apply coupon code.", "Применить скидочный купон не удалось."
 "Item remove successfully.", "Товар успешно удален."
 "Item remove error.", "Не удалось удалить товар."
