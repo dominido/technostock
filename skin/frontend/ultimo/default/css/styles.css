@@ -4810,8 +4810,8 @@ a.availability-only {
 }
 
 .multiple-checkout .place-order .grand-total big {
-	display: inline;
-	margin-right: 20px;
+	display: block;
+	margin: 0 10px 20px 0;
 }
 
 /* Step 1 */
