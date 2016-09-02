@@ -4,9 +4,11 @@ CheckoutMain.prototype = {
         this.allForms = allForms;
     },
     setLoadWaiting: function(flag) {
-        $('uni-main-loader-checkout').style.height = $('opcheckout-wrapper-main').clientHeight + 'px';
-        document.getElementById('uni-main-loader-checkout').style.display = ((flag) ? 'block' : 'none');
-        document.getElementById('sub-loader').style.display = ((flag) ? 'block' : 'none');
+        setTimeout(function() {
+            $('uni-main-loader-checkout').style.height = $('opcheckout-wrapper-main').clientHeight + 'px';
+            document.getElementById('uni-main-loader-checkout').style.display = ((flag) ? 'block' : 'none');
+            document.getElementById('sub-loader').style.display = ((flag) ? 'block' : 'none');
+        }, 300);
     },
     save: function() {
         var validators = new Array();

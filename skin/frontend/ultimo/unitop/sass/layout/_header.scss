@@ -727,7 +727,7 @@
       @include trs(color .15s ease-in-out);
 
       @include bp(min-width, 1400px) {
-        width: 294px;
+        width: 330px;
       }
 
       @include bp(max-width, 800px) {
