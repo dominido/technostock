@@ -24,7 +24,13 @@
     <?php if ($this->_getDisplayMode() == 0) : ?>
         <?php echo $this->getPagerHtml(); ?>
         <div class="postscategory-list-container">
-
+            <?php foreach ($_postscategories as $_postscategory) : ?>
+                <div class="postscategory-list-item<?php echo $this->isActiveCategory($_postscategory) ? ' active' : ''; ?>">
+                    <a href="<?php echo Mage::helper('brander_unitopblog/postscategory')->getPostscategoriesSeoUrl($_postscategory)?>">
+                        <?php echo $_postscategory->getTitle();?>
+                    </a>
+                </div>
+            <?php endforeach;?>
             <?php if ($this->getActiveCategoryId()): ?>
                 <div class="postscategory-list-item">
                     <a href="<?php echo Mage::helper('brander_unitopblog/postscategory')->getPostscategoriesUrl()?>">
