@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_FileImport extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_FileImport
+ * @copyright  	Copyright (c) 2014
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+	<!-- File grid grid action -->
+	<adminhtml_fileimport_filegrid_index>
+		<reference name="menu">
+			<action method="setActive">
+				<menupath>fileimport/filegrid</menupath>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="fileimport/adminhtml_filegrid" name="filegrid" />
+		</reference>
+	</adminhtml_fileimport_filegrid_index>
+	<adminhtml_fileimport_filegrid_grid>
+		<block type="core/text_list" name="root" output="toHtml">
+			<block type="fileimport/adminhtml_filegrid_grid" name="filegrid_grid"/>
+		</block>
+	</adminhtml_fileimport_filegrid_grid>
+	<!-- Filegrid add/edit action -->
+	<adminhtml_fileimport_filegrid_edit>
+		<update handle="editor"/>
+		<reference name="menu">
+			<action method="setActive">
+				<menupath>fileimport/filegrid</menupath>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="fileimport/adminhtml_filegrid_edit" name="filegrid_edit"></block>
+		</reference>
+		<reference name="left">
+			<block type="fileimport/adminhtml_filegrid_edit_tabs" name="filegrid_tabs"></block>
+		</reference> 
+	</adminhtml_fileimport_filegrid_edit>
+</layout>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?><!--
+/**
+ * Brander_FileImport extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_FileImport
+ * @copyright  	Copyright (c) 2014
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <brander_shop>
+                        <children>
+                            <pricelists>
+                                <title>Upload Files get Links</title>
+                                <sort_order>100</sort_order>
+                            </pricelists>
+                        </children>
+                    </brander_shop>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <brander_shop>
+                <children>
+                    <pricelists>
+                        <title>Upload Files get Links</title>
+                        <sort_order>100</sort_order>
+                        <action>adminhtml/fileimport_filegrid</action>
+                    </pricelists>
+                </children>
+        </brander_shop>
+    </menu>
+</config>

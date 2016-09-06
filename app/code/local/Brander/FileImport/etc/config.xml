@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_FileImport extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_FileImport
+ * @copyright  	Copyright (c) 2014
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+	<modules>
+		<Brander_FileImport>
+			<version>0.0.2</version>
+		</Brander_FileImport>
+	</modules>
+	<global>
+		<resources>
+			<brander_fileimport_setup>
+				<setup>
+					<module>Brander_FileImport</module>
+					<class>Brander_FileImport_Model_Resource_Setup</class>
+				</setup>
+			</brander_fileimport_setup>
+		</resources>
+		<blocks>
+			<fileimport>
+				<class>Brander_FileImport_Block</class>
+			</fileimport>
+		</blocks>
+		<helpers>
+			<fileimport>
+				<class>Brander_FileImport_Helper</class>
+			</fileimport>
+		</helpers>
+		<models>
+			<fileimport>
+				<class>Brander_FileImport_Model</class>
+				<resourceModel>fileimport_resource</resourceModel>
+			</fileimport>
+			<fileimport_resource>
+				<class>Brander_FileImport_Model_Resource</class>
+				<entities>
+					<filegrid>
+						<table>fileimport_filegrid</table>
+					</filegrid>
+					<filegrid_store>
+						<table>fileimport_filegrid_store</table>
+					</filegrid_store>
+				</entities>
+			</fileimport_resource>
+		</models>
+	</global>
+	<adminhtml>
+		<layout>
+			<updates>
+				<brander_fileimport>
+					<file>brander_fileimport.xml</file>
+				</brander_fileimport>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<Brander_FileImport>
+					<files>
+						<default>Brander_FileImport.csv</default>
+					</files>
+				</Brander_FileImport>
+			</modules>
+		</translate>
+	</adminhtml>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<Brander_FileImport before="Mage_Adminhtml">Brander_FileImport_Adminhtml</Brander_FileImport>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<frontend>
+		<routers>
+			<fileimport>
+				<use>standard</use>
+				<args>
+					<module>Brander_FileImport</module>
+					<frontName>price</frontName>
+				</args>
+			</fileimport>
+		</routers>
+	</frontend>
+	<cmsadvanced>
+		<pagetypes>
+			<download_price translate="name" module="fileimport">
+				<name>Download Price</name>
+				<groups>
+					<menupagegroup>
+						<name>Menu Configuration</name>
+						<attributes>
+							<top_menu>
+								<label>Top Menu</label>
+								<template>yesno</template>
+								<default>0</default>
+							</top_menu>
+							<main_menu>
+								<label>Main Menu</label>
+								<template>yesno</template>
+								<default>0</default>
+							</main_menu>
+							<footer_menu>
+								<label>Footer Menu</label>
+								<template>yesno</template>
+								<default>0</default>
+							</footer_menu>
+						</attributes>
+					</menupagegroup>
+				</groups>
+			</download_price>
+		</pagetypes>
+	</cmsadvanced>
+</config>
