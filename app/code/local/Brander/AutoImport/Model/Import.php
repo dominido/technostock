@@ -402,13 +402,7 @@ class Brander_AutoImport_Model_Import extends Mage_Core_Model_Abstract
         foreach ($indexCollection as $index) {
             $index->reindexAll();
         }
-
-        $labelsModel = Mage::getResourceModel('prolabels/label');
-        if ($labelsModel) {
-            $labelsModel->reindexAllSystemLabels();
-            $labelModel = Mage::getModel('prolabels/label');
-            $labelModel->applyAll();
-        }
+        
 
         $this->getLogHelper()->logMessage('REINDEX COMPLETE');
 	    $this->updateImportGrid(self::TASK_STATUS_REINDEX_COMPLETE);
