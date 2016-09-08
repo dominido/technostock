@@ -111,6 +111,12 @@ class Brander_FileImport_Adminhtml_Fileimport_FilegridController extends Brander
 				$filegrid = $this->_initFilegrid();
 				$filegrid->addData($data);
 				$file_csv_nameName = $this->_uploadAndGetName('file_csv_name', Mage::helper('fileimport/filegrid')->getFileBaseDir(), $data);
+				if (empty($file_csv_nameName)) {
+					Mage::getSingleton('adminhtml/session')->addError('File not uploaded');
+					Mage::getSingleton('adminhtml/session')->setFormData($data);
+					$this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+					return;
+				}
 				$filegrid->setData('file_csv_name', $file_csv_nameName);
                 $filegrid->setData('file_size', Mage::helper('fileimport/filegrid')->formatSizeUnits(filesize(Mage::helper('fileimport/filegrid')->getFileBaseDir().'/'.$file_csv_nameName)));
                 $filegrid->setData('file_name', basename(Mage::helper('fileimport/filegrid')->getFileBaseDir().'/'.$file_csv_nameName));
