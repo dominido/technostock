@@ -103,8 +103,7 @@ class JeroenVermeulen_Solarium_Model_Resource_CatalogSearch_Fulltext extends Mag
                 }
                 // Autocorrect notification
                 if ( $searchResult->didAutoCorrect() ) {
-                    $catSearchHelper->addNoteMessage(
-                        $helper->__( "Showing results for '%s' instead.", $searchResult->getResultQuery() ) );
+                    //$catSearchHelper->addNoteMessage($helper->__( "Showing results for '%s' instead.", $searchResult->getResultQuery()));
                 }
                 // "Did you mean" suggestions
                 $suggestions = $searchResult->getBetterSuggestions();
