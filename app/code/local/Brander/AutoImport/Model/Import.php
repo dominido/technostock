@@ -400,12 +400,17 @@ class Brander_AutoImport_Model_Import extends Mage_Core_Model_Abstract
         Mage::dispatchEvent('brander_avtoimport_reindex_before', array('data' => $this));
         $this->getLogHelper()->logMessage('START REINDEX ALL');
 	    $this->updateImportGrid('reindexing');
-        $indexCollection = Mage::getModel('index/process')->getCollection();
+        $indexCollection = Mage::getResourceModel('index/process_collection');
         foreach ($indexCollection as $index) {
-            $index->reindexAll();
+            try {
+                $startTime = microtime(true);
+                $index->reindexEverything();
+                $resultTime = microtime(true) - $startTime;
+                $this->getLogHelper()->logMessage($index->getIndexer()->getName() . " index was rebuilt successfully in " . gmdate('H:i:s', $resultTime) . "\n");
+            } catch (Exception $e) {
+                $this->getLogHelper()->logMessage($index->getIndexer()->getName() . " index process unknown error:\n");
+            }
         }
-        
-
         $this->getLogHelper()->logMessage('REINDEX COMPLETE');
 	    $this->updateImportGrid(self::TASK_STATUS_REINDEX_COMPLETE);
         Mage::dispatchEvent('brander_avtoimport_reindex_after', array('data' => $this));
