@@ -376,8 +376,9 @@ class Brander_AutoImport_Model_Import extends Mage_Core_Model_Abstract
         }
 
         $this->getHelper()->chkDir(Mage::getBaseDir().DS.$this->_mediaDir);
-        
+
         //CommerceML XML 1 file MODE
+        Mage::getModel('core/config')->saveConfig('jeroenvermeulen_solarium/general/enabled', 0);
         foreach ($this->_importFiles as $_importFile) {
             Mage::getModel('brandercml/importgpd')
                 ->setSourceFileName($_importFile['file_name'])
@@ -386,6 +387,7 @@ class Brander_AutoImport_Model_Import extends Mage_Core_Model_Abstract
                 ->setLogFile($this->getLogHelper()->getLogFilename())
                 ->run();
         }
+        Mage::getModel('core/config')->saveConfig('jeroenvermeulen_solarium/general/enabled', 1);
 	    $this->updateImportGrid(self::TASK_STATUS_IMPORT__PRODUCTS_COMPLETE);
         $this->getLogHelper()->logMessage(self::TASK_STATUS_IMPORT__PRODUCTS_COMPLETE);
 
