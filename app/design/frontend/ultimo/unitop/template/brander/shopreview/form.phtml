@@ -6,21 +6,21 @@
             <input type="hidden" value="0" id="review_status" name="company_review[review_status]">
 
             <div class="inputs-set">
-                <div class="input-box name">
-                    <input type="text" placeholder="<?php echo $this->__('Name') ?>" class="input-text required-entry" value="" title="<?php echo $this->__('Name') ?>" id="user_name" name="company_review[user_name]">
-                </div>
                 <div class="input-box subject_review">
                     <input type="text" placeholder="<?php echo $this->__('Review Subject') ?>" class="input-text required-entry" value="" title="<?php echo $this->__('Review Subject') ?>" id="subject_review" name="company_review[subject_review]">
                 </div>
-                <div class="input-box user_email">
-                    <input type="email" placeholder="<?php echo $this->__('E-mail') ?>" class="input-text required-entry validate-email" value="" title="<?php echo $this->__('E-mail') ?>" id="user_email" name="company_review[user_email]">
+                <div class="input-box">
+                    <textarea placeholder="<?php echo $this->__('Review') ?>" class="required-entry input-text" title="<?php echo $this->__('Review') ?>" id="user_review" name="company_review[user_review]"></textarea>
+                </div>
+                <div class="input-box name">
+                    <input type="text" placeholder="<?php echo $this->__('Name') ?>" class="input-text required-entry" value="" title="<?php echo $this->__('Name') ?>" id="user_name" name="company_review[user_name]">
                 </div>
                 <div class="input-box user_phone">
                     <input type="text" data-format="+380 dd ddd-dd-dd" placeholder="<?php echo $this->__('Phone') ?>" class="input-text required-entry validate-phone-no-empty form-control bfh-phone" value="" title="<?php echo $this->__('Phone') ?>" id="user_phone" name="company_review[user_phone]">
                 </div>
-            </div>
-            <div class="input-box">
-                <textarea placeholder="<?php echo $this->__('Review') ?>" class="required-entry input-text" title="<?php echo $this->__('Review') ?>" id="user_review" name="company_review[user_review]"></textarea>
+                <div class="input-box user_email">
+                    <input type="email" placeholder="<?php echo $this->__('E-mail') ?>" class="input-text required-entry validate-email" value="" title="<?php echo $this->__('E-mail') ?>" id="user_email" name="company_review[user_email]">
+                </div>
             </div>
             <?php if (Mage::getStoreConfig('brander_shopreview/shopreview/google_id')): ?>
                 <script src='https://www.google.com/recaptcha/api.js?hl=ru'></script>
