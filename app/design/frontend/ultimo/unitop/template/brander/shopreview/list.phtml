@@ -1,0 +1,44 @@
+<?php 
+/**
+ * Brander_ShopReview extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_ShopReview
+ * @copyright  	Copyright (c) 2016
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Shop Review list template
+ *
+ * @category    Brander
+ * @package     Brander_ShopReview
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $_shopreviews = $this->getShopreviews(); ?>
+<div class="page-title shopreview-title">
+    <h1><?php echo Mage::helper('brander_shopreview')->__('Shop Review') ?></h1>
+</div>
+<?php if ($_shopreviews->getSize() > 0) :?>
+    <?php //echo $this->getPagerHtml(); ?>
+    <div class="shopreview-list-container">
+    <?php foreach ($_shopreviews as $_shopreview) : ?>
+        <div class="shopreview-list-item">
+            <?php echo $_shopreview->getData('subject_review') ?>
+            <?php echo $_shopreview->getData('created_at') ?>
+            <?php echo $_shopreview->getData('user_review') ?>
+        </div>
+    <?php endforeach;?>
+    </div>
+    <?php //echo $this->getPagerHtml(); ?>
+<?php else : ?>
+    <?php echo Mage::helper('brander_shopreview')->__('There are no shop review at this moment');?>
+<?php endif;?>

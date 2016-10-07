@@ -1,0 +1,47 @@
+<div id="review-form" class="text-form wide">
+    <div id="review-form-container" class="form-container">
+        <form novalidate="" method="post" class="custom-form" id="companyReviewForm" action="<?php echo Mage::helper('brander_shopreview/shopreview')->getPostReviewsUrl() ?>">
+            <h3 class="title"><?php echo $this->__('Write Review') ?></h3>
+            <?php echo $this->getBlockHtml('formkey') ?>
+            <input type="hidden" value="0" id="review_status" name="company_review[review_status]">
+
+            <div class="inputs-set">
+                <div class="input-box name">
+                    <input type="text" placeholder="<?php echo $this->__('Name') ?>" class="input-text required-entry" value="" title="<?php echo $this->__('Name') ?>" id="user_name" name="company_review[user_name]">
+                </div>
+                <div class="input-box subject_review">
+                    <input type="text" placeholder="<?php echo $this->__('Review Subject') ?>" class="input-text required-entry" value="" title="<?php echo $this->__('Review Subject') ?>" id="subject_review" name="company_review[subject_review]">
+                </div>
+                <div class="input-box user_email">
+                    <input type="email" placeholder="<?php echo $this->__('E-mail') ?>" class="input-text required-entry validate-email" value="" title="<?php echo $this->__('E-mail') ?>" id="user_email" name="company_review[user_email]">
+                </div>
+                <div class="input-box user_phone">
+                    <input type="text" data-format="+380 dd ddd-dd-dd" placeholder="<?php echo $this->__('Phone') ?>" class="input-text required-entry validate-phone-no-empty form-control bfh-phone" value="" title="<?php echo $this->__('Phone') ?>" id="user_phone" name="company_review[user_phone]">
+                </div>
+            </div>
+            <div class="input-box">
+                <textarea placeholder="<?php echo $this->__('Review') ?>" class="required-entry input-text" title="<?php echo $this->__('Review') ?>" id="user_review" name="company_review[user_review]"></textarea>
+            </div>
+            <?php if (Mage::getStoreConfig('brander_shopreview/shopreview/google_id')): ?>
+                <script src='https://www.google.com/recaptcha/api.js?hl=ru'></script>
+                <div class="g-recaptcha" data-sitekey="<?php echo Mage::getStoreConfig('brander_shopreview/shopreview/google_id'); ?>"></div>
+            <?php endif; ?>
+            <div class="buttons-set">
+                <button class="button" title="<?php echo $this->__('Send Review') ?>" type="submit">
+                    <span><span><?php echo $this->__('Send Review') ?></span></span></button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    //<![CDATA[
+    Validation.add('validate-phone-no-empty', '<?php echo $this->__('You failed to enter phone.')?>', function (the_field_value) {
+        debugger;
+        if (the_field_value == '+380 ') {
+            return false;
+        }
+        return true;
+    });
+    var dataForm = new VarienForm('companyReviewForm');
+    //]]>
+</script>

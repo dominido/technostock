@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_ShopReview extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_ShopReview
+ * @copyright  	Copyright (c) 2016
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<layout>
+    <default>
+        <reference name="top.links">
+            <action method="addLink" translate="label title" module="brander_shopreview">
+                <label>Shop Review</label>
+                <url helper="brander_shopreview/shopreview/getShopreviewsUrl" />
+                <title>Shop Review</title>
+                <prepare />
+                <urlParams/>
+                <position>120</position>
+            </action>
+        </reference>
+    </default>
+    <brander_shopreview_index_index translate="label" module="brander_shopreview">
+        <label>Shop Review list</label>
+        <update handle="page_one_column" />
+        <reference name="content">
+            <block type="brander_shopreview/shopreview_list" name="shopreview_list" template="brander/shopreview/list.phtml" />
+            <block type="brander_shopreview/shopreview_form" name="shopreview_form" template="brander/shopreview/form.phtml"/>
+        </reference>
+    </brander_shopreview_index_index>
+</layout>

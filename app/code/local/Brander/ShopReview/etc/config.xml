@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_ShopReview extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_ShopReview
+ * @copyright  	Copyright (c) 2016
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <modules>
+        <Brander_ShopReview>
+            <version>1.0.0</version>
+        </Brander_ShopReview>
+    </modules>
+    <global>
+        <resources>
+            <brander_shopreview_setup>
+                <setup>
+                    <module>Brander_ShopReview</module>
+                    <class>Brander_ShopReview_Model_Resource_Setup</class>
+                </setup>
+            </brander_shopreview_setup>
+        </resources>
+        <blocks>
+            <brander_shopreview>
+                <class>Brander_ShopReview_Block</class>
+            </brander_shopreview>
+        </blocks>
+        <helpers>
+            <brander_shopreview>
+                <class>Brander_ShopReview_Helper</class>
+            </brander_shopreview>
+        </helpers>
+        <models>
+            <brander_shopreview>
+                <class>Brander_ShopReview_Model</class>
+                <resourceModel>brander_shopreview_resource</resourceModel>
+            </brander_shopreview>
+            <brander_shopreview_resource>
+                <class>Brander_ShopReview_Model_Resource</class>
+                <entities>
+                    <shopreview>
+                        <table>brander_shopreview_shopreview</table>
+                    </shopreview>
+                </entities>
+            </brander_shopreview_resource>
+        </models>
+        <template>
+            <email>
+                <brander_shopreview translate="label" module="brander_shopreview">
+                    <label>Shop Review</label>
+                    <file>brander_shopreview.html</file>
+                    <type>html</type>
+                </brander_shopreview>
+            </email>
+        </template>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <brander_shopreview>
+                    <file>brander_shopreview.xml</file>
+                </brander_shopreview>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_ShopReview>
+                    <files>
+                        <default>Brander_ShopReview.csv</default>
+                    </files>
+                </Brander_ShopReview>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Brander_ShopReview before="Mage_Adminhtml">Brander_ShopReview_Adminhtml</Brander_ShopReview>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <frontend>
+        <routers>
+            <brander_shopreview>
+                <use>standard</use>
+                <args>
+                    <module>Brander_ShopReview</module>
+                    <frontName>shopreview</frontName>
+                </args>
+            </brander_shopreview>
+        </routers>
+        <layout>
+            <updates>
+                <brander_shopreview>
+                    <file>brander/shopreview.xml</file>
+                </brander_shopreview>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Brander_ShopReview>
+                    <files>
+                        <default>Brander_ShopReview.csv</default>
+                    </files>
+                </Brander_ShopReview>
+            </modules>
+        </translate>
+    </frontend>
+    <default>
+        <brander_shopreview>
+            <shopreview>
+                <breadcrumbs>1</breadcrumbs>
+            </shopreview>
+        </brander_shopreview>
+    </default>
+</config>

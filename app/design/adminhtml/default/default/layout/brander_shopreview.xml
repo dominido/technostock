@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Brander_ShopReview extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Brander
+ * @package		Brander_ShopReview
+ * @copyright  	Copyright (c) 2016
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_shopreview_shopreview_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/brander_shopreview/shopreview</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_shopreview/adminhtml_shopreview" name="shopreview" />
+
+        </reference>
+    </adminhtml_shopreview_shopreview_index>
+    <adminhtml_shopreview_shopreview_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_shopreview/adminhtml_shopreview_grid" name="shopreview_grid"/>
+        </block>
+    </adminhtml_shopreview_shopreview_grid>
+    <!-- Shopreview add/edit action -->
+    <adminhtml_shopreview_shopreview_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/brander_shopreview/shopreview</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_shopreview/adminhtml_shopreview_edit" name="shopreview_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="brander_shopreview/adminhtml_shopreview_edit_tabs" name="shopreview_tabs"></block>
+        </reference>
+    </adminhtml_shopreview_shopreview_edit>
+
+</layout>
