@@ -32,9 +32,15 @@
     <div class="shopreview-list-container">
     <?php foreach ($_shopreviews as $_shopreview) : ?>
         <div class="shopreview-list-item">
-            <?php echo $_shopreview->getData('subject_review') ?>
-            <?php echo $_shopreview->getData('created_at') ?>
-            <?php echo $_shopreview->getData('user_review') ?>
+            <div class="title">
+                <?php echo $_shopreview->getData('subject_review') ?>
+            </div>
+            <div class="date">
+                <?php echo $_shopreview->getData('created_at') ?>
+            </div>
+            <div class="text">
+                <?php echo $_shopreview->getData('user_review') ?>
+            </div>
         </div>
     <?php endforeach;?>
     </div>

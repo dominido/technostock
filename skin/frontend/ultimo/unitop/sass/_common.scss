@@ -1353,3 +1353,80 @@ textarea {
 		max-width: 100%;
 	}
 }
+
+.shopreview-list-container {
+	width: 65%;
+	float: left;
+	box-sizing: border-box;
+	padding-right: 50px;
+
+	.shopreview-list-item {
+		padding: 20px 0;
+
+		&:not(:last-child){
+			border-bottom: 1px solid #000;
+		}
+
+		.title {
+			font-size: 18px;
+			font-weight: 600;
+		}
+		.date {
+			font-size: 12px;
+		}
+		.text {
+			padding-top: 10px;
+			font-size: 14px;
+		}
+	}
+}
+.text-form.wide {
+	border: 1px solid #000;
+	width: 35%;
+	float: left;
+	padding: 40px;
+	box-sizing: border-box;
+
+	.title {
+		margin-bottom: 20px;
+	}
+
+	.input-box {
+		margin-bottom: 10px;
+
+		input,
+		textarea {
+			display: block;
+			width: 100%;
+			border: none;
+			border-bottom: 1px solid #000;
+			background: none;
+		}
+
+		textarea {
+			resize: none;
+			height: 80px;
+		}
+	}
+
+	.g-recaptcha {
+		margin-bottom: 10px;
+
+		> div {
+			margin: 0 auto;
+		}
+	}
+
+	.buttons-set {
+		.button {
+			float: none;
+			background: none;
+			border: 1px solid #000;
+			color: #000;
+
+			&:hover {
+				background: #d1dcf2;
+			}
+		}
+	}
+}
