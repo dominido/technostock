@@ -25,6 +25,18 @@
             <?php if (Mage::getStoreConfig('brander_shopreview/shopreview/google_id')): ?>
                 <script src='https://www.google.com/recaptcha/api.js?hl=ru'></script>
                 <div class="g-recaptcha" data-sitekey="<?php echo Mage::getStoreConfig('brander_shopreview/shopreview/google_id'); ?>"></div>
+
+                <script>
+                    var recaptcha = jQuery('.g-recaptcha');
+                    jQuery(window).on('load resize', function(){
+                        var windowWidth = window.innerWidth;
+                        if(windowWidth < 1200 && windowWidth > 959 || windowWidth < 430){
+                            recaptcha.css('transform', 'scale(' + (recaptcha.closest('.form-container').width() / 304) + ')');
+                        }else{
+                            recaptcha.removeAttr('style');
+                        }
+                    });
+                </script>
             <?php endif; ?>
             <div class="buttons-set">
                 <button class="button" title="<?php echo $this->__('Send Review') ?>" type="submit">

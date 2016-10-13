@@ -1360,6 +1360,11 @@ textarea {
 	box-sizing: border-box;
 	padding-right: 50px;
 
+	@include bp(max-width, 960px){
+		width: 100%;
+		float: none;
+	}
+
 	.shopreview-list-item {
 		padding: 20px 0;
 
@@ -1387,6 +1392,14 @@ textarea {
 	padding: 40px;
 	box-sizing: border-box;
 
+	@include bp(max-width, 960px){
+		width: 100%;
+		max-width: 400px;
+		margin: 0 auto;
+		float: none;
+		margin-top: 40px;
+	}
+
 	.title {
 		margin-bottom: 20px;
 		font-size: 24px;
@@ -1408,6 +1421,7 @@ textarea {
 
 		input {
 			height: 30px;
+			padding: 0 8px;
 		}
 
 		textarea {
@@ -1418,6 +1432,15 @@ textarea {
 
 	.g-recaptcha {
 		margin-bottom: 20px;
+
+		@include bp(max-width, 1200px){
+			/* -webkit-transform: scale(0.9);
+			-moz-transform: scale(0.9);
+			-ms-transform: scale(0.9);
+			transform: scale(0.9); */
+
+			transform-origin: 0 50%;
+		}
 
 		> div {
 			margin: 0 auto;
