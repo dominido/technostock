@@ -96,13 +96,13 @@ class Brander_ShopReview_Block_Adminhtml_Shopreview_Grid
             'header'    => Mage::helper('brander_shopreview')->__('Created at'),
             'index'     => 'created_at',
             'width'     => '120px',
-            'type'      => 'datetime',
+            'type'      => 'text',
         ));
         $this->addColumn('updated_at', array(
             'header'    => Mage::helper('brander_shopreview')->__('Updated at'),
             'index'     => 'updated_at',
             'width'     => '120px',
-            'type'      => 'datetime',
+            'type'      => 'text',
         ));
         $this->addColumn('action',
             array(

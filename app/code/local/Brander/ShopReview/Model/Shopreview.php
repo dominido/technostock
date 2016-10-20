@@ -58,7 +58,7 @@ class Brander_ShopReview_Model_Shopreview
      */
     protected function _beforeSave(){
         parent::_beforeSave();
-        $now = Mage::getSingleton('core/date')->gmtDate();
+        $now = date("Y/m/d H:i:s", Mage::getModel('core/date')->timestamp(time()));
         if ($this->isObjectNew()){
             $this->setCreatedAt($now);
         }

@@ -58,7 +58,7 @@ class Brander_ShopReview_IndexController
                 $captcha = $_POST["g-recaptcha-response"];
             }
             if (!$captcha && Mage::getStoreConfig('brander_shopreview/shopreview/google_id')){
-                Mage::getSingleton('core/session')->addError($this->__('Unable to post the review.'));
+                Mage::getSingleton('core/session')->addError($this->__('Validation failed. Make sure that you correctly fill in the fields and CAPTCHA.'));
                 $this->_redirectReferer();
                 return;
             }

@@ -42,7 +42,7 @@ class Brander_ShopReview_Helper_Shopreview
      * @author Ultimate Module Creator
      */
     public function getUseBreadcrumbs(){
-        return Mage::getStoreConfigFlag('brander_shopreview/index/breadcrumbs');
+        return Mage::getStoreConfigFlag('brander_shopreview/shopreview/breadcrumbs');
     }
 
     public function getPostReviewsUrl(){

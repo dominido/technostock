@@ -16,7 +16,7 @@
                     <input type="text" placeholder="<?php echo $this->__('Name') ?>" class="input-text required-entry" value="" title="<?php echo $this->__('Name') ?>" id="user_name" name="company_review[user_name]">
                 </div>
                 <div class="input-box user_phone">
-                    <input type="text" data-format="+380 dd ddd-dd-dd" placeholder="<?php echo $this->__('Phone') ?>" class="input-text required-entry validate-phone-no-empty form-control bfh-phone" value="" title="<?php echo $this->__('Phone') ?>" id="user_phone" name="company_review[user_phone]">
+                    <input type="text" data-format="+380 dd ddd-dd-dd" placeholder="<?php echo $this->__('Phone') ?>" class="input-text required-entry validate-phone-no-empty-review form-control bfh-phone" value="" title="<?php echo $this->__('Phone') ?>" id="user_phone" name="company_review[user_phone]">
                 </div>
                 <div class="input-box user_email">
                     <input type="email" placeholder="<?php echo $this->__('E-mail') ?>" class="input-text required-entry validate-email" value="" title="<?php echo $this->__('E-mail') ?>" id="user_email" name="company_review[user_email]">
@@ -47,9 +47,8 @@
 </div>
 <script>
     //<![CDATA[
-    Validation.add('validate-phone-no-empty', '<?php echo $this->__('You failed to enter phone.')?>', function (the_field_value) {
-        debugger;
-        if (the_field_value == '+380 ') {
+    Validation.add('validate-phone-no-empty-review', '<?php echo $this->__('You failed to enter phone.')?>', function (the_field_value) {
+        if (the_field_value == '+380 ' || the_field_value.length != 17) {
             return false;
         }
         return true;

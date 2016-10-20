@@ -19,7 +19,7 @@
 <config>
     <modules>
         <Brander_ShopReview>
-            <version>1.0.0</version>
+            <version>1.0.2</version>
         </Brander_ShopReview>
     </modules>
     <global>
