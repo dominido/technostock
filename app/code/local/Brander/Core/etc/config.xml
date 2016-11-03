@@ -25,6 +25,11 @@
             <brander_core>
                 <class>Brander_Core_Block</class>
             </brander_core>
+            <adminhtml>
+                <rewrite>
+                    <catalog_product_grid>Brander_Core_Block_Adminhtml_Catalog_Product_Grid</catalog_product_grid>
+                </rewrite>
+            </adminhtml>
         </blocks>
         <helpers>
             <brander_core>
