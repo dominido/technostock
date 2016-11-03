@@ -3,6 +3,7 @@
 $customer = Mage::getSingleton('customer/session');
 /** @var Brander_Opcheckout_Helper_Data $helperCheckout */
 $helperCheckout = Mage::helper('brander_opcheckout');
+$opcheckout_front_text = Mage::getStoreConfig('opcheckout/order/opcheckout_front_text');
 ?>
 
 <script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
@@ -92,6 +93,11 @@ $helperCheckout = Mage::helper('brander_opcheckout');
                     <?php if (Mage::helper('brander_opcheckout')->isAllowedNewsletterSubscription()): ?>
                         <?php echo $this->getChildHtml('subscribex'); ?>
                     <?php endif; ?>
+                    <div>
+                        <?php if($opcheckout_front_text !=''):?>
+                            <?php echo $opcheckout_front_text;?>
+                        <?php endif;?>
+                    </div>
                     <button id="opcheckout-place-order-button" class="button btn-checkout" onclick="checkout.save();">
                         <?php echo $helperCheckout->__("Confirm order") ?>
                     </button>

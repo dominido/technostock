@@ -53,6 +53,14 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </opcheckout_desc>
+                        <opcheckout_front_text translate="label">
+                            <label>OP Checkout Front text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opcheckout_front_text>
                         <opcheckout_show_billing_same_as_shipping translate="label">
                             <label>Show "Ship to the same address"</label>
                             <frontend_type>select</frontend_type>
