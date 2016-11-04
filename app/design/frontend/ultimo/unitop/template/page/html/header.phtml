@@ -825,5 +825,53 @@
 
 	<?php endif; //end: if sticky  ?>
 
+	/* ---- NEW MENU ------------------------------------------------------ */
+	jQuery(function($){
+		var menuLikeYellow = {
+			menuBlock: $('.the-slideshow-wrapper'),
+			menuWidth: 0,
+			firstLi: $('.the-slideshow-wrapper .nav-item.level0'),
+
+			init: function(){
+				this._onResize();
+				this._onHover();
+			},
+
+			_onHover: function(){
+				var _this = this;
+				$(_this.firstLi).on('mouseenter', function(){
+					$(this).children('.dropdown_new').addClass('open').children('ul').children('li').each(function(){
+						var height = $(this).height();
+						var parentHeight = $(this).closest('.dropdown_new').height();
+						if(height > parentHeight){
+							var columnsCount = Math.ceil(height / parentHeight);
+							$(this).addClass('columns_' + columnsCount);
+						}
+					});
+				});
+
+				var _this = this;
+				$(_this.firstLi).on('mouseleave', function(){
+					$(this).children('.dropdown_new').removeClass('open');
+				});
+			},
+
+			_onResize: function(){
+				var _this = this;
+				$(window).on('load resize', function(){
+					_this.setMenuWidth(_this.menuBlock.width());
+				});
+			},
+
+			setMenuWidth: function(width){
+				this.menuWidth = width - this.firstLi.width();
+				this.firstLi.children('.dropdown_new').css('width', this.menuWidth + 'px');
+				console.log(this.menuWidth);
+			}
+		}
+		menuLikeYellow.init();
+	});
+	/* ==================================================================== */
+
 //]]>
 </script>
