@@ -4,6 +4,22 @@
   .item-inner {
 	padding: 20px 10px 0;
   }
+
+  .btn-cart-text {
+  	position: absolute;
+  	//width: 80px;
+  	height: 40px;
+  	line-height: 40px;
+  	bottom: -3px;
+  	right: -3px;
+  	min-width: 60px;
+  	border-width: 3px;
+  	padding: 0 5px;
+  	border-radius: 5px 0 0 !important;
+  	font-weight: normal;
+  	font-size: 16px;
+  	font-weight: 600;
+  }
 }
 .brander_layerednavigation-attr-selected{
 	background: url(../images/arrow_mini.png) 0px 50% no-repeat;
