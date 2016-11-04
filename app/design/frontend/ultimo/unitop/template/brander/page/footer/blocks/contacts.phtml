@@ -5,7 +5,7 @@
         ?>
         <?php if ($contacts = trim($this->getChildHtml('footer_blocks.contacts.phones'))): ?>
             <?php if (Mage::helper('brander_cmsmenu')->isShowFooterTitle()): ?>
-                <h6 class="block-title heading"><?php echo $this->__('Our Contacts:'); ?></h6>
+                <span class="like_h6 block-title heading"><?php echo $this->__('Our Contacts:'); ?></span>
             <?php endif; ?>
             <div class="block-content">
                 <?php echo $contacts; ?>

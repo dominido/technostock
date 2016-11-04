@@ -43,7 +43,7 @@
 <?php foreach ($tabs as $_index => $_tab): ?>
     <?php
     if($tmpBlock = trim($this->getChildHtml($_tab['alias']))) {
-        $_panes .= '<h2 class="acctab" id="acctab-'. $_tab['alias'] .'"><span>'. $_tab['title'] .'</span></h2>';
+        $_panes .= '<span class="acctab" id="acctab-'. $_tab['alias'] .'"><span>'. $_tab['title'] .'</span></span>';
         $_panes .= '<div class="panel">'. $tmpBlock .'</div>';
     } else {
         unset($tabs[$_index]);

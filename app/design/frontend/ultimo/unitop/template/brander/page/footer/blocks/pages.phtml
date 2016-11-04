@@ -3,7 +3,7 @@
     <?php if ($collection->getSize()): ?>
         <div class="collapsible mobile-collapsible">
             <?php if (Mage::helper('brander_cmsmenu')->isShowFooterTitle()): ?>
-                <h6 class="block-title heading"><span><?php echo $this->__('Information'); ?></span></h6>
+                <span class="like_h6 block-title heading"><span><?php echo $this->__('Information'); ?></span></span>
             <?php endif; ?>
             <div class="block-content">
                 <?php if ($collection): ?>
@@ -19,7 +19,7 @@
         </div>
     <?php endif; ?>
     <div class="block-content">
-        <h6 class="block-title heading"><?php echo $this->__('We at social networks'); ?></h6>
+        <span class="like_h6 block-title heading"><?php echo $this->__('We at social networks'); ?></span>
         <?php echo $this->getChildHtml('footer_blocks.pages.social'); ?>
     </div>
 </div>
