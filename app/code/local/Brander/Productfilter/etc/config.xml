@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Brander_Productfilter>
+			<version>1.0.1</version>
+		</Brander_Productfilter>
+	</modules>
+
+
+	<global>
+		<models>
+			<brander_product_filter>
+				<class>Brander_Productfilter_Model</class>
+			</brander_product_filter>
+		</models>
+
+		<helpers>
+			<brander_product_filter>
+				<class>Brander_Productfilter_Helper</class>
+			</brander_product_filter>
+		</helpers>
+
+		<blocks>
+			<brander_product_filter>
+				<class>Brander_Productfilter_Block</class>
+			</brander_product_filter>
+			<adminhtml>
+				<translate>
+					<modules>
+						<Brander_Account>
+							<files>
+								<default>Brander_Productfilter.csv</default>
+							</files>
+						</Brander_Account>
+					</modules>
+				</translate>
+				<rewrite>
+					<catalog_product_grid>Brander_Productfilter_Block_Grid</catalog_product_grid>
+				</rewrite>
+			</adminhtml>
+		</blocks>
+
+	</global>
+
+
+</config>
