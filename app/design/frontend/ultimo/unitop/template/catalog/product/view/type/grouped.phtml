@@ -70,7 +70,10 @@ foreach ($itemsInCart as $_item) {
             } ?>
         <?php $counter++; ?>
         <?php $_finalPriceInclTax = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), true) ?>
-        <tr>
+            <div itemscope itemtype="http://schema.org/AggregateOffer">
+                <meta itemprop="price" content="<?php echo $_finalPriceInclTax ?>">
+            </div>
+            <tr>
             
                 <?php /* old one image output with old classes
 

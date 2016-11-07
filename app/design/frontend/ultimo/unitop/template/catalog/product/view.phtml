@@ -122,9 +122,7 @@
 <script type="text/javascript">
 	var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
-<div itemscope itemtype="http://schema.org/AggregateOffer">
-    <meta itemprop="price" content="<?php echo $_product->getFinalPrice() ?>">
-</div>
+
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <div class="product-view nested-container" <?php if ($useRichSnippets) echo $helperSnippets->getProductItemscope();?> itemscope itemtype="http://schema.org/Product">
 
