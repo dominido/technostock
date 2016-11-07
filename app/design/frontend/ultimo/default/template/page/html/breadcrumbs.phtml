@@ -25,26 +25,26 @@
  */
 ?>
 <?php if($crumbs && is_array($crumbs)): ?>
-<div class="breadcrumbs">
-    <ul>
-        <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
-            <?php if($_crumbInfo['link']): ?>
-                <li class="<?php echo $_crumbName ?>" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <div class="breadcrumbs"  xmlns:v="http://rdf.data-vocabulary.org/#">
+        <ul typeof="v:Breadcrumb">
+            <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+                <?php if($_crumbInfo['link']): ?>
+                    <li  rel="v:url" property="v:title" class="<?php echo $_crumbName ?>" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
                     <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['title']) ?>" itemprop="url"><span itemprop="title"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span></a>
-            <?php elseif($_crumbInfo['last']): ?>
-                <li class="<?php echo $_crumbName ?>">
+                <?php elseif($_crumbInfo['last']): ?>
+                    <li rel="v:url" property="v:title" class="<?php echo $_crumbName ?>">
                     <span class="last-crumb"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span>
-            <?php else: ?>
-                <li class="<?php echo $_crumbName ?>">
+                <?php else: ?>
+                    <li rel="v:url" property="v:title"  class="<?php echo $_crumbName ?>">
                     <?php echo $this->escapeHtml($_crumbInfo['label']) ?>
-            <?php endif; ?>
+                <?php endif; ?>
 
-            <?php if(!$_crumbInfo['last']): ?>
+                <?php if(!$_crumbInfo['last']): ?>
                     <span class="sep"></span>
-            <?php endif; ?>
-                    
+                <?php endif; ?>
+
                 </li>
-        <?php endforeach; ?>
-    </ul>
-</div>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 <?php endif; ?>
