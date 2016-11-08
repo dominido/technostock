@@ -67,7 +67,7 @@
         $imgWidth = 295;
         $imgHeight = 295;
     }
-    
+
     //Image aspect ratio settings
     $keepAspectRatio = $theme->getCfg('category/aspect_ratio');
     if ($keepAspectRatio)
@@ -92,7 +92,16 @@
         $hideToolbar = true;
     }
 ?>
-
+    <div style="display:none;" itemscope itemtype="http://schema.org/Product">
+        <span itemprop="name"><span itemprop="brand"><?php echo  Mage::registry('current_category')->getName(); ?></span></span>
+        <!--            <div itemprop="aggregateRating"-->
+        <!--                 itemscope itemtype="http://schema.org/AggregateRating">-->
+        <!--            </div>-->
+        <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+            <span itemprop="lowPrice"><?php echo $_seoCollection->getFirstItem()->getMinPrice();?></span>
+            <span itemprop="highPrice"><?php echo $_seoCollection->getLastItem()->getMaxPrice();?></span>
+        </div>
+    </div>
 <div class="category-products">
     <?php if (!$hideToolbar): ?>
         <?php echo $this->getToolbarHtml() ?>
@@ -102,7 +111,7 @@
     <?php
         //Get list configuration array
         $lc = $theme->getCfgGroup('category_list');
-        
+
         //List classes
         $listClasses = '';
         if ($lc['hover_effect'])
@@ -110,16 +119,6 @@
     ?>
 
     <?php $_iterator = 0; ?>
-        <div itemscope itemtype="http://schema.org/Product">
-            <span itemprop="name"><span itemprop="brand"><?php echo  Mage::registry('current_category')->getName(); ?></span></span>
-<!--            <div itemprop="aggregateRating"-->
-<!--                 itemscope itemtype="http://schema.org/AggregateRating">-->
-<!--            </div>-->
-            <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
-                <span itemprop="lowPrice"><?php echo $_seoCollection->getFirstItem()->getMinPrice();?></span>
-                <span itemprop="highPrice"><?php echo $_seoCollection->getLastItem()->getMaxPrice();?></span>
-            </div>
-        </div>
     <ul class="products-list<?php if($listClasses) echo $listClasses; ?>" id="products-list">
     <?php foreach ($_productCollection as $_product): ?>
         <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
