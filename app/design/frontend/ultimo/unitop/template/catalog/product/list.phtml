@@ -296,15 +296,20 @@
                                     #holly remove wishlist mark
                                     $productId = $_product->getId();
                                     $customerId = Mage::getSingleton('customer/session')->getCustomerId();
-                                    $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customerId, true);
-                                    $collection = Mage::getModel('wishlist/item')->getCollection()
-                                    ->addFieldToFilter('wishlist_id', $wishlist->getId())
-                                    ->addFieldToFilter('product_id', $productId);
-                                    $item = $collection->getFirstItem();
-                                    $hasProduct = !!$item->getId();
-                                    if (!$hasProduct) {
+                                    if ($customerId) {
+                                        $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customerId, true);
+                                        $collection = Mage::getModel('wishlist/item')->getCollection()
+                                            ->addFieldToFilter('wishlist_id', $wishlist->getId())
+                                            ->addFieldToFilter('product_id', $productId);
+                                        $item = $collection->getFirstItem();
+                                        $hasProduct = !!$item->getId();
+                                        if (!$hasProduct) {
+                                            echo $helpTemplate->getCategoryAddtoWishLinks($_product, 'addto-links-icons addto-onimage display-onhover');
+                                        }
+                                    } else {
                                         echo $helpTemplate->getCategoryAddtoWishLinks($_product, 'addto-links-icons addto-onimage display-onhover');
                                     }
+
                                 //else //Always display
                                  //   echo $helpTemplate->getCategoryAddtoLinksIcons($_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage');
                             }
