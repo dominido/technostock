@@ -109,17 +109,30 @@ if ($theme->getCfg('category_grid/centered'))
                             if ($theme->getCfg('category_grid/display_addtolinks') != 0
                                 && $theme->getCfg('category_grid/addtolinks_simple'))
                             {
-                                if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
-                                {
-                                    echo $helpTemplate->getCategoryAddtoWishLinks(
-                                        $_product, 'addto-links-icons addto-onimage visible-onhover');
 
+                                #holly remove wishlist mark
+                                $productId = $_product->getId();
+                                $customerId = Mage::getSingleton('customer/session')->getCustomerId();
+                                $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customerId, true);
+                                $collection = Mage::getModel('wishlist/item')->getCollection()
+                                    ->addFieldToFilter('wishlist_id', $wishlist->getId())
+                                    ->addFieldToFilter('product_id', $productId);
+                                $item = $collection->getFirstItem();
+                                $hasProduct = !!$item->getId();
+                                if (!$hasProduct) {
+                                    if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
+                                    {
+                                        echo $helpTemplate->getCategoryAddtoWishLinks(
+                                            $_product, 'addto-links-icons addto-onimage visible-onhover');
+
+                                    }
+                                    else //Always display
+                                    {
+                                        echo $helpTemplate->getCategoryAddtoWishLinks(
+                                            $_product, 'addto-links-icons addto-onimage');
+                                    }
                                 }
-                                else //Always display
-                                {
-                                    echo $helpTemplate->getCategoryAddtoWishLinks(
-                                        $_product, 'addto-links-icons addto-onimage');
-                                }
+
                             }
                             ?>
                             <div class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>"><?php echo $this->escapeHtml($_product->getName()) ?></a></div>
