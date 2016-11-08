@@ -98,8 +98,8 @@
         <!--                 itemscope itemtype="http://schema.org/AggregateRating">-->
         <!--            </div>-->
         <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
-            <span itemprop="lowPrice"><?php echo $_seoCollection->getFirstItem()->getMinPrice();?></span>
-            <span itemprop="highPrice"><?php echo $_seoCollection->getLastItem()->getMaxPrice();?></span>
+            <span itemprop="lowPrice"><?php echo $_seoCollection->getLastItem()->getMinPrice();?></span>
+            <span itemprop="highPrice"><?php echo $_seoCollection->getFirstItem()->getMaxPrice();?></span>
             <span itemprop="pricecurrency"><?php echo Mage::app()->getStore()->getCurrentCurrencyCode();?></span>
         </div>
     </div>
