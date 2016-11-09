@@ -104,30 +104,14 @@ if($_collectionSize = $_productCollection->getSize()): ?>
                                         ->addFieldToFilter('product_id', $productId);
                                     $item = $collection->getFirstItem();
                                     $hasProduct = !!$item->getId();
+
                                     if (!$hasProduct) {
-
-                                        if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
-                                        {
-                                            echo $helpTemplate->getCategoryAddtoWishLinks(
-                                                $_item, 'addto-links-icons addto-onimage visible-onhover');
-
-                                        } else //Always display
-                                        {
-                                            echo $helpTemplate->getCategoryAddtoWishLinks(
-                                                $_item, 'addto-links-icons addto-onimage');
-                                        }
-                                    }
-                                }else {
-                                    if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
-                                    {
                                         echo $helpTemplate->getCategoryAddtoWishLinks(
                                             $_item, 'addto-links-icons addto-onimage visible-onhover');
-
-                                    } else //Always display
-                                    {
-                                        echo $helpTemplate->getCategoryAddtoWishLinks(
-                                            $_item, 'addto-links-icons addto-onimage');
                                     }
+                                } else {
+                                    echo $helpTemplate->getCategoryAddtoWishLinks(
+                                        $_item, 'addto-links-icons addto-onimage visible-onhover');
                                 }
                             }
                             ?>
