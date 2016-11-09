@@ -5,7 +5,7 @@
 ?>
 <?php
 $_productCollection = $this->getProductCollection();
-    //$this->getProductCollection();
+//$this->getProductCollection();
 if($_collectionSize = $_productCollection->getSize()): ?>
     <?php
 
@@ -94,16 +94,40 @@ if($_collectionSize = $_productCollection->getSize()): ?>
                             if ($theme->getCfg('category_grid/display_addtolinks') != 0
                                 && $theme->getCfg('category_grid/addtolinks_simple'))
                             {
-                                if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
-                                {
-                                    echo $helpTemplate->getCategoryAddtoWishLinks(
-                                        $_item, 'addto-links-icons addto-onimage visible-onhover');
+                                #holly remove wishlist mark
+                                $productId = $_item->getId();
+                                $customerId = Mage::getSingleton('customer/session')->getCustomerId();
+                                if ($customerId) {
+                                    $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customerId, true);
+                                    $collection = Mage::getModel('wishlist/item')->getCollection()
+                                        ->addFieldToFilter('wishlist_id', $wishlist->getId())
+                                        ->addFieldToFilter('product_id', $productId);
+                                    $item = $collection->getFirstItem();
+                                    $hasProduct = !!$item->getId();
+                                    if (!$hasProduct) {
 
-                                }
-                                else //Always display
-                                {
-                                    echo $helpTemplate->getCategoryAddtoWishLinks(
-                                        $_item, 'addto-links-icons addto-onimage');
+                                        if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
+                                        {
+                                            echo $helpTemplate->getCategoryAddtoWishLinks(
+                                                $_item, 'addto-links-icons addto-onimage visible-onhover');
+
+                                        } else //Always display
+                                        {
+                                            echo $helpTemplate->getCategoryAddtoWishLinks(
+                                                $_item, 'addto-links-icons addto-onimage');
+                                        }
+                                    }
+                                }else {
+                                    if ($theme->getCfg('category_grid/display_addtolinks') == 1) //Display on hover
+                                    {
+                                        echo $helpTemplate->getCategoryAddtoWishLinks(
+                                            $_item, 'addto-links-icons addto-onimage visible-onhover');
+
+                                    } else //Always display
+                                    {
+                                        echo $helpTemplate->getCategoryAddtoWishLinks(
+                                            $_item, 'addto-links-icons addto-onimage');
+                                    }
                                 }
                             }
                             ?>
@@ -128,7 +152,7 @@ if($_collectionSize = $_productCollection->getSize()): ?>
 
                         <div class="actions">
                             <?php if(!$_item->canConfigure() && $_item->isSaleable()): ?>
-                               <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+                                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
                             <?php elseif($_item->getStockItem() && $_item->getStockItem()->getIsInStock()): ?>
                                 <a title="<?php echo $this->__('View Details') ?>" class="button btn-cart" href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
                             <?php else: ?>
