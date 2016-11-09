@@ -92,8 +92,15 @@
         $hideToolbar = true;
     }
 ?>
+    <?php if(Mage::registry('current_category')){
+        $categoryName = Mage::registry('current_category')->getName();
+    }else {
+        $categoryName = '';
+    }
+    ;?>
+    <?php if ($category !=''):?>
     <div style="display:none;" itemscope itemtype="http://schema.org/Product">
-        <span itemprop="name"><span itemprop="brand"><?php echo  Mage::registry('current_category')->getName(); ?></span></span>
+        <span itemprop="name"><span itemprop="brand"><?php echo  $categoryName; ?></span></span>
         <!--            <div itemprop="aggregateRating"-->
         <!--                 itemscope itemtype="http://schema.org/AggregateRating">-->
         <!--            </div>-->
@@ -103,6 +110,7 @@
             <span itemprop="pricecurrency"><?php echo Mage::app()->getStore()->getCurrentCurrencyCode();?></span>
         </div>
     </div>
+    <?php endif;?>
 <div class="category-products">
     <?php if (!$hideToolbar): ?>
         <?php echo $this->getToolbarHtml() ?>
