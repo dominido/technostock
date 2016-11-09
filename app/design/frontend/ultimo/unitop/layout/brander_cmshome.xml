@@ -14,7 +14,10 @@
 			<block type="brander_cmshome/productSliders" name="homepage.product_sliders"
 				   template="brander/page/homepage/sliders/products.phtml">
 				<block type="brander_shop/catalog_product_new" name="product_sliders.grid_new"
-					   template="brander/page/homepage/sliders/gridnew.phtml"/>
+					   template="brander/page/homepage/sliders/gridnew.phtml">
+					<action method="unsetData"><key>cache_lifetime</key></action>
+					<action method="unsetData"><key>cache_tags</key></action>
+				</block>
 				<block type="brander_cmshome/product_list_specialOffers" name="product_sliders.list_special"
 					   template="catalog/product/list_featured_slider.phtml"/>
 				<block type="brander_cmshome/product_list_hitsOfSales" name="product_sliders.list_hits"

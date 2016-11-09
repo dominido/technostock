@@ -39,10 +39,7 @@
 
         <reference name="content">
             <reference name="product.info">
-                <block type="reports/product_viewed" name="reports.product.viewed" as="reports.product.viewed" template="brander/product_viewed/viewed_slider.phtml">
-                    <action method="unsetData"><key>cache_lifetime</key></action>
-                    <action method="unsetData"><key>cache_tags</key></action>
-                </block>
+                <block type="reports/product_viewed" name="reports.product.viewed" as="reports.product.viewed" template="brander/product_viewed/viewed_slider.phtml" />
             </reference>
         </reference>
     </catalog_product_view>
