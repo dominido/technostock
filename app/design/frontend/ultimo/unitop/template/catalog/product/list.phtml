@@ -34,6 +34,7 @@
 
 <?php
     $_productCollection=$this->getLoadedProductCollection();
+    $_seoCollection = $this->getLoadedProductCollection()->addAttributeToSort('price', 'ASC');
     $_collectionSize = $_productCollection->count();
 ?>
 
@@ -66,7 +67,7 @@
         $imgWidth = 295;
         $imgHeight = 295;
     }
-    
+
     //Image aspect ratio settings
     $keepAspectRatio = $theme->getCfg('category/aspect_ratio');
     if ($keepAspectRatio)
@@ -91,7 +92,17 @@
         $hideToolbar = true;
     }
 ?>
-
+    <div style="display:none;" itemscope itemtype="http://schema.org/Product">
+        <span itemprop="name"><span itemprop="brand"><?php echo  Mage::registry('current_category')->getName(); ?></span></span>
+        <!--            <div itemprop="aggregateRating"-->
+        <!--                 itemscope itemtype="http://schema.org/AggregateRating">-->
+        <!--            </div>-->
+        <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+            <span itemprop="lowPrice"><?php echo $_seoCollection->getLastItem()->getMinPrice();?></span>
+            <span itemprop="highPrice"><?php echo $_seoCollection->getFirstItem()->getMaxPrice();?></span>
+            <span itemprop="pricecurrency"><?php echo Mage::app()->getStore()->getCurrentCurrencyCode();?></span>
+        </div>
+    </div>
 <div class="category-products">
     <?php if (!$hideToolbar): ?>
         <?php echo $this->getToolbarHtml() ?>
@@ -101,7 +112,7 @@
     <?php
         //Get list configuration array
         $lc = $theme->getCfgGroup('category_list');
-        
+
         //List classes
         $listClasses = '';
         if ($lc['hover_effect'])
@@ -177,7 +188,7 @@
                     }
                     ?>
                     <?php if($groupedIsSallable && $_product->isSaleable()): ?>
-                        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+                        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Buy')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Buy') ?></span></button>
                     <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                         <a title="<?php echo $this->__('Out of stock') ?>" class="availability out-of-stock" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('Out of stock') ?></a>
                     <?php endif; ?>
@@ -200,7 +211,7 @@
     <?php
         //Get grid configuration array
         $gc = $theme->getCfgGroup('category_grid');
-        
+
         //Get number of columns (from parameter or from theme config)
         $columnCount = 3;
         if ($this->getGridColumnCount())
@@ -257,7 +268,7 @@
             $actionsClasses = '';
         }
     ?>
-    
+
     <ul class="products-grid category-products-grid itemgrid itemgrid-adaptive itemgrid-<?php echo $columnCount; ?>col<?php if($gridClasses) echo $gridClasses; ?>">
         <?php foreach ($_productCollection as $_product): ?>
             <li class="item">
@@ -282,7 +293,22 @@
                             {
                                 if ($gc['display_addtolinks'] == 1) //Display on hover
                                     //echo $helpTemplate->getCategoryAddtoLinksIcons($_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage display-onhover');
-                                    echo $helpTemplate->getCategoryAddtoWishLinks($_product, 'addto-links-icons addto-onimage display-onhover');
+                                    #holly remove wishlist mark
+                                    $productId = $_product->getId();
+                                    $customerId = Mage::getSingleton('customer/session')->getCustomerId();
+                                    if ($customerId) {
+                                        $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customerId, true);
+                                        $collection = Mage::getModel('wishlist/item')->getCollection()
+                                            ->addFieldToFilter('wishlist_id', $wishlist->getId())
+                                            ->addFieldToFilter('product_id', $productId);
+                                        $item = $collection->getFirstItem();
+                                        $hasProduct = !!$item->getId();
+                                        if (!$hasProduct) {
+                                            echo $helpTemplate->getCategoryAddtoWishLinks($_product, 'addto-links-icons addto-onimage display-onhover');
+                                        }
+                                    } else {
+                                        echo $helpTemplate->getCategoryAddtoWishLinks($_product, 'addto-links-icons addto-onimage display-onhover');
+                                    }
 
                                 //else //Always display
                                  //   echo $helpTemplate->getCategoryAddtoLinksIcons($_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage');
@@ -375,7 +401,7 @@
                             }
                             ?>
                             <?php if($groupedIsSallable && $_product->isSaleable()): ?>
-                                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+                                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Buy')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Buy') ?></span></button>
                             <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                                 <a title="<?php echo $this->__('Out of stock') ?>" class="availability out-of-stock" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('Out of stock') ?></a>
                             <?php endif; ?>

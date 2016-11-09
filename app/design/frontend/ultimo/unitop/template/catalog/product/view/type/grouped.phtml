@@ -47,6 +47,33 @@ foreach ($itemsInCart as $_item) {
 }
 ?>
 
+<?php
+#holly remove wishlist mark
+$productId = $_product->getId();
+$customerId = Mage::getSingleton('customer/session')->getCustomerId();
+if($customerId){
+
+$wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customerId, true);
+$collection = Mage::getModel('wishlist/item')->getCollection()
+    ->addFieldToFilter('wishlist_id', $wishlist->getId())
+    ->addFieldToFilter('product_id', $productId);
+$item = $collection->getFirstItem();
+$hasProduct = !!$item->getId();
+?>
+<?php if(!$hasProduct):?>
+<div class="wishlist-box">
+    <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+</div>
+<?php endif; ?>
+<?php } else{
+?>
+    <div class="wishlist-box">
+        <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+    </div>
+<?php
+}
+?>
+
 <?php echo $this->getChildHtml('product_type_data_extra') ?>
 <table class="data-table grouped-items-table" id="super-product-table">
     <col />
@@ -70,7 +97,10 @@ foreach ($itemsInCart as $_item) {
             } ?>
         <?php $counter++; ?>
         <?php $_finalPriceInclTax = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), true) ?>
-        <tr>
+            <div itemscope itemtype="http://schema.org/AggregateOffer">
+                <meta itemprop="price" content="<?php echo $_finalPriceInclTax ?>">
+            </div>
+            <tr>
             
                 <?php /* old one image output with old classes
 

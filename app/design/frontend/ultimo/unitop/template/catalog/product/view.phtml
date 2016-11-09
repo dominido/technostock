@@ -46,7 +46,7 @@
 	//If related products not assigned to collateral data container.
 	if (!$theme->getCfg('product_page/collateral_related'))
 	{
-		$replaceRelated = $theme->getCfg('product_page/replace_related');
+		$replaceRelated = $theme->getCfg('product_page/replace_related');http://schema.org/Product"
 		if ($replaceRelated == 1) //don't replace with static block
 		{
 			if ($tmpHtml = trim($this->getChildHtml('related_products_wrapper')))
@@ -122,8 +122,9 @@
 <script type="text/javascript">
 	var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
+
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
-<div class="product-view nested-container" <?php if ($useRichSnippets) echo $helperSnippets->getProductItemscope(); ?>>
+<div class="product-view nested-container" <?php if ($useRichSnippets) echo $helperSnippets->getProductItemscope();?> itemscope itemtype="http://schema.org/Product">
 
 	<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
 

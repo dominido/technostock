@@ -24,6 +24,8 @@ class Brander_CmsHome_Block_Adminhtml_Specialoffers extends Mage_Adminhtml_Block
         parent::__construct();
         $this->_headerText = Mage::helper('brander_cmshome')->__('Special Offers Products');
 
+        parent::__construct();
+        $this->_removeButton('add');
         $this->setTemplate('brander_cmshome/grid.phtml');
     }
 }

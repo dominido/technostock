@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Brander_Productfilter>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Brander_Core />
+            </depends>
+        </Brander_Productfilter>
+    </modules>
+</config>
