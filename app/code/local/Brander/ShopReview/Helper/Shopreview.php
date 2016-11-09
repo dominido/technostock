@@ -33,7 +33,7 @@ class Brander_ShopReview_Helper_Shopreview
         if ($listKey = Mage::getStoreConfig('brander_shopreview/shopreview/url_rewrite_list')) {
             return Mage::getUrl('', array('_direct'=>$listKey));
         }
-        return Mage::getUrl('brander_shopreview/shopreview/index');
+        return Mage::getUrl('brander_shopreview/index/index');
     }
     /**
      * check if breadcrumbs can be used
