@@ -45,7 +45,15 @@
     <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
         <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
     <?php endif; ?>
-    <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+    <?php
+        $seoTitle = $_category->getData('category_title_h1');
+        if($seoTitle != ''){
+            echo "<h1>$seoTitle</h1>";
+        } else {
+            $categoryName = $_helper->categoryAttribute($_category, $_category->getName(), 'name');
+            echo "<h1>$categoryName</h1>";
+        }
+    ?>
 </div>
 
 <?php echo $this->getMessagesBlock()->toHtml() ?>
