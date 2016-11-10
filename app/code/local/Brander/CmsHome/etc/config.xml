@@ -108,6 +108,7 @@
             <unipagetype translate="name" module="brander_cmshome">
                 <name>Home page</name>
                 <template>brander/home/main.phtml</template>
+                <cached>0</cached>
                 <groups>
                     <unislidergroup>
                         <name>Slideshow</name>
