@@ -32,10 +32,6 @@
 			<block type="brands/brands" name="homepage.brands_slider" template="infortis/brands/brand_slider.phtml" />
 
 		</reference>
-		<reference name="product_sliders.grid_new">
-			<action method="setCacheLifetime"></action>
-		</reference>
-
 	</PAGE_TYPE_UNIPAGETYPE>
 
 	<cmsadvanced_page_view>
