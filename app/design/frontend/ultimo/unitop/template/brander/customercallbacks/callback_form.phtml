@@ -5,7 +5,7 @@
 				<div class="lightbox-content">
 					<span class="callbacks_loader" style="display: none"><?php echo $this->__('loading ...')?></span>
 					<form action="<?php echo $this->getUrl('customercallbacks/index/callback'); ?>" method="post" name="form_customercallbacks" id="form_customercallbacks" class="webforms-callback">
-						<h2><?php echo $this->__("Callback"); ?></h2>
+						<span class="like_h2"><?php echo $this->__("Callback"); ?></span>
 						<p class="callbacks-welcome-message"><?php echo Mage::helper('brander_customercallbacks')->getRequestMessage() ?></p>
 						<span class="callbacks_message"></span>
 						<div class="field webforms-fields-username clearfix">

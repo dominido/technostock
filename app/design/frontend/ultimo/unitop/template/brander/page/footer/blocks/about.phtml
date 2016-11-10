@@ -11,7 +11,7 @@
                      alt="<?php echo $logoObj->getLogoAlt(); ?>"/>
             </a>
             <?php if ($address = Mage::helper('brander_cmshome')->getSiteCfg('general/store_information/address')): ?>
-                <h6 class="block-title heading"><?php echo $this->__('Shop Address:') ?></h6>
+                <span class="like_h6 block-title heading"><?php echo $this->__('Shop Address:') ?></span>
                 <div class="feature first last">
                     <p><?php echo $address ?></p>
                 </div>
@@ -24,7 +24,7 @@
             <?php endif; ?>
 
             <?php if ($hours = Mage::helper('brander_cmshome')->getSiteCfg('general/store_information/hours')): ?>
-                <h6 class="block-title heading"><?php echo $this->__('Hours of Operations:') ?></h6>
+                <span class="like_h6 block-title heading"><?php echo $this->__('Hours of Operations:') ?></span>
                 <div class="feature first last">
                     <p><?php echo $hours ?></p>
                 </div>

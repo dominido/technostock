@@ -314,9 +314,9 @@ class Brander_CmsMenu_Block_NavigationLeft extends Mage_Catalog_Block_Navigation
             }
             $x1c .= $x2a;
             if (!empty($x47)) {
-                $x1c .= '<ul class="' . $x2d . ' ' . implode(' ', $x3b) . '"' . $x3d . '>';
+                $x1c .= '<div class="dropdown_new"><ul class="' . $x2d . ' ' . implode(' ', $x3b) . '"' . $x3d . '>';
                 $x1c .= $x47;
-                $x1c .= '</ul>';
+                $x1c .= '</ul></div>';
             }
             $x1c .= $x2b;
             if (!empty($x3a)) {

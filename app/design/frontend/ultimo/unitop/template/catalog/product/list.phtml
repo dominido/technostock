@@ -196,7 +196,7 @@
                     }
                     ?>
                     <?php if($groupedIsSallable && $_product->isSaleable()): ?>
-                        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Buy')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Buy') ?></span></button>
+                        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Buy')) ?>" class="button btn-cart-text" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Buy') ?></span></button>
                     <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                         <a title="<?php echo $this->__('Out of stock') ?>" class="availability out-of-stock" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('Out of stock') ?></a>
                     <?php endif; ?>
@@ -409,7 +409,7 @@
                             }
                             ?>
                             <?php if($groupedIsSallable && $_product->isSaleable()): ?>
-                                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Buy')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Buy') ?></span></button>
+                                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Buy')) ?>" class="button btn-cart-text" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Buy') ?></span></button>
                             <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                                 <a title="<?php echo $this->__('Out of stock') ?>" class="availability out-of-stock" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('Out of stock') ?></a>
                             <?php endif; ?>

@@ -271,12 +271,140 @@
 }
 
 #nav-left {
+  position: relative;
+
   > li {
-	position: relative;
+
+	> .dropdown_new {
+		display: none;
+		height: 100%;
+		width: 850px;
+		position: absolute;
+		z-index: 999;
+		background: #ecf3fc;
+		left: 100%;
+		top: 0;
+		box-sizing: border-box;
+		box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
+
+		.caret {
+			display: none;
+		}
+
+		> .nav-submenu {
+			display: block;
+			width: calc(100% - 30px);
+			height: calc(100% - 30px);
+			background: none;
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			box-shadow: none;
+			margin: 15px;
+
+			li {
+				height: auto;
+			}
+
+			> li {
+				height: auto;
+				display: inline-block;
+			    vertical-align: top;
+			    background: none;
+			    flex-direction: column;
+			    flex-wrap: wrap;
+			    box-sizing: border-box;
+			    width: 20%;
+			    padding: 0 10px 40px;
+
+			    > a {
+			    	display: block;
+			    	font-size: 16px;
+			    	padding: 5px;
+			    }
+
+			    &.columns_2 {
+			    	width: 40%;
+
+			    	ul {
+			    		column-count: 2;
+			    	}
+			    }
+			    &.columns_3 {
+			    	width: 60%;
+
+			    	ul {
+			    		column-count: 3;
+			    	}
+			    }
+
+			    > .dropdown_new {
+			    	width: 100%;
+
+			    	> ul {
+			    		display: block;
+			    		position: static;
+			    		background: none;
+			    		padding: 10px 0;
+			    		border-top: 1px solid #35426d;
+			    		box-shadow: none;
+
+			    		li {
+			    			background: none;
+
+			    			> a {
+			    				display: block;
+			    				font-size: 14px;
+			    				line-height: 14px;
+			    				padding: 5px;
+			    			}
+			    		}
+			    	}
+			    }
+			}
+		}
+	}
+
+	& {
+		> .dropdown_new.open {
+			display: block;
+		}
+	}
 
 	> .nav-submenu {
+	  display: none;
 	  left: 100% !important;
 	  top: 0 !important;
+	  height: 100%;
+	  width: 850px;
+	  overflow-x: auto;
+	  display: flex !important;
+	  flex-direction: column !important;
+	  flex-wrap: wrap !important;
+
+	  > li {
+	  	display: inline-block;
+  	    vertical-align: top;
+  	    width: 20%;
+  	    height: auto !important;
+  	    padding: 15px 20px !important;
+  	    box-sizing: border-box;
+  	    font-size: 16px;
+  	    outline: 2px solid red;
+
+  	    > a {
+  	    	display: block;
+  	    }
+
+	  	> .nav-submenu {
+	  		position: relative !important;
+	  		background: none;
+	  		min-width: auto;
+	  		width: 100%;
+	  		left: 0;
+	  		outline: 2px solid blue;
+	  	}
+	  }
 	}
 
 	.nav-submenu {
