@@ -831,42 +831,131 @@
 			menuBlock: $('.the-slideshow-wrapper'),
 			menuWidth: 0,
 			firstLi: $('.the-slideshow-wrapper .nav-item.level0'),
+			firstLiWidth: $('.the-slideshow-wrapper .nav-item.level0').width(),
 
 			init: function(){
+				if(!this.menuBlock.length){
+					this.createWrapp();
+				}				
 				this._onResize();
 				this._onHover();
+				//this._customScroll();
+			},
+
+			createWrapp: function(){
+				$('.level0.nav-submenu').attr('id', 'nav-left').find('ul').wrap("<div class='dropdown_new'></div>");
+				$('.level0.nav-submenu').closest('li').hover(function(e){
+					e.stopPropagation();
+					e.preventDefault();
+					$('#nav-left').show();
+				}, function(){
+					$('#nav-left').hide();
+				});
+				this.menuBlock = $('#nav');
+				this.firstLi = $('#nav-left>li');
+				this.firstLiWidth = $('#nav-left').width();
+			},
+
+			_customScroll: function(drop){
+				var _this = this;
+				var lastLiArr = drop.children('ul').children('li');
+				var lastLi = lastLiArr.eq(lastLiArr.length - 1);
+				var ulWidth = lastLi.position().left + lastLi.width() + 30;
+				var dropWidth = drop.width() - 30;
+				drop.children('ul').css('width', ulWidth + 'px');
+
+				if(ulWidth > dropWidth){
+					if(!drop.find('.track').length){
+						drop.append('<div class="track"><div class="toddle"></div></div>');
+					}
+
+					var coef = dropWidth / ulWidth;
+					var toddleWidth = (dropWidth * coef);
+					$('.toddle').css('width', toddleWidth + 'px');
+
+					var left = 0;
+					drop.on('mousewheel DOMMouseScroll', function(event){
+
+						event.preventDefault();
+						
+						if(event.deltaY < 0){
+							left += 20;
+						}else{
+							left -= 20;
+						}
+						if(left <= 0) left = 0;
+						if(left >= (ulWidth - dropWidth)) left = (ulWidth - dropWidth);
+
+						drop.children('ul').css('left', '-' + left + 'px');
+						$('.toddle').css('left', (left * coef) + 'px');
+					});
+
+					$('.toddle').on('mousedown', function(event){
+						var thisOffset = $(this).offset().left,
+							toddlePos = $(this).position().left,
+							mousePos = event.pageX - thisOffset;
+
+						$('body').bind('mousemove', function(e){
+							var moveX = e.pageX - thisOffset;
+
+							if(mousePos > moveX){
+								left -= (mousePos - moveX);
+							}else if(mousePos < moveX){
+								left += (moveX - mousePos);
+							}
+							mousePos = moveX;
+
+							if(left <= 0) left = 0;
+							if(left >= ((ulWidth - dropWidth) * coef)) left = (ulWidth - dropWidth) * coef;
+
+							drop.children('ul').css('left', '-' + (left / coef) + 'px');
+							$('.toddle').css('left', left + 'px');
+						});
+						$('body').on('mouseup', function(){
+							$('body').unbind('mousemove');
+						});
+					});
+				}
 			},
 
 			_onHover: function(){
 				var _this = this;
 				$(_this.firstLi).on('mouseenter', function(){
-					$(this).children('.dropdown_new').addClass('open').children('ul').children('li').each(function(){
+					var drop = $(this).children('.dropdown_new');
+					drop.addClass('open').children('ul').children('li').each(function(){
 						var height = $(this).height();
-						var parentHeight = $(this).closest('.dropdown_new').height();
+						var parentHeight = $(this).closest('ul').height();
 						if(height > parentHeight){
 							var columnsCount = Math.ceil(height / parentHeight);
 							$(this).addClass('columns_' + columnsCount);
 						}
 					});
+					setTimeout(function(){
+						_this._customScroll(drop);
+					}, 300);
 				});
 
 				var _this = this;
 				$(_this.firstLi).on('mouseleave', function(){
-					$(this).children('.dropdown_new').removeClass('open');
+					$(this).children('.dropdown_new').removeClass('open').children('ul').css('left', '0').parent().find('.toddle').css('left', '0');
+					$('.dropdown_new').find('.toddle').css('left', '0');
 				});
 			},
 
 			_onResize: function(){
 				var _this = this;
 				$(window).on('load resize', function(){
+					console.log('_this.menuBlock.width() - ' + _this.menuBlock.width());
 					_this.setMenuWidth(_this.menuBlock.width());
+					_this.firstLiWidth = $('#nav-left').width();
 				});
 			},
 
 			setMenuWidth: function(width){
-				this.menuWidth = width - this.firstLi.width();
+				this.menuWidth = width - this.firstLiWidth;
+				//console.log(width);
+				console.log('this.firstLiWidth - ' + this.firstLiWidth);
 				this.firstLi.children('.dropdown_new').css('width', this.menuWidth + 'px');
-				console.log(this.menuWidth);
 			}
 		}
 		menuLikeYellow.init();
