@@ -834,12 +834,17 @@
 			firstLiWidth: $('.the-slideshow-wrapper .nav-item.level0').width(),
 
 			init: function(){
+				var _this = this;
 				if(!this.menuBlock.length){
 					this.createWrapp();
-				}				
-				this._onResize();
-				this._onHover();
-				//this._customScroll();
+				}
+
+				_this._onResize();
+
+				$(window).on('load', function(){
+					
+					_this._onHover();
+				});
 			},
 
 			createWrapp: function(){
