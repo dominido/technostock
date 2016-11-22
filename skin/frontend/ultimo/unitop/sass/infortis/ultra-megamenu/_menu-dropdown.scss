@@ -343,17 +343,17 @@
 		}
 		&:before {
 			left: 0;
-			background: linear-gradient(to left, transparent, #ecf3fc 50%);
-			background: -moz-linear-gradient(to left, transparent, #ecf3fc 50%);
-			background: -ms-linear-gradient(to left, transparent, #ecf3fc 50%);
-			background: -webkit-linear-gradient(to left, transparent, #ecf3fc 50%);
+			background: linear-gradient(to left, rgba(236,243,252,0), #ecf3fc 50%);
+			background: -moz-linear-gradient(to left, rgba(236,243,252,0), #ecf3fc 50%);
+			background: -ms-linear-gradient(to left, rgba(236,243,252,0), #ecf3fc 50%);
+			background: -webkit-linear-gradient(to left, rgba(236,243,252,0), #ecf3fc 50%);
 		}
 		&:after {
 			right: 0;
-			background: linear-gradient(to right, transparent, #ecf3fc 50%);
-			background: -moz-linear-gradient(to right, transparent, #ecf3fc 50%);
-			background: -ms-linear-gradient(to right, transparent, #ecf3fc 50%);
-			background: -webkit-linear-gradient(to right, transparent, #ecf3fc 50%);
+			background: linear-gradient(to right, rgba(236,243,252,0), #ecf3fc 50%);
+			background: -moz-linear-gradient(to right, rgba(236,243,252,0), #ecf3fc 50%);
+			background: -ms-linear-gradient(to right, rgba(236,243,252,0), #ecf3fc 50%);
+			background: -webkit-linear-gradient(to right, rgba(236,243,252,0), #ecf3fc 50%);
 		}
 
 		.caret {
