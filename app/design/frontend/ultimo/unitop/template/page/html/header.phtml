@@ -981,7 +981,7 @@
 					var drop = $(this).children('.dropdown_new');
 					drop.addClass('open').children('ul').children('li').each(function(){
 						var height = $(this).children('a').outerHeight() + $(this).find('ul').outerHeight();
-						var parentHeight = $(this).closest('ul').height();
+						var parentHeight = $(this).closest('ul').height() - 50;
 						if(height > parentHeight){
 							var columnsCount = Math.ceil(height / parentHeight);
 							$(this).addClass('columns_' + columnsCount);
