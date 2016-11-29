@@ -923,7 +923,7 @@ textarea {
   }
 
   .contacts-map-holder {
-	width: 500px;
+	width: 100%;
 	padding-top: 32px;
 
 	@include bp(max-width, 850px) {
