@@ -32,7 +32,7 @@ class Brander_ShopReview_Block_Shopreview_List
         parent::__construct();
          $shopreviews = Mage::getResourceModel('brander_shopreview/shopreview_collection')
                          ->addFieldToFilter('review_status', 2);
-        $shopreviews->setOrder('created_at', 'desc');
+        $shopreviews->setOrder('entity_id', 'desc');
         $this->setShopreviews($shopreviews);
     }
     /**
