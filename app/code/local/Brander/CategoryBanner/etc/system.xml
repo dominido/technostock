@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {{Brander}}_CategoryBanner extension
+ */
+--> 
+<config>
+    <tabs>
+        <brander translate="label" module="brander_categorybanner">
+            <label>Brander</label>
+            <sort_order>2000</sort_order>
+        </brander>
+    </tabs>
+    <sections>
+        <brander_categorybanner translate="label" module="brander_categorybanner">
+            <class>separator-top</class>
+            <label>Category Banner</label>
+            <tab>brander</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+            </groups>
+        </brander_categorybanner>
+    </sections>
+</config>

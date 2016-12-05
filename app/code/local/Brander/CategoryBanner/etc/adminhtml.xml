@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {{Brander}}_CategoryBanner extension
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <brander_categorybanner translate="title" module="brander_categorybanner">
+                                        <title>CategoryBanner</title>
+                                    </brander_categorybanner>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <brander_categorybanner translate="title" module="brander_categorybanner">
+                        <title>Category Banner</title>
+                        <children>
+                            <categorybanner translate="title" module="brander_categorybanner">
+                                <title>Category Image</title>
+                                <sort_order>0</sort_order>
+                            </categorybanner>
+                        </children>
+                    </brander_categorybanner>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <brander_categorybanner translate="title" module="brander_categorybanner">
+            <title>Category Banner</title>
+            <sort_order>85</sort_order>
+            <children>
+                <categorybanner translate="title" module="brander_categorybanner">
+                    <title>Category Image</title>
+                    <action>adminhtml/categorybanner_categorybanner</action>
+                    <sort_order>0</sort_order>
+                </categorybanner>
+            </children>
+        </brander_categorybanner>
+    </menu>
+</config>

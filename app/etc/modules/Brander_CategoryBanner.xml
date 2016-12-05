@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {{Brander}}_CategoryBanner extension
+ */
+-->
+<config>
+    <modules>
+        <Brander_CategoryBanner>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Catalog />
+             </depends>
+        </Brander_CategoryBanner>
+    </modules>
+</config>

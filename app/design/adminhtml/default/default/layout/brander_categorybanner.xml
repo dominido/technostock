@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {{Brander}}_CategoryBanner extension
+ */
+--> 
+<layout>
+    <adminhtml_categorybanner_categorybanner_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_categorybanner/categorybanner</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_categorybanner/adminhtml_categorybanner" name="categorybanner" />
+
+        </reference>
+    </adminhtml_categorybanner_categorybanner_index>
+    <adminhtml_categorybanner_categorybanner_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_categorybanner/adminhtml_categorybanner_grid" name="categorybanner_grid"/>
+        </block>
+    </adminhtml_categorybanner_categorybanner_grid>
+    <!-- Categorybanner add/edit action -->
+    <adminhtml_categorybanner_categorybanner_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>brander_categorybanner/categorybanner</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="brander_categorybanner/adminhtml_categorybanner_edit" name="categorybanner_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="brander_categorybanner/adminhtml_categorybanner_edit_tabs" name="categorybanner_tabs"></block>
+        </reference>
+    </adminhtml_categorybanner_categorybanner_edit>
+
+    <adminhtml_categorybanner_categorybanner_categories>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_categorybanner/adminhtml_categorybanner_edit_tab_categories" name="categorybanner.edit.tab.categories"/>
+        </block>
+    </adminhtml_categorybanner_categorybanner_categories>
+    <adminhtml_categorybanner_categorybanner_catalog_category_categorybannersgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="brander_categorybanner/adminhtml_catalog_category_tab_categorybanner" name="category.edit.tab.categorybanner"/>
+        </block>
+    </adminhtml_categorybanner_categorybanner_catalog_category_categorybannersgrid>
+</layout>

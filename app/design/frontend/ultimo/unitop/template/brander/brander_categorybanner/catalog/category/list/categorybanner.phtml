@@ -1,0 +1,35 @@
+<?php
+/**
+ * {{Brander}}_CategoryBanner extension
+ */
+/**
+ * Category Image list template on product page
+ *
+ * @category    Brander
+ * @package     Brander_CategoryBanner
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $categorybanners = $this->getCategorybannerCollection();?>
+
+<?php if ($categorybanners && $categorybanners->count() > 0) {
+    $randLim = count($categorybanners) - 1;
+    $randBanner = $categorybanners->getData()[rand(0, $randLim)];
+    ?>
+
+    <li class="item">
+        <div class="item-inner">
+            <div class="product-image-wrapper" style="max-width:495px;">
+                <a href="<?php echo $randBanner['category_image_url'];?>">
+
+                    <img id="product-collection-image-16494" src=" <?php echo Mage::helper('brander_categorybanner/categorybanner_image')->getImageBaseUrl() . $randBanner['category_image']; ?>" alt="<?php echo $randBanner['category_image_name'];?>">
+                </a>
+                <div class="banner-seo">
+                    <?php // echo $randBanner['category_image_seo'];?>
+                </div>
+            </div> <!-- end: product-image-wrapper -->
+        </div>
+    </li>
+    <?php
+};
+?>
