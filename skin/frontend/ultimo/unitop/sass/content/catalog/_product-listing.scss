@@ -5,6 +5,14 @@
 	padding: 20px 10px 0;
   }
 
+  .item.random_image {
+  	.item-inner {
+  		padding: 20px 10px;
+  		display: table-cell;
+  		vertical-align: middle;
+  	}
+  }
+
   .btn-cart-text {
   	position: absolute;
   	//width: 80px;
@@ -229,6 +237,8 @@
 	}
   }
 }
+
+
 
 @include bp(min-width, 1440px) {
   .itemgrid-adaptive.itemgrid-2col {

@@ -17,7 +17,7 @@
     $randBanner = $categorybanners->getData()[rand(0, $randLim)];
     ?>
 
-    <li class="item">
+    <li class="item random_image">
         <div class="item-inner">
             <div class="product-image-wrapper" style="max-width:495px;">
                 <a href="<?php echo $randBanner['category_image_url'];?>">
@@ -30,6 +30,13 @@
             </div> <!-- end: product-image-wrapper -->
         </div>
     </li>
+    <script>
+        (function($){
+            $(window).on('load resize', function(){
+                $('.products-grid .item.random_image .item-inner').css('height', ($('.products-grid .item').eq(0).find('.item-inner').height() - 20) + 'px');
+            });
+        })(jQuery);
+    </script>
     <?php
 };
 ?>
