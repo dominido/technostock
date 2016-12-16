@@ -366,7 +366,6 @@
 			width: calc(100% - 30px);
 			height: calc(100% - 30px);
 			background: none;
-			display: flex;
 			flex-direction: column;
 			flex-wrap: wrap;
 			box-shadow: none;
@@ -375,6 +374,10 @@
 			-moz-user-select: none;
 			-ms-user-select: none;
 			user-select: none;
+
+			@include bp(min-width, 960px){
+				display: flex;
+			}
 
 			li {
 				height: auto;
@@ -538,5 +541,5 @@
 }
 
 .cmsadvanced-page-view .level-top > .nav-panel--dropdown {
-	display: none !important;
+	//display: none !important;
 }
