@@ -868,9 +868,11 @@
 
 			createWrapp: function(){
 				$('.level0.nav-submenu').attr('id', 'nav-left').find('ul').wrap("<div class='dropdown_new'></div>");
-				$('.level0.nav-submenu').closest('li').hover(function(e){
+				$('.level0.nav-submenu').closest('li').on('hover mouseover', function(e){
 					e.stopPropagation();
 					e.preventDefault();
+				});
+				$('.level0.nav-submenu').closest('li').hover(function(e){
 					$('#nav-left').show();
 				}, function(){
 					$('#nav-left').hide();
