@@ -26,9 +26,13 @@
 
 		<reference name="top.menu">
 			<action method="unsetChild"><name>catalog.topnav</name></action>
-			<block type="ultramegamenu/mainmenu" name="catalog.topnav.menu" template="infortis/ultramegamenu/mainmenu.phtml">
-				<block type="ultramegamenu/navigation" name="catalog.topnav.navigation" template="infortis/ultramegamenu/navigation.phtml" />
-				<block type="brander_cmsmenu/navigationLeft" name="homepage.leftnav.menu" template="brander/page/homepage/leftmenu/megamenu.phtml"/>
+			<block type="ultramegamenu/mainmenu" name="catalog.topnav.menu"
+				   template="infortis/ultramegamenu/mainmenu.phtml">
+				<action method="getCacheLifetime"/>
+				<block type="ultramegamenu/navigation" name="catalog.topnav.navigation"
+					   template="infortis/ultramegamenu/navigation.phtml"/>
+				<block type="brander_cmsmenu/navigationLeft" name="homepage.leftnav.menu"
+					   template="brander/page/homepage/leftmenu/megamenu.phtml"/>
 			</block>
 		</reference>
 
